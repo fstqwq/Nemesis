@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kt}{bool} \PYG{n+nf}{turn\PYGZus{}left} \PYG{p}{(}\PYG{k}{const} \PYG{n}{point} \PYG{o}{\PYGZam{}}\PYG{n}{a}\PYG{p}{,} \PYG{k}{const} \PYG{n}{point} \PYG{o}{\PYGZam{}}\PYG{n}{b}\PYG{p}{,} \PYG{k}{const} \PYG{n}{point} \PYG{o}{\PYGZam{}}\PYG{n}{c}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{k}{return} \PYG{n}{sgn} \PYG{p}{(}\PYG{n}{det} \PYG{p}{(}\PYG{n}{b} \PYG{o}{\PYGZhy{}} \PYG{n}{a}\PYG{p}{,} \PYG{n}{c} \PYG{o}{\PYGZhy{}} \PYG{n}{a}\PYG{p}{))} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector} \PYG{o}{\PYGZlt{}}\PYG{n}{point}\PYG{o}{\PYGZgt{}} \PYG{n}{convex\PYGZus{}hull} \PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector} \PYG{o}{\PYGZlt{}}\PYG{n}{point}\PYG{o}{\PYGZgt{}} \PYG{n}{a}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{n} \PYG{o}{=} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)} \PYG{n}{a}\PYG{p}{.}\PYG{n}{size} \PYG{p}{(),} \PYG{n}{cnt} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{n}{std}\PYG{o}{::}\PYG{n}{sort} \PYG{p}{(}\PYG{n}{a}\PYG{p}{.}\PYG{n}{begin} \PYG{p}{(),} \PYG{n}{a}\PYG{p}{.}\PYG{n}{end} \PYG{p}{());}
+	\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector} \PYG{o}{\PYGZlt{}}\PYG{n}{point}\PYG{o}{\PYGZgt{}} \PYG{n}{ret}\PYG{p}{;}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{k}{while} \PYG{p}{(}\PYG{n}{cnt} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{1} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{turn\PYGZus{}left} \PYG{p}{(}\PYG{n}{ret}\PYG{p}{[}\PYG{n}{cnt} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{2}\PYG{p}{],} \PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n}{ret}\PYG{p}{[}\PYG{n}{cnt} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{]))} \PYG{p}{\PYGZob{}}
+			\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{n}{cnt}\PYG{p}{;} \PYG{n}{ret}\PYG{p}{.}\PYG{n}{pop\PYGZus{}back} \PYG{p}{();} \PYG{p}{\PYGZcb{}}
+		\PYG{n}{ret}\PYG{p}{.}\PYG{n}{push\PYGZus{}back} \PYG{p}{(}\PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]);} \PYG{o}{++}\PYG{n}{cnt}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+	\PYG{k+kt}{int} \PYG{n}{fixed} \PYG{o}{=} \PYG{n}{cnt}\PYG{p}{;}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{2}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{k}{while} \PYG{p}{(}\PYG{n}{cnt} \PYG{o}{\PYGZgt{}} \PYG{n}{fixed} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{turn\PYGZus{}left} \PYG{p}{(}\PYG{n}{ret}\PYG{p}{[}\PYG{n}{cnt} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{2}\PYG{p}{],} \PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n}{ret}\PYG{p}{[}\PYG{n}{cnt} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{]))} \PYG{p}{\PYGZob{}}
+			\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{n}{cnt}\PYG{p}{;} \PYG{n}{ret}\PYG{p}{.}\PYG{n}{pop\PYGZus{}back} \PYG{p}{();} \PYG{p}{\PYGZcb{}}
+		\PYG{n}{ret}\PYG{p}{.}\PYG{n}{push\PYGZus{}back} \PYG{p}{(}\PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]);} \PYG{o}{++}\PYG{n}{cnt}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+	\PYG{n}{ret}\PYG{p}{.}\PYG{n}{pop\PYGZus{}back} \PYG{p}{();} \PYG{k}{return} \PYG{n}{ret}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

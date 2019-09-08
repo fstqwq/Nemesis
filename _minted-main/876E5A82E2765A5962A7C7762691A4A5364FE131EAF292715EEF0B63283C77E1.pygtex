@@ -1,0 +1,49 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{//main: prepare(C); for(i行)insert(\PYGZob{}为1的列\PYGZcb{},C); search(0);}
+\PYG{k}{struct} \PYG{n}{node}\PYG{p}{\PYGZob{}}
+	\PYG{n}{node} \PYG{o}{*}\PYG{n}{left}\PYG{p}{,}\PYG{o}{*}\PYG{n}{right}\PYG{p}{,}\PYG{o}{*}\PYG{n}{up}\PYG{p}{,}\PYG{o}{*}\PYG{n}{down}\PYG{p}{,}\PYG{o}{*}\PYG{n}{col}\PYG{p}{;} \PYG{k+kt}{int} \PYG{n}{row}\PYG{p}{,}\PYG{n}{cnt}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}\PYG{o}{*}\PYG{n}{head}\PYG{p}{,}\PYG{o}{*}\PYG{n}{col}\PYG{p}{[}\PYG{n}{MAXC}\PYG{p}{],}\PYG{n}{Node}\PYG{p}{[}\PYG{n}{MAXNODE}\PYG{p}{],}\PYG{o}{*}\PYG{n}{ans}\PYG{p}{[}\PYG{n}{MAXNODE}\PYG{p}{];}
+\PYG{k+kt}{int} \PYG{n}{totNode}\PYG{p}{,} \PYG{n}{ansNode}\PYG{p}{;}
+\PYG{k+kt}{void} \PYG{n+nf}{insert}\PYG{p}{(}\PYG{k}{const} \PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZam{}}\PYG{n}{V}\PYG{p}{,}\PYG{k+kt}{int} \PYG{n}{rownum}\PYG{p}{)\PYGZob{}}
+	\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{node}\PYG{o}{*\PYGZgt{}} \PYG{n}{N}\PYG{p}{;}
+	\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{p}{(}\PYG{n}{V}\PYG{p}{.}\PYG{n}{size}\PYG{p}{());}\PYG{o}{++}\PYG{n}{i}\PYG{p}{)\PYGZob{}}
+		\PYG{n}{node}\PYG{o}{*} \PYG{n}{now}\PYG{o}{=}\PYG{n}{Node}\PYG{o}{+}\PYG{p}{(}\PYG{n}{totNode}\PYG{o}{++}\PYG{p}{);} \PYG{n}{now}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{row}\PYG{o}{=}\PYG{n}{rownum}\PYG{p}{;}
+		\PYG{n}{now}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{col}\PYG{o}{=}\PYG{n}{now}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{up}\PYG{o}{=}\PYG{n}{col}\PYG{p}{[}\PYG{n}{V}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]],} \PYG{n}{now}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{down}\PYG{o}{=}\PYG{n}{col}\PYG{p}{[}\PYG{n}{V}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]]}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{down}\PYG{p}{;}
+		\PYG{n}{now}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{up}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{down}\PYG{o}{=}\PYG{n}{now}\PYG{p}{,} \PYG{n}{now}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{down}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{up}\PYG{o}{=}\PYG{n}{now}\PYG{p}{;}
+		\PYG{n}{now}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{col}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cnt}\PYG{o}{++}\PYG{p}{;} \PYG{n}{N}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{now}\PYG{p}{);} \PYG{p}{\PYGZcb{}}
+	\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{p}{(}\PYG{n}{V}\PYG{p}{.}\PYG{n}{size}\PYG{p}{());}\PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+		\PYG{n}{N}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right}\PYG{o}{=}\PYG{n}{N}\PYG{p}{[(}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{\PYGZpc{}}\PYG{n}{V}\PYG{p}{.}\PYG{n}{size}\PYG{p}{()],} \PYG{n}{N}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left}\PYG{o}{=}\PYG{n}{N}\PYG{p}{[(}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{+}\PYG{n}{V}\PYG{p}{.}\PYG{n}{size}\PYG{p}{())}\PYG{o}{\PYGZpc{}}\PYG{n}{V}\PYG{p}{.}\PYG{n}{size}\PYG{p}{()];} \PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{void} \PYG{n+nf}{Remove}\PYG{p}{(}\PYG{n}{node} \PYG{o}{*}\PYG{n}{x}\PYG{p}{)\PYGZob{}}
+	\PYG{n}{x}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right}\PYG{o}{=}\PYG{n}{x}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right}\PYG{p}{,} \PYG{n}{x}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left}\PYG{o}{=}\PYG{n}{x}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left}\PYG{p}{;}
+	\PYG{k}{for}\PYG{p}{(}\PYG{n}{node} \PYG{o}{*}\PYG{n}{i}\PYG{o}{=}\PYG{n}{x}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{down}\PYG{p}{;}\PYG{n}{i}\PYG{o}{!=}\PYG{n}{x}\PYG{p}{;}\PYG{n}{i}\PYG{o}{=}\PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{down}\PYG{p}{)}
+		\PYG{k}{for}\PYG{p}{(}\PYG{n}{node} \PYG{o}{*}\PYG{n}{j}\PYG{o}{=}\PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right}\PYG{p}{;}\PYG{n}{j}\PYG{o}{!=}\PYG{n}{i}\PYG{p}{;}\PYG{n}{j}\PYG{o}{=}\PYG{n}{j}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right}\PYG{p}{)}
+			\PYG{n}{j}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{up}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{down}\PYG{o}{=}\PYG{n}{j}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{down}\PYG{p}{,} \PYG{n}{j}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{down}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{up}\PYG{o}{=}\PYG{n}{j}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{up}\PYG{p}{,} \PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{(}\PYG{n}{j}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{col}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cnt}\PYG{p}{);} \PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{void} \PYG{n+nf}{Resume}\PYG{p}{(}\PYG{n}{node} \PYG{o}{*}\PYG{n}{x}\PYG{p}{)\PYGZob{}}
+	\PYG{k}{for}\PYG{p}{(}\PYG{n}{node} \PYG{o}{*}\PYG{n}{i}\PYG{o}{=}\PYG{n}{x}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{up}\PYG{p}{;}\PYG{n}{i}\PYG{o}{!=}\PYG{n}{x}\PYG{p}{;}\PYG{n}{i}\PYG{o}{=}\PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{up}\PYG{p}{)}
+		\PYG{k}{for}\PYG{p}{(}\PYG{n}{node} \PYG{o}{*}\PYG{n}{j}\PYG{o}{=}\PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left}\PYG{p}{;}\PYG{n}{j}\PYG{o}{!=}\PYG{n}{i}\PYG{p}{;}\PYG{n}{j}\PYG{o}{=}\PYG{n}{j}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left}\PYG{p}{)}
+			\PYG{n}{j}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{up}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{down}\PYG{o}{=}\PYG{n}{j}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{down}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{up}\PYG{o}{=}\PYG{n}{j}\PYG{p}{,} \PYG{o}{++}\PYG{p}{(}\PYG{n}{j}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{col}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cnt}\PYG{p}{);}
+	\PYG{n}{x}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right}\PYG{o}{=}\PYG{n}{x}\PYG{p}{,} \PYG{n}{x}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left}\PYG{o}{=}\PYG{n}{x}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{bool} \PYG{n+nf}{search}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{tot}\PYG{p}{)\PYGZob{}}
+	\PYG{k}{if}\PYG{p}{(}\PYG{n}{head}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right}\PYG{o}{==}\PYG{n}{head}\PYG{p}{)} \PYG{k}{return} \PYG{n}{ansNode} \PYG{o}{=} \PYG{n}{tot}\PYG{p}{,} \PYG{n+nb}{true}\PYG{p}{;}
+	\PYG{n}{node} \PYG{o}{*}\PYG{n}{choose}\PYG{o}{=}\PYG{n+nb}{NULL}\PYG{p}{;}
+	\PYG{k}{for}\PYG{p}{(}\PYG{n}{node} \PYG{o}{*}\PYG{n}{i}\PYG{o}{=}\PYG{n}{head}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right}\PYG{p}{;}\PYG{n}{i}\PYG{o}{!=}\PYG{n}{head}\PYG{p}{;}\PYG{n}{i}\PYG{o}{=}\PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right}\PYG{p}{)\PYGZob{}}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{choose}\PYG{o}{==}\PYG{n+nb}{NULL}\PYG{o}{||}\PYG{n}{choose}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cnt}\PYG{o}{\PYGZgt{}}\PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cnt}\PYG{p}{)} \PYG{n}{choose}\PYG{o}{=}\PYG{n}{i}\PYG{p}{;}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{choose}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cnt}\PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{2}\PYG{p}{)} \PYG{k}{break}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+	\PYG{n}{Remove}\PYG{p}{(}\PYG{n}{choose}\PYG{p}{);}
+	\PYG{k}{for}\PYG{p}{(}\PYG{n}{node} \PYG{o}{*}\PYG{n}{i}\PYG{o}{=}\PYG{n}{choose}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{down}\PYG{p}{;}\PYG{n}{i}\PYG{o}{!=}\PYG{n}{choose}\PYG{p}{;}\PYG{n}{i}\PYG{o}{=}\PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{down}\PYG{p}{)\PYGZob{}}
+		\PYG{k}{for}\PYG{p}{(}\PYG{n}{node} \PYG{o}{*}\PYG{n}{j}\PYG{o}{=}\PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right}\PYG{p}{;}\PYG{n}{j}\PYG{o}{!=}\PYG{n}{i}\PYG{p}{;}\PYG{n}{j}\PYG{o}{=}\PYG{n}{j}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right}\PYG{p}{)} \PYG{n}{Remove}\PYG{p}{(}\PYG{n}{j}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{col}\PYG{p}{);}
+		\PYG{n}{ans}\PYG{p}{[}\PYG{n}{tot}\PYG{p}{]}\PYG{o}{=}\PYG{n}{i}\PYG{p}{;}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{search}\PYG{p}{(}\PYG{n}{tot}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{))} \PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;}
+		\PYG{n}{ans}\PYG{p}{[}\PYG{n}{tot}\PYG{p}{]}\PYG{o}{=}\PYG{n+nb}{NULL}\PYG{p}{;}
+		\PYG{k}{for}\PYG{p}{(}\PYG{n}{node} \PYG{o}{*}\PYG{n}{j}\PYG{o}{=}\PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left}\PYG{p}{;}\PYG{n}{j}\PYG{o}{!=}\PYG{n}{i}\PYG{p}{;}\PYG{n}{j}\PYG{o}{=}\PYG{n}{j}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left}\PYG{p}{)} \PYG{n}{Resume}\PYG{p}{(}\PYG{n}{j}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{col}\PYG{p}{);} \PYG{p}{\PYGZcb{}}
+	\PYG{n}{Resume}\PYG{p}{(}\PYG{n}{choose}\PYG{p}{);} \PYG{k}{return} \PYG{n+nb}{false}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{void} \PYG{n+nf}{prepare}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{totC}\PYG{p}{)\PYGZob{}}
+	\PYG{n}{head}\PYG{o}{=}\PYG{n}{Node}\PYG{o}{+}\PYG{n}{totC}\PYG{p}{;}
+	\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{totC}\PYG{p}{;}\PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{n}{col}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{=}\PYG{n}{Node}\PYG{o}{+}\PYG{n}{i}\PYG{p}{;}
+	\PYG{n}{totNode}\PYG{o}{=}\PYG{n}{totC}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{ansNode} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}=}\PYG{n}{totC}\PYG{p}{;}\PYG{o}{++}\PYG{n}{i}\PYG{p}{)\PYGZob{}}
+		\PYG{p}{(}\PYG{n}{Node}\PYG{o}{+}\PYG{n}{i}\PYG{p}{)}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{right}\PYG{o}{=}\PYG{n}{Node}\PYG{o}{+}\PYG{p}{(}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{\PYGZpc{}}\PYG{p}{(}\PYG{n}{totC}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{);}
+		\PYG{p}{(}\PYG{n}{Node}\PYG{o}{+}\PYG{n}{i}\PYG{p}{)}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{left}\PYG{o}{=}\PYG{n}{Node}\PYG{o}{+}\PYG{p}{(}\PYG{n}{i}\PYG{o}{+}\PYG{n}{totC}\PYG{p}{)}\PYG{o}{\PYGZpc{}}\PYG{p}{(}\PYG{n}{totC}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{);}
+		\PYG{p}{(}\PYG{n}{Node}\PYG{o}{+}\PYG{n}{i}\PYG{p}{)}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{up}\PYG{o}{=}\PYG{p}{(}\PYG{n}{Node}\PYG{o}{+}\PYG{n}{i}\PYG{p}{)}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{down}\PYG{o}{=}\PYG{n}{Node}\PYG{o}{+}\PYG{n}{i}\PYG{p}{;}
+		\PYG{p}{(}\PYG{n}{Node}\PYG{o}{+}\PYG{n}{i}\PYG{p}{)}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cnt}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{p}{\PYGZcb{}} \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

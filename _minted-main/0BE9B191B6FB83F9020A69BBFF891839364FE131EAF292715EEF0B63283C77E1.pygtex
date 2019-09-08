@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{LL} \PYG{n+nf}{P}\PYG{p}{(}\PYG{n}{LL} \PYG{n}{n}\PYG{p}{)\PYGZob{}}\PYG{c+c1}{// 求欧拉函数前缀和 }
+	\PYG{k}{if}\PYG{p}{(}\PYG{n}{n}\PYG{o}{\PYGZlt{}}\PYG{n}{M}\PYG{p}{)}\PYG{k}{return} \PYG{n}{phi}\PYG{p}{[}\PYG{n}{n}\PYG{p}{];}\PYG{c+c1}{//M=n\PYGZca{}(2/3),phi[n] 为预处理前缀和 }
+	\PYG{n}{LL} \PYG{n}{x}\PYG{o}{=}\PYG{l+m+mi}{1ll}\PYG{o}{*}\PYG{n}{n}\PYG{o}{*}\PYG{p}{(}\PYG{n}{n}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n}{la}\PYG{p}{;}
+	\PYG{k}{for}\PYG{p}{(;}\PYG{n}{i}\PYG{o}{\PYGZlt{}=}\PYG{n}{n}\PYG{p}{;}\PYG{n}{i}\PYG{o}{=}\PYG{n}{la}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{n}{la}\PYG{o}{=}\PYG{n}{n}\PYG{o}{/}\PYG{p}{(}\PYG{n}{n}\PYG{o}{/}\PYG{n}{i}\PYG{p}{),}\PYG{n}{x}\PYG{o}{\PYGZhy{}=}\PYG{n}{P}\PYG{p}{(}\PYG{n}{n}\PYG{o}{/}\PYG{n}{i}\PYG{p}{)}\PYG{o}{*}\PYG{p}{(}\PYG{n}{la}\PYG{o}{\PYGZhy{}}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{);}
+	\PYG{k}{return} \PYG{n}{x}\PYG{p}{;\PYGZcb{}}
+\PYG{n}{LL} \PYG{n+nf}{U}\PYG{p}{(}\PYG{n}{LL} \PYG{n}{n}\PYG{p}{)\PYGZob{}}\PYG{c+c1}{// 求莫比乌斯函数前缀和 }
+	\PYG{k}{if}\PYG{p}{(}\PYG{n}{n}\PYG{o}{\PYGZlt{}}\PYG{n}{M}\PYG{p}{)}\PYG{k}{return} \PYG{n}{u}\PYG{p}{[}\PYG{n}{n}\PYG{p}{];}\PYG{c+c1}{// 预处理的前缀和 }
+	\PYG{n}{LL} \PYG{n}{x}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n}{la}\PYG{p}{;}
+	\PYG{k}{for}\PYG{p}{(;}\PYG{n}{i}\PYG{o}{\PYGZlt{}=}\PYG{n}{n}\PYG{p}{;}\PYG{n}{i}\PYG{o}{=}\PYG{n}{la}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{n}{la}\PYG{o}{=}\PYG{n}{n}\PYG{o}{/}\PYG{p}{(}\PYG{n}{n}\PYG{o}{/}\PYG{n}{i}\PYG{p}{),}\PYG{n}{x}\PYG{o}{\PYGZhy{}=}\PYG{n}{U}\PYG{p}{(}\PYG{n}{n}\PYG{o}{/}\PYG{n}{i}\PYG{p}{)}\PYG{o}{*}\PYG{p}{(}\PYG{n}{la}\PYG{o}{\PYGZhy{}}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{);}
+	\PYG{k}{return} \PYG{n}{x}\PYG{p}{;\PYGZcb{}}
+\end{Verbatim}

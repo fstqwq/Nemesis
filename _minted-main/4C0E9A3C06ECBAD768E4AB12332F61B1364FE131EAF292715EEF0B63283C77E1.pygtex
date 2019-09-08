@@ -1,0 +1,36 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kt}{double} \PYG{n}{an}\PYG{p}{[}\PYG{n}{N}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{p}{];}\PYG{k+kt}{int} \PYG{n}{q}\PYG{p}{[}\PYG{n}{N}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{p}{];}
+\PYG{k+kt}{void} \PYG{n+nf}{pivot}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{l}\PYG{p}{,}\PYG{k+kt}{int} \PYG{n}{e}\PYG{p}{)\PYGZob{}}\PYG{c+c1}{//转轴操作 }
+	\PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{,}\PYG{n}{j}\PYG{p}{;}\PYG{n}{a}\PYG{p}{[}\PYG{n}{l}\PYG{p}{][}\PYG{n}{e}\PYG{p}{]}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{n}{a}\PYG{p}{[}\PYG{n}{l}\PYG{p}{][}\PYG{n}{e}\PYG{p}{];}\PYG{n}{b}\PYG{p}{[}\PYG{n}{l}\PYG{p}{]}\PYG{o}{*=}\PYG{n}{a}\PYG{p}{[}\PYG{n}{l}\PYG{p}{][}\PYG{n}{e}\PYG{p}{];}
+	\PYG{n}{fr}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{n}\PYG{p}{)}\PYG{k}{if}\PYG{p}{(}\PYG{n}{i}\PYG{o}{!=}\PYG{n}{e}\PYG{p}{)}\PYG{n}{a}\PYG{p}{[}\PYG{n}{l}\PYG{p}{][}\PYG{n}{i}\PYG{p}{]}\PYG{o}{*=}\PYG{n}{a}\PYG{p}{[}\PYG{n}{l}\PYG{p}{][}\PYG{n}{e}\PYG{p}{];}
+	\PYG{n}{fr}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{m}\PYG{p}{)}\PYG{k}{if}\PYG{p}{(}\PYG{n}{i}\PYG{o}{!=}\PYG{n}{l}\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{n}{fabs}\PYG{p}{(}\PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{e}\PYG{p}{])}\PYG{o}{\PYGZgt{}}\PYG{n}{eps}\PYG{p}{)\PYGZob{}}
+		\PYG{n}{b}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{\PYGZhy{}=}\PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{e}\PYG{p}{]}\PYG{o}{*}\PYG{n}{b}\PYG{p}{[}\PYG{n}{l}\PYG{p}{];}
+		\PYG{n}{fr}\PYG{p}{(}\PYG{n}{j}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{n}\PYG{p}{)}\PYG{k}{if}\PYG{p}{(}\PYG{n}{j}\PYG{o}{!=}\PYG{n}{e}\PYG{p}{)}\PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]}\PYG{o}{\PYGZhy{}=}\PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{e}\PYG{p}{]}\PYG{o}{*}\PYG{n}{a}\PYG{p}{[}\PYG{n}{l}\PYG{p}{][}\PYG{n}{j}\PYG{p}{];}
+		\PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{e}\PYG{p}{]}\PYG{o}{*=\PYGZhy{}}\PYG{n}{a}\PYG{p}{[}\PYG{n}{l}\PYG{p}{][}\PYG{n}{e}\PYG{p}{];}
+	\PYG{p}{\PYGZcb{}}\PYG{n}{v}\PYG{o}{+=}\PYG{n}{c}\PYG{p}{[}\PYG{n}{e}\PYG{p}{]}\PYG{o}{*}\PYG{n}{b}\PYG{p}{[}\PYG{n}{l}\PYG{p}{];}
+	\PYG{n}{fr}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{n}\PYG{p}{)}\PYG{k}{if}\PYG{p}{(}\PYG{n}{i}\PYG{o}{!=}\PYG{n}{e}\PYG{p}{)}\PYG{n}{c}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{\PYGZhy{}=}\PYG{n}{c}\PYG{p}{[}\PYG{n}{e}\PYG{p}{]}\PYG{o}{*}\PYG{n}{a}\PYG{p}{[}\PYG{n}{l}\PYG{p}{][}\PYG{n}{i}\PYG{p}{];} 
+	\PYG{n}{c}\PYG{p}{[}\PYG{n}{e}\PYG{p}{]}\PYG{o}{*=\PYGZhy{}}\PYG{n}{a}\PYG{p}{[}\PYG{n}{l}\PYG{p}{][}\PYG{n}{e}\PYG{p}{];}\PYG{n}{swap}\PYG{p}{(}\PYG{n}{q}\PYG{p}{[}\PYG{n}{e}\PYG{p}{],}\PYG{n}{q}\PYG{p}{[}\PYG{n}{l}\PYG{o}{+}\PYG{n}{n}\PYG{p}{]);}\PYG{c+c1}{//记录方案 }
+\PYG{p}{\PYGZcb{}}\PYG{k+kt}{void} \PYG{n+nf}{pre}\PYG{p}{()\PYGZob{}}\PYG{c+c1}{//特殊处理b\PYGZus{}i\PYGZlt{}0的情况, 没有这种情况可不写 }
+	\PYG{k}{for}\PYG{p}{(;;)\PYGZob{}}
+		\PYG{n}{dr}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,}\PYG{n}{m}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{k}{if}\PYG{p}{(}\PYG{n}{b}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{n}{eps}\PYG{p}{)}\PYG{k}{break}\PYG{p}{;} 
+		\PYG{k}{if}\PYG{p}{(}\PYG{o}{!}\PYG{n}{i}\PYG{p}{)}\PYG{k}{break}\PYG{p}{;}
+		\PYG{n}{dr}\PYG{p}{(}\PYG{n}{j}\PYG{p}{,}\PYG{n}{n}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{k}{if}\PYG{p}{(}\PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]}\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{n}{eps}\PYG{p}{)}\PYG{k}{break}\PYG{p}{;}
+		\PYG{k}{if}\PYG{p}{(}\PYG{o}{!}\PYG{n}{j}\PYG{p}{)}\PYG{k}{return} \PYG{n}{puts}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Infeasible\PYGZdq{}}\PYG{p}{),}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{c+c1}{//无解 }
+		\PYG{n}{pivot}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,}\PYG{n}{j}\PYG{p}{);\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}\PYG{c+c1}{//n为变量数, m为约束数, 令目标函数$F=\sum c_jx_j$最大, 第i条约束为$\sum a_{ij}x_j<=b_i$}
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{,}\PYG{k+kt}{int} \PYG{n}{m}\PYG{p}{,}\PYG{k+kt}{double} \PYG{n}{c}\PYG{p}{[}\PYG{n}{N}\PYG{p}{],}\PYG{k+kt}{double} \PYG{n}{b}\PYG{p}{[}\PYG{n}{M}\PYG{p}{],}\PYG{k+kt}{double} \PYG{n}{a}\PYG{p}{[}\PYG{n}{M}\PYG{p}{][}\PYG{n}{N}\PYG{p}{])\PYGZob{}}
+	\PYG{c+c1}{//输出答案, 并输出此时$x_1,x_2,...,x_n$的值 }
+	\PYG{k+kt}{double} \PYG{n}{v}\PYG{p}{,}\PYG{n}{p}\PYG{p}{;}\PYG{k+kt}{int} \PYG{n}{l}\PYG{p}{,}\PYG{n}{e}\PYG{p}{;}\PYG{n}{fr}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{n}\PYG{p}{)}\PYG{n}{q}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{=}\PYG{n}{i}\PYG{p}{;}
+	\PYG{k}{for}\PYG{p}{(}\PYG{n}{pre}\PYG{p}{();;}\PYG{n}{pivot}\PYG{p}{(}\PYG{n}{l}\PYG{p}{,}\PYG{n}{e}\PYG{p}{))\PYGZob{}}\PYG{c+c1}{//寻找更优解 }
+		\PYG{n}{dr}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,}\PYG{n}{n}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{k}{if}\PYG{p}{(}\PYG{n}{c}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{\PYGZgt{}}\PYG{n}{eps}\PYG{p}{)}\PYG{k}{break}\PYG{p}{;}\PYG{c+c1}{//选择系数大于0的 }
+		\PYG{k}{if}\PYG{p}{(}\PYG{o}{!}\PYG{n}{i}\PYG{p}{)}\PYG{k}{break}\PYG{p}{;}\PYG{c+c1}{//找到最优解}
+		\PYG{n}{p}\PYG{o}{=}\PYG{n}{inf}\PYG{p}{;}\PYG{n}{e}\PYG{o}{=}\PYG{n}{i}\PYG{p}{;}\PYG{n}{fr}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{m}\PYG{p}{)}\PYG{k}{if}\PYG{p}{(}\PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{e}\PYG{p}{]}\PYG{o}{\PYGZgt{}}\PYG{n}{eps}\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{n}{p}\PYG{o}{\PYGZgt{}}\PYG{n}{b}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{/}\PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{e}\PYG{p}{])}
+			\PYG{n}{p}\PYG{o}{=}\PYG{n}{b}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{/}\PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{e}\PYG{p}{],}\PYG{n}{l}\PYG{o}{=}\PYG{n}{i}\PYG{p}{;}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{p}\PYG{o}{==}\PYG{n}{inf}\PYG{p}{)}\PYG{k}{return} \PYG{n}{puts}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Unbounded\PYGZdq{}}\PYG{p}{),}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{c+c1}{//找不到可行的基本变量, 最优解无穷大 }
+	\PYG{p}{\PYGZcb{}}
+	\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}.8f\PYGZdq{}}\PYG{p}{,}\PYG{n}{v}\PYG{p}{);}\PYG{c+c1}{//输出答案 }
+	\PYG{n}{fr}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,}\PYG{n}{n}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{n}\PYG{o}{+}\PYG{n}{m}\PYG{p}{)}\PYG{n}{an}\PYG{p}{[}\PYG{n}{q}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]]}\PYG{o}{=}\PYG{n}{b}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{n}{n}\PYG{p}{];}
+	\PYG{n}{fr}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{n}\PYG{p}{)}\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}.8lf \PYGZdq{}}\PYG{p}{,}\PYG{n}{an}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]);\PYGZcb{}}\PYG{c+c1}{//输出方案 }
+\PYG{c+c1}{// 标准型: maximize $\bf c^Tx$, subject to $\bf Ax\leq b$ and $\bf x\geq 0$}
+\PYG{c+c1}{// 对偶型: minimize $\bf b^Ty$, subject to $\bf A^Tx\geq c$ and $\bf y\geq 0$}
+\end{Verbatim}

@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{// lontitude 经度范围: $\pm\pi$, latitude 纬度范围: $\pm\pi/2$}
+\PYG{k+kt}{double} \PYG{n+nf}{sphereDis}\PYG{p}{(}\PYG{k+kt}{double} \PYG{n}{lon1}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{lat1}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{lon2}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{lat2}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{R}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{k}{return} \PYG{n}{R} \PYG{o}{*} \PYG{n}{acos}\PYG{p}{(}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{lat1}\PYG{p}{)} \PYG{o}{*} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{lat2}\PYG{p}{)} \PYG{o}{*} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{lon1} \PYG{o}{\PYGZhy{}} \PYG{n}{lon2}\PYG{p}{)} \PYG{o}{+} \PYG{n}{sin}\PYG{p}{(}\PYG{n}{lat1}\PYG{p}{)} \PYG{o}{*} \PYG{n}{sin}\PYG{p}{(}\PYG{n}{lat2}\PYG{p}{));} \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

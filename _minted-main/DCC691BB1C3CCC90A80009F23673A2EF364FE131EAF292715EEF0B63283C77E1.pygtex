@@ -1,0 +1,36 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{// Miller Rabin : bool miller\PYGZus{}rabin::solve (const LL \PYGZam{}) : tests whether a certain integer is prime.}
+\PYG{k}{typedef} \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{LL}\PYG{p}{;} \PYG{k}{struct} \PYG{n}{miller\PYGZus{}rabin} \PYG{p}{\PYGZob{}}
+\PYG{k+kt}{int} \PYG{n}{BASE}\PYG{p}{[}\PYG{l+m+mi}{12}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+m+mi}{7}\PYG{p}{,} \PYG{l+m+mi}{11}\PYG{p}{,} \PYG{l+m+mi}{13}\PYG{p}{,} \PYG{l+m+mi}{17}\PYG{p}{,} \PYG{l+m+mi}{19}\PYG{p}{,} \PYG{l+m+mi}{23}\PYG{p}{,} \PYG{l+m+mi}{29}\PYG{p}{,} \PYG{l+m+mi}{31}\PYG{p}{,} \PYG{l+m+mi}{37}\PYG{p}{\PYGZcb{};}
+\PYG{k+kt}{bool} \PYG{n+nf}{check} \PYG{p}{(}\PYG{k}{const} \PYG{n}{LL} \PYG{o}{\PYGZam{}}\PYG{n}{prime}\PYG{p}{,} \PYG{k}{const} \PYG{n}{LL} \PYG{o}{\PYGZam{}}\PYG{n}{base}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{n}{LL} \PYG{n}{number} \PYG{o}{=} \PYG{n}{prime} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;}
+	\PYG{k}{for} \PYG{p}{(;} \PYG{o}{\PYGZti{}}\PYG{n}{number} \PYG{o}{\PYGZam{}} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{number} \PYG{o}{\PYGZgt{}\PYGZgt{}=} \PYG{l+m+mi}{1}\PYG{p}{);}
+	\PYG{n}{LL} \PYG{n}{result} \PYG{o}{=} \PYG{n}{llfpm} \PYG{p}{(}\PYG{n}{base}\PYG{p}{,} \PYG{n}{number}\PYG{p}{,} \PYG{n}{prime}\PYG{p}{);}
+	\PYG{k}{for} \PYG{p}{(;} \PYG{n}{number} \PYG{o}{!=} \PYG{n}{prime} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{result} \PYG{o}{!=} \PYG{l+m+mi}{1} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{result} \PYG{o}{!=} \PYG{n}{prime} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{number} \PYG{o}{\PYGZlt{}\PYGZlt{}=} \PYG{l+m+mi}{1}\PYG{p}{)}
+		\PYG{n}{result} \PYG{o}{=} \PYG{n}{mul\PYGZus{}mod} \PYG{p}{(}\PYG{n}{result}\PYG{p}{,} \PYG{n}{result}\PYG{p}{,} \PYG{n}{prime}\PYG{p}{);}
+	\PYG{k}{return} \PYG{n}{result} \PYG{o}{==} \PYG{n}{prime} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1} \PYG{o}{||} \PYG{p}{(}\PYG{n}{number} \PYG{o}{\PYGZam{}} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{==} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{bool} \PYG{n+nf}{solve} \PYG{p}{(}\PYG{k}{const} \PYG{n}{LL} \PYG{o}{\PYGZam{}}\PYG{n}{number}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// is prime}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{number} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{2}\PYG{p}{)} \PYG{k}{return} \PYG{n+nb}{false}\PYG{p}{;}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{number} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{4}\PYG{p}{)} \PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;}
+	\PYG{k}{if} \PYG{p}{(}\PYG{o}{\PYGZti{}}\PYG{n}{number} \PYG{o}{\PYGZam{}} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{k}{return} \PYG{n+nb}{false}\PYG{p}{;}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{12} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{BASE}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZlt{}} \PYG{n}{number}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+		\PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{check} \PYG{p}{(}\PYG{n}{number}\PYG{p}{,} \PYG{n}{BASE}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]))} \PYG{k}{return} \PYG{n+nb}{false}\PYG{p}{;}
+	\PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;} \PYG{p}{\PYGZcb{}} \PYG{p}{\PYGZcb{};}
+\PYG{n}{miller\PYGZus{}rabin} \PYG{n}{is\PYGZus{}prime}\PYG{p}{;} \PYG{k}{const} \PYG{n}{LL} \PYG{n}{threshold} \PYG{o}{=} \PYG{l+m+mf}{13E9}\PYG{p}{;}
+\PYG{n}{LL} \PYG{n+nf}{factorize} \PYG{p}{(}\PYG{n}{LL} \PYG{n}{number}\PYG{p}{,} \PYG{n}{LL} \PYG{n}{seed}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{n}{LL} \PYG{n}{x} \PYG{o}{=} \PYG{n}{rand}\PYG{p}{()} \PYG{o}{\PYGZpc{}} \PYG{p}{(}\PYG{n}{number} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{y} \PYG{o}{=} \PYG{n}{x}\PYG{p}{;}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{head} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{tail} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{p}{;} \PYG{p}{;} \PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{n}{x} \PYG{o}{=} \PYG{n}{mul\PYGZus{}mod} \PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{x}\PYG{p}{,} \PYG{n}{number}\PYG{p}{);} \PYG{n}{x} \PYG{o}{=} \PYG{p}{(}\PYG{n}{x} \PYG{o}{+} \PYG{n}{seed}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{number}\PYG{p}{;}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{x} \PYG{o}{==} \PYG{n}{y}\PYG{p}{)} \PYG{k}{return} \PYG{n}{number}\PYG{p}{;}
+		\PYG{n}{LL} \PYG{n}{answer} \PYG{o}{=} \PYG{n}{gcd} \PYG{p}{(}\PYG{n}{abs} \PYG{p}{(}\PYG{n}{x} \PYG{o}{\PYGZhy{}} \PYG{n}{y}\PYG{p}{),} \PYG{n}{number}\PYG{p}{);}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{answer} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{1} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{answer} \PYG{o}{\PYGZlt{}} \PYG{n}{number}\PYG{p}{)} \PYG{k}{return} \PYG{n}{answer}\PYG{p}{;}
+		\PYG{k}{if} \PYG{p}{(}\PYG{o}{++}\PYG{n}{head} \PYG{o}{==} \PYG{n}{tail}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{n}{y} \PYG{o}{=} \PYG{n}{x}\PYG{p}{;} \PYG{n}{tail} \PYG{o}{\PYGZlt{}\PYGZlt{}=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{p}{\PYGZcb{}} \PYG{p}{\PYGZcb{}} \PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{void} \PYG{n+nf}{search} \PYG{p}{(}\PYG{n}{LL} \PYG{n}{number}\PYG{p}{,} \PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{LL}\PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZam{}}\PYG{n}{divisor}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{number} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{k}{return}\PYG{p}{;}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{is\PYGZus{}prime}\PYG{p}{.}\PYG{n}{solve} \PYG{p}{(}\PYG{n}{number}\PYG{p}{))} \PYG{n}{divisor}\PYG{p}{.}\PYG{n}{push\PYGZus{}back} \PYG{p}{(}\PYG{n}{number}\PYG{p}{);}
+	\PYG{k}{else} \PYG{p}{\PYGZob{}}
+		\PYG{n}{LL} \PYG{n}{factor} \PYG{o}{=} \PYG{n}{number}\PYG{p}{;}
+		\PYG{k}{for} \PYG{p}{(;} \PYG{n}{factor} \PYG{o}{\PYGZgt{}=} \PYG{n}{number}\PYG{p}{;} \PYG{n}{factor} \PYG{o}{=} \PYG{n}{factorize} \PYG{p}{(}\PYG{n}{number}\PYG{p}{,} \PYG{n}{rand} \PYG{p}{()} \PYG{o}{\PYGZpc{}} \PYG{p}{(}\PYG{n}{number} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{));}
+		\PYG{n}{search} \PYG{p}{(}\PYG{n}{number} \PYG{o}{/} \PYG{n}{factor}\PYG{p}{,} \PYG{n}{divisor}\PYG{p}{);}
+		\PYG{n}{search} \PYG{p}{(}\PYG{n}{factor}\PYG{p}{,} \PYG{n}{divisor}\PYG{p}{);} \PYG{p}{\PYGZcb{}} \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

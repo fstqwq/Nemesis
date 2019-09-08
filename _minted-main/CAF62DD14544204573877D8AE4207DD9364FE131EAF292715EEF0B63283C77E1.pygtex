@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kt}{bool} \PYG{n+nf}{crt\PYGZus{}merge}\PYG{p}{(}\PYG{n}{LL} \PYG{n}{a1}\PYG{p}{,} \PYG{n}{LL} \PYG{n}{m1}\PYG{p}{,} \PYG{n}{LL} \PYG{n}{a2}\PYG{p}{,} \PYG{n}{LL} \PYG{n}{m2}\PYG{p}{,} \PYG{n}{LL} \PYG{o}{\PYGZam{}}\PYG{n}{A}\PYG{p}{,} \PYG{n}{LL} \PYG{o}{\PYGZam{}}\PYG{n}{M}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{n}{LL} \PYG{n}{c} \PYG{o}{=} \PYG{n}{a2} \PYG{o}{\PYGZhy{}} \PYG{n}{a1}\PYG{p}{,} \PYG{n}{d} \PYG{o}{=} \PYG{n}{\PYGZus{}\PYGZus{}gcd}\PYG{p}{(}\PYG{n}{m1}\PYG{p}{,} \PYG{n}{m2}\PYG{p}{);} \PYG{c+c1}{//合并两个模方程 }
+\PYG{k}{if}\PYG{p}{(}\PYG{n}{c} \PYG{o}{\PYGZpc{}} \PYG{n}{d}\PYG{p}{)} \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{c+c1}{// gcd(m1, m2) | (a2 \PYGZhy{} a1)时才有解 }
+\PYG{n}{c} \PYG{o}{=} \PYG{p}{(}\PYG{n}{c} \PYG{o}{\PYGZpc{}} \PYG{n}{m2} \PYG{o}{+} \PYG{n}{m2}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{m2}\PYG{p}{;} \PYG{n}{c} \PYG{o}{/=} \PYG{n}{d}\PYG{p}{;} \PYG{n}{m1} \PYG{o}{/=} \PYG{n}{d}\PYG{p}{;} \PYG{n}{m2} \PYG{o}{/=} \PYG{n}{d}\PYG{p}{;}
+\PYG{n}{c} \PYG{o}{=} \PYG{n}{c} \PYG{o}{*} \PYG{n}{inv}\PYG{p}{(}\PYG{n}{m1} \PYG{o}{\PYGZpc{}} \PYG{n}{m2}\PYG{p}{,} \PYG{n}{m2}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{m2}\PYG{p}{;} \PYG{c+c1}{//0逆元可任意值}
+\PYG{n}{M} \PYG{o}{=} \PYG{n}{m1}\PYG{o}{*}\PYG{n}{m2}\PYG{o}{*}\PYG{n}{d}\PYG{p}{;} \PYG{n}{A} \PYG{o}{=} \PYG{p}{(}\PYG{n}{c} \PYG{o}{*}\PYG{n}{m1} \PYG{o}{\PYGZpc{}}\PYG{n}{M} \PYG{o}{*}\PYG{n}{d} \PYG{o}{\PYGZpc{}}\PYG{n}{M} \PYG{o}{+}\PYG{n}{a1}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{M}\PYG{p}{;} \PYG{k}{return} \PYG{l+m+mi}{1}\PYG{p}{;\PYGZcb{}}\PYG{c+c1}{//有解}
+\end{Verbatim}
