@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{// 0下标, 需删除自环(即确保$E_{ii}=false$, 补图要特别注意)}
+\PYG{c+c1}{// 极大团计数, 最坏情况O(3\PYGZca{}(n/3))}
+\PYG{n}{ll} \PYG{n}{ans}\PYG{p}{;} \PYG{n}{ull} \PYG{n}{E}\PYG{p}{[}\PYG{l+m+mi}{64}\PYG{p}{];} \PYG{err}{\PYGZsh{}}\PYG{n}{define} \PYG{n}{bit}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)} \PYG{p}{(}\PYG{l+m+mi}{1ULL} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{p}{(}\PYG{n}{i}\PYG{p}{))}
+\PYG{k+kt}{void} \PYG{n}{dfs}\PYG{p}{(}\PYG{n}{ull} \PYG{n}{P}\PYG{p}{,} \PYG{n}{ull} \PYG{n}{X}\PYG{p}{,} \PYG{n}{ull} \PYG{n}{R}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// 不需要方案时可去掉R相关语句}
+	\PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{P} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{o}{!}\PYG{n}{X}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{o}{++}\PYG{n}{ans}\PYG{p}{;} \PYG{n}{sol}\PYG{p}{.}\PYG{n}{pb}\PYG{p}{(}\PYG{n}{R}\PYG{p}{);} \PYG{k}{return}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+	\PYG{n}{ull} \PYG{n}{Q} \PYG{o}{=} \PYG{n}{P} \PYG{o}{\PYGZam{}} \PYG{o}{\PYGZti{}}\PYG{n}{E}\PYG{p}{[}\PYG{n}{\PYGZus{}\PYGZus{}builtin\PYGZus{}ctzll}\PYG{p}{(}\PYG{n}{P} \PYG{o}{|} \PYG{n}{X}\PYG{p}{)];}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{;} \PYG{n}{i} \PYG{o}{=} \PYG{n}{\PYGZus{}\PYGZus{}builtin\PYGZus{}ctzll}\PYG{p}{(}\PYG{n}{Q}\PYG{p}{),} \PYG{n}{Q}\PYG{p}{;} \PYG{n}{Q} \PYG{o}{\PYGZam{}=} \PYG{o}{\PYGZti{}}\PYG{n}{bit}\PYG{p}{(}\PYG{n}{i}\PYG{p}{))} \PYG{p}{\PYGZob{}}
+		\PYG{n}{dfs}\PYG{p}{(}\PYG{n}{P} \PYG{o}{\PYGZam{}} \PYG{n}{E}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n}{X} \PYG{o}{\PYGZam{}} \PYG{n}{E}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n}{R} \PYG{o}{|} \PYG{n}{bit}\PYG{p}{(}\PYG{n}{i}\PYG{p}{));}
+		\PYG{n}{P} \PYG{o}{\PYGZam{}=} \PYG{o}{\PYGZti{}}\PYG{n}{bit}\PYG{p}{(}\PYG{n}{i}\PYG{p}{),} \PYG{n}{X} \PYG{o}{|=} \PYG{n}{bit}\PYG{p}{(}\PYG{n}{i}\PYG{p}{);} \PYG{p}{\PYGZcb{}\PYGZcb{}}
+\PYG{n}{ans} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{dfs}\PYG{p}{(}\PYG{n}{n} \PYG{o}{==} \PYG{l+m+mi}{64} \PYG{o}{?} \PYG{o}{\PYGZti{}}\PYG{l+m+mi}{0ULL} \PYG{o}{:} \PYG{n}{bit}\PYG{p}{(}\PYG{n}{n}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);}
+\end{Verbatim}

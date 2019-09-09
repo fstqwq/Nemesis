@@ -1,0 +1,34 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{//id[i]为点i的标号，seq[i]为标号为i的点，G[]存图 }
+\PYG{k+kt}{int} \PYG{n}{q}\PYG{p}{[}\PYG{n}{N}\PYG{p}{],}\PYG{n}{label}\PYG{p}{[}\PYG{n}{N}\PYG{p}{],}\PYG{n}{id}\PYG{p}{[}\PYG{n}{N}\PYG{p}{],}\PYG{n}{vis}\PYG{p}{[}\PYG{n}{N}\PYG{p}{],}\PYG{n}{seq}\PYG{p}{[}\PYG{n}{N}\PYG{p}{],}\PYG{n}{c}\PYG{p}{[}\PYG{n}{N}\PYG{p}{];} \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}}\PYG{n}{G}\PYG{p}{[}\PYG{n}{N}\PYG{p}{];}
+\PYG{k}{struct} \PYG{n}{P}\PYG{p}{\PYGZob{}}\PYG{k+kt}{int} \PYG{n}{lab}\PYG{p}{,}\PYG{n}{u}\PYG{p}{;}\PYG{k+kt}{bool} \PYG{k}{operator}\PYG{o}{\PYGZlt{}}\PYG{p}{(}\PYG{k}{const} \PYG{n}{P}\PYG{o}{\PYGZam{}}\PYG{n}{a}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}\PYG{k}{return} \PYG{n}{lab}\PYG{o}{\PYGZlt{}}\PYG{n}{a}\PYG{p}{.}\PYG{n}{lab}\PYG{p}{;\PYGZcb{}\PYGZcb{};}
+\PYG{k+kt}{void} \PYG{n+nf}{mcs}\PYG{p}{()\PYGZob{}}\PYG{c+c1}{//MCS算法求标号序列,优先队列做到O(mlgn) }
+	\PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{,}\PYG{n}{j}\PYG{p}{,}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{;}\PYG{n}{CL}\PYG{p}{(}\PYG{n}{id}\PYG{p}{);}\PYG{n}{CL}\PYG{p}{(}\PYG{n}{label}\PYG{p}{);}
+	\PYG{n}{CL}\PYG{p}{(}\PYG{n}{seq}\PYG{p}{);}\PYG{n}{priority\PYGZus{}queue}\PYG{o}{\PYGZlt{}}\PYG{n}{P}\PYG{o}{\PYGZgt{}}\PYG{n}{Q}\PYG{p}{;}
+	\PYG{n}{fr}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{n}\PYG{p}{)}\PYG{n}{Q}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{P}\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{i}\PYG{p}{\PYGZcb{});} \PYG{c+c1}{//label\PYGZus{}i表示第i个点与多少个已标号的点相邻 }
+	\PYG{n}{dr}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,}\PYG{n}{n}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)\PYGZob{}}
+		\PYG{k}{for}\PYG{p}{(;}\PYG{n}{id}\PYG{p}{[}\PYG{n}{Q}\PYG{p}{.}\PYG{n}{top}\PYG{p}{().}\PYG{n}{u}\PYG{p}{];)}\PYG{n}{Q}\PYG{p}{.}\PYG{n}{pop}\PYG{p}{();} \PYG{c+c1}{//每次选label\PYGZus{}i最大的未标号的点标号 }
+		\PYG{n}{u}\PYG{o}{=}\PYG{n}{Q}\PYG{p}{.}\PYG{n}{top}\PYG{p}{().}\PYG{n}{u}\PYG{p}{;}\PYG{n}{Q}\PYG{p}{.}\PYG{n}{pop}\PYG{p}{();}\PYG{n}{id}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]}\PYG{o}{=}\PYG{n}{i}\PYG{p}{;}
+		\PYG{k}{for}\PYG{p}{(}\PYG{n}{j}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{j}\PYG{o}{\PYGZlt{}}\PYG{n}{G}\PYG{p}{[}\PYG{n}{u}\PYG{p}{].}\PYG{n}{size}\PYG{p}{();}\PYG{n}{j}\PYG{o}{++}\PYG{p}{)}\PYG{k}{if}\PYG{p}{(}\PYG{n}{v}\PYG{o}{=}\PYG{n}{G}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{j}\PYG{p}{],}\PYG{o}{!}\PYG{n}{id}\PYG{p}{[}\PYG{n}{v}\PYG{p}{])} \PYG{n}{label}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]}\PYG{o}{++}\PYG{p}{,}\PYG{n}{Q}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{P}\PYG{p}{\PYGZob{}}\PYG{n}{label}\PYG{p}{[}\PYG{n}{v}\PYG{p}{],}\PYG{n}{v}\PYG{p}{\PYGZcb{});}
+	\PYG{p}{\PYGZcb{}}\PYG{n}{fr}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{n}\PYG{p}{)}\PYG{n}{seq}\PYG{p}{[}\PYG{n}{id}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]]}\PYG{o}{=}\PYG{n}{i}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}\PYG{k+kt}{bool} \PYG{n+nf}{ok}\PYG{p}{()\PYGZob{}}\PYG{c+c1}{//O(m)判断是否是弦图 }
+	\PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{,}\PYG{n}{j}\PYG{p}{,}\PYG{n}{t}\PYG{p}{,}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{,}\PYG{n}{w}\PYG{p}{;}\PYG{n}{CL}\PYG{p}{(}\PYG{n}{vis}\PYG{p}{);}
+	\PYG{n}{dr}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,}\PYG{n}{n}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)\PYGZob{}}
+		\PYG{n}{u}\PYG{o}{=}\PYG{n}{seq}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}\PYG{n}{t}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{c+c1}{//标号从小到大找点 }
+		\PYG{k}{for}\PYG{p}{(}\PYG{n}{j}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{j}\PYG{o}{\PYGZlt{}}\PYG{n}{G}\PYG{p}{[}\PYG{n}{u}\PYG{p}{].}\PYG{n}{size}\PYG{p}{();}\PYG{n}{j}\PYG{o}{++}\PYG{p}{)}
+			\PYG{k}{if}\PYG{p}{(}\PYG{n}{v}\PYG{o}{=}\PYG{n}{G}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{j}\PYG{p}{],}\PYG{n}{id}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]}\PYG{o}{\PYGZgt{}}\PYG{n}{id}\PYG{p}{[}\PYG{n}{u}\PYG{p}{])}\PYG{n}{q}\PYG{p}{[}\PYG{o}{++}\PYG{n}{t}\PYG{p}{]}\PYG{o}{=}\PYG{n}{v}\PYG{p}{;}
+		\PYG{k}{if}\PYG{p}{(}\PYG{o}{!}\PYG{n}{t}\PYG{p}{)}\PYG{k}{continue}\PYG{p}{;}\PYG{n}{w}\PYG{o}{=}\PYG{n}{q}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{];}\PYG{c+c1}{//找标号大于它的点中最小的 }
+		\PYG{n}{fr}\PYG{p}{(}\PYG{n}{j}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{t}\PYG{p}{)}\PYG{k}{if}\PYG{p}{(}\PYG{n}{id}\PYG{p}{[}\PYG{n}{q}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]]}\PYG{o}{\PYGZlt{}}\PYG{n}{id}\PYG{p}{[}\PYG{n}{w}\PYG{p}{])}\PYG{n}{w}\PYG{o}{=}\PYG{n}{q}\PYG{p}{[}\PYG{n}{j}\PYG{p}{];}
+		\PYG{k}{for}\PYG{p}{(}\PYG{n}{j}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{j}\PYG{o}{\PYGZlt{}}\PYG{n}{G}\PYG{p}{[}\PYG{n}{w}\PYG{p}{].}\PYG{n}{size}\PYG{p}{();}\PYG{n}{j}\PYG{o}{++}\PYG{p}{)}\PYG{n}{vis}\PYG{p}{[}\PYG{n}{G}\PYG{p}{[}\PYG{n}{w}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]]}\PYG{o}{=}\PYG{n}{i}\PYG{p}{;}
+		\PYG{n}{fr}\PYG{p}{(}\PYG{n}{j}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{t}\PYG{p}{)}\PYG{k}{if}\PYG{p}{(}\PYG{n}{q}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]}\PYG{o}{!=}\PYG{n}{w}\PYG{p}{)}\PYG{k}{if}\PYG{p}{(}\PYG{n}{vis}\PYG{p}{[}\PYG{n}{q}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]]}\PYG{o}{!=}\PYG{n}{i}\PYG{p}{)}\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}\PYG{k}{return} \PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{k+kt}{int} \PYG{n}{setcolor}\PYG{p}{()\PYGZob{}}\PYG{c+c1}{//弦图最小染色 团数=染色数 }
+	\PYG{k+kt}{int} \PYG{n}{an}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{i}\PYG{p}{,}\PYG{n}{j}\PYG{p}{,}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{;}\PYG{n}{CL}\PYG{p}{(}\PYG{n}{vis}\PYG{p}{);}\PYG{n}{CL}\PYG{p}{(}\PYG{n}{c}\PYG{p}{);}
+	\PYG{k}{for}\PYG{p}{(}\PYG{n}{i}\PYG{o}{=}\PYG{n}{n}\PYG{p}{;}\PYG{n}{i}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)\PYGZob{}}
+		\PYG{n}{u}\PYG{o}{=}\PYG{n}{seq}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+		\PYG{k}{for}\PYG{p}{(}\PYG{n}{j}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{j}\PYG{o}{\PYGZlt{}}\PYG{n}{G}\PYG{p}{[}\PYG{n}{u}\PYG{p}{].}\PYG{n}{size}\PYG{p}{();}\PYG{n}{j}\PYG{o}{++}\PYG{p}{)}\PYG{n}{vis}\PYG{p}{[}\PYG{n}{c}\PYG{p}{[}\PYG{n}{G}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]]]}\PYG{o}{=}\PYG{n}{i}\PYG{p}{;}
+		\PYG{k}{for}\PYG{p}{(}\PYG{n}{j}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{n}{vis}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]}\PYG{o}{==}\PYG{n}{i}\PYG{p}{;}\PYG{n}{j}\PYG{o}{++}\PYG{p}{);}\PYG{c+c1}{//找最小的没出现的颜色 }
+		\PYG{n}{c}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]}\PYG{o}{=}\PYG{n}{j}\PYG{p}{;}\PYG{n}{an}\PYG{o}{=}\PYG{n}{max}\PYG{p}{(}\PYG{n}{an}\PYG{p}{,}\PYG{n}{j}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}\PYG{k}{return} \PYG{n}{an}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}\PYG{n}{mcs}\PYG{p}{();}\PYG{n}{puts}\PYG{p}{(}\PYG{n}{ok}\PYG{p}{()}\PYG{o}{?}\PYG{l+s}{\PYGZdq{}YES\PYGZdq{}}\PYG{o}{:}\PYG{l+s}{\PYGZdq{}NO\PYGZdq{}}\PYG{p}{);}\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}d}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{setcolor}\PYG{p}{());}
+\end{Verbatim}

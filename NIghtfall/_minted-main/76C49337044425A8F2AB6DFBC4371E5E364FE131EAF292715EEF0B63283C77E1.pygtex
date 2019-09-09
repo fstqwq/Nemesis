@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{// $ \prod_{k=1,gcd(k, m) = 1}^{m} $ k = \PYGZhy{}1 ( mod m ) if m = 4, p\PYGZca{}q, 2p\PYGZca{}q}
+\PYG{c+c1}{// otherwise 1 ( mod m )}
+\end{Verbatim}

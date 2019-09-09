@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{circle} \PYG{n+nf}{minimum\PYGZus{}circle} \PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector} \PYG{o}{\PYGZlt{}}\PYG{n}{point}\PYG{o}{\PYGZgt{}} \PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{n}{circle} \PYG{n}{ret}\PYG{p}{;}
+	\PYG{n}{std}\PYG{o}{::}\PYG{n}{random\PYGZus{}shuffle} \PYG{p}{(}\PYG{n}{p}\PYG{p}{.}\PYG{n}{begin} \PYG{p}{(),} \PYG{n}{p}\PYG{p}{.}\PYG{n}{end} \PYG{p}{());}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)} \PYG{n}{p}\PYG{p}{.}\PYG{n}{size} \PYG{p}{();} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+		\PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{in\PYGZus{}circle} \PYG{p}{(}\PYG{n}{p}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n}{ret}\PYG{p}{))} \PYG{p}{\PYGZob{}} \PYG{n}{ret} \PYG{o}{=} \PYG{n}{circle} \PYG{p}{(}\PYG{n}{p}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{l+m+mi}{0}\PYG{p}{);}
+			\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{i}\PYG{p}{;} \PYG{o}{++}\PYG{n}{j}\PYG{p}{)}
+				\PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{in\PYGZus{}circle} \PYG{p}{(}\PYG{n}{p}\PYG{p}{[}\PYG{n}{j}\PYG{p}{],} \PYG{n}{ret}\PYG{p}{))} \PYG{p}{\PYGZob{}}
+					\PYG{n}{ret} \PYG{o}{=} \PYG{n}{make\PYGZus{}circle} \PYG{p}{(}\PYG{n}{p}\PYG{p}{[}\PYG{n}{j}\PYG{p}{],} \PYG{n}{p}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]);}
+					\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{k} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{k} \PYG{o}{\PYGZlt{}} \PYG{n}{j}\PYG{p}{;} \PYG{o}{++}\PYG{n}{k}\PYG{p}{)}
+						\PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{in\PYGZus{}circle} \PYG{p}{(}\PYG{n}{p}\PYG{p}{[}\PYG{n}{k}\PYG{p}{],} \PYG{n}{ret}\PYG{p}{))}
+							\PYG{n}{ret} \PYG{o}{=} \PYG{n}{make\PYGZus{}circle}\PYG{p}{(}\PYG{n}{p}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],}\PYG{n}{p}\PYG{p}{[}\PYG{n}{j}\PYG{p}{],}\PYG{n}{p}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]);} \PYG{p}{\PYGZcb{}} \PYG{p}{\PYGZcb{}}
+	\PYG{k}{return} \PYG{n}{ret}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

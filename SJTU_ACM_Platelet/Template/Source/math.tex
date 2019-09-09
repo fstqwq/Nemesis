@@ -1,0 +1,211 @@
+\chapter{Math}
+\section{int64相乘取模\ \small(Durandal)}
+	\inputminted{cpp}{Math/int64_multiply_mod.cpp}
+\section{ex-Euclid\ \small(gy)}
+	\inputminted{cpp}{Math/extend_gcd.cpp}
+\section{中国剩余定理\ \small(Durandal)}
+	返回是否可行，余数和模数结果为$ r_1 $, $ m_1 $
+	\inputminted{cpp}{Math/chinese_remainder_theorem.cpp}
+\section{线性同余不等式\ \small(Durandal)}
+	必须满足$ 0 \leq d < m $, $ 0 \leq l \leq r < m $，返回$ \min\lbrace x \geq 0 \mid l \leq x \cdot d \bmod m \leq r \rbrace $，无解返回$ -1 $ 
+	\inputminted{cpp}{Math/linear_congruence_inequality.cpp}
+\section{平方剩余\ \small(Nightfall)}
+	$ x^2 \equiv a \pmod p, 0 \leq a < p $
+	\\返回是否存在解
+	\\$ p $必须是质数, 若是多个单次质数的乘积可以分别求解再用CRT合并
+	\\复杂度为$ O(\log n) $
+	\inputminted{cpp}{Math/square_remainder.cpp}
+\section{组合数\ \small(Nightfall)}
+	\inputminted{cpp}{Math/ex_lucas.cpp}
+\section{高斯消元\ \small(ct)}
+	增广矩阵大小为$ m \times (n + 1) $
+	\inputminted{cpp}{Math/gauss_elimination.cpp}
+\section{Miller\ Rabin\ \&\ Pollard\ Rho\ \small(gy)}
+	In Java, use BigInteger.isProbablePrime(int certainty) to replace miller\_rabin(BigInteger number)\\
+	\begin{tabular}{l r}
+		\hline
+		Test Set & First Wrong Answer\\\hline
+		$ 2 $ & $ 2047 $\\\hline
+		$ 2, 3 $ & $ 1,373,653 $\\\hline
+		$ 31, 73 $ & $ 9,080,191 $\\\hline
+		$ 2, 3, 5 $ & $ 25,326,001 $\\\hline
+		$ 2, 3, 5, 7 $ & (INT32\_MAX)$ 3,215,031,751 $\\\hline
+		$ 2, 7, 61 $ & $ 4,759,123,141 $\\\hline
+		$ 2, 13, 23, 1662803 $ & $ 1,122,004,669,633 $\\\hline
+		$ 2, 3, 5, 7, 11 $ & $ 2,152,302,898,747 $\\\hline
+		$ 2, 3, 5, 7, 11, 13 $ & $ 3,474,749,660,383 $\\\hline
+		$ 2, 3, 5, 7, 11, 13, 17 $ & $ 341,550,071,728,321 $\\\hline
+		$ 2, 3, 5, 7, 11, 13, 17, 19, 23 $ & $ 3,825,123,056,546,413,051 $\\\hline
+		$ 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37 $ & (INT64\_MAX)$ 318,665,857,834,031,151,167,461 $\\\hline
+		$ 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41 $ & $ 3,317,044,064,679,887,385,961,981 $\\\hline
+	\end{tabular}
+	\inputminted{cpp}{Math/miller_rabin_and_pollard_rho.cpp}
+\section{$ O(m ^ 2 \log n) $线性递推\ \small(lhy)}
+	\inputminted{cpp}{Math/linear_rec.cpp}
+\section{线性基\ \small(ct)}
+	\inputminted{cpp}{Math/linear_base.cpp}
+\section{FFT\ NTT\ FWT\ \small(lhy,ct,gy)}
+	\subsection*{FFT\ \small(ct)}
+		$ 0 $-based
+		\inputminted{cpp}{Math/fft.cpp}
+	\subsection*{NTT\ \small(gy)}
+		$ 0 $-based
+		\inputminted{cpp}{Math/ntt.cpp}
+	\subsection*{FWT\ \small(lhy)}
+		$ 0 $-based
+		\inputminted{cpp}{Math/fwt.cpp}
+\section{Lagrange插值\ \small(ct)}
+	求解$ \sum\limits_{i = 1}^{n} i^k \bmod (10^9 + 7)$
+	\inputminted{cpp}{Math/lagrange_polynomial.cpp}
+\section{杜教筛\ \small(ct)}
+	Dirichlet卷积：$ (f \ast g) (n) = \sum\limits_{d \mid n}^{} f(d) g(\frac{n}{d}) $
+	\\对于积性函数$ f(n) $，求其前缀和$ S(n) = \sum\limits_{i = 1}^{n} f(i) $
+	\\寻找一个恰当的积性函数$ g(n) $，使得$ g(n) $和$ (f \ast g) (n) $的前缀和都容易计算
+	\\则$ g(1) S(n) = \sum\limits_{i = 1}^{n} (f \ast g) (i) - \sum\limits_{i = 2}{n} g(i) S(\lfloor \frac{n}{i} \rfloor) $
+	\\$ \mu (n) $和$ \phi (n) $取$ g(n) = 1 $
+	\\两种常见形式：
+	\begin{itemize}[nosep]
+		\item $ S(n) = \sum\limits_{i = 1}^{n} (f \cdot g) (i) $且$ g(i) $为完全积性函数
+			\\$ S(n) = \sum\limits_{i = 1}^{n} ((f \ast 1) \cdot g) (i) - \sum\limits_{i = 2}^{n} S(\lfloor \frac{n}{i} \rfloor) g(i) $
+		\item $ S(n) = \sum\limits_{i = 1}^{n} (f \ast g) (i) $
+			\\$ S(n) = \sum\limits_{i = 1}^{n} g (i) \sum\limits_{ij \leq n}^{} (f \ast 1) (j) - \sum\limits_{i = 2}^{n} S(\lfloor \frac{n}{i} \rfloor) $
+	\end{itemize}
+	\inputminted{cpp}{Math/du_jiao_sieve.cpp}
+\section{Extended\ Eratosthenes\ Sieve\ \small(Nightfall)}
+	一般积性函数的前缀和，要求：$ f(p) $为多项式
+	\inputminted{cpp}{Math/ex_eratosthenes_sieve.cpp}
+\section{BSGS\ \small(ct,Durandal)}
+	\subsection{BSGS\ \small(ct)}
+		$ p $是素数，返回$ \min\lbrace x \geq 0 \mid y^x \equiv z \pmod p \rbrace $
+		\inputminted{cpp}{Math/bsgs.cpp}
+	\subsection{ex-BSGS\ \small(Durandal)}
+		必须满足$ 0 \leq a < p $, $ 0 \leq b < p $，返回$ \min\lbrace x \geq 0 \mid a^x \equiv b \pmod p\rbrace $
+		\inputminted{cpp}{Math/ex_bsgs.cpp}
+\section{直线下整点个数\ \small(gy)}
+	必须满足$ a \geq 0 $, $ b \geq 0 $, $ m > 0 $，返回$ \sum\limits_{i=0}^{n-1} \frac{a + bi}{m} $
+	\inputminted{cpp}{Math/points_below_line.cpp}
+\section{Pell\ equation\ \small(gy)}
+	$ x^2 - n y^2 = 1 $有解当且仅当$ n $不为完全平方数
+	\\求其特解$ (x_0, y_0) $
+	\\其通解为$ (x_{k + 1}, y_{k + 1}) = (x_0 x_k + n y_0 y_k, x_0 y_k + y_0 x_k ) $
+	\inputminted{cpp}{Math/pell.cpp}
+\section{单纯形\ \small(gy)}
+	返回$ x_{m \times 1} $使得$ \max \lbrace c_{1 \times m} \cdot x_{m \times 1} \mid x_{m \times 1} \geq 0_{m \times 1}, A_{n \times m} \cdot x_{m \times 1} \leq b_{n \times 1} \rbrace $
+	\inputminted{cpp}{Math/simplex.cpp}
+\section{数学知识\ \small(gy)}
+\newcommand{\eularian}{\genfrac\langle\rangle{0pt}{0}}
+\newcommand{\Eularian}[2]{\left\langle\!\!\!\eularian{#1}{#2}\!\!\!\right\rangle}
+	\subsection*{原根}
+		当$ \gcd(a, m) = 1 $时，使$ a^x \equiv 1 \pmod m $成立的最小正整数$ x $称为$ a $对于模$ m $的阶，计为$ \text{ord}_m(a) $。
+		\\阶的性质：$ a^n \equiv 1 \pmod m $的充要条件是$ \text{ord}_m(a) \mid n $，可推出$ \text{ord}_m(a) \mid \psi(m) $。
+		\\当$ \text{ord}_m(g) = \psi(m) $时，则称$ g $是模$ n $的一个原根，$ g^0, g^1, \dots, g^{\psi(m) - 1} $覆盖了$ m $以内所有与$ m $互素的数。
+		\\原根存在的充要条件：$ m = 2, 4, p^k, 2 p^k $，其中$ p $为奇素数，$ k \in \mathbb{N}^\ast $
+	\subsection*{求和公式}
+		\begin{itemize}
+			\item $ \sum\limits_{k=1}^{n} (2k - 1)^2 = \frac{1}{3} n(4n^2 - 1) $
+			\item $ \sum\limits_{k=1}^{n} k^3 = \frac{1}{4} n^2(n + 1)^2 $
+			\item $ \sum\limits_{k=1}^{n} (2k - 1)^3 = n^2(2n^2 - 1) $
+			\item $ \sum\limits_{k=1}^{n} k^4 = \frac{1}{30} n(n + 1) (2n + 1) (3n^2 + 3m - 1) $
+			\item $ \sum\limits_{k=1}^{n} k^5 = \frac{1}{12} n^2(n + 1)^2(2n^2 + 2n - 1) $
+			\item $ \sum\limits_{k=1}^{n} k(k + 1) = \frac{1}{3} n(n + 1)(n + 2) $
+			\item $ \sum\limits_{k=1}^{n} k(k + 1)(k + 2) = \frac{1}{4} n(n + 1)(n + 2)(n + 3) $
+			\item $ \sum\limits_{k=1}^{n} k(k + 1)(k + 2)(k + 3) = \frac{1}{5} n(n + 1)(n + 2)(n + 3)(n + 4) $
+		\end{itemize}
+	\subsection*{错排公式}
+		$ D_n $表示$ n $个元素错位排列的方案数
+		\\$ D_1 = 0, D_2 = 1 $
+		\\$ D_n = (n - 1)(D_{n - 2} + D_{n - 1}), n \geq 3 $
+		\\$ D_n = n! \cdot (1 - \frac{1}{1!} + \frac{1}{2!} - \dots + (-1)^n\frac{1}{n!}) $
+	\subsection*{Fibonacci sequence}
+		$ F_0 = 0, F_1 = 1 $
+		\\$ F_n = F_{n - 1} + F_{n - 2} $
+		\\$ F_{n + 1} \cdot F_{n - 1} - F_{n}^2 = (-1)^n $
+		\\$ F_{-n} = (-1)^n F_n $
+		\\$ F_{n + k} = F_k \cdot F_{n + 1} + F_{k - 1} \cdot F_n $
+		\\$ \gcd(F_m, F_n) = F_{\gcd(m, n)} $
+		\\$ F_m \mid F_n^2 \Leftrightarrow nF_n \mid m $
+		\\$ F_n = \frac{\varphi^n - \varPsi^n}{\sqrt{5}}, \varphi = \frac{1 + \sqrt{5}}{2}, \varPsi = \frac{1 - \sqrt{5}}{2} $
+		\\$ F_n = \lfloor \frac{\varphi^n}{\sqrt{5}} + \frac{1}{2} \rfloor, n \geq 0 $
+		\\$ n(F) = \lfloor \log_\varphi(F \cdot \sqrt{5} + \frac{1}{2}) \rfloor $
+	\subsection*{Stirling number (1st kind)}
+		用$ {n \brack k} $表示Stirling number (1st kind)，为将$ n $个元素分成$ k $个环的方案数
+		\\$ {n + 1 \brack k} = n {n \brack k} + {n \brack k - 1}, k > 0 $
+		\\$ {0 \brack 0} = 1, {n \brack 0} = {0 \brack n} = 0, n > 0 $
+		\\$ {n \brack k} $为将$ n $个元素分成$ k $个环的方案数
+		\\$ {x \brack x - n} = \sum\limits_{k = 0}^{n} \Eularian{n}{k} \binom{x + k}{2 n} $
+	\subsection*{Stirling number (2nd kind)}
+		用$ {n \brace k} $表示Stirling number (2nd kind)，为将$ n $个元素划分成$ k $个非空集合的方案数
+		\\$ {n + 1 \brace k} = k {n \brace k} + {n \brace k - 1}, k > 0 $
+		\\$ {0 \brace 0} = 1, {n \brace 0} = {0 \brace n} = 0, n > 0 $
+		\\$ {n \brace k} = \frac{1}{k!} \sum\limits_{j = 0}^{k} (-1) ^ {k - j} \binom{k}{j} j^n $
+		\\$ {n \brace k} $
+		\\$ {x \brace x - n} = \sum\limits_{k = 0}^{n} \Eularian{n}{k} \binom{x + n - k - 1}{2 n} $
+	\subsection*{Catalan number}
+		$ c_n $表示长度为$ 2n $的合法括号序的数量
+		\\$ c_1 = 1 $, $ c_{n+1} = \sum\limits_{i=1}^{n} c_i \times c_{n + 1 - i} $
+		\\$ c_n = \frac{\binom{2n}{n}}{n + 1} $
+	\subsection*{Bell number}
+		$ B_n $表示基数为$ n $的集合的划分方案数
+		\\$ B_i = \begin{cases}
+			1 & i = 0\\
+			\sum\limits_{k = 0}^{n} \binom{n}{k} B_k & i > 0
+		\end{cases} $
+		\\$ B_n = \sum\limits_{k = 0}^{n} {n \brace k} $
+		\\$ B_{p^m + n} \equiv m B_n + B_{n + 1} \pmod p $
+	\subsection*{五边形数定理}
+		$ p(n) $表示将$ n $划分为若干个正整数之和的方案数
+		\\$ p(n) = \sum\limits_{k \in \mathbb{N}^\ast} (-1)^{k - 1} p(n - \frac{k(3k - 1)}{2}) $
+	\subsection*{Bernoulli number}
+		$ \sum\limits_{j = 0}^{m} \binom{m + 1}{j} B_j = 0, m > 0 $
+		\\$ B_i = \begin{cases}
+			1 & i = 0\\
+			-\frac{\sum\limits_{j = 0}^{i - 1} \binom{i + 1}{j} B_j}{i + 1} & i > 0
+		\end{cases} $
+		\\$ \sum\limits_{k = 1}^{n} k ^ m = \frac{1}{m + 1} \sum\limits_{k = 0}^{m} \binom{m + 1}{k} B_k n ^ {m + 1 - k} $
+	\subsection*{Stirling permutation}
+		$ 1, 1, 2, 2 \dots , n, n $的排列中，对于每个$ i $，都有两个$ i $之间的数大于$ i $
+		\\排列方案数为$ (2n - 1)!! $
+	\subsection*{Eulerian number}
+		$ \eularian{n}{k} $表示$ 1 $到$ n $的排列中，恰有$ k $个数比前一个大的方案数
+		\\$ \eularian{n}{0} = \eularian{n}{n - 1} = 1 $
+		\\$ \eularian{0}{m} = [m = 0] $
+		\\$ \eularian{n}{m} = \eularian{n}{n - 1 - m} $
+		\\$ \eularian{n}{m} = (m + 1) \eularian{n - 1}{m} + (n - m) \eularian{n - 1}{m - 1} $
+		\\$ \eularian{n}{m} = \sum\limits_{k = 0}^{m} (-1)^k \binom{n + 1}{k} (m + 1 - k)^n $
+	\subsection*{Eulerian number (2nd kind)}
+		$ \Eularian{n}{k} $表示Stirling permutation中，恰有$ k $个数比前一个大的方案数
+		\\$ \Eularian{n}{m} = (2n - m - 1) \Eularian{n - 1}{m - 1} + (m + 1) \Eularian{n - 1}{m} $
+		\\$ \Eularian{n}{0} = 1 $
+		\\$ \Eularian{0}{m} = [m = 0] $
+	\subsection*{Burnside lemma}
+		Let $ G $ be a finite group that acts on a set $ X $. For each $ g $ in $ G $ let $ X^g $ denote the set of elements in $ X $ that are fixed by $ g $ (also said to be left invariant by $ g $), i.e. $ X^g = \lbrace x \in X \mid g.x = x \rbrace $. Burnside's lemma asserts the following formula for the number of orbits, denoted $ \left| X / G \right| $:
+		\\$ \left| X / G \right| = \frac{1}{\left| G \right|} \sum\limits_{g \in G}^{} \left| X^g \right| $
+		\\Example application: The number of rotationally distinct colorings of the faces of a cube using $ n $ colors
+		\\Let $ X $ be the set of $ n^6 $ possible face colour combinations that can be applied to a cube in one particular orientation, and let the rotation group $ G $ of the cube act on $ X $ in the natural manner. Then two elements of $ X $ belong to the same orbit precisely when one is simply a rotation of the other. The number of rotationally distinct colourings is thus the same as the number of orbits and can be found by counting the sizes of the fixed sets for the $ 24 $ elements of $ G $.
+		\begin{itemize}[nosep]
+			\item one identity element which leaves all $ n^6 $ elements of $ X $ unchanged
+			\item six $ 90 $-degree face rotations, each of which leaves $ n^3 $ of the elements of $ X $ unchanged
+			\item three $ 180 $-degree face rotations, each of which leaves $ n^4 $ of the elements of $ X $ unchanged
+			\item eight $ 120 $-degree vertex rotations, each of which leaves $ n^2 $ of the elements of $ X $ unchanged
+			\item six $ 180 $-degree edge rotations, each of which leaves $ n^3 $ of the elements of $ X $ unchanged
+		\end{itemize}
+		The average fix size is thus$ \frac {1}{24}(n^6+6\cdot n^3+3\cdot n^4+8\cdot n^2+6\cdot n^3) $
+		\\Hence there are $ 57 $ rotationally distinct colorings of the faces of a cube in $ 3 $ colours.
+    \subsection*{Pólya theorem}
+        设$ \overline{G} $是$ n $个对象的置换群，用$ m $种颜色对$ n $个对象染色，则不同染色方案为：
+        \\$ L = \frac{1}{\left| \overline{G} \right|} (m^{c(\overline{P_1})} + m^{c(\overline{P_2})} + \dots + m^{c(\overline{P_g})}) $
+        \\其中$ \overline{G} = \lbrace \overline{P_1}, \overline{P_2}, \dots, \overline{P_g} \rbrace $，$ c(\overline{P_k}) $为$ \overline{P_k} $的循环节数
+	\subsection*{Möbius function}
+		$ \mu(n) = \begin{cases}
+			1 & n \text{ is a square-free positive integer with an even number of prime factors}\\
+			-1 & n \text{ is a square-free positive integer with an odd number of prime factors}\\
+			0 & n \text{ has a squared prime factor}
+		\end{cases} $
+		\\$ \sum\limits_{d \mid n} \mu(d) = \begin{cases}
+			1 & n = 1\\
+			0 & n > 1
+		\end{cases} $
+		\\$ g(n) = \sum\limits_{d \mid n} f(d) \Leftrightarrow f(n) = \sum\limits_{d \mid n} \mu(d) g(\frac{n}{d}) $
+	\subsection*{Lagrange polynomial}
+		给定次数为$ n $的多项式函数$ L(x) $上的$ n + 1 $个点$ (x_0, y_0), (x_1, y_1), \dots, (x_n, y_n) $
+		\\则$ L(x) = \sum\limits_{j = 0}^{n} y_j \prod\limits_{0 \leq m \leq n, m \ne j} \frac{x - x_m}{x_j - x_m} $

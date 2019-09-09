@@ -1,0 +1,11 @@
+﻿Wythoff's game
+给定两堆石子，每次可以从任意一堆中取至少一个石子，或从两堆中取相同的至少一个石子，取走最后石子的胜
+先手胜当且仅当石子数满足：
+floor((b - a) * phi) = a, (a <= b, phi = (sqrt(5) + 1) / 2)
+先手胜对应的石子数构成两个序列：
+Lower Wythoff sequence: a(n) = floor(n * phi)
+Upper Wythoff sequence: a(n) = floor(n * phi^2)
+
+Fibonacci nim
+给定一堆石子，第一次可以取至少一个、少于石子总数数量的石子，之后每次可以取至少一个、不超过上次取石子数量两倍的石子，取走最后石子的胜
+先手胜当且仅当石子数为斐波那契数

@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+set ru nu ts=4 sts=4 sw=4 si sm hls is ar bs=2 mouse=a
+syntax on
+nm \PYGZlt{}F3\PYGZgt{} :vsplit \PYGZpc{}\PYGZlt{}.in \PYGZlt{}CR\PYGZgt{}
+nm \PYGZlt{}F4\PYGZgt{} :!gedit \PYGZpc{} \PYGZlt{}CR\PYGZgt{}
+au BufEnter *.cpp set cin
+au BufEnter *.cpp nm \PYGZlt{}F5\PYGZgt{} :!time ./\PYGZpc{}\PYGZlt{} \PYGZlt{}CR\PYGZgt{}|
+\PYGZbs{}nm \PYGZlt{}F7\PYGZgt{} :!gdb ./\PYGZpc{}\PYGZlt{} \PYGZlt{}CR\PYGZgt{}|nm \PYGZlt{}F8\PYGZgt{} :!time ./\PYGZpc{}\PYGZlt{} \PYGZlt{} \PYGZpc{}\PYGZlt{}.in \PYGZlt{}CR\PYGZgt{}|
+\PYGZbs{}nm \PYGZlt{}F9\PYGZgt{} :!g++ \PYGZpc{} \PYGZhy{}o \PYGZpc{}\PYGZlt{} \PYGZhy{}g \PYGZhy{}std=gnu++14 \PYGZhy{}O2 \PYGZam{}\PYGZam{} size \PYGZpc{}\PYGZlt{} \PYGZlt{}CR\PYGZgt{}
+au BufEnter *.java nm \PYGZlt{}F5\PYGZgt{} :!time java \PYGZpc{}\PYGZlt{} \PYGZlt{}CR\PYGZgt{}|
+\PYGZbs{}nm \PYGZlt{}F8\PYGZgt{} :!time java \PYGZpc{}\PYGZlt{} \PYGZlt{} \PYGZpc{}\PYGZlt{}.in \PYGZlt{}CR\PYGZgt{}|nm \PYGZlt{}F9\PYGZgt{} :!javac \PYGZpc{} \PYGZlt{}CR\PYGZgt{}
+\end{Verbatim}

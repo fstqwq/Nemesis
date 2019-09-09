@@ -1,0 +1,13 @@
+\subsubsection{多点求值 与 快速插值}
+
+多点求值: 给出$F(x)$和$x_1,\cdots,x_n$, 求$F(x_1),\cdots,F(x_n)$. \\
+\noindent
+考虑分治, 设$L(x)=\prod_{i=1}^{\lfloor n/2\rfloor}(x-x_i)$, $R(x)=\prod_{i=\lfloor n/2\rfloor+1}^{n}(x-x_i)$, 那么对于$1\leq i\leq\lfloor n/2\rfloor$有$F(x_i)=(F\mod L)(x_i)$, 对于$\lfloor n/2\rfloor<i\leq n$有$F(x_i)=(F\mod R)(x_i)$. 复杂度$O(n\log^2n)$. \par
+\hrule
+快速插值: 给出$n$个$x_i$与$y_i$, 求一个$n-1$次多项式满足$F(x_i)=y_i$. \\
+\noindent
+考虑拉格朗日插值: $F(x)=\sum_{i=1}^n\frac{\prod_{i\neq j}(x-x_j)}{\prod_{i\neq j}(x_i-x_j)}y_i$. \\
+\noindent
+对每个$i$先求出$\prod_{i\neq j}(x_i-x_j)$. 设$M(x)=\prod_{i=1}^{n}(x-x_i)$, 那么想要的是$\frac{M(x)}{x-x_i}$. 取$x=x_i$时, 上下都为0, 使用洛必达法则, 则原式化为$M'(x)$. 使用分治算出$M(x)$, 使用多点求值算出每个$\prod_{i\neq j}(x_i-x_j)=M'(x_i)$. \\
+\noindent
+设$\frac{y_i}{\prod_{i\neq j}(x_i-x_j)}=v_i$, 现在要求出$\sum_{i=1}^{n}v_i\prod_{i\neq j}(x-x_j)$. 使用分治: 设$L(x)=\prod_{i=1}^{\lfloor n/2\rfloor}(x-x_i)$, $R(x)=\prod_{i=\lfloor n/2\rfloor+1}^n(x-x_i)$, 则原式化为: $\left( \sum_{i=1}^{\lfloor n/2\rfloor}v_i\prod_{i\neq j,j\leq\lfloor n/2\rfloor}(x-x_j)\right)R(x)+\left( \sum_{i=\lfloor n/2\rfloor+1}^{n}v_i\prod_{i\neq j,j>\lfloor n/2\rfloor}(x-x_j)\right)L(x)$, 递归计算. 复杂度$O(n\log^2n)$. \par

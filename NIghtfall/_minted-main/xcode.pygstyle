@@ -1,0 +1,95 @@
+
+\makeatletter
+\def\PYGxcode@reset{\let\PYGxcode@it=\relax \let\PYGxcode@bf=\relax%
+    \let\PYGxcode@ul=\relax \let\PYGxcode@tc=\relax%
+    \let\PYGxcode@bc=\relax \let\PYGxcode@ff=\relax}
+\def\PYGxcode@tok#1{\csname PYGxcode@tok@#1\endcsname}
+\def\PYGxcode@toks#1+{\ifx\relax#1\empty\else%
+    \PYGxcode@tok{#1}\expandafter\PYGxcode@toks\fi}
+\def\PYGxcode@do#1{\PYGxcode@bc{\PYGxcode@tc{\PYGxcode@ul{%
+    \PYGxcode@it{\PYGxcode@bf{\PYGxcode@ff{#1}}}}}}}
+\def\PYGxcode#1#2{\PYGxcode@reset\PYGxcode@toks#1+\relax+\PYGxcode@do{#2}}
+
+\expandafter\def\csname PYGxcode@tok@c\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.09,0.46,0.00}{##1}}}
+\expandafter\def\csname PYGxcode@tok@cp\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.39,0.22,0.13}{##1}}}
+\expandafter\def\csname PYGxcode@tok@l\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.11,0.00,0.81}{##1}}}
+\expandafter\def\csname PYGxcode@tok@s\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.77,0.10,0.09}{##1}}}
+\expandafter\def\csname PYGxcode@tok@sc\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.14,0.00,0.81}{##1}}}
+\expandafter\def\csname PYGxcode@tok@o\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGxcode@tok@k\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.66,0.05,0.57}{##1}}}
+\expandafter\def\csname PYGxcode@tok@n\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGxcode@tok@na\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.51,0.42,0.16}{##1}}}
+\expandafter\def\csname PYGxcode@tok@nc\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.25,0.43,0.46}{##1}}}
+\expandafter\def\csname PYGxcode@tok@nf\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGxcode@tok@nb\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.66,0.05,0.57}{##1}}}
+\expandafter\def\csname PYGxcode@tok@bp\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.36,0.15,0.60}{##1}}}
+\expandafter\def\csname PYGxcode@tok@nv\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGxcode@tok@nt\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGxcode@tok@nd\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGxcode@tok@nl\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGxcode@tok@m\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.11,0.00,0.81}{##1}}}
+\expandafter\def\csname PYGxcode@tok@err\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGxcode@tok@kc\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.66,0.05,0.57}{##1}}}
+\expandafter\def\csname PYGxcode@tok@kd\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.66,0.05,0.57}{##1}}}
+\expandafter\def\csname PYGxcode@tok@kn\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.66,0.05,0.57}{##1}}}
+\expandafter\def\csname PYGxcode@tok@kp\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.66,0.05,0.57}{##1}}}
+\expandafter\def\csname PYGxcode@tok@kr\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.66,0.05,0.57}{##1}}}
+\expandafter\def\csname PYGxcode@tok@kt\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.66,0.05,0.57}{##1}}}
+\expandafter\def\csname PYGxcode@tok@no\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGxcode@tok@ni\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGxcode@tok@ne\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGxcode@tok@fm\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGxcode@tok@py\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGxcode@tok@nn\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGxcode@tok@nx\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGxcode@tok@vc\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGxcode@tok@vg\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGxcode@tok@vi\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGxcode@tok@vm\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGxcode@tok@ld\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.11,0.00,0.81}{##1}}}
+\expandafter\def\csname PYGxcode@tok@sa\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.77,0.10,0.09}{##1}}}
+\expandafter\def\csname PYGxcode@tok@sb\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.77,0.10,0.09}{##1}}}
+\expandafter\def\csname PYGxcode@tok@dl\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.77,0.10,0.09}{##1}}}
+\expandafter\def\csname PYGxcode@tok@sd\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.77,0.10,0.09}{##1}}}
+\expandafter\def\csname PYGxcode@tok@s2\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.77,0.10,0.09}{##1}}}
+\expandafter\def\csname PYGxcode@tok@se\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.77,0.10,0.09}{##1}}}
+\expandafter\def\csname PYGxcode@tok@sh\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.77,0.10,0.09}{##1}}}
+\expandafter\def\csname PYGxcode@tok@si\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.77,0.10,0.09}{##1}}}
+\expandafter\def\csname PYGxcode@tok@sx\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.77,0.10,0.09}{##1}}}
+\expandafter\def\csname PYGxcode@tok@sr\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.77,0.10,0.09}{##1}}}
+\expandafter\def\csname PYGxcode@tok@s1\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.77,0.10,0.09}{##1}}}
+\expandafter\def\csname PYGxcode@tok@ss\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.77,0.10,0.09}{##1}}}
+\expandafter\def\csname PYGxcode@tok@mb\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.11,0.00,0.81}{##1}}}
+\expandafter\def\csname PYGxcode@tok@mf\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.11,0.00,0.81}{##1}}}
+\expandafter\def\csname PYGxcode@tok@mh\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.11,0.00,0.81}{##1}}}
+\expandafter\def\csname PYGxcode@tok@mi\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.11,0.00,0.81}{##1}}}
+\expandafter\def\csname PYGxcode@tok@il\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.11,0.00,0.81}{##1}}}
+\expandafter\def\csname PYGxcode@tok@mo\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.11,0.00,0.81}{##1}}}
+\expandafter\def\csname PYGxcode@tok@ow\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGxcode@tok@ch\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.09,0.46,0.00}{##1}}}
+\expandafter\def\csname PYGxcode@tok@cm\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.09,0.46,0.00}{##1}}}
+\expandafter\def\csname PYGxcode@tok@cpf\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.09,0.46,0.00}{##1}}}
+\expandafter\def\csname PYGxcode@tok@c1\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.09,0.46,0.00}{##1}}}
+\expandafter\def\csname PYGxcode@tok@cs\endcsname{\def\PYGxcode@tc##1{\textcolor[rgb]{0.09,0.46,0.00}{##1}}}
+
+\def\PYGxcodeZbs{\char`\\}
+\def\PYGxcodeZus{\char`\_}
+\def\PYGxcodeZob{\char`\{}
+\def\PYGxcodeZcb{\char`\}}
+\def\PYGxcodeZca{\char`\^}
+\def\PYGxcodeZam{\char`\&}
+\def\PYGxcodeZlt{\char`\<}
+\def\PYGxcodeZgt{\char`\>}
+\def\PYGxcodeZsh{\char`\#}
+\def\PYGxcodeZpc{\char`\%}
+\def\PYGxcodeZdl{\char`\$}
+\def\PYGxcodeZhy{\char`\-}
+\def\PYGxcodeZsq{\char`\'}
+\def\PYGxcodeZdq{\char`\"}
+\def\PYGxcodeZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYGxcodeZat{@}
+\def\PYGxcodeZlb{[}
+\def\PYGxcodeZrb{]}
+\makeatother
+

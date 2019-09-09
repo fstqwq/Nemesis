@@ -1,0 +1,132 @@
+\chapter{Geometry}
+\section{点、直线、圆\ \small(gy)}
+	\inputminted{cpp}{Geometry/basic_geometry.cpp}
+\section{平面最近点对\ \small(Grimoire)}
+	\inputminted{cpp}{Geometry/nearest_points.cpp}
+\section{凸包游戏\ \small(Grimoire)}
+	给定凸包，$ O(n \log n) $完成询问：
+	\begin{itemize}
+		\item 点在凸包内
+		\item 凸包外的点到凸包的两个切点
+		\item 向量关于凸包的切点
+		\item 直线与凸包的交点
+	\end{itemize}
+	传入凸包要求$ 1 $号点为$ Pair(x, y) $最小的
+	\inputminted{cpp}{Geometry/convex_game.cpp}
+\section{半平面交\ \small(Grimoire)}
+	\inputminted{cpp}{Geometry/half_plane_intersect.cpp}
+\section{点在多边形内\ \small(Grimoire)}
+	\inputminted{cpp}{Geometry/point_in_polygon.cpp}
+\section{最小圆覆盖\ \small(Grimoire)}
+	\inputminted{cpp}{Geometry/minimal_coverage_circle.cpp}
+\section{最小球覆盖\ \small(Grimoire)}
+	\inputminted{cpp}{Geometry/minimal_coverage_ball.cpp}
+\section{圆并\ \small(Grimoire)}
+	\inputminted{cpp}{Geometry/circle_union.cpp}
+\section{圆与多边形并\ \small(Grimoire)}
+	\inputminted{cpp}{Geometry/area_union.cpp}
+\section{三角剖分\ \small(Grimoire)}
+	Triangulation::find返回包含某点的三角形
+	\\Triangulation::add\_point将某点加入三角剖分
+	\\某个$ Triangle $在三角剖分中当且仅当它的$ has\_children $为$ 0 $
+	\\如果要找到三角形u的邻域，则枚举它的所有u.edge[i].tri，该条边的两个点为u.p[(i + 1) \% 3], u.p[(i + 2) \% 3]
+	\\通过三角剖分构造V图：连接相邻三角形外接圆圆心
+	\\注意初始化内存池和$ Triangulation::LOTS $
+	\\复杂度$ O(n \log n) $
+	\inputminted{cpp}{Geometry/delaunay_triangulation.cpp}
+\section{三维几何基础\ \small(Grimoire)}
+	\inputminted{cpp}{Geometry/3d_basic.cpp}
+\section{三维凸包\ \small(Grimoire)}
+	\inputminted{cpp}{Geometry/3d_convex.cpp}
+\section{三维绕轴旋转\ \small(gy)}
+	右手大拇指指向$ axis $方向，四指弯曲方向旋转$ w $弧度
+	\inputminted{cpp}{Geometry/3d_rotate.cpp}
+\section{几何知识\ \small(gy)}
+	\subsection*{Pick theorem}
+		顶点为整点的简单多边形，其面积$ A $，内部格点数$ i $，边上格点数$ b $满足：
+		\\$ A = i + \frac{b}{2} - 1 $
+	\subsection*{欧拉示性数}
+		\begin{itemize}
+			\item 三维凸包的顶点个数$ V $，边数$ E $，面数$ F $满足：
+			\\$ V - E + F = 2 $
+			\item 平面图的顶点个数$ V $，边数$ E $，平面被划分的区域数$ F $，组成图形的连通部分的数目$ C $满足：
+			\\$ V - E + F = C + 1 $
+		\end{itemize}
+	\subsection*{几何公式}
+		\begin{itemize}
+			\item \textbf{三角形}
+				\\半周长$ p = \frac{a + b + c}{2} $
+				\\面积$ S = \frac{1}{2} a H_a = \frac{1}{2} a b \cdot \sin C = \sqrt{p(p - a)(p - b)(p - c)} = p r = \frac{a b c}{4R} $
+				\\中线长$ M_a = \frac{1}{2} \sqrt{2(b^2 + c^2) - a^2} = \frac{1}{2} \sqrt{b^2 + c^2 + 2 b c \cdot \cos A} $
+				\\角平分线长$ T_a = \frac{\sqrt{bc((b + c)^2 - a^2)}}{b + c} = \frac{2 b c}{b + c} \cos \frac{A}{2} $
+				\\高$ H_a = b \sin C = \sqrt{b^2 - (\frac{a^2 + b^2 - c^2}{2 a})^2} $
+				\\内切圆半径$ r = \frac{S}{p} = 4 R \sin \frac{A}{2} \sin \frac{B}{2} \sin \frac{C}{2} = \sqrt{\frac{(p - a)(p - b)(p - c)}{p}} = p \tan \frac{A}{2} \tan \frac{B}{2} \tan \frac{C}{2} $
+				\\外接圆半径$ R = \frac{a b c}{4 S} = \frac{a}{2 \sin A} $
+				\\旁切圆半径$ r_A = \frac{2 S}{- a + b + c} $
+				\\重心$ (\frac{x_1 + x_2 + x_3}{3}, \frac{y_1 + y_2 + y_3}{3}) $
+				\\外心$ (\frac{\left|\begin{array}{cccc}
+					x_1^2 + y_1^2 & y_1 & 1\\
+					x_2^2 + y_2^2 & y_2 & 1\\
+					x_3^2 + y_3^2 & y_3 & 1
+					\end{array}\right|}{2 \left|\begin{array}{cccc}
+					x_1 & y_1 & 1\\
+					x_2 & y_2 & 1\\
+					x_3 & y_3 & 1
+					\end{array}\right|}, \frac{\left|\begin{array}{cccc}
+					x_1 & x_1^2 + y_1^2 & 1\\
+					x_2 & x_2^2 + y_2^2 & 1\\
+					x_3 & x_3^2 + y_3^2 & 1
+					\end{array}\right|}{2\left|\begin{array}{cccc}
+					x_1 & y_1 & 1\\
+					x_2 & y_2 & 1\\
+					x_3 & y_3 & 1
+					\end{array}\right|}) $
+				\\内心$ (\frac{a x_1 + b x_2 + c x_3}{a + b + c}, \frac{a y_1 + b y_2 + c y_3}{a + b + c}) $
+				\\垂心$ (\frac{\left|\begin{array}{cccc}
+					x_2 x_3 + y_2 y_3 & 1 & y_1\\
+					x_3 x_1 + y_3 y_1 & 1 & y_2\\
+					x_1 x_2 + y_1 y_2 & 1 & y_3
+					\end{array}\right|}{2 \left|\begin{array}{cccc}
+					x_1 & y_1 & 1\\
+					x_2 & y_2 & 1\\
+					x_3 & y_3 & 1
+					\end{array}\right|}, \frac{\left|\begin{array}{cccc}
+					x_2 x_3 + y_2 y_3 & x_1 & 1\\
+					x_3 x_1 + y_3 y_1 & x_2 & 1\\
+					x_1 x_2 + y_1 y_2 & x_3 & 1
+					\end{array}\right|}{2\left|\begin{array}{cccc}
+					x_1 & y_1 & 1\\
+					x_2 & y_2 & 1\\
+					x_3 & y_3 & 1
+					\end{array}\right|}) $
+				\\旁心$ (\frac{- a x_1 + b x_2 + c x_3}{- a + b + c}, \frac{- a y_1 + b y_2 + c y_3}{- a + b + c}) $
+			\item \textbf{圆}
+				\\弧长$ l = r A $
+				\\弦长$ a = 2 \sqrt{2 h r - h^2} = 2 r \cdot \sin \frac{A}{2} $
+				\\弓形高$ h = r - \sqrt{r^2 - \frac{a^2}{4}} = r (1 - \cos \frac{A}{2}) $
+				\\扇形面积 $ S_1 = \frac{1}{2} l r = \frac{1}{2} A r^2 $
+				\\弓形面积 $ S_2 = \frac{1}{2} r^2 (A - \sin A) $
+			\item \textbf{Circles of Apollonius}
+				\\已知三个两两相切的圆，半径为$ r_1, r_2, r_3 $
+				\\与它们外切的圆半径为$ \left| \frac{r_1 r_2 r_3}{r_1 r_2 + r_2 r_3 + r_3 r_1 - 2 \sqrt{r_1 r_2 r_3 (r_1 + r_2 + r_3)}} \right| $
+				\\与它们内切的圆半径为$ \frac{r_1 r_2 r_3}{r_1 r_2 + r_2 r_3 + r_3 r_1 + 2 \sqrt{r_1 r_2 r_3 (r_1 + r_2 + r_3)}} $
+			\item \textbf{棱台}
+				\\体积$ V = \frac{1}{3} h (A_1 + A_2 + \sqrt{A_1 A_2}) $
+				\\正棱台侧面积$ S = \frac{1}{2} (p_1 + p_2) l $，$ l $为侧高
+			\item \textbf{球}
+				\\体积$ V = \frac{4}{3} \pi r^3 $
+				\\表面积$ S = 4 \pi r^2 $
+			\item \textbf{球台}
+				\\侧面积$ S = 2 \pi r h $
+				\\体积$ V = \frac{1}{6} \pi h (3(r_1^2 + r_2^2) + h_h) $
+			\item \textbf{球扇形}
+				\\球面面积$ S = 2 \pi r h $
+				\\体积$ V = \frac{2}{3} \pi r^2 h = \frac{2}{3} \pi r^3 h (1 - \cos \varphi) $
+			\item \textbf{球面三角形}
+				\\考虑单位球上的球面三角形，$ a, b, c $表示三边长（弧所对球心角），$ A, B, C $表示三角大小（切线夹角）
+				\\余弦定理$ \cos a = \cos b \cdot \cos c + \sin a \cdot \sin b \cdot \cos A $
+				\\正弦定理$ \frac{\sin A}{\sin a} = \frac{\sin B}{\sin b} = \frac{\sin C}{\sin c} $
+				\\球面面积$ S = A + B + C - \pi $
+			\item \textbf{四面体}
+				\\体积$ V = \frac{1}{6} \left| \overrightarrow{AB} \cdot (\overrightarrow{AC} \times \overrightarrow{AD}) \right| $
+		\end{itemize}

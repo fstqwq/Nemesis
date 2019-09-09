@@ -1,0 +1,180 @@
+\newcommand{\md}{\mathrm{d}}
+\newcommand{\me}{\mathrm{e}}
+
+\begin{small}
+
+\subsubsection{$ax^2+bx+c$($a>0$)}
+
+\begin{enumerate}
+
+\item $ \int \frac{\md x}{ax^2+bx+c} = \begin{cases}
+\frac{2}{\sqrt{4ac-b^2}}\arctan\frac{2ax+b}{\sqrt{4ac-b^2}} + C & (b^2 < 4ac) \\
+\frac{1}{\sqrt{b^2-4ac}}\ln\left| \frac{2ax+b-\sqrt{b^2-4ac}}{2ax+b+\sqrt{b^2-4ac}} \right| + C & (b^2 > 4ac)
+\end{cases} $
+
+\item $ \int \frac{x}{ax^2+bx+c} \md x = \frac{1}{2a} \ln |ax^2+bx+c| - \frac{b}{2a} \int \frac{\md x}{ax^2+bx+c} $
+
+\end{enumerate}
+
+\subsubsection{$\sqrt{\pm ax^2+bx+c}$($a>0$)}
+
+\begin{enumerate}
+
+\item $ \int \frac{\md x}{\sqrt{ax^2+bx+c}} = \frac{1}{\sqrt{a}} \ln | 2ax+b+2\sqrt{a}\sqrt{ax^2+bx+c} | + C $
+
+\item $ \int \sqrt{ax^2+bx+c} \md x = \frac{2ax+b}{4a}\sqrt{ax^2+bx+c} +
+	\frac{4ac-b^2}{8\sqrt{a^3}}\ln |2ax+b+2\sqrt{a}\sqrt{ax^2+bx+c}| + C $
+
+\item $ \int \frac{x}{\sqrt{ax^2+bx+c}} \md x = \frac{1}{a}\sqrt{ax^2+bx+c} -
+	\frac{b}{2\sqrt{a^3}}\ln | 2ax+b+2\sqrt{a}\sqrt{ax^2+bx+c} | + C $
+
+\item $ \int \frac{\md x}{\sqrt{c+bx-ax^2}} = -\frac{1}{\sqrt{a}} \arcsin \frac{2ax-b}{\sqrt{b^2+4ac}} + C  $
+
+\item $ \int \sqrt{c+bx-ax^2} \md x = \frac{2ax-b}{4a}\sqrt{c+bx-ax^2} + \\
+	\frac{b^2+4ac}{8\sqrt{a^3}}\arcsin\frac{2ax-b}{\sqrt{b^2+4ac}} + C $
+
+\item $ \int \frac{x}{\sqrt{c+bx-ax^2}} \md x = -\frac{1}{a}\sqrt{c+bx-ax^2} + \frac{b}{2\sqrt{a^3}}\arcsin\frac{2ax-b}{\sqrt{b^2+4ac}} + C $
+
+\end{enumerate}
+
+\subsubsection{$\sqrt{\pm\frac{x-a}{x-b}}$或$\sqrt{(x-a)(x-b)}$}
+
+\begin{enumerate}
+
+\item $ \int \frac{\md x}{\sqrt{(x-a)(b-x)}} = 2\arcsin\sqrt\frac{x-a}{b-x} + C$ ($a<b$)
+
+\item \begin{multline}
+\int \sqrt{(x-a)(b-x)} \md x = \frac{2x-a-b}{4}\sqrt{(x-a)(b-x)} + \\
+	\frac{(b-a)^2}{4}\arcsin\sqrt\frac{x-a}{b-x} + C, (a<b)
+\end{multline}
+
+\end{enumerate}
+
+\subsubsection{三角函数的积分}
+
+\begin{enumerate}
+
+\item $ \int \tan x \md x = -\ln|\cos x| + C $
+
+\item $ \int \cot x \md x = \ln |\sin x| + C $
+
+\item $ \int \sec x \md x = \ln \left| \tan\left( \frac{\pi}{4} + \frac{x}{2} \right) \right| + C = \ln |\sec x + \tan x| + C $
+
+\item $ \int \csc x \md x = \ln \left| \tan\frac{x}{2} \right| + C = \ln |\csc x - \cot x| + C $
+
+\item $ \int \sec^2 x \md x = \tan x + C $
+
+\item $ \int \csc^2 x \md x = -\cot x + C $
+
+\item $ \int \sec x \tan x \md x = \sec x + C $
+
+\item $ \int \csc x \cot x \md x = -\csc x + C $
+
+\item $ \int \sin^2 x \md x = \frac{x}{2} - \frac{1}{4} \sin 2x + C $
+
+\item $ \int \cos^2 x \md x = \frac{x}{2} + \frac{1}{4} \sin 2x + C $
+
+\item $ \int \sin^n x \md x = -\frac{1}{n} \sin^{n-1} x \cos x + \frac{n-1}{n} \int \sin^{n-2} x \md x $
+
+\item $ \int \cos^n x \md x = \frac{1}{n} \cos^{n-1} x \sin x + \frac{n-1}{n} \int \cos^{n-2} x \md x $
+
+\item $ \int \frac{\md x}{\sin^n x} = -\frac{1}{n-1} \frac{\cos x}{\sin^{n-1}x} + \frac{n-2}{n-1} \int \frac{\md x}{\sin^{n-2}x} $
+
+\item $ \int \frac{\md x}{\cos^n x} = \frac{1}{n-1} \frac{\sin x}{\cos^{n-1}x} + \frac{n-2}{n-1} \int \frac{\md x}{\cos^{n-2}x} $
+
+\item \[ \begin{split} {} & \int \cos^m x \sin^n x \md x \\
+	= & \frac{1}{m+n} \cos^{m-1} x \sin^{n+1}x + \frac{m-1}{m+n}\int\cos^{m-2}x\sin^nx\md x \\
+	= & -\frac{1}{m+n} \cos^{m+1} x \sin^{n-1}x + \frac{n-1}{m+1} \int \cos^m x\sin^{n-2} x \md x \end{split} \]
+
+\item $ \int \frac{\md x}{a + b \sin x} = \begin{cases}
+\frac{2}{\sqrt{a^2-b^2}}\arctan\frac{a\tan\frac{x}{2}+b}{\sqrt{a^2-b^2}} + C & (a^2 > b^2) \\
+\frac{1}{\sqrt{b^2-a^2}}\ln \left| \frac{a\tan\frac{x}{2}+b-\sqrt{b^2-a^2}}{a\tan\frac{x}{2}+b+\sqrt{b^2-a^2}} \right| + C & (a^2 < b^2)
+\end{cases} $
+
+\item $ \int \frac{\md x}{a + b \cos x} = \begin{cases}
+\frac{2}{a+b}\sqrt\frac{a+b}{a-b} \arctan\left(\sqrt\frac{a-b}{a+b}\tan\frac{x}{2}\right) + C & (a^2 > b^2) \\
+\frac{1}{a+b}\sqrt\frac{a+b}{a-b} \ln \left| \frac{\tan\frac{x}{2}+\sqrt\frac{a+b}{b-a}}{\tan\frac{x}{2}-\sqrt\frac{a+b}{b-a}} \right| + C
+& (a^2 < b^2)
+\end{cases} $
+
+\item $ \int \frac{\md x}{a^2\cos^2x+b^2\sin^2x} = \frac{1}{ab} \arctan\left( \frac{b}{a}\tan x \right) + C $
+
+\item $ \int \frac{\md x}{a^2\cos^2x-b^2\sin^2x} = \frac{1}{2ab}\ln\left|\frac{b\tan x+a}{b\tan x-a}\right| + C $
+
+\item $ \int x \sin ax \md x = \frac{1}{a^2} \sin ax - \frac{1}{a} x \cos ax + C $
+
+\item $ \int x^2 \sin ax \md x = -\frac{1}{a} x^2 \cos ax + \frac{2}{a^2} x \sin ax + \frac{2}{a^3} \cos ax + C$
+
+\item $ \int x \cos ax \md x = \frac{1}{a^2} \cos ax + \frac{1}{a} x \sin ax + C $
+
+\item $ \int x^2 \cos ax \md x = \frac{1}{a} x^2 \sin ax + \frac{2}{a^2} x \cos ax - \frac{2}{a^3} \sin ax + C $
+
+\end{enumerate}
+
+\subsubsection{反三角函数的积分(其中 $a>0$ )}
+
+\begin {enumerate}
+
+\item $ \int \arcsin \frac{x}{a} \md x = x \arcsin \frac{x}{a} + \sqrt{a^2-x^2}+C $
+
+\item $ \int x \arcsin \frac{x}{a} \md x= (\frac{x^2}{2}-\frac{a^2}{4})\arcsin \frac{x}{a} + \frac{x}{4} \sqrt{x^2-x^2}+C$
+
+\item $ \int x^2 \arcsin \frac{x}{a} \md x = \frac{x^3}{3}\arcsin \frac{x}{a}+\frac{1}{9}(x^2+2 a^2)\sqrt{a^2-x^2}+C $
+
+\item $ \int \arccos \frac{x}{a} \md x= x \ arccos \frac{x}{a} - \sqrt{a^2-x^2} +C $
+
+\item $ \int x \arccos \frac{x}{a} \md x= (\frac{x^2}{2}-\frac{a^2}{4})\arccos \frac{x}{a} - \frac{x}{4} \sqrt{a^2-x^2}+C $
+
+\item $ \int x^2 \arccos \frac{x}{a}\md x= \frac{x^3}{3}\arccos \frac{x}{a} - \frac{1}{9}(x^2+2a^2)\sqrt{a^2-x^2}+C$
+
+\item $ \int \arctan \frac{x}{a} \md x=x \arctan \frac{x}{a}-\frac{a}{2}\ln (a^2+x^2)+C $
+
+\item $ \int x\arctan \frac{x}{a} \md x = \frac{1}{2}(a^2+x^2)\arctan \frac{x}{a} -\frac{a}{2}x+C $
+
+\item $ \int x^2 \arctan \frac{x}{a} \md x= \frac{x^3}{3} \arctan \frac{x}{a} - \frac{a}{6}x^2 + \frac{a^3}{6} \ln (a^2+x^2)+C $
+
+\end {enumerate}
+
+\subsubsection{指数函数的积分}
+
+\begin{enumerate}
+
+\item $ \int a^x \md x= \frac{1}{\ln a} a^x + C$
+
+\item $ \int \me ^{ax}\md x=\frac{1}{a}a^{ax}+C $ 
+
+\item $ \int x \me  ^ {ax} \md x=\frac{1}{a^2}(ax-1)a^{ax} +C $
+
+\item $ \int x^n \me ^{ax} \md x=\frac{1}{a}x^n \me ^{ax}-\frac{n}{a} \int x^{n-1} \me ^ {ax} \md x $
+
+\item $ \int x a^x \md x = \frac{x}{\ln a}a^x-\frac{1}{(\ln a)^2}a^x+C $
+
+\item $ \int x^n a^x \md x= \frac{1}{\ln a}x^n a^x-\frac{n}{\ln a}\int x^{n-1}a^x \md x $
+
+\item $ \int \me ^{ax} \sin bx \md x = \frac{1}{a^2+b^2}\me ^{ax}(a \sin bx - b \cos bx)+C $
+
+\item $ \int \me ^{ax} \cos bx \md x = \frac{1}{a^2+b^2}\me ^{ax}(b \sin bx + a \cos bx)+C $
+
+\item $ \int \me ^{ax} \sin ^ n bx \md x=\frac{1}{a^2+b^2 n^2}\me ^{ax} \sin ^ {n-1} bx (a \sin bx -nb \cos bx) +\frac{n(n-1)b^2}{a^2+b^2 n^2}\int \me ^{ax} \sin ^{n-2} bx \md x $
+
+\item $ \int \me ^{ax} \cos ^ n bx \md x=\frac{1}{a^2+b^2 n^2}\me ^{ax} \cos ^ {n-1} bx (a \cos bx +nb \sin bx) +\frac{n(n-1)b^2}{a^2+b^2 n^2}\int \me ^{ax} \cos ^{n-2} bx \md x $
+
+\end{enumerate}
+
+\subsubsection{对数函数的积分}
+
+\begin{enumerate}
+
+\item $ \int \ln x \md x = x \ln x - x + C$
+
+\item $ \int \frac{\md x}{x \ln x} =\ln \big | \ln x \big |+C $
+
+\item $ \int x^n \ln x \md x = \frac{1}{n+1}x^{n+1}(\ln x - \frac{1}{n+1} ) +C $
+
+\item $ \int (\ln x)^{n} \md x = x(\ln x)^ n - n \int (\ln x)^{n-1} \md x $
+
+\item $ \int x ^ m(\ln x)^n \md x=\frac{1}{m+1}x^{m+1} (\ln x)^n - \frac{n}{m+1} \int x^m(\ln x)^{n-1}\md x $ 
+
+\end{enumerate}
+
+\end{small}
