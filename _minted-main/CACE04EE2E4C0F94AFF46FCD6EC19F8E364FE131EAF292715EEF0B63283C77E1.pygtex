@@ -1,8 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
-\PYG{c+c1}{// $\sum_{i=0}^{n-1} \lfloor \frac{a+bi}{m}\rfloor$, $n,m,a,b>0$}
-\PYG{n}{ll} \PYG{n+nf}{solve}\PYG{p}{(}\PYG{n}{ll} \PYG{n}{n}\PYG{p}{,} \PYG{n}{ll} \PYG{n}{a}\PYG{p}{,} \PYG{n}{ll} \PYG{n}{b}\PYG{p}{,} \PYG{n}{ll} \PYG{n}{m}\PYG{p}{)\PYGZob{}}
-	\PYG{k}{if} \PYG{p}{(}\PYG{n}{b} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{k}{return} \PYG{n}{n} \PYG{o}{*} \PYG{p}{(}\PYG{n}{a} \PYG{o}{/} \PYG{n}{m}\PYG{p}{);}
-	\PYG{k}{if} \PYG{p}{(}\PYG{n}{a} \PYG{o}{\PYGZgt{}=} \PYG{n}{m}\PYG{p}{)} \PYG{k}{return} \PYG{n}{n} \PYG{o}{*} \PYG{p}{(}\PYG{n}{a} \PYG{o}{/} \PYG{n}{m}\PYG{p}{)} \PYG{o}{+} \PYG{n}{solve}\PYG{p}{(}\PYG{n}{n}\PYG{p}{,} \PYG{n}{a} \PYG{o}{\PYGZpc{}} \PYG{n}{m}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{m}\PYG{p}{);}
-	\PYG{k}{if} \PYG{p}{(}\PYG{n}{b} \PYG{o}{\PYGZgt{}=} \PYG{n}{m}\PYG{p}{)} \PYG{k}{return} \PYG{p}{(}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{*}\PYG{n}{n}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{p}{(}\PYG{n}{b}\PYG{o}{/}\PYG{n}{m}\PYG{p}{)} \PYG{o}{+} \PYG{n}{solve}\PYG{p}{(}\PYG{n}{n}\PYG{p}{,}\PYG{n}{a}\PYG{p}{,}\PYG{n}{b}\PYG{o}{\PYGZpc{}}\PYG{n}{m}\PYG{p}{,}\PYG{n}{m}\PYG{p}{);}
-	\PYG{k}{return} \PYG{n}{solve}\PYG{p}{((}\PYG{n}{a} \PYG{o}{+} \PYG{n}{b} \PYG{o}{*} \PYG{n}{n}\PYG{p}{)} \PYG{o}{/} \PYG{n}{m}\PYG{p}{,} \PYG{p}{(}\PYG{n}{a} \PYG{o}{+} \PYG{n}{b} \PYG{o}{*} \PYG{n}{n}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{m}\PYG{p}{,} \PYG{n}{m}\PYG{p}{,} \PYG{n}{b}\PYG{p}{);} \PYG{p}{\PYGZcb{}}
-\end{Verbatim}
