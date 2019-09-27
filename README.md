@@ -1,5 +1,5 @@
 ![](./darkseal.jpg)
-### DarkSeal
+### Dark Seal
 +10 *ability power* \
 +100 *mana* \
 +25% *increased healing from potions and refillable potions.*\
