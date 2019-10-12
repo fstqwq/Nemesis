@@ -45,7 +45,7 @@ def FractionOperation():
     a = Fraction(0.233).limit_denominator()
     a == Fraction("0.233") #True
     a.numerator, a.denominator, str(a)
-    ### Decimal
+def DecimalOperation():
     import decimal
     from decimal import Decimal, getcontext
     getcontext().prec = 100
