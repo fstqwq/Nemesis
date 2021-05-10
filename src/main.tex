@@ -1,0 +1,411 @@
+\documentclass[titlepage, a4paper,9pt]{article}
+%\usepackage{euler}
+\usepackage{graphicx, amssymb, amsmath, textcomp, booktabs}
+\usepackage[libertine,vvarbb]{newtxmath}
+\usepackage[scr=rsfso]{mathalfa}
+%\usepackage[lining,semibold,type1]{libertine} % a bit lighter than Times--no osf in math
+\usepackage[T1]{fontenc} % best for Western European languages
+\usepackage{minted}
+\usepackage{listings, color, fontspec, setspace, titlesec, fancyhdr, mdframed, multicol}
+\usepackage{ucharclasses}
+\usepackage{xunicode, xltxtra}
+\usepackage[inner=1.35cm, outer=0.9cm, top=1.7cm, bottom=0.0cm]{geometry}
+\usepackage{pdfpages}
+\usepackage{tocloft}
+\usepackage{nameref}
+\usepackage{verbatim}
+%\usepackage{rotating}
+
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
+
+%configure the top corners
+\pagestyle{fancy}
+\setlength{\headsep}{0.1cm}
+%\chead{Team : Nightfall}
+\rhead{Page \thepage}
+\lhead{上海交通大学 Shanghai Jiao Tong University}
+ 
+%configure space between the two columns
+\setlength{\columnsep}{13pt}
+
+%configure fonts
+\setmonofont{Consolas}[Scale=0.775]
+\newfontfamily\substitutefont{SimHei}[Scale=0.8]
+\setTransitionsForChinese{\begingroup\substitutefont}{\endgroup}
+
+%configure minted to display codes
+\definecolor{Gray}{rgb}{0.9,0.9,0.9}
+
+%remove leading numbers in table of contents
+%\setcounter{secnumdepth}{0}	
+
+%configure section style of table of content
+\renewcommand\cftsecfont{\Large}
+
+%configure section style
+\titleformat{\section}
+{\huge}			% The style of the section title
+{\thesection.}				% a prefix
+{4pt}						% How much space exists between the prefix and the title
+{}					% How the section is represented
+% \titleformat{\section}{\huge}{}{0pt}{}
+\titlespacing{\section}{0pt}{0pt}{0pt}
+\titlespacing{\subsection}{0pt}{0pt}{0pt}
+\titlespacing{\subsubsection}{0pt}{0pt}{0pt}
+
+%enable section to start new page automatically
+%\let\stdsection\section
+%\renewcommand\section{\penalty-100\vfilneg\stdsection}
+
+%\renewcommand\theFancyVerbLine{\arabic{FancyVerbLine}}
+\renewcommand{\theFancyVerbLine}{\sffamily \textcolor[rgb]{0.5,0.5,0.5}{\scriptsize {\arabic{FancyVerbLine}}}}
+
+\setminted[cpp]{
+	style=xcode,
+	mathescape,
+	linenos,
+	autogobble,
+	baselinestretch=0.9,
+	tabsize=3,
+	fontsize=\normalsize,
+	%bgcolor=Gray,
+	frame=single,
+	framesep=1mm,
+	framerule=0.3pt,
+	numbersep=1mm,
+	breaklines=true,
+	breaksymbolsepleft=2pt,
+	%breaksymbolleft=\raisebox{0.8ex}{ \small\reflectbox{\carriagereturn}}, %not moe!
+	%breaksymbolright=\small\carriagereturn,
+	breakbytoken=false,
+	showtabs=true,
+	tab=$\mathbb{|}\ \ \ $,
+}
+\setminted[java]{
+	style=xcode,
+	mathescape,
+	linenos,
+	autogobble,
+	baselinestretch=0.9,
+	tabsize=2,
+	%bgcolor=Gray,
+	frame=single,
+	framesep=1mm,
+	framerule=0.3pt,
+	numbersep=1mm,
+	breaklines=true,
+	breaksymbolsepleft=2pt,
+	%breaksymbolleft=\raisebox{0.8ex}{ \small\reflectbox{\carriagereturn}}, %not moe!
+	%breaksymbolright=\small\carriagereturn,
+	breakbytoken=false,
+	showtabs=true,
+	tab=$\mathbb{|}\ \ \ $,
+}
+\setminted[python]{
+	style=xcode,
+	mathescape,
+	linenos,
+	autogobble,
+	baselinestretch=0.9,
+	tabsize=3,
+	fontsize=\normalsize,
+	%bgcolor=Gray,
+	frame=single,
+	framesep=1mm,
+	framerule=0.3pt,
+	numbersep=1mm,
+	breaklines=true,
+	breaksymbolsepleft=2pt,
+	%breaksymbolleft=\raisebox{0.8ex}{ \small\reflectbox{\carriagereturn}}, %not moe!
+	%breaksymbolright=\small\carriagereturn,
+	breakbytoken=false,
+	showtabs=true,
+	tab=$\mathbb{|}\ \ \ $,
+}
+
+\setminted[vim]{
+	style=xcode,
+	mathescape,
+	linenos,
+	autogobble,
+	baselinestretch=0.9,
+	tabsize=2,
+	fontsize=\normalsize,
+	%bgcolor=Gray,
+	frame=single,
+	framesep=1mm,
+	framerule=0.3pt,
+	numbersep=1mm,
+	breaklines=true,
+	breaksymbolsepleft=2pt,
+	%breaksymbolleft=\raisebox{0.8ex}{ \small\reflectbox{\carriagereturn}}, %not moe!
+	%breaksymbolright=\small\carriagereturn,
+	breakbytoken=false,
+}
+
+\setminted[sh]{
+	style=xcode,
+	mathescape,
+	linenos,
+	autogobble,
+	baselinestretch=0.9,
+	tabsize=2,
+	fontsize=\normalsize,
+	%bgcolor=Gray,
+	frame=single,
+	framesep=1mm,
+	framerule=0.3pt,
+	numbersep=1mm,
+	breaklines=true,
+	breaksymbolsepleft=2pt,
+	%breaksymbolleft=\raisebox{0.8ex}{ \small\reflectbox{\carriagereturn}}, %not moe!
+	%breaksymbolright=\small\carriagereturn,
+	breakbytoken=false,
+}
+%configure titles
+%\title{\LARGE{New Meta} \\[2ex] \Large{Standard Code Library} }
+%\date{\today}
+
+%THE SCL BEGINS
+\begin{document}
+	%\begin{titlepage}
+	%	\includepdf{cover/cover.pdf}
+	%	\newpage
+	%\end{titlepage}
+	\begin{multicols}{2}
+		\setcounter{tocdepth}{2}
+		\begingroup
+		\let\cleardoublepage\relax
+		\let\clearpage\relax
+		\tableofcontents
+		%\newpage
+		\begin{spacing}{0.6}
+			
+			\section{Geometry}
+				\subsection{凸包}
+				\inputminted{cpp}{src/Geometry/凸包.cpp}
+				\subsection{闵可夫斯基和}
+				\inputminted{cpp}{src/Geometry/闵可夫斯基和.cpp}
+				\subsection{最小覆盖圆}
+				\inputminted{cpp}{src/Geometry/最小覆盖圆.cpp}
+				\subsection{二维几何基础操作}
+				\inputminted{cpp}{src/Geometry/geo.cpp}
+				\subsection{直线半平面交}
+				\inputminted{cpp}{src/Geometry/半平面交.cpp}
+				\subsection{直线与凸包交点}
+				\inputminted{cpp}{src/Geometry/直线与凸包交点.cpp}
+				\subsection{点到凸包切线}
+				\inputminted{cpp}{src/Geometry/点到凸包切线.cpp}
+%				\subsection{Delaunay 三角剖分}
+%				\inputminted{cpp}{src/Geometry/DelaunayTriangulation.cpp}
+				\subsection{三角形 与 费马点}
+				\inputminted{cpp}{src/Geometry/三角形.cpp}
+				\subsection{圆并}
+				\inputminted{cpp}{src/Geometry/圆并.cpp}
+				\subsection{多边形与圆交}
+				\inputminted{cpp}{src/Geometry/多边形和圆的交.cpp}
+				\subsection{阿波罗尼茨圆}
+				\inputminted{cpp}{src/Geometry/阿波罗尼茨圆.tex}
+				\subsection{圆幂 圆反演 根轴}
+				\input{src/Geometry/圆幂.tex}
+				\subsection{三维绕轴旋转 三维基础操作}
+				\inputminted{cpp}{src/Geometry/三维几何.cpp}
+				\subsection{最小覆盖球}
+				\inputminted{cpp}{src/Geometry/最小覆盖球.cpp}
+				\subsection{球面基础}
+				\input{src/Geometry/球面.tex}
+				\subsection{经纬度球面距离}
+				\inputminted{cpp}{src/Geometry/经纬度求球面最短距离.cpp}
+				\subsection{最近点对}
+				\inputminted{cpp}{src/Geometry/最近点对.cpp}
+				\subsection{三维凸包}
+				\inputminted{cpp}{src/Geometry/三维凸包.cpp}
+				\subsection{长方体表面两点最短距离}
+				\inputminted{cpp}{src/Geometry/长方体表面两点最短距离.cpp}
+				\subsection{圆上整点}
+				\inputminted{cpp}{src/Geometry/圆上整点.cpp}
+				\subsection{相关公式}
+				\input{src/Geometry/Formula(Saga).tex}
+				
+			%\begin{comment}
+			
+			\section{Data Structure}
+				\subsection{KD 树}
+				\inputminted{cpp}{src/DataStructure/KD tree.cpp}
+				\subsection{LCT 动态树}
+				\inputminted{cpp}{src/DataStructure/LCT.cpp}
+				%\subsection{可持久化平衡树}
+				%\inputminted{cpp}{src/DataStructure/可持久化平衡树.cpp}
+				% \subsection{有旋 Treap}
+				% \inputminted{cpp}{src/DataStructure/有旋treap.cpp}
+				\subsection{Hash Table}
+				\inputminted{cpp}{src/DataStructure/hashmap.cpp}
+				
+			\section{Tree \& Graph}
+				\subsection{Hopcroft-Karp $O(\sqrt{N}M)$ 最大匹配}
+				\inputminted{cpp}{src/TreeandGraph/Hopcroft.cpp}
+				\subsection{Shuffle 一般图最大匹配}
+				\inputminted{cpp}{src/TreeandGraph/一般图最大匹配-shuffle.cpp}
+				\subsection{极大团计数}
+				\inputminted{cpp}{src/TreeandGraph/CliqueCount.cpp}
+				\subsection{树 hash 有根树同构}
+				\inputminted{cpp}{src/TreeandGraph/TreeHash.cpp}
+				\subsection{Stoer-Wagner 无向图最小割(树)}
+				\inputminted{cpp}{src/TreeandGraph/无向图最小割.cpp}
+				\subsection{KM 最大权匹配}
+				\inputminted{cpp}{src/TreeandGraph/KM.cpp}
+				\subsection{Blossom 带花树}
+				\inputminted{cpp}{src/TreeandGraph/Blossom.cpp}
+				\subsection{Cactus 仙人掌}
+				\inputminted{cpp}{src/TreeandGraph/cactus.cpp}
+				\subsection{Tarjan 连通分量}
+				\inputminted{cpp}{src/TreeandGraph/Tarjan.cpp}
+				\subsection{Dominator Tree 支配树}
+				\inputminted{cpp}{src/TreeandGraph/支配树.cpp}
+				\subsection{朱刘算法 最小树形图 (含lazy tag可并堆)}
+				\inputminted{cpp}{src/TreeandGraph/最小树形图.cpp}
+				%\subsection{最大团}
+				%\inputminted{cpp}{src/TreeandGraph/MaximumClique.cpp}
+				\subsection{Minimum Mean Cycle}
+				\inputminted{cpp}{src/TreeandGraph/MeanCycle.cpp}
+				%\subsection{Dinic 最大流}
+				%\inputminted{cpp}{src/TreeandGraph/Dinic.cpp}
+				\subsection{Dijkstra 费用流}
+				\inputminted{cpp}{src/TreeandGraph/MCMF_dij.cpp}
+				\subsection{完美消除序列 弦图判定与最小染色}
+				\inputminted{cpp}{src/TreeandGraph/弦图.cpp}
+				\subsection{欧拉回路}
+				\inputminted{cpp}{src/TreeandGraph/欧拉回路.cpp}
+				\subsection{K短路}
+				\inputminted{cpp}{src/TreeandGraph/K短路.cpp}
+				%\subsection{动态 MST}
+				%\inputminted{cpp}{src/TreeandGraph/完全动态MST.cpp}
+				%\subsection{三元环}
+				%\inputminted{cpp}{src/TreeandGraph/三元环.cpp}
+				%\subsection{平面图转对偶图}
+				%\inputminted{cpp}{src/TreeandGraph/平面图转对偶图.cpp}
+				\subsection{最小乘积生成树}
+				\inputminted{cpp}{src/TreeandGraph/最小乘积生成树.cpp}
+				%\subsection{树同构}
+				%\inputminted{cpp}{src/TreeandGraph/树同构.cpp}
+				%\subsection{树点分治 ??}
+				%\inputminted{cpp}{src/TreeandGraph/点分治.cpp}
+				%\subsection{虚树}
+				%\inputminted{cpp}{src/TreeandGraph/虚树.cpp}
+				%\subsection{动态最小生成树}
+				%\inputminted{cpp}{src/TreeandGraph/DynamicMST.cpp}
+				\subsection{斯坦纳树}
+				\inputminted{cpp}{src/TreeandGraph/斯坦纳树.cpp}
+				\subsection{2-SAT}
+				\inputminted{cpp}{src/TreeandGraph/2-sat.cpp}
+				\subsection{图论知识}
+				\input{src/TreeandGraph/图论知识.tex}
+			
+			\section{String}
+				\subsection{最小表示法}
+				\inputminted{cpp}{src/String/最小表示法.cpp}
+				\subsection{Manacher}
+				\inputminted{cpp}{src/String/Manacher.cpp}
+				\subsection{KMP exKMP}
+				\inputminted{cpp}{src/String/KMP.cpp}
+				\subsection{Aho-Corasick Automation AC 自动机}
+				\inputminted{cpp}{src/String/AC 自动机.cpp}
+				\subsection{Lydon Word Decomposition}
+				\inputminted{cpp}{src/String/Lyndon Word.cpp}
+				\subsection{Suffix Array 后缀数组}
+				\inputminted{cpp}{src/String/SA.cpp}
+				\subsection{Suffix Automation 后缀自动机}
+				\inputminted{cpp}{src/String/SAM.cpp}
+				\subsection{Suffix Balanced Tree 后缀平衡树}
+				\inputminted{cpp}{src/String/后缀平衡树.cpp}
+				%\subsection{Total LCS 子串对目标求 LCS}
+				%\inputminted{cpp}{src/String/Total LCS.cpp}
+				\subsection{Palindrome Automation 回文自动机}
+				\inputminted{cpp}{src/String/PAM.cpp}
+				\subsection{String Conclusions}
+				\input{src/String/Conclusions.tex}
+			
+			\section{Math 数学}
+				\subsection{exgcd}
+				\inputminted{cpp}{src/Math/exgcd.cpp}
+				\subsection{CRT 中国剩余定理}
+				\inputminted{cpp}{src/Math/CRT_lbn.cpp}
+				\subsection{扩展卢卡斯}
+				\inputminted{cpp}{src/Math/扩展卢卡斯.cpp}
+				\subsection{Factorial Mod 阶乘取模}
+				\inputminted{cpp}{src/Math/Factorial Mod.cpp}
+				\subsection{平方剩余}
+				\inputminted{cpp}{src/Math/平方剩余.cpp}
+				\subsection{Baby-step Giant-step BSGS 离散对数}
+				\inputminted{cpp}{src/Math/BSGS.cpp}
+				\subsection{线性同余不等式}
+				\inputminted{cpp}{src/Math/线性同余不等式.cpp}
+				\subsection{Miller Rabin And Pollard Rho}
+				\inputminted{cpp}{src/Math/Miller Rabin And Pollard Rho.cpp}
+				\subsection{杜教筛}
+				\inputminted{cpp}{src/Math/杜教筛.cpp}
+				\subsection{min25 筛}
+				\inputminted{cpp}{src/Math/TEES.cpp}
+				\input{src/Math/单位根反演.tex}
+				\subsection{原根}
+				\inputminted{cpp}{src/Math/原根.cpp}
+				\subsection{FFT NTT FWT 多项式操作}
+				\inputminted{cpp}{src/Math/FFT NTT FWT.cpp}
+				\input{src/Math/多项式牛顿法.tex}
+				\inputminted{cpp}{src/Math/Polynomial.cpp}
+				\input{src/Math/多点求值与快速插值.tex}
+				\subsection{多项式插值}
+				\inputminted{cpp}{src/Math/插值.cpp}
+				\subsection{Simplex 单纯形}
+				\inputminted{cpp}{src/Math/Simplex.cpp}
+				\subsection{线性递推}
+				\inputminted{cpp}{src/Math/线性递推.cpp}
+				\subsection{Berlekamp-Massey 最小多项式}
+				\inputminted{cpp}{src/Math/Berlekamp-Massey.cpp}
+				\subsection{Pell 方程}
+				\inputminted{cpp}{src/Math/Pell方程.cpp}
+				\subsection{解一元三次方程}
+				\inputminted{cpp}{src/Math/解一元三次方程.cpp}
+				\subsection{自适应 Simpson}
+				\inputminted{cpp}{src/Math/Simpson.cpp}
+				%\subsection{Schreier-Sims 求排列群的阶}
+				%\inputminted{cpp}{src/Math/Schreier-Sims.cpp}
+				\subsection{类欧几里得 直线下格点统计}
+				\inputminted{cpp}{src/Math/直线下格点统计.cpp}
+			
+			\section{Miscellany}
+				\subsection{Zeller 日期公式}
+				\inputminted{cpp}{src/Miscellany/日期公式.cpp}
+				%\subsection{Dancing Links 精确覆盖搜索}
+				%\inputminted{cpp}{src/Miscellany/DLX.cpp}
+				\subsection{Java Template}
+				\inputminted{java}{src/Miscellany/Main.java}
+				\subsection{Python Hint}
+				\inputminted{python}{src/Miscellany/py.py}
+				\subsection{Vimrc}
+				\inputminted{vim}{src/Miscellany/vimrc}
+				\subsection{Bashrc}
+				\inputminted{sh}{src/Miscellany/bashrc}
+				\subsection{读入优化相关}
+				\inputminted{cpp}{src/Miscellany/hack.cpp}
+			
+			\section{Appendix}
+				\begin{spacing}{0.5}
+				\subsection{Formulas 公式表}
+				\input{src/TipsandHints/Formula.tex}
+				\subsection{Calculus Table 导数表}
+				\input{src/TipsandHints/CalculusTable.tex}
+				\subsection{Integration Table 积分表}
+				\input{src/TipsandHints/IntegrationTable_NewMeta.tex}
+				\subsection{Constant Table 常数表}
+				\input{src/TipsandHints/Addon.tex}
+				\end{spacing}
+			
+			%\end{comment}
+		\end{spacing}
+		\endgroup
+	\end{multicols}
+	
+\end{document}
+%THE SCL ENDS

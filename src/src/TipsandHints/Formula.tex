@@ -1,0 +1,227 @@
+\def \bangle{ \atopwithdelims \langle \rangle}
+\providecommand{\myfloor}[1]{ \lfloor #1 \rfloor }
+\begin{small}
+\subsubsection{Mobius Inversion}
+\[F(n)=\sum_{d|n}f(d)\Rightarrow f(n)=\sum_{d|n}\mu(d)F(\frac{n}{d})\]
+\[F(n)=\sum_{n|d}f(d)\Rightarrow f(n)=\sum_{n|d}\mu(\frac{d}{n})F(d)\]
+\[[x = 1] = \sum_{d|x}\mu(d),\ \ x = \sum_{d|x}\mu(d)\]
+
+\subsubsection{Gcd Inversion}
+\begin{equation*}
+\begin{aligned}
+\sum_{a=1}^n\sum_{b=1}^ngcd^2(a,b) & =\sum_{d=1}^nd^2\sum_{i=1}^{\myfloor{\frac{n}{d}}}\sum_{j=1}^{\myfloor{\frac{n}{d}}}[gcd(i,j)=1]\\
+ & =\sum_{d=1}^nd^2\sum_{i=1}^{\myfloor{\frac{n}{d}}}\sum_{j=1}^{\myfloor{\frac{n}{d}}}\sum_{t|gcd(i,j)}\mu(t)\\
+ & =\sum_{d=1}^nd^2\sum_{t=1}^{\myfloor{\frac{n}{d}}}\mu(t)\sum_{i=1}^{\myfloor{\frac{n}{d}}}[t|i]\sum_{j=1}^{\myfloor{\frac{n}{d}}}[t|j]\\
+ & =\sum_{d=1}^nd^2\sum_{t=1}^{\myfloor{\frac{n}{d}}}\mu(t){\myfloor{\frac{n}{dt}}}^2\\
+\end{aligned}
+\end{equation*}
+The formula can be calculated in $O(nlogn)$ complexity. Moreover, let $l=dt$, then
+\begin{equation*}
+\sum_{d=1}^nd^2\sum_{t=1}^{\myfloor{\frac{n}{d}}}\mu(t){\myfloor{\frac{n}{dt}}}^2=\sum_{l=1}^n{\myfloor{\frac{n}{l}}}^2\sum_{d|l}d^2\mu(\frac{l}{d})\\
+\end{equation*}
+Let $f(l)=\sum_{d|l}d^2\mu(\frac{l}{d})$. It can be proven that $f(l)$ is multiplicative. Besides, $f(p^k)=p^{2k}-p^{2k-2}$.
+Therefore, with linear sieve the formula can be solved in $O(n)$ complexity.
+
+\subsubsection{Arithmetic Function}
+\[(p-1)!\equiv-1(mod\ p)\]
+\[a>1,m,n>0 \text{, then} \gcd(a^m-1,a^n-1)=a^{\gcd(n,m)}-1\]
+\[ \mu^2(n) = \sum_{d^2 \mid n} \mu (d) \]
+\[a>b,\gcd(a,b)=1 \text{, then} \gcd(a^m-b^m,a^n-b^n)=a^{\gcd(m,n)}-b^{\gcd(m,n)}\]
+\[ \prod_{k=1,gcd(k, m) = 1}^{m} k \equiv \left\{
+\begin{aligned}
+&-1 & \mod\ m,\ & m = 4, p^q, 2p^q \\
+&1 & \mod\ m,\ & \text{otherwise} \\
+\end{aligned}
+\right.
+\]
+\[ \sigma_k(n) = \sum_{d|n}d^k = \prod_{i=1}^{\omega(n)}\frac{p_i^{(a_i+1)k}-1}
+{p_i^k-1} \]
+\[ J_k(n) = n^k\prod_{p|n}(1-\frac{1}{p^k}) \]
+$J_k(n)$ is the number of $k$-tuples of positive integers all less than or equal to n that form a coprime $(k + 1)$-tuple together with $n$.
+\[ \sum_{\delta|n}J_k(\delta) = n^k \]
+\[ \sum_{i=1}^{n} \sum_{j=1}^{n} [gcd(i,j)=1]ij =  \sum_{i=1}^{n} i^2\varphi(i) \]
+\[ \sum_{\delta|n}\delta^sJ_r(\delta)J_s(\frac{n}{\delta}) = J_{r+s}(n) \]
+\begin{align*}
+\sum_{\delta|n}\varphi(\delta)d(\frac{n}{\delta}) = \sigma(n),&\ \sum_{\delta|n}\left| \mu(\delta) \right| = 2^{\omega(n)} \\
+\sum_{\delta|n}2^{\omega(\delta)} = d(n^2),&\ \sum_{\delta|n}d(\delta^2) = d^2(n) \\
+\sum_{\delta|n}d(\frac{n}{\delta})2^{\omega(\delta)} = d^2(n),&\ \sum_{\delta|n}\frac{\mu(\delta)}{\delta} = \frac{\varphi(n)}{n} \\
+\sum_{\delta|n}\frac{\mu(\delta)}{\varphi(\delta)} = d(n),&\ \sum_{\delta|n}\frac{\mu^2(\delta)}{\varphi(\delta)} = \frac{n}{\varphi(n)} \\
+\end{align*}
+\[ n|\varphi(a^n-1) \]
+\[ \sum_{\substack{1 \leq k \leq n \\ \gcd(k, n) = 1}}f(\gcd(k-1, n)) = \varphi(n)
+\sum_{d|n}\frac{(\mu*f)(d)}{\varphi(d)} \]
+\[ \varphi(\mathrm{lcm}(m, n))\varphi(\gcd(m,n)) = \varphi(m)\varphi(n) \]
+\[ \sum_{\delta|n}d^3(\delta) = (\sum_{\delta|n}d(\delta))^2 \]
+\[ d(uv) = \sum_{\delta|\gcd(u, v)}\mu(\delta)d(\frac{u}{\delta})d(\frac{v}{\delta}) \]
+\[ \sigma_k(u)\sigma_k(v) = \sum_{\delta|\gcd(u, v)}\delta^k\sigma_k(\frac{uv}{\delta^2}) \]
+\[ \mu(n) = \sum_{k=1}^n[\gcd(k, n)=1]\cos{2\pi \frac{k}{n}} \]
+\[ \varphi(n) = \sum_{k=1}^n[\gcd(k, n)=1] = \sum_{k=1}^n\gcd(k, n)\cos{2\pi \frac{k}{n}} \]
+\[
+\left\{
+\begin{aligned}
+&S(n) = \sum_{k=1}^n(f \ast g)(k) \\
+&\sum_{k=1}^nS(\lfloor {n \over k} \rfloor) = \sum_{i=1}^nf(i)\sum_{j=1}^{\lfloor{n \over i}\rfloor}(g \ast 1)(j)
+\end{aligned}
+\right.
+\]
+\[
+\left\{
+\begin{aligned}
+&S(n) = \sum_{k=1}^n(f \cdot g)(k), g \text{ completely multiplicative} \\
+&\sum_{k=1}^nS(\lfloor {n \over k} \rfloor)g(k) = \sum_{k=1}^n(f \ast 1)(k)g(k)
+\end{aligned}
+\right.
+\]
+\subsubsection{Binomial Coefficients}
+\[ {n \choose k} = (-1)^k{k-n-1 \choose k},\ \ \sum_{k \leq n}{r+k \choose k} = {r+n+1 \choose n} \]
+\[ \sum_{k=0}^n{k \choose m} = {n+1 \choose m+1} \]
+\[ \sqrt{1+z} = 1 + \sum_{k=1}^{\infty}\frac{(-1)^{k-1}}{k\times2^{2k-1}}{2k-2 \choose k-1}z^k \]
+\[ \sum_{k=0}^{r}{r-k \choose m}{s+k \choose n} = {r+s+1 \choose m+n+1} \]
+\[ C_{n, m} = {n+m \choose m} - {n+m \choose m-1}, n \geq m \]
+\[ {n \choose k} \equiv [n\& k=k] \pmod 2 \]
+\[ {{n_1+\cdots+n_p}\choose m}=\sum_{k_1+\cdots+k_p=m}{n_1\choose k_1}\cdots{n_p\choose k_p}\]
+\subsubsection{Fibonacci Numbers}
+\[ F(z) = \frac{z}{1-z-z^2} \]
+\[ f_n = \frac{{\phi}^n-{\hat{\phi}}^n}{\sqrt{5}}, \phi = \frac{1+\sqrt{5}}{2},
+\hat{\phi} = \frac{1-\sqrt{5}}{2} \]
+\[ \sum_{k=1}^nf_k = f_{n+2}-1,\ \ \sum_{k=1}^nf^2_k = f_nf_{n+1} \]
+\[ \sum_{k=0}^nf_kf_{n-k} = \frac{1}{5}(n-1)f_n+\frac{2}{5}nf_{n-1} \]
+\[ \frac{f_{2n}}{f_n} = f_{n-1} + f_{n+1}\]
+\[ f_1+2f_2+3f_3+\cdots+nf_n=nf_{n+2}-f_{n+3}+2]\]
+\[ \gcd(f_m,f_n)=f_{\gcd(m,n)}\]
+\[ f^2_n + (-1)^n = f_{n+1}f_{n-1} \]
+\[ f_{n+k} = f_nf_{k+1} + f_{n-1}f_k \]
+\[ f_{2n+1} = f^2_n+f^2_{n+1} \]
+\[ (-1)^kf_{n-k} = f_{n}f_{k-1} - f_{n-1}f_{k} \]
+\[ \text{Modulo }f_n, f_{mn+r} \equiv \left\{
+\begin{aligned}
+&f_r,& m \bmod 4 = 0; \\
+&(-1)^{r+1}f_{n-r},& m \bmod 4 = 1; \\
+&(-1)^nf_r,& m \bmod 4 = 2; \\
+&(-1)^{r+1+n}f_{n-r},& m \bmod 4 = 3.
+\end{aligned}
+\right.
+\]
+\subsubsection{Lucas Numbers}
+\[ L_0=2,L_1=1,L_n=L_{n-1}+L_{n-2}=(\frac{1+\sqrt{5}}{2})^n+\frac{1-\sqrt{5}}{2})^n \]
+\[ L(x)=\frac{2-x}{1-x-x^2} \]
+\subsubsection{Catlan Numbers}
+\[c_1=1,c_n=\sum_{i=0}^{n-1}c_ic_{n-1-i}=c_{n-1}\frac{4n-2}{n+1}=\frac{\binom{2n}{n}}{n+1}=\binom{2n}{n}-\binom{2n}{n-1}\]
+\[ c(x)=\frac{1-\sqrt{1-4x}}{2x}\]
+Usage: $n$对括号序列; $n$个点满二叉树; $n*n$的方格左下到右上不过对角线方案数; 凸$n+2$边形三角形分割数; $n$个数的出栈方案数; $2n$个顶点连接, 线段两两不交的方案数.
+\subsubsection{Stirling Cycle Numbers}
+把$n$个元素集合分作$k$个\textbf{非空环}方案数.
+\[s(n,0)=0,s(n,n)=1,s(n+1,k)=s(n,k-1)-nS(n,k)\]
+\[s(n,k)=(-1)^{n-k}{n \brack k}\]
+\begin{align*}
+ {n+1 \brack k} = n{n \brack k} + {n \brack k-1},&\ \  {n+1 \brack 2} = n!H_n \\
+x^{\underline{n}} = \sum_k{ {n \brack k}(-1)^{n-k}x^k },&\ \  x^{\overline{n}} = \sum_k{ {n \brack k}x^k } \\
+ \end{align*}
+\subsubsection{Stirling Subset Numbers}
+把$n$个元素集合分作$k$个\textbf{非空子集}方案数.
+\[ {n+1 \brace k} = k{n \brace k} + {n \brace k-1} \]
+\[ x^n = \sum_k{ {n \brace k}x^{\underline{k}} } = \sum_k{ {n \brace k}(-1)^{n-k}x^{\overline{k}} } \]
+\[ m!{n \brace m} = \sum_k{m \choose k}k^n(-1)^{m-k} \]
+For fixed $k$, generating functions :
+\[\sum_{n=0}^{\infty}{n \brace k}x^{n-k}=\prod_{r=1}^{k}\frac{1}{1-rx}\]
+\subsubsection{Motzkin Numbers}
+圆上$n$点间画不相交弦的方案数. 选$n$个数$k_1,k_2,...,k_n\in\{-1,0,1\}$，保证$\sum_i^ak_i(1\leq a\leq n)$非负且所有数总和为$0$的方案数. \[M_{n+1}=M_n+\sum_i^{n-1}M_iM_{n-1-i}=\frac{(2n+3)M_n+3nM_{n-1}}{n+3}\]
+\[M_n=\sum_{i=0}^{\lfloor \frac{n}{2}\rfloor}\binom{n}{2k}Catlan(k)\]
+\[M(X)=\frac{1-x-\sqrt{1-2x-3x^2}}{2x^2}\]
+\subsubsection{Eulerian Numbers}
+\[ {n \bangle k} = (k+1){n-1 \bangle k} + (n-k){n-1 \bangle k-1} \]
+\[ x^n = \sum_k{ {n \bangle k}{x+k \choose n} } \]
+\[ {n \bangle m} = \sum_{k=0}^m{n+1 \choose k}(m+1-k)^n(-1)^k \]
+\subsubsection{Harmonic Numbers}
+\[ \sum_{k=1}^nH_k = (n+1)H_n-n \]
+\[ \sum_{k=1}^nkH_k = \frac{n(n+1)}{2}H_n - \frac{n(n-1)}{4} \]
+\[ \sum_{k=1}^n{k \choose m}H_k = {n+1 \choose m+1}(H_{n+1} - \frac{1}{m+1}) \]
+\subsubsection{Pentagonal Number Theorem}
+\[ \prod_{n=1}^{\infty}(1-x^n) = \sum_{n=-\infty}^{\infty}{(-1)^kx^{k(3k-1)/2}} \]
+\[ p(n) = p(n-1)+p(n-2)-p(n-5)-p(n-7)+\cdots \]
+\[ f(n, k) = p(n)-p(n-k)-p(n-2k)+p(n-5k)+p(n-7k)-\cdots \]
+\subsubsection{Bell Numbers}
+$n$个元素集合划分的方案数.
+\[ B_n=\sum_{k=1}^{n}{n\brace k},\ \ B_{n+1} = \sum_{k=0}^n{n \choose k}B_k \]
+\[ B_{p^m+n} \equiv mB_n+B_{n+1} \pmod{p} \]
+\[B(x)=\sum_{n=0}^{\infty}\frac{B_n}{n!}x^n=\mathrm{e}^{\mathrm{e}^x-1}\]
+\subsubsection{Bernoulli Numbers}
+\[ B_n = 1 - \sum_{k=0}^{n-1}{n \choose k}\frac{B_k}{n-k+1} \]
+\[ G(x) = \sum_{k=0}^{\infty}\frac{B_k}{k!}x^k
+= \frac{1}{\sum_{k=0}^{\infty}\frac{x^k}{(k+1)!}} \]
+\[ \sum_{k=1}^nk^m = \frac{1}{m+1}\sum_{k=0}^m{m+1 \choose k}B_kn^{m-k+1} \]
+\subsubsection{Sum of Powers}
+\[\sum_{i=1}^ni^2=\frac{n(n+1)(2n+1)}{6},\ \ \sum_{i=1}^ni^3=(\frac{n(n+1)}{2})^2\]
+\[\sum_{i=1}^ni^4=\frac{n(n+1)(2n+1)(3n^2+3n-1)}{30}\]
+\[\sum_{i=1}^ni^5=\frac{n^2(n+1)^2(2n^2+2n-1)}{12}\]
+\subsubsection{Sum of Squares}
+$r_k(n)$表示用$k$个平方数组成$n$的方案数. 假设: 
+\[n=2^{a_0}p_1^{2a_1}\cdots p_r^{2a_r}q_1{b_1}\cdots q_s{b_s}\]
+其中$p_i\equiv 3 \mod 4$, $q_i\equiv 1 \mod 4$, 那么
+\[r_2(n)=\left\{\begin{aligned}
+& 0 & \text{if any }a_i\text{ is a half-integer}\\
+& 4\prod_1^r(b_i+1) & \text{if all }a_i\text{ are integers}\\
+\end{aligned}\right.\]
+$r_3(n)>0$当且仅当$n$不满足$4^a(8b+7)$的形式 ($a,b$为整数).
+\subsubsection{Pythagorean Triple}
+枚举$x^2+y^2=z^2$的三元组: 可令$x=m^2-n^2,y=2mn,z=m^2+n^2$, 枚举$m$和$n$即可$O(n)$枚举勾股数. 判断素勾股数方法: $m,n$至少一个为偶数并且$m,n$互质, 那么$x,y,z$就是素勾股数.
+\subsubsection{Tetrahedron Volume}
+If $U$, $V$, $W$, $u$, $v$, $w$ are lengths of edges of the tetrahedron (first three form a triangle; u opposite to U and so on)
+\[ V = \frac{\sqrt{ 4u^2v^2w^2 - \sum_{cyc}{u^2(v^2+w^2-U^2)^2} + \prod_{cyc}{(v^2+w^2-U^2)} }}{12} \]
+\subsubsection{杨氏矩阵 与 钩子公式}
+满足: 格子$(i,j)$没有元素, 则它右边和上边相邻格子也没有元素; 格子$(i,j)$有元素$a[i][j]$, 则它右边和上边相邻格子要么没有元素, 要么有元素且比$a[i][j]$大.\\
+计数: $F_1=1,F_2=2,F_n=F_{n-1}+(n-1)F_{n-2}$, $F(x)=e^{x+\frac{x^2}{2}}$\\
+钩子公式: 对于给定形状$\lambda$, 不同杨氏矩阵的个数为:
+\[d_\lambda=\frac{n!}{\prod h_\lambda(i,j)}\]
+$h_\lambda(i,j)$表示该格子右边和上边的格子数量加1. 
+\subsubsection{重心}
+半径为 $r$ , 圆心角为 $\theta$ 的扇形重心与圆心的距离为 $\frac{4r\sin(\theta/2)}{3\theta}$ \\
+半径为 $r$ , 圆心角为 $\theta$ 的圆弧重心与圆心的距离为 $\frac{4r\sin^3(\theta/2)}{3(\theta-\sin(\theta))}$ \\
+
+\subsubsection{常见游戏}
+\begin{multicols}{2}
+%\paragraph{减法游戏}$n$根火柴每次可以拿$a_i$根, 最后一个拿的人获胜. 
+%\paragraph{Ferguson游戏}两个盒子, 一个有$m$个糖另一个有$n$个糖, 每次走步将一个盒子清空而把另一个盒子的一些糖拿到被清空的盒子中, 使得两个盒子各至少有一颗糖. 到终态(1,1)的人获胜. 
+%\paragraph{动态减法游戏}初始有$n$根火柴, 第一个人可以任意取, 至少$1$根至多$n-1$根, 以后每个人至少拿一根, 但拿的火柴数不能超过上一次拿的火柴数.
+\paragraph{Nim-K游戏}$n$堆石子轮流拿，每次最多可以拿k堆石子，谁走最后一步输。结论：把每一堆石子的sg值(即石子数量)二进制分解,先手必败当且仅当每一位二进制位上1的个数是(k+1)的倍数. 
+\paragraph{Anti-Nim游戏}$n$堆石子轮流拿，谁走最后一步输。结论：先手胜当且仅当1. 所有堆石子数都为1且游戏的SG值为0 (即有偶数个孤单堆-每堆只有1个石子数) 2. 存在某堆石子数大于1且游戏的SG值不为0.
+\paragraph{斐波那契博弈}有一堆物品, 两人轮流取物品, 先手最少取一个, 至多无上限, 但不能把物品取完, 之后每次取的物品数不能超过上一次取的物品数的二倍且至少为一件, 取走最后一件物品的人获胜. 结论: 先手胜当且仅当物品数$n$不是斐波那契数. 
+\paragraph{威佐夫博弈}有两堆石子, 博弈双方每次可以取一堆石子中的任意个, 不能不取, 或者取两堆石子中的相同个. 先取完者赢. 结论: 求出两堆石子$A$和$B$的差值$C$, 如果$\left\lfloor C*\frac{\sqrt{5}+1}{2}\right\rfloor=min(A,B)$那么后手赢, 否则先手赢. 
+\paragraph{约瑟夫环}令$n$个人标号为$0,1,2,...,n-1$, 令$f_{i,m}$表示$i$个人报$m$胜利者的编号, 则$f_{1,m}=0,f_{i,m}=(f_{i-1,m}+m)mod\ i$. 
+\end{multicols}
+
+\subsubsection{错排公式}
+\[D_1=0,D_2=1,D_n=n!(\frac{1}{0!}-\frac{1}{1!}+\frac{1}{2!}-\frac{1}{3!}+...+\frac{(-1)^n}{n!})\]
+\[D_n=(n-1)(D_{n-1}+D_{n-2})\]
+\subsubsection{概率相关}
+对于随机变量$X$, 期望用$E(X)$表示, 方差用$D(X)$表示, 则$D(X)=E(X-E(X))^2=E(X^2)-(E(X))^2,D(X+Y)=D(X)+D(Y)D(aX)=a^2D(X)$\\
+\[E[x]=\sum_{i=1}^{\infty}P(X\geq i)\]
+\subsubsection{常用泰勒展开}
+\[f(x)=\frac{f(x_0)}{0!}+\frac{f'(x_0)}{1!}(x-x_0)+\frac{f''(x_0)}{2!}(x-x_0)^2+\cdots\]
+\[\frac{1}{(1-x)^n}=1+\binom{n}{1}x+\binom{n+1}{2}x^2+\binom{n+2}{3}x^3+\cdots \]
+\[e^x=1+x+\frac{x^2}{2!}+\cdots+\frac{x^i}{i!}\]
+
+\subsubsection{类卡特兰数}
+从(1,1)出发走到(n,m),只能向右或者向上走,不能越过y=x这条线(即保证$x\geq y$),合法方案数是$C_{n+m-2}^{n-1} - C_{n+m-2}^n$.
+
+\subsubsection{邻接矩阵行列式的意义}
+在无向图中取若干个环,一种取法权值就是边权的乘积,对行列式的贡献是$(-1)^{even}$,其中$even$是偶环的个数.
+
+\subsubsection{Others (某些近似数值公式在这里)}
+\[ S_j = \sum_{k=1}^nx_k^j \]
+\[ h_m = \sum_{1\leq j_1 < \cdots < j_m \leq n} x_{j_1}\cdots x_{j_m},\ \ H_m = \sum_{1\leq j_1 \leq \cdots \leq j_m \leq n} x_{j_1}\cdots x_{j_m} \]
+\[ h_n = \frac{1}{n}\sum_{k=1}^n(-1)^{k+1}S_kh_{n-k} \]
+\[ H_n = \frac{1}{n}\sum_{k=1}^nS_kH_{n-k} \]
+\[ \sum_{k=0}^nkc^k = \frac{nc^{n+2}-(n+1)c^{n+1}+c}{(c-1)^2} \]
+\[ \sum_{i=1}^n\frac 1n\approx\ln(n + \frac12) + \frac{1}{24(n+0.5)^2}+\Gamma,(\Gamma\approx0.5772156649015328606065)\]
+\[ n! = \sqrt{2\pi n}(\frac{n}{e})^n(1+\frac{1}{12n}+\frac{1}{288n^2}+O(\frac{1}{n^3})) \]
+\[ \begin{aligned}
+ &\max{\{x_a-x_b, y_a-y_b, z_a-z_b\}} - \min{\{x_a-x_b, y_a-y_b, z_a-z_b\}} \\
+=& \frac{1}{2}\sum_{cyc}\left| (x_a-y_a)-(x_b-y_b) \right|
+\end{aligned} \]
+\[ (a+b)(b+c)(c+a) = \frac{(a+b+c)^3 - a^3 - b^3 - c^3}{3} \]
+\[ a^3+b^3=(a+b)(a^2-ab+b^2),a^3-b^3=(a-b)(a^2+ab+b^2) \]
+$n\bmod 2=1:$
+\[ a^n+b^n=(a+b)(a^{n-1}-a^{n-2}b+a^{n-3}b^2-...-ab^{n-2}+b^{n-1})\]
+划分问题: $n$个$k-1$维向量最多把$k$维空间分为$\sum_{i=0}^{k}C_n^i$份.
+\end{small}
