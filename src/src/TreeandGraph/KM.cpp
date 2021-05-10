@@ -1,17 +1,45 @@
-LL KM(int n,LL w[N][N]){ // n 为点, w 为边权  不存在的边权开 -n*(|maxv|+1),inf 设为 3n*(|maxv|+1)
-	static LL lx[N],ly[N],slk[N];
-	static int lk[N],pre[N];static bool vy[N];
-	LL ans=0;int x,py,d,p;
-	fr(i,1,n)fr(j,1,n)lx[i]=max(lx[i],w[i][j]);
-	fr(i,1,n){
-		fr(j,1,n)slk[j]=inf,vy[j]=0;
-		for(lk[py=0]=i;lk[py];py=p){
-			vy[py]=1;d=inf;x=lk[py];
-			fr(y,1,n)if(!vy[y]){
-				if(lx[x]+ly[y]-w[x][y]<slk[y])
-					slk[y]=lx[x]+ly[y]-w[x][y],pre[y]=py;
-				if(slk[y]<d)d=slk[y],p=y;
-			}fr(y,0,n) if(vy[y])lx[lk[y]]-=d,ly[y]+=d; else slk[y]-=d;
-		}for(;py;py=pre[py])lk[py]=lk[pre[py]];}
-	fr(i,1,n)ans+=lx[i]+ly[i];
-	return ans;}//lk[] 为与右部点连的左部点
+struct KM {
+int n, nl, nr;
+LL a[N][N];
+LL hl[N], hr[N], slk[N];
+int fl[N], fr[N], vl[N], vr[N], pre[N], q[N], ql, qr;
+int check(int i) {
+	if (vl[i] = 1, fl[i] != -1)
+		return vr[q[qr++] = fl[i]] = 1;
+	while (i != -1) swap(i, fr[fl[i] = pre[i]]);
+	return 0; }
+void bfs(int s) {
+	fill(slk, slk + n, INF);
+	fill(vl, vl + n, 0); fill(vr, vr + n, 0);
+	q[ql = 0] = s; vr[s] = qr = 1;
+	for (LL d;;) {
+		for (; ql < qr; ++ql)
+		for (int i = 0, j = q[ql]; i < n; ++i)
+		if (d=hl[i]+hr[j]-a[i][j], !vl[i] && slk[i] >= d) {
+			if (pre[i] = j, d) slk[i] = d;
+			else if (!check(i)) return; }
+		d = INF;
+		for (int i = 0; i < n; ++i)
+		if (!vl[i] && d > slk[i]) d = slk[i];
+		for (int i = 0; i < n; ++i) {
+			if (vl[i]) hl[i] += d; else slk[i] -= d;
+			if (vr[i]) hr[i] -= d; }
+		for (int i = 0; i < n; ++i)
+			if (!vl[i] && !slk[i] && !check(i)) return; } }
+void solve() {
+	n = max(nl, nr);
+	fill(pre, pre + n, -1); fill(hr, hr + n, 0);
+	fill(fl, fl + n, -1); fill(fr, fr + n, -1);
+	for (int i = 0; i < n; ++i)
+		hl[i] = *max_element(a[i], a[i] + n);
+	for (int i = 0; i < n; ++i)
+		bfs(i); }
+LL calc() {
+	LL ans = 0;
+	for (int i = 0; i < nl; ++i)
+		if (~fl[i]) ans += a[i][fl[i]];
+	return ans; }
+void output() {
+	for (int i = 0; i < nl; ++i)
+	printf("%d ", (~fl[i] && a[i][fl[i]] ? fl[i] + 1 : 0));
+} } km;

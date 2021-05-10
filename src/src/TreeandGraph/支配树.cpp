@@ -24,7 +24,7 @@ struct Dominator_Tree{
 			dom[id[idom[i]]].push_back(id[i]);
 		}
 	}void build(){//建立支配树 
-		for(int i=1;i<=n;i++)dfn[i]=0,dom[i].clear(),be[i].clear(),p[i]=mn[i]=semi[i]=i; 
+		for(int i=1;i<=n;i++) dfn[i]=0,dom[i].clear(),
+			be[i].clear(),p[i]=mn[i]=semi[i]=i; 
 		cnt=0;dfs(s);LT();
-	}
-}G;
+	} }G;

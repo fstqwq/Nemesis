@@ -1,4 +1,4 @@
-\documentclass[titlepage, a4paper,9pt]{article}
+\documentclass[titlepage, a4paper]{article}
 %\usepackage{euler}
 \usepackage{graphicx, amssymb, amsmath, textcomp, booktabs}
 \usepackage[libertine,vvarbb]{newtxmath}
@@ -14,6 +14,7 @@
 \usepackage{tocloft}
 \usepackage{nameref}
 \usepackage{verbatim}
+\usepackage{relsize}
 %\usepackage{rotating}
 
 \XeTeXlinebreaklocale "zh"
@@ -80,7 +81,7 @@
 	%breaksymbolright=\small\carriagereturn,
 	breakbytoken=false,
 	showtabs=true,
-	tab=$\mathbb{|}\ \ \ $,
+	tab={\relscale{0.6} $\big\vert \ \ \ $ \relscale{1}},
 }
 \setminted[java]{
 	style=xcode,
@@ -100,7 +101,7 @@
 	%breaksymbolright=\small\carriagereturn,
 	breakbytoken=false,
 	showtabs=true,
-	tab=$\mathbb{|}\ \ \ $,
+	tab={\relscale{0.6} $\big\vert \ \ \ $ \relscale{1}},
 }
 \setminted[python]{
 	style=xcode,
@@ -121,7 +122,7 @@
 	%breaksymbolright=\small\carriagereturn,
 	breakbytoken=false,
 	showtabs=true,
-	tab=$\mathbb{|}\ \ \ $,
+	tab={\relscale{0.6} $\big\vert \ \ \ $ \relscale{1}},
 }
 
 \setminted[vim]{
@@ -239,13 +240,11 @@
 				%\inputminted{cpp}{src/DataStructure/可持久化平衡树.cpp}
 				% \subsection{有旋 Treap}
 				% \inputminted{cpp}{src/DataStructure/有旋treap.cpp}
-				\subsection{Hash Table}
-				\inputminted{cpp}{src/DataStructure/hashmap.cpp}
 				
 			\section{Tree \& Graph}
 				\subsection{Hopcroft-Karp $O(\sqrt{N}M)$ 最大匹配}
 				\inputminted{cpp}{src/TreeandGraph/Hopcroft.cpp}
-				\subsection{Shuffle 一般图最大匹配}
+				\subsection{Shuffle 一般图最大匹配 $O(|V| |E|)$}
 				\inputminted{cpp}{src/TreeandGraph/一般图最大匹配-shuffle.cpp}
 				\subsection{极大团计数}
 				\inputminted{cpp}{src/TreeandGraph/CliqueCount.cpp}
@@ -253,10 +252,10 @@
 				\inputminted{cpp}{src/TreeandGraph/TreeHash.cpp}
 				\subsection{Stoer-Wagner 无向图最小割(树)}
 				\inputminted{cpp}{src/TreeandGraph/无向图最小割.cpp}
-				\subsection{KM 最大权匹配}
+				\subsection{KM 最大权匹配 $O(|V|^3)$}
 				\inputminted{cpp}{src/TreeandGraph/KM.cpp}
-				\subsection{Blossom 带花树}
-				\inputminted{cpp}{src/TreeandGraph/Blossom.cpp}
+				%\subsection{Blossom 一般图带权最大匹配 $O(|V|^3)$}
+				%\inputminted{cpp}{src/TreeandGraph/Blossom.cpp}
 				\subsection{Cactus 仙人掌}
 				\inputminted{cpp}{src/TreeandGraph/cactus.cpp}
 				\subsection{Tarjan 连通分量}
@@ -379,16 +378,12 @@
 				\inputminted{cpp}{src/Miscellany/日期公式.cpp}
 				%\subsection{Dancing Links 精确覆盖搜索}
 				%\inputminted{cpp}{src/Miscellany/DLX.cpp}
-				\subsection{Java Template}
-				\inputminted{java}{src/Miscellany/Main.java}
-				\subsection{Python Hint}
-				\inputminted{python}{src/Miscellany/py.py}
-				\subsection{Vimrc}
-				\inputminted{vim}{src/Miscellany/vimrc}
-				\subsection{Bashrc}
-				\inputminted{sh}{src/Miscellany/bashrc}
-				\subsection{读入优化相关}
+				\subsection{读入优化/Bitset/unordered 自定义 hash}
 				\inputminted{cpp}{src/Miscellany/hack.cpp}
+				\subsection{Hash Table}
+				\inputminted{cpp}{src/DataStructure/hashmap.cpp}
+				\subsection{基数排序}
+				\inputminted{cpp}{src/Miscellany/RadixSort.cpp}
 			
 			\section{Appendix}
 				\begin{spacing}{0.5}
@@ -401,6 +396,14 @@
 				\subsection{Constant Table 常数表}
 				\input{src/TipsandHints/Addon.tex}
 				\end{spacing}
+				\subsection{Java Template}
+				\inputminted{java}{src/Miscellany/Main.java}
+				\subsection{Python Hint}
+				\inputminted{python}{src/Miscellany/py.py}
+				\subsection{Vimrc}
+				\inputminted{vim}{src/Miscellany/vimrc}
+				\subsection{Bashrc}
+				\inputminted{sh}{src/Miscellany/bashrc}
 			
 			%\end{comment}
 		\end{spacing}
