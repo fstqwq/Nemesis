@@ -1,2 +1,0 @@
-# DarkSeal
-Dark Seal SCL

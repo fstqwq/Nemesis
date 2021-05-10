@@ -1,5 +1,0 @@
-\subsubsection{单位根反演}
-求$\sum_{i=0}^{\lfloor \frac{n}{k} \rfloor} {C_n^{ik}}$.\\
-引理:$\frac{1}{k} \sum_{i=0}^{k-1} \omega_{k}^{in} = [k \mid n]$.\\
-反演:$Ans = \sum_{i=0}^n{C_n^i [k \mid i]} \\= \sum_{i=0}^n{C_n^i(\frac{1}{k}\sum_{j=0}^{k-1}{\omega_k^{ij}})} \\= \frac{1}{k} {\sum_{i=0}^{n}C_n^i \sum_{j=0}^{k-1} \omega_k^{ij}} \\= \frac{1}{k} {\sum_{j=0}^{k-1}(\sum_{i=0}^n C_n^i(\omega_k^j)^i)} \\= \frac{1}{k} \sum_{j=0}^{k-1} (1+\omega_k^j)^n$.\\
-另,如果要求的是$[n \% k = t]$,其实就是$[k \mid (n-t)]$.同理推式子即可.
