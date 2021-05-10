@@ -1,10 +1,15 @@
 \documentclass[titlepage, a4paper,9pt]{article}
-\usepackage{euler}
-\usepackage{listings, color, fontspec, minted, setspace, titlesec, fancyhdr, dingbat, mdframed, multicol}
+%\usepackage{euler}
 \usepackage{graphicx, amssymb, amsmath, textcomp, booktabs}
+\usepackage[libertine,vvarbb]{newtxmath}
+\usepackage[scr=rsfso]{mathalfa}
+%\usepackage[lining,semibold,type1]{libertine} % a bit lighter than Times--no osf in math
+\usepackage[T1]{fontenc} % best for Western European languages
+\usepackage{minted}
+\usepackage{listings, color, fontspec, setspace, titlesec, fancyhdr, mdframed, multicol}
 \usepackage{ucharclasses}
 \usepackage{xunicode, xltxtra}
-\usepackage[inner=1.35cm, outer=1cm, top=1.7cm, bottom=0.0cm]{geometry}
+\usepackage[inner=1.35cm, outer=0.9cm, top=1.7cm, bottom=0.0cm]{geometry}
 \usepackage{pdfpages}
 \usepackage{tocloft}
 \usepackage{nameref}
@@ -178,26 +183,26 @@
 		\begin{spacing}{0.6}
 			
 			\section{Geometry}
+				\subsection{凸包}
+				\inputminted{cpp}{src/Geometry/凸包.cpp}
+				\subsection{闵可夫斯基和}
+				\inputminted{cpp}{src/Geometry/闵可夫斯基和.cpp}
+				\subsection{最小覆盖圆}
+				\inputminted{cpp}{src/Geometry/最小覆盖圆.cpp}
 				\subsection{二维几何基础操作}
 				\inputminted{cpp}{src/Geometry/geo.cpp}
 				\subsection{直线半平面交}
 				\inputminted{cpp}{src/Geometry/半平面交.cpp}
-				\subsection{凸包}
-				\inputminted{cpp}{src/Geometry/凸包.cpp}
 				\subsection{直线与凸包交点}
 				\inputminted{cpp}{src/Geometry/直线与凸包交点.cpp}
 				\subsection{点到凸包切线}
 				\inputminted{cpp}{src/Geometry/点到凸包切线.cpp}
-				\subsection{闵可夫斯基和}
-				\inputminted{cpp}{src/Geometry/闵可夫斯基和.cpp}
 %				\subsection{Delaunay 三角剖分}
 %				\inputminted{cpp}{src/Geometry/DelaunayTriangulation.cpp}
 				\subsection{三角形 与 费马点}
 				\inputminted{cpp}{src/Geometry/三角形.cpp}
 				\subsection{圆并}
 				\inputminted{cpp}{src/Geometry/圆并.cpp}
-				\subsection{最小覆盖圆}
-				\inputminted{cpp}{src/Geometry/最小覆盖圆.cpp}
 				\subsection{多边形与圆交}
 				\inputminted{cpp}{src/Geometry/多边形和圆的交.cpp}
 				\subsection{阿波罗尼茨圆}
@@ -232,32 +237,36 @@
 				\inputminted{cpp}{src/DataStructure/LCT.cpp}
 				%\subsection{可持久化平衡树}
 				%\inputminted{cpp}{src/DataStructure/可持久化平衡树.cpp}
-				\subsection{有旋 Treap}
-				\inputminted{cpp}{src/DataStructure/有旋treap.cpp}
+				% \subsection{有旋 Treap}
+				% \inputminted{cpp}{src/DataStructure/有旋treap.cpp}
 				\subsection{Hash Table}
 				\inputminted{cpp}{src/DataStructure/hashmap.cpp}
 				
 			\section{Tree \& Graph}
+				\subsection{Hopcroft-Karp $O(\sqrt{N}M)$ 最大匹配}
+				\inputminted{cpp}{src/TreeandGraph/Hopcroft.cpp}
+				\subsection{Shuffle 一般图最大匹配}
+				\inputminted{cpp}{src/TreeandGraph/一般图最大匹配-shuffle.cpp}
+				\subsection{极大团计数}
+				\inputminted{cpp}{src/TreeandGraph/CliqueCount.cpp}
+				\subsection{树 hash 有根树同构}
+				\inputminted{cpp}{src/TreeandGraph/TreeHash.cpp}
 				\subsection{Stoer-Wagner 无向图最小割(树)}
 				\inputminted{cpp}{src/TreeandGraph/无向图最小割.cpp}
 				\subsection{KM 最大权匹配}
 				\inputminted{cpp}{src/TreeandGraph/KM.cpp}
-				\subsection{Hopcroft-Karp $O(\sqrt{N}M)$ 最大匹配}
-				\inputminted{cpp}{src/TreeandGraph/Hopcroft.cpp}
 				\subsection{Blossom 带花树}
 				\inputminted{cpp}{src/TreeandGraph/Blossom.cpp}
-				%\subsection{Cactus 仙人掌}
-				%\inputminted{cpp}{src/TreeandGraph/cactus.cpp}
+				\subsection{Cactus 仙人掌}
+				\inputminted{cpp}{src/TreeandGraph/cactus.cpp}
 				\subsection{Tarjan 连通分量}
 				\inputminted{cpp}{src/TreeandGraph/Tarjan.cpp}
 				\subsection{Dominator Tree 支配树}
 				\inputminted{cpp}{src/TreeandGraph/支配树.cpp}
 				\subsection{朱刘算法 最小树形图 (含lazy tag可并堆)}
 				\inputminted{cpp}{src/TreeandGraph/最小树形图.cpp}
-				\subsection{最大团}
-				\inputminted{cpp}{src/TreeandGraph/MaximumClique.cpp}
-				\subsection{极大团计数}
-				\inputminted{cpp}{src/TreeandGraph/CliqueCount.cpp}
+				%\subsection{最大团}
+				%\inputminted{cpp}{src/TreeandGraph/MaximumClique.cpp}
 				\subsection{Minimum Mean Cycle}
 				\inputminted{cpp}{src/TreeandGraph/MeanCycle.cpp}
 				%\subsection{Dinic 最大流}
@@ -294,10 +303,12 @@
 				\input{src/TreeandGraph/图论知识.tex}
 			
 			\section{String}
-				\subsection{KMP 扩展 KMP 循环最小表示}
-				\inputminted{cpp}{src/String/KMP.cpp}
+				\subsection{最小表示法}
+				\inputminted{cpp}{src/String/最小表示法.cpp}
 				\subsection{Manacher}
 				\inputminted{cpp}{src/String/Manacher.cpp}
+				\subsection{KMP exKMP}
+				\inputminted{cpp}{src/String/KMP.cpp}
 				\subsection{Aho-Corasick Automation AC 自动机}
 				\inputminted{cpp}{src/String/AC 自动机.cpp}
 				\subsection{Lydon Word Decomposition}

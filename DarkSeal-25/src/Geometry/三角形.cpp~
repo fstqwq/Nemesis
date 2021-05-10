@@ -22,4 +22,4 @@ point fermat_point (const point &a, const point &b, const point &c) {
 		mid = line_intersect (line (a, b + (c - b).rot (sq3)), line (b, c + (a - c).rot (sq3)));
 	else
 		mid = line_intersect (line (a, c + (b - c).rot (sq3)), line (c, b + (a - b).rot (sq3)));
-	return mid; } // minimize(|A-x|+|B-x|+|C-x|)
+	return mid; }

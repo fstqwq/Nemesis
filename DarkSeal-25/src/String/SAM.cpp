@@ -1,25 +1,3 @@
-#define root 0
-struct SAM_tbr{
-    int e[N << 2][26];
-    int lst, cur, link[N << 2], len[N << 2], cnt;
-    bool isleaf[N << 2];
-    void init(){
-        memset(isleaf, 0, sizeof isleaf),
-        memset(e, 0, sizeof e); cnt = 0;
-        link[root] = -1, cur = root; }
-    void extend(int c){
-        c-='a', lst = cur, cur = ++cnt;
-        len[cur] = len[lst]+1, isleaf[cur] = 1; 
-        int u = lst, v;
-        while(u!=-1 && !e[u][c]) e[u][c] = cur, u = link[u];
-        if (u == -1) {link[cur] = root; return;} 
-        v=e[u][c];
-        if (len[v] == len[u]+1) {link[cur] = v; return;} 
-        int clone = ++cnt;
-        len[clone] = len[u]+1, link[clone] = link[v],
-        memcpy(e[clone], e[v], sizeof e[v]);
-        link[v] = link[cur] = clone;
-        for (; u!=-1 && e[u][c]==v; u=link[u]) e[u][c] = clone; } };
 struct SAM_yzh {
 struct State {
 	vector <int> E;
