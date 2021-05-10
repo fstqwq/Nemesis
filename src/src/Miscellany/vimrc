@@ -4,4 +4,3 @@ set mouse=a ci ai si nu ts=4 sw=4 is hlsearch
 color slate
 map <F7> : ! make %<<CR>
 map <F8> : ! time ./%< <CR>
-map <F9> : ! time ./%< < %<.in <CR>

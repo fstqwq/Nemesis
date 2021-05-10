@@ -9,37 +9,13 @@ def IO_and_Exceptions():
 	assert False, '17 cards can\'t kill me'
 def Random():
 	import random as rand
-	rand.randint(0, 10)
-	rand.random(), rand.normalvariate(0.5, 0.1)
-	### Operating list
+	rand.normalvariate(0.5, 0.1)
 	l = [str(i) for i in range(9)]
 	sorted(l), min(l), max(l), len(l)
-	l.append(99),l.index(99),l.insert(0, 1),l.pop(0)
 	rand.shuffle(l)
-	rand.choice(l), rand.sample(l, 3) # Index Err
 	l.sort(key=lambda x:x ^ 1,reverse=True)
 	import functools as ft
 	l.sort(key=ft.cmp_to_key(lambda x, y:(y^1)-(x^1)))
-def Sample_Interaction():
-	# find perm of 6 num in 4 qrys
-	a = [4, 8, 15, 16, 23, 42]
-	def qry(x, y):
-		print("? {:d} {:d}".format(x + 1, y + 1))
-		g[x][y] = int(input()) # no need flush 
-		g[y][x] = g[x][y]
-	import itertools
-	g = [[-1 for i in range(6)] for j in range(6)]
-	for i in range(4): qry(i, i + 1)
-	for p in list(itertools.permutations(a, 6)):
-		ans = 1
-		for i in range(4):
-			if p[i] * p[i + 1] != g[i][i + 1]:
-				ans = 0
-		if ans:
-			print("! ", end="")
-			for i in range(6):
-				print(p[i], end = " ")
-			print("")
 def FractionOperation():
 	from fractions import Fraction 
 	a = Fraction(0.233).limit_denominator()
@@ -57,27 +33,18 @@ def DecimalOperation():
 	print(round(a, 5)) # total digits
 	print(a.quantize(Decimal("0.00000")))
 	# 21474.83648
-	print(a.sqrt(), a.ln(), a.log10(), a.exp())
-	print(a % Decimal("0.01"), a // Decimal("0.01"))
-	print(a ** 2, a.shift(2))
+	print(a.sqrt(), a.ln(), a.log10(), a.exp(), a ** 2)
 def Complex():
 	a = 1-2j
 	print(a.real, a.imag, a.conjugate())
-def Using_Class():
-	'''
-	Operators satisfy __*__, __r*__, __i*__.
-	add sub mul truediv floordiv mod divmod pow
-	and or xor lshift rshift
-	eq ne gt lt le
-	Following is a sample:
-	'''
-	class Frac:
-		x, y = 0, 0
-		def __init__(self, a = 0, b = 1):
-			self.x = a
-			self.y = b
-		def __add__(self, oth):
-			ret = Frac()
-			ret.x = self.x * oth.y + self.y * oth.x
-			ret.y = self.y * oth.y
-			return ret
+def FastIO():
+	import atexit
+	import io
+	import sys
+	_INPUT_LINES = sys.stdin.read().splitlines()
+	input = iter(_INPUT_LINES).__next__
+	_OUTPUT_BUFFER = io.StringIO()
+	sys.stdout = _OUTPUT_BUFFER
+	@atexit.register
+	def write():
+		sys.__stdout__.write(_OUTPUT_BUFFER.getvalue())
