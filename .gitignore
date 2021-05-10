@@ -1,0 +1,9 @@
+.vscode
+src/_minted-main
+src/*.aux
+src/*.synctex.gz
+src/*.log
+src/*.toc
+*.log
+*.un~
+*.cpp~
