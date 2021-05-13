@@ -64,10 +64,12 @@ void add_blossom(int u,int lca,int v){
 	fl[b].clear();
 	fl[b].push_back(lca);
 	for(int x=u,y; x!=lca; x=st[pa[y]])
-		fl[b].push_back(x),fl[b].push_back(y=st[match[x]]),q_push(y);
+		fl[b].push_back(x),
+		fl[b].push_back(y=st[match[x]]),q_push(y);
 	reverse(fl[b].begin()+1,fl[b].end());
 	for(int x=v,y; x!=lca; x=st[pa[y]])
-		fl[b].push_back(x),fl[b].push_back(y=st[match[x]]),q_push(y);
+		fl[b].push_back(x),
+		fl[b].push_back(y=st[match[x]]),q_push(y);
 	set_st(b,b);
 	for(int x=1; x<=n_x; ++x)g[b][x].w=g[x][b].w=0;
 	for(int x=1; x<=n; ++x)fl_from[b][x]=0;
