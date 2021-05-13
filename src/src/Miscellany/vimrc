@@ -1,6 +1,6 @@
 source $VIMRUNTIME/mswin.vim
 behave mswin
-set mouse=a ci ai si nu ts=4 sw=4 is hlsearch
+set mouse=a ci ai si nu ts=4 sw=4 is hls backup undofile
 color slate
 map <F7> : ! make %<<CR>
 map <F8> : ! time ./%< <CR>

@@ -7,15 +7,13 @@ bool in_circle(cp a, const circle &b) {
 circle make_circle(point u, point v) {
 	point p = (u + v) / 2;
 	return circle(p, (u - p).len()); }
-double sq(double x) {return x * x;}
-circle make_circle(point u, point v, point w) {
-	double a = u.x - v.x, b = u.y - v.y,
-		c = u.x - w.x, d = u.y - w.y,
-		e = ((sq(u.x) - sq(v.x)) - (sq(v.y) - sq(u.y))) / 2,
-		f = ((sq(u.x) - sq(w.x)) - (sq(w.y) - sq(u.y))) / 2;
-	point p = {-(d * e - b * f) / (b * c - a * d),
-			   -(a * f - c * e) / (b * c - a * d)};
-	return circle(p, (u - p).len());
+circle make_circle(cp a, cp b, cp c) {
+	point p = b - a, q = c - a,
+		s(dot(p, p) / 2, dot(q, q) / 2);
+	double d = det(p, q);
+	p = point( det(s, point(p.y, q.y)),
+		det(point(p.x, q.x), s) ) / d;
+	return circle(a + p, p.len());
 }
 circle min_circle (vector <point> p) {
 	circle ret;
