@@ -4,7 +4,7 @@ point base;
 bool cmp(cp a, cp b) {
 	int d = sgn(det(a - base, b - base));
 	if (d) return d > 0;
-	else return a.len() < b.len(); }
+	else return (a - base).len() < (b - base).len(); }
 bool turn_left(cp a, cp b, cp c) {
 	return sgn (det (b - a, c - a)) >= 0; }
 vector <point> convex_hull (vector <point> a) {
