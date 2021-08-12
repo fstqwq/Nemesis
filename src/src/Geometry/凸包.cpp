@@ -3,11 +3,11 @@ bool turn_left(cp a, cp b, cp c) {
 	return sgn (det (b - a, c - a)) >= 0; }
 vector <point> convex_hull (vector <point> a) {
 	int n = (int) a.size (), cnt = 0;
-	if (n < 2) return {}; 
+	if (n < 3) return a; 
 	point base = a[0];
 	for (auto i : a) if (make_pair (i.x, i.y)
 		< make_pair (base.x, base.y)) base = i;
-	sort (a.begin (), a.end (), [] (cp a, cp &b) {
+	sort (a.begin (), a.end (), [] (cp &a, cp &b) {
 		int d = sgn(det(a - base, b - base));
 		if (d) return d > 0;
 		else return (a - base).len() < (b - base).len();});
