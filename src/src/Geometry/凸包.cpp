@@ -1,15 +1,16 @@
 #define cp const point &
-const double eps = 1e-7;
-point base;
-bool cmp(cp a, cp b) {
-	int d = sgn(det(a - base, b - base));
-	if (d) return d > 0;
-	else return (a - base).len() < (b - base).len(); }
 bool turn_left(cp a, cp b, cp c) {
 	return sgn (det (b - a, c - a)) >= 0; }
 vector <point> convex_hull (vector <point> a) {
 	int n = (int) a.size (), cnt = 0;
-	sort (a.begin (), a.end (), cmp);
+	if (n < 2) return {}; 
+	point base = a[0];
+	for (auto i : a) if (make_pair (i.x, i.y)
+		< make_pair (base.x, base.y)) base = i;
+	sort (a.begin (), a.end (), [] (cp a, cp &b) {
+		int d = sgn(det(a - base, b - base));
+		if (d) return d > 0;
+		else return (a - base).len() < (b - base).len();});
 	vector <point> ret;
 	for (int i = 0; i < n; ++i) {
 		while (cnt > 1
@@ -26,4 +27,5 @@ vector <point> convex_hull (vector <point> a) {
 		}
 		ret.push_back (a[i]); ++cnt; 
 	}
-	ret.pop_back (); return ret; }
+	ret.pop_back (); return ret;
+}

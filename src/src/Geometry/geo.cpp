@@ -93,3 +93,12 @@ vector <line> intangent (cc a, cc b) {
 		ret.push_back (line (pp[0], qq[0]));
 		ret.push_back (line (pp[1], qq[1])); }
 	return ret; }
+vector <point> cut (const vector<point> &c, line p) {
+	vector <point> ret;
+	if (c.empty ()) return ret;
+	for (int i = 0; i < (int) c.size (); ++i) {
+		int j = (i + 1) % (int) c.size ();
+		if (turn_left (p.s, p.t, c[i])) ret.push_back (c[i]);
+		if (two_side (c[i], c[j], p))
+			ret.push_back (line_intersect (p, line (c[i], c[j]))); }
+	return ret; }
