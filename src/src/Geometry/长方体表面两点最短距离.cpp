@@ -11,8 +11,8 @@ int main(){
 	int L, H, W, x1, y1, z1, x2, y2, z2;
 	cin >> L >> W >> H >> x1 >> y1 >> z1 >> x2 >> y2 >> z2;
 	if (z1!=0 && z1!=H) if (y1==0 || y1==W)
-	     swap(y1,z1), std::swap(y2,z2), std::swap(W,H);
-	else swap(x1,z1), std::swap(x2,z2), std::swap(L,H);
+	     swap(y1,z1), swap(y2,z2), swap(W,H);
+	else swap(x1,z1), swap(x2,z2), swap(L,H);
 	if (z1==H) z1=0, z2=H-z2;
 	r=0x3fffffff; 
 	turn(0,0,x2-x1,y2-y1,z2,-x1,-y1,L,W,H);

@@ -57,4 +57,3 @@ void Tarjan(int now, int fa) {
 void PBCC() { // clear dfn low iscut bcc_id
 	stp = bcc_cnt = top = 0;
 	for (int i = 1; i <= n; ++i) if (!dfn[i]) Tarjan(i, 0); }
-		

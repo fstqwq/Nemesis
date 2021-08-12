@@ -24,7 +24,7 @@ LL factorize (LL number, LL seed) {
 		LL answer = gcd (abs (x - y), number);
 		if (answer > 1 && answer < number) return answer;
 		if (++head == tail) { y = x; tail <<= 1; } } }
-void search (LL number, std::vector<LL> &divisor) {
+void search (LL number, vector<LL> &divisor) {
 	if (number <= 1) return;
 	if (is_prime.solve (number)) divisor.push_back (number);
 	else {
