@@ -1,11 +1,11 @@
 /* 右手系逆时针绕轴旋转, $(x, y, z)  A = (x_\text{new}, y_\text{new}, z_\text{new})$
 new[i] += old[j] * A[j][i] */
-void calc(p3 n, D cosw) {
-	D sinw = sqrt(1 - cosw * cosw);
+void calc(p3 n, double cosw) {
+	double sinw = sqrt(1 - cosw * cosw);
 	n.normalize();
 	for (int i = 0; i < 3; i++) {
 		int j = (i + 1) % 3, k = (j + 1) % 3;
-		D x = n[i], y = n[j], z = n[k];
+		double x = n[i], y = n[j], z = n[k];
 		A[i][i] = (y * y + z * z) * cosw + x * x;
 		A[i][j] = x * y * (1 - cosw) + z * sinw;
 		A[i][k] = x * z * (1 - cosw) - y * sinw; } }
