@@ -1,8 +1,8 @@
-double sector_area (const point &a, const point &b, const double &r) {
+double sector_area (cp a, cp b, double r) {
 	double c = (2.0 * r * r - (a - b).norm2 ()) / (2.0 * r * r);
 	double al = acos (c);
 	return r * r * al / 2.0; }
-double area(const point &a,const point &b,const double &r) {
+double area(cp a,cp b, double r) {
 	double dA = dot (a, a), dB = dot (b, b), dC = point_to_segment (point (), line (a, b)), ans = 0.0;
 	if (sgn (dA - r * r) <= 0 && sgn (dB - r * r) <= 0) return det (a, b) / 2.0;
 	point tA = a.unit () * r;
@@ -18,7 +18,7 @@ double area(const point &a,const point &b,const double &r) {
 		return det (ret.first, b) / 2.0 + sector_area (tA, ret.first, r);
 	else
 		return det (a, ret.second) / 2.0 + sector_area (ret.second, tB, r); }
-double solve(const vector<point> &p, const circle &c) {//多边形必须逆时针
+double solve(const vector<point> &p, cc c) {//多边形必须逆时针
 	double ret = 0.0;
 	for (int i = 0; i < (int) p.size (); ++i) {
 		int s = sgn (det (p[i] - c.c, p[ (i + 1) % p.size ()] - c.c));

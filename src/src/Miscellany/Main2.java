@@ -4,7 +4,7 @@ import java.text.*;
 import java.io.*;
 
 // Byte Camp 2021 Final : F
-// Calulate $a, b \sim$ Polygon, $\mathbb E[|a.x - b.x| + |a.y - b.y|]$
+// Calulate a, b ~ Polygon, E[|a.x - b.x| + |a.y - b.y|]
 public class Main {
 	static class point {
 		BigDecimal x, y;

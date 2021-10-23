@@ -90,7 +90,8 @@
 	linenos,
 	autogobble,
 	baselinestretch=0.9,
-	tabsize=2,
+	tabsize=3,
+	fontsize=\normalsize,
 	%bgcolor=Gray,
 	frame=single,
 	framesep=1mm,
@@ -102,7 +103,7 @@
 	%breaksymbolright=\small\carriagereturn,
 	breakbytoken=false,
 	showtabs=true,
-	tab={\relscale{0.6} $\big\vert \ \ $ \relscale{1}},
+	tab={\relscale{0.6} $\big\vert \ \ \ $ \relscale{1}},
 }
 \setminted[python]{
 	style=xcode,
@@ -172,7 +173,7 @@
 %THE SCL BEGINS
 \begin{document}
 	\begin{titlepage}
-		\includepdf{cover-back.pdf}
+%		\includepdf{cover-back.pdf}
 		\newpage
 	\end{titlepage}
 	\begin{multicols}{2}
@@ -195,10 +196,12 @@
 				\inputminted{cpp}{src/Geometry/geo.cpp}
 				\subsection{直线半平面交}
 				\inputminted{cpp}{src/Geometry/半平面交.cpp}
-				\subsection{直线与凸包交点}
-				\inputminted{cpp}{src/Geometry/直线与凸包交点.cpp}
-				\subsection{点到凸包切线}
-				\inputminted{cpp}{src/Geometry/点到凸包切线.cpp}
+%				\subsection{直线与凸包交点}
+%				\inputminted{cpp}{src/Geometry/直线与凸包交点.cpp}
+%				\subsection{点到凸包切线}
+%				\inputminted{cpp}{src/Geometry/点到凸包切线.cpp}
+\subsection{凸包快速询问}
+\inputminted{cpp}{src/Geometry/logconvexhull.cpp}
 %				\subsection{Delaunay 三角剖分}
 %				\inputminted{cpp}{src/Geometry/DelaunayTriangulation.cpp}
 				\subsection{三角形 与 费马点}
@@ -211,6 +214,18 @@
 				\inputminted{cpp}{src/Geometry/阿波罗尼茨圆.tex}
 				\subsection{圆幂 圆反演 根轴}
 				\input{src/Geometry/圆幂.tex}
+				\subsection{球面基础}
+				\input{src/Geometry/球面.tex}
+				\subsection{经纬度球面距离}
+				\inputminted{cpp}{src/Geometry/经纬度求球面最短距离.cpp}
+%				\subsection{最近点对}
+%				\inputminted{cpp}{src/Geometry/最近点对.cpp}
+				\subsection{长方体表面两点最短距离}
+				\inputminted{cpp}{src/Geometry/长方体表面两点最短距离.cpp}
+				\subsection{圆上整点}
+				\inputminted{cpp}{src/Geometry/圆上整点.cpp}
+				\subsection{相关公式}
+				\input{src/Geometry/Formula(Saga).tex}
 				\newpage
 				\subsection{三维绕轴旋转 三维基础操作}
 				\inputminted{cpp}{src/Geometry/三维几何.cpp}
@@ -218,18 +233,6 @@
 				\inputminted{cpp}{src/Geometry/三维凸包.cpp}
 				\subsection{最小覆盖球}
 				\inputminted{cpp}{src/Geometry/最小覆盖球.cpp}
-				\subsection{球面基础}
-				\input{src/Geometry/球面.tex}
-				\subsection{经纬度球面距离}
-				\inputminted{cpp}{src/Geometry/经纬度求球面最短距离.cpp}
-				\subsection{最近点对}
-				\inputminted{cpp}{src/Geometry/最近点对.cpp}
-				\subsection{长方体表面两点最短距离}
-				\inputminted{cpp}{src/Geometry/长方体表面两点最短距离.cpp}
-				\subsection{圆上整点}
-				\inputminted{cpp}{src/Geometry/圆上整点.cpp}
-				\subsection{相关公式}
-				\input{src/Geometry/Formula(Saga).tex}
 				
 			%\begin{comment}
 			
@@ -344,10 +347,10 @@
 				\inputminted{cpp}{src/Math/线性同余不等式.cpp}
 				\subsection{Miller Rabin And Pollard Rho}
 				\inputminted{cpp}{src/Math/Miller Rabin And Pollard Rho.cpp}
-				\subsection{杜教筛}
-				\inputminted{cpp}{src/Math/杜教筛.cpp}
-				\subsection{min25 筛}
-				\inputminted{cpp}{src/Math/TEES.cpp}
+				% \subsection{杜教筛}
+				% \inputminted{cpp}{src/Math/杜教筛.cpp}
+				% \subsection{min25 筛}
+				% \inputminted{cpp}{src/Math/TEES.cpp}
 				\input{src/Math/单位根反演.tex}
 				\subsection{原根}
 				\inputminted{cpp}{src/Math/原根.cpp}

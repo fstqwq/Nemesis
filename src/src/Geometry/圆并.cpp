@@ -3,7 +3,7 @@ struct event {
 	point p; double ang; int delta;
 	event (point p = point (), double ang = 0, int delta = 0) : p(p), ang(ang), delta(delta) {}
 	bool operator < (const event &a) { return ang < a.ang; } };
-void addevent(const circle &a, const circle &b, vector<event> &evt, int &cnt) {
+void addevent(cc a, cc b, vector<event> &evt, int &cnt) {
 	double d2 = (a.c - b.c).norm2(), dRatio = ((a.r - b.r) * (a.r + b.r) / d2 + 1) / 2,
 		pRatio = sqrt (max (0., -(d2 - sqr(a.r - b.r)) * (d2 - sqr(a.r + b.r)) / (d2 * d2 * 4)));
 	point d = b.c - a.c, p = d.rot(PI / 2),
@@ -12,11 +12,11 @@ void addevent(const circle &a, const circle &b, vector<event> &evt, int &cnt) {
 	double ang0 = atan2 ((q0 - a.c).y, (q0 - a.c).x), ang1 = atan2 ((q1 - a.c).x, (q1 - a.c).y);
 	evt.emplace_back(q1,ang1,1); evt.emplace_back(q0,ang0,-1);
 	cnt += ang1 > ang0; }
-bool issame(const circle &a, const circle &b) {
+bool issame(cc a, cc b) {
 	return sgn((a.c-b.c).norm()) == 0 && sgn(a.r-b.r) == 0; }
-bool overlap(const circle &a, const circle &b) { 
+bool overlap(cc a, cc b) { 
 	return sgn(a.r - b.r - (a.c - b.c).norm()) >= 0; }
-bool intersect(const circle &a, const circle &b) { 
+bool intersect(cc a, cc b) { 
 	return sgn((a.c - b.c).norm() - a.r - b.r) < 0; }
 void solve() {
 	fill (area, area + C + 2, 0);

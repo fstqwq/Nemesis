@@ -1,3 +1,4 @@
+// make_circle : 过参数点的最小圆
 struct circle {
 	point p; double r;
 	circle () {}
