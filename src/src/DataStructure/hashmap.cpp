@@ -1,6 +1,7 @@
 template <class T,int P = 314159/*,451411,1141109,2119969*/>
 struct hashmap {
-ULL id[P]; T val[P]; int rec[P]; // del: no cleas
+ULL id[P]; T val[P];
+int rec[P]; // del: no many clears
 hashmap() {memset(id, -1, sizeof id);}
 T get(const ULL &x) const {
 	for (int i = int(x % P), j = 1; ~id[i]; i = (i + j) % P, j = (j + 2) % P /*unroll if needed*/) {

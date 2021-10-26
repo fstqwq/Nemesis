@@ -33,11 +33,11 @@
 
 %configure fonts
 \setmonofont{Consolas}[Scale=0.775]
-\newfontfamily\substitutefont{SimHei}[Scale=0.8]
+\newfontfamily\substitutefont{SimSun}[Scale=0.8,BoldFont=SimHei]
 \setTransitionsForChinese{\begingroup\substitutefont}{\endgroup}
 
 %configure minted to display codes
-\definecolor{Gray}{rgb}{0.9,0.9,0.9}
+%\definecolor{Gray}{rgb}{0.9,0.9,0.9}
 
 %remove leading numbers in table of contents
 %\setcounter{secnumdepth}{0}	
@@ -68,7 +68,7 @@
 	mathescape,
 	linenos,
 	autogobble,
-	baselinestretch=0.9,
+	baselinestretch=0.8,
 	tabsize=3,
 	fontsize=\normalsize,
 	%bgcolor=Gray,
@@ -89,7 +89,7 @@
 	mathescape,
 	linenos,
 	autogobble,
-	baselinestretch=0.9,
+	baselinestretch=0.8,
 	tabsize=3,
 	fontsize=\normalsize,
 	%bgcolor=Gray,
@@ -110,7 +110,7 @@
 	mathescape,
 	linenos,
 	autogobble,
-	baselinestretch=0.9,
+	baselinestretch=0.8,
 	tabsize=3,
 	fontsize=\normalsize,
 	%bgcolor=Gray,
@@ -132,7 +132,7 @@
 	mathescape,
 	linenos,
 	autogobble,
-	baselinestretch=0.9,
+	baselinestretch=0.8,
 	tabsize=2,
 	fontsize=\normalsize,
 	%bgcolor=Gray,
@@ -152,7 +152,7 @@
 	mathescape,
 	linenos,
 	autogobble,
-	baselinestretch=0.9,
+	baselinestretch=0.8,
 	tabsize=2,
 	fontsize=\normalsize,
 	%bgcolor=Gray,
@@ -287,8 +287,8 @@
 				%\inputminted{cpp}{src/TreeandGraph/三元环.cpp}
 				%\subsection{平面图转对偶图}
 				%\inputminted{cpp}{src/TreeandGraph/平面图转对偶图.cpp}
-				\subsection{最小乘积生成树}
-				\inputminted{cpp}{src/TreeandGraph/最小乘积生成树.cpp}
+				%\subsection{最小乘积生成树}
+				%\inputminted{cpp}{src/TreeandGraph/最小乘积生成树.cpp}
 				%\subsection{树同构}
 				%\inputminted{cpp}{src/TreeandGraph/树同构.cpp}
 				%\subsection{树点分治 ??}
@@ -301,7 +301,12 @@
 				\inputminted{cpp}{src/TreeandGraph/无向图最小割.cpp}
 				\subsection{Cactus 仙人掌}
 				\inputminted{cpp}{src/TreeandGraph/cactus.cpp}
-				\subsection{图论知识}
+				\input{src/tbr/网络流总结.tex}
+				\subsection{图论结论}
+				\input{src/tbr/最小乘积问题.tex}
+				\input{src/tbr/最小环问题.tex}
+				\input{src/tbr/度序列的可图性.tex}
+				%\subsection{图论知识 - Nightfall}
 				\input{src/TreeandGraph/图论知识.tex}
 			
 			\section{String}
@@ -328,7 +333,7 @@
 				%\subsection{Palindrome Automation 回文自动机}
 				%\inputminted{cpp}{src/String/PAM.cpp}
 				\subsection{String Conclusions}
-				\input{src/String/Conclusions.tex}
+				\input{src/tbr/string-Conclusions.tex}
 			
 			\section{Math 数学}
 				\subsection{exgcd}
@@ -385,6 +390,7 @@
 				\inputminted{cpp}{src/Miscellany/日期公式.cpp}
 				\subsection{四边形不等式}
 				\inputminted{cpp}{src/Miscellany/2D1D.cpp}
+				\input{src/tbr/树形背包优化.tex}
 				%\subsection{Dancing Links 精确覆盖搜索}
 				%\inputminted{cpp}{src/Miscellany/DLX.cpp}
 				\subsection{Long Long Mutiply Mod}
@@ -395,10 +401,7 @@
 				\inputminted{cpp}{src/Miscellany/RadixSort.cpp}
 				\subsection{读入优化/Bitset/unordered 自定义 hash}
 				\inputminted{cpp}{src/Miscellany/hack.cpp}
-
-			\section{TBR}
-				
-
+			
 			\section{Appendix}
 				\begin{spacing}{0.5}
 				\subsection{Formulas 公式表}
@@ -417,7 +420,7 @@
 				\subsection{Vimrc, Bashrc}
 				\inputminted{vim}{src/Miscellany/vimrc}
 				\inputminted{sh}{src/Miscellany/bashrc}
-				\subsection{Give me some random primes!}
+				\subsection{I used to roll the dice}
 				\texttt{\input{|"python src/Miscellany/randomprimes.py"}}
 				\newpage
 			\subsection*{Java Example}

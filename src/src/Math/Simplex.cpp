@@ -1,5 +1,5 @@
 const LD eps = 1e-8, INF = 1e9; const int N = 105;
-namespace S {
+namespace Simplex {
 int n, m, id[N], tp[N]; LD a[N][N];
 void pivot(int r, int c) {
 	swap(id[r + n], id[c]);
@@ -13,7 +13,7 @@ bool solve() {
 	for ( ; ; ) {
 		int i = 0, j = 0; LD w = -eps;
 		for (int k = 1; k <= m; k++)
-			if (a[k][0] < w || (a[k][0] < -eps && rand() % 8 == 1))
+			if (a[k][0] < w || (a[k][0] < -eps && rand() & 1))
 				w = a[i = k][0]; 
 		if (!i) break;
 		for (int k = 1; k <= n; k++)
@@ -36,7 +36,7 @@ LD ans() {return a[0][0];}
 void output() {
 	for (int i = n + 1; i <= n + m; i++) tp[id[i]] = i - n;
 	for (int i = 1; i <=n; i++) printf("%.9lf ", tp[i] ? a[tp[i]][0] : 0);}
-}using namespace S;
+}using namespace Simplex;
 int main() { int K; read(n); read(m); read(K);
 for (int i = 1; i <= n; i++) {LD x; scanf("%lf", &x); a[0][i] = x;}
 for (int i = 1; i <= m; i++) {LD x;

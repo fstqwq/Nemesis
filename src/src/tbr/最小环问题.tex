@@ -1,4 +1,6 @@
 \subsubsection{最小环}
 \noindent
-无向图最小环: 每次floyd到k时, 判断1到k-1的每一个i,j: $ans = min\{ans, d(i,j)+map(i,k)+map(k,j)\}$, 然后再松弛k.\\
-有向图最小环: 做完floyd后, $d(i,i)$即为经过i的最小环.
+无向图最小环: 每次floyd到$k$时, 判断$1$到$k-1$的每一个$i,j$:
+$$\mathrm{ans} = \min\{\mathrm{ans}, d(i,j)+G(i,k)+G(k,j)\}.$$\\
+\noindent
+有向图最小环: 做完floyd后, $d(i,i)$即为经过 $i$ 的最小环.
