@@ -21,9 +21,22 @@
 \XeTeXlinebreaklocale "zh"
 \XeTeXlinebreakskip = 0pt plus 1pt
 
+\setlength{\parindent}{0em}\setlength{\parskip}{1pt}
+\setlength\itemsep{1pt}
+
+\makeatletter
+\renewcommand{\paragraph}{%
+  \@startsection{paragraph}{4}%
+  {\z@}{1pt \@plus 1pt \@minus 1pt}{-1em}%
+  {\normalfont\normalsize\bfseries}%
+}
+\makeatother
+
+
 %configure the top corners
 \pagestyle{fancy}
 \setlength{\headsep}{0.1cm}
+
 \chead{All-in at the River}
 \rhead{Page \thepage}
 \lhead{上海交通大学 Shanghai Jiao Tong University}
@@ -196,12 +209,12 @@
 				\inputminted{cpp}{src/Geometry/geo.cpp}
 				\subsection{直线半平面交}
 				\inputminted{cpp}{src/Geometry/半平面交.cpp}
+				\subsection{凸包快速询问}
+				\inputminted{cpp}{src/Geometry/logconvexhull.cpp}
 %				\subsection{直线与凸包交点}
 %				\inputminted{cpp}{src/Geometry/直线与凸包交点.cpp}
 %				\subsection{点到凸包切线}
 %				\inputminted{cpp}{src/Geometry/点到凸包切线.cpp}
-\subsection{凸包快速询问}
-\inputminted{cpp}{src/Geometry/logconvexhull.cpp}
 %				\subsection{Delaunay 三角剖分}
 %				\inputminted{cpp}{src/Geometry/DelaunayTriangulation.cpp}
 				\subsection{三角形 与 费马点}
@@ -273,7 +286,8 @@
 				%\inputminted{cpp}{src/TreeandGraph/Dinic.cpp}
 				\subsection{Dijkstra 费用流}
 				\inputminted{cpp}{src/TreeandGraph/MCMF_dij.cpp}
-				\subsection{完美消除序列 弦图判定与最小染色}
+				\subsection{弦图}
+				\input{src/yzh/chordal-graph.tex}
 				\inputminted{cpp}{src/TreeandGraph/弦图.cpp}
 				\subsection{欧拉回路}
 				\inputminted{cpp}{src/TreeandGraph/欧拉回路.cpp}
@@ -299,8 +313,8 @@
 				%\inputminted{cpp}{src/TreeandGraph/DynamicMST.cpp}
 				\subsection{Stoer-Wagner 无向图最小割(树)}
 				\inputminted{cpp}{src/TreeandGraph/无向图最小割.cpp}
-				\subsection{Cactus 仙人掌}
-				\inputminted{cpp}{src/TreeandGraph/cactus.cpp}
+				%\subsection{Cactus 仙人掌}
+				%\inputminted{cpp}{src/TreeandGraph/cactus.cpp}
 				\input{src/tbr/网络流总结.tex}
 				\subsection{图论结论}
 				\input{src/tbr/最小乘积问题.tex}
