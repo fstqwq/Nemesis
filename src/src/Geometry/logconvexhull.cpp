@@ -11,8 +11,7 @@ struct Convex {
  int n;
  vector<point> a, upper, lower;
  Convex(vector<point> _a) : a(_a) {
- 	n = a.size();
- 	int k = 0;
+ 	n = a.size(); int k = 0;
  	for(int i = 1; i < n; ++ i) if (a[k] < a[i]) k = i;
  	for(int i = 0; i <= k; ++ i) lower.push_back(a[i]);
  	for(int i = k; i < n; ++ i) upper.push_back(a[i]);
@@ -27,13 +26,13 @@ struct Convex {
  	}
  	return max(make_pair (det(vec, con[r]), r), make_pair(det(vec, con[0]), 0));
  }
- void update_tan(cp p, int id, int &i0, int &i1) {
+ void upd_tan(cp p, int id, int &i0, int &i1) {
  	if (det(a[i0] - p, a[id] - p) > 0) i0 = id;
  	if (det(a[i1] - p, a[id] - p) < 0) i1 = id;
  }
  void search(int l, int r, point p, int &i0, int &i1) {
  	if (l == r) return;
- 	update_tan(p, l % n, i0, i1);
+ 	upd_tan(p, l % n, i0, i1);
  	int sl = sgn(det(a[l % n] - p, a[(l + 1) % n] - p));
  	for ( ; l + 1 < r; ) {
  		int mid = (l + r) / 2;
@@ -41,7 +40,7 @@ struct Convex {
  		if (smid == sl) l = mid;
  		else r = mid;
  	}
- 	update_tan(p, r % n, i0, i1);
+ 	upd_tan(p, r % n, i0, i1);
  }
  int search(point u, point v, int l, int r) {
  	int sl = sgn(det(v - u, a[l % n] - u));
@@ -92,7 +91,5 @@ struct Convex {
  		i0 = search(u, v, p0, p1);
  		i1 = search(u, v, p1, p0 + n);
  		return true;
- 	} else {
- 		return false;
- 	}
+ 	} else return false;
  }};

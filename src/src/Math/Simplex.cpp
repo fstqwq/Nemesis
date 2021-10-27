@@ -1,4 +1,6 @@
-const LD eps = 1e-8, INF = 1e9; const int N = 105;
+// 标准型: maximize $\bf c^Tx$, subject to $\bf Ax\leq b$ and $\bf x\geq 0$
+// 对偶型: minimize $\bf b^Ty$, subject to $\bf A^Tx\geq c$ and $\bf y\geq 0$
+const LD eps = 1e-9, INF = 1e9; const int N = 105;
 namespace Simplex {
 int n, m, id[N], tp[N]; LD a[N][N];
 void pivot(int r, int c) {
@@ -43,5 +45,3 @@ for (int i = 1; i <= m; i++) {LD x;
 	for (int j = 1; j <= n; j++) scanf("%lf", &x), a[i][j] = -x; 
 	scanf("%lf", &x); a[i][0] = x;}
 if (solve()) { printf("%.9lf\n", (LD)ans()); if (K) output();}}
-// 标准型: maximize $\bf c^Tx$, subject to $\bf Ax\leq b$ and $\bf x\geq 0$
-// 对偶型: minimize $\bf b^Ty$, subject to $\bf A^Tx\geq c$ and $\bf y\geq 0$
