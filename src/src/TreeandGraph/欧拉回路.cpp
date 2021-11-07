@@ -16,11 +16,11 @@ void solve(int n, int m) {
 		int u = read(), v = read();
 		id[i] = u ^ v; s = u;
 		E[u].push_back(i); E[v].push_back(-i);
-//		E[u].push_back(i); deg[v]++;
+// 	E[u].push_back(i); deg[v]++;
 	}
 	for (int i = 1; i <= n; i++)
 		if (E[i].size() & 1) { puts("NO"); return; }
-//		if (E[i].size() != deg[i]) { puts("NO"); return; }
+// 	if (E[i].size() != deg[i]) { puts("NO"); return; }
 	dfs(s);
 	if (stk.size() != m) { puts("NO"); return; }
 	puts("YES");

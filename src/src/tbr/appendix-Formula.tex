@@ -114,7 +114,7 @@ Usage: $n$对括号序列; $n$个点满二叉树; $n*n$的方格左下到右上�
 \[s(n,0)=0,s(n,n)=1,s(n+1,k)=s(n,k-1)-nS(n,k)\]
 \[s(n,k)=(-1)^{n-k}{n \brack k}\]
 \begin{align*}
- {n+1 \brack k} = n{n \brack k} + {n \brack k-1},&\ \  {n+1 \brack 2} = n!H_n \\
+ {n+1 \brack k} = n{n \brack k} + {n \brack k-1},&\ \  {n+1 \brack 2} = n!H_n \text{ (see \ref{section:Harmonic})}\\
 x^{\underline{n}} = \sum_k{ {n \brack k}(-1)^{n-k}x^k },&\ \  x^{\overline{n}} = \sum_k{ {n \brack k}x^k } \\
  \end{align*}
 \subsubsection{Stirling Subset Numbers}
@@ -133,6 +133,7 @@ For fixed $k$, generating functions :
 \[ x^n = \sum_k{ {n \bangle k}{x+k \choose n} } \]
 \[ {n \bangle m} = \sum_{k=0}^m{n+1 \choose k}(m+1-k)^n(-1)^k \]
 \subsubsection{Harmonic Numbers}
+\label{section:Harmonic}
 \[ \sum_{k=1}^nH_k = (n+1)H_n-n \]
 \[ \sum_{k=1}^nkH_k = \frac{n(n+1)}{2}H_n - \frac{n(n-1)}{4} \]
 \[ \sum_{k=1}^n{k \choose m}H_k = {n+1 \choose m+1}(H_{n+1} - \frac{1}{m+1}) \]
@@ -166,9 +167,9 @@ $r_k(n)$表示用$k$个平方数组成$n$的方案数. 假设:
 & 4\prod_1^r(b_i+1) & \text{if all }a_i\text{ are integers}\\
 \end{aligned}\right.\]
 $r_3(n)>0$当且仅当$n$不满足$4^a(8b+7)$的形式 ($a,b$为整数).
-\subsubsection{Pythagorean Triple}
+\subsubsection{枚举勾股数 Pythagorean Triple}
 枚举$x^2+y^2=z^2$的三元组: 可令$x=m^2-n^2,y=2mn,z=m^2+n^2$, 枚举$m$和$n$即可$O(n)$枚举勾股数. 判断素勾股数方法: $m,n$至少一个为偶数并且$m,n$互质, 那么$x,y,z$就是素勾股数.
-\subsubsection{Tetrahedron Volume}
+\subsubsection{四面体体积 Tetrahedron Volume}
 If $U$, $V$, $W$, $u$, $v$, $w$ are lengths of edges of the tetrahedron (first three form a triangle; u opposite to U and so on)
 \[ V = \frac{\sqrt{ 4u^2v^2w^2 - \sum_{cyc}{u^2(v^2+w^2-U^2)^2} + \prod_{cyc}{(v^2+w^2-U^2)} }}{12} \]
 \subsubsection{杨氏矩阵 与 钩子公式}
@@ -190,10 +191,12 @@ $h_\lambda(i,j)$表示该格子右边和上边的格子数量加1.
 \paragraph{Anti-Nim游戏}$n$堆石子轮流拿，谁走最后一步输。结论：先手胜当且仅当1. 所有堆石子数都为1且游戏的SG值为0 (即有偶数个孤单堆-每堆只有1个石子数) 2. 存在某堆石子数大于1且游戏的SG值不为0.
 \paragraph{斐波那契博弈}有一堆物品, 两人轮流取物品, 先手最少取一个, 至多无上限, 但不能把物品取完, 之后每次取的物品数不能超过上一次取的物品数的二倍且至少为一件, 取走最后一件物品的人获胜. 结论: 先手胜当且仅当物品数$n$不是斐波那契数. 
 \paragraph{威佐夫博弈}有两堆石子, 博弈双方每次可以取一堆石子中的任意个, 不能不取, 或者取两堆石子中的相同个. 先取完者赢. 结论: 求出两堆石子$A$和$B$的差值$C$, 如果$\left\lfloor C*\frac{\sqrt{5}+1}{2}\right\rfloor=min(A,B)$那么后手赢, 否则先手赢. 
-\paragraph{约瑟夫环}令$n$个人标号为$0,1,2,...,n-1$, 令$f_{i,m}$表示$i$个人报$m$胜利者的编号, 则$f_{1,m}=0,f_{i,m}=(f_{i-1,m}+m)mod\ i$. 
+\paragraph{约瑟夫环}令 $n$ 个人标号为 $0,1,2,...,n-1$, 令 $f_{i,m}$ 表示 $i$ 个人报 $m$ 胜利者的编号, 则 $f_{1,m}=0,f_{i,m}=(f_{i-1,m}+m)\bmod i$. 
 \paragraph{阶梯Nim} 在一个阶梯上, 每次选一个台阶上任意个式子移到下一个台阶上, 不可移动者输. 结论: SG值等于奇数层台阶上石子数的异或和. 对于树形结构也适用, 奇数层节点上所有石子数异或起来即可.
 \paragraph{图上博弈} 给定无向图, 先手从某点开始走, 只能走相邻且未走过的点, 无法移动者输. 对该图求最大匹配, 若某个点不一定在最大匹配中则先手必败, 否则先手必胜.
 \end{multicols}
+
+\input{src/tbr/最大最小定理求纳什均衡点.tex}
 
 \subsubsection{错排公式}
 \[D_1=0,D_2=1,D_n=n!(\frac{1}{0!}-\frac{1}{1!}+\frac{1}{2!}-\frac{1}{3!}+...+\frac{(-1)^n}{n!})\]
@@ -207,7 +210,7 @@ $h_\lambda(i,j)$表示该格子右边和上边的格子数量加1.
 \[e^x=1+x+\frac{x^2}{2!}+\cdots+\frac{x^i}{i!}\]
 
 \subsubsection{类卡特兰数}
-从(1,1)出发走到(n,m),只能向右或者向上走,不能越过y=x这条线(即保证$x\geq y$),合法方案数是$C_{n+m-2}^{n-1} - C_{n+m-2}^n$.
+从 $(1,1)$ 出发走到 $(n,m)$,只能向右或者向上走,不能越过 $y=x$ 这条线(即保证 $x\geq y$ ),合法方案数是 $C_{n+m-2}^{n-1} - C_{n+m-2}^n$.
 
 \subsubsection{邻接矩阵行列式的意义}
 在无向图中取若干个环,一种取法权值就是边权的乘积,对行列式的贡献是$(-1)^{even}$,其中$even$是偶环的个数.

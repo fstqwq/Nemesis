@@ -1,6 +1,18 @@
-\subsection{阶}
+% \subsection{阶}
 
-\paragraph{定义} 使得$a^x\ mod\ m=1$的最小的x, 记作$\delta_m(a)$ \\
-若$a\equiv g^s\ (mod\ m)$, 其中$g$为m的一个原根. 则虽然$s$随$g$的不同取值有所不同, 但是必然满足$\delta_m(a)=gcd(s,\varphi(m))$.
-\paragraph{性质} $\delta_m(a^k)=\frac{\delta_m(a)}{gcd(\delta_m(a),k)}$
-\paragraph{k次剩余} 给定方程$x^k\equiv a\ (mod\ m)$, 求所有解. 若$k$与$\varphi(m)$互质, 则可以直接求出$k$对$\varphi(m)$的逆元. 否则, 将k拆成两部分, $k=uv$, 其中$u\bot \varphi(m)$, $v|\varphi(m)$, 先求$x^v\equiv a\ (mod\ m)$, 则$ans=x\^{}(u^{-1})$. 下面讨论$k|\varphi(m)$的问题. 任取一原根$g$, 对两侧取离散对数, 设$x=g^s$, $a=g^t$, 其中$t$可以用BSGS求出, 则问题转化为求出所有的s满足$ks\equiv t\ (mod\ \varphi(m))$, exgcd即可求解, 显然有解的条件是$k|\delta_m(a)$.
+\paragraph{定义} 使得 $a^x \bmod m=1$ 的最小的x, 记作 $\delta_m(a)$.
+若 $a\equiv g^s \mod m$, 其中 $g$ 为 $m$ 的一个原根.
+则虽然 $s$ 随 $g$ 的不同取值有所不同, 但是必然满足 $\delta_m(a)=\gcd(s,\varphi(m))$.
+\paragraph{性质} $\delta_m(a^k)=\frac{\delta_m(a)}{\gcd(\delta_m(a),k)}$
+\paragraph{$k$ 次剩余} 给定方程 $x^k\equiv a \mod m$, 求所有解.
+若 $k$ 与 $\varphi(m)$ 互质, 
+则可以直接求出 $k$ 对 $\varphi(m)$ 的逆元.
+否则, 将 $k$ 拆成两部分, $k=uv$,
+其中 $u\bot \varphi(m)$, $v|\varphi(m)$,
+先求 $x^v\equiv a \mod m$,
+则 $ans=x^{u^{-1}}$.
+下面讨论 $k|\varphi(m)$ 的问题.
+任取一原根 $g$, 对两侧取离散对数,
+设 $x=g^s$, $a=g^t$, 其中 $t$ 可以用BSGS求出,
+则问题转化为求出所有的 $s$ 满足 $ks\equiv t \mod \varphi(m)$,
+exgcd 即可求解, 显然有解的条件是 $k|\delta_m(a)$.

@@ -1,4 +1,5 @@
-#pragma GCC optimize("O3,unroll-loops")
+//fast = O3 + ffast-math + fallow-store-data-races
+#pragma GCC optimize("Ofast")
 #pragma GCC target("lzcnt,popcnt")
 const int BS = 16 << 20;
 char buf[BS], *ptr = buf, *top = buf;
