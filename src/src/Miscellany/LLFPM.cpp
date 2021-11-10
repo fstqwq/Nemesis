@@ -5,6 +5,6 @@ ULL modmul(ULL a, ULL b, LL M) {
 // orz@CF, M in 63 bit
 ULL modmul(ULL a, ULL b, LL M) {
 	ULL c = (long double)a * b / M;
-	LL ret = LL(x * y - c * M) % M;
+	LL ret = LL(x * y - c * M) % M; // must be signed
 	return ret < 0 ? ret + M : ret;}
 // use int128 instead if c > 63 bit
