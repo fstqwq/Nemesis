@@ -22,7 +22,7 @@
 \XeTeXlinebreakskip = 0pt plus 1pt
 
 \setlength{\parindent}{0em}\setlength{\parskip}{1pt}
-\setlength\itemsep{0pt}
+\setlength\itemsep{1pt}
 
 \makeatletter
 \renewcommand{\paragraph}{%
@@ -297,7 +297,6 @@
 				\subsection{斯坦纳树}
 				\inputminted{cpp}{src/TreeandGraph/斯坦纳树.cpp}
 				\subsection{Dinic 最大流}
-				\input{src/yzh/dinic_complexity.tex}
 				\inputminted{cpp}{src/TreeandGraph/Dinic.cpp}
 				\subsection{Dijkstra 费用流\checkmark}
 				\inputminted{cpp}{src/TreeandGraph/MCMF_dij.cpp}
@@ -319,9 +318,9 @@
 				%\inputminted{cpp}{src/TreeandGraph/虚树.cpp}
 				%\subsection{动态最小生成树}
 				%\inputminted{cpp}{src/TreeandGraph/DynamicMST.cpp}
-				\subsection{Gomory-Hu 无向图最小割树 $O(n ^ 3 m)$}
+				\subsection{Gomory-Hu 无向图最小割树 $O(|V| ^ 3 |E|)$}
 				\input{src/yzh/Gomory-Hu.tex}
-				\subsection{Stoer-Wagner 无向图最小割 $O(nm + n ^ 2 \log n)$}
+				\subsection{Stoer-Wagner 无向图最小割 $O(|V||E| + |V| ^ 2 \log |V|)$}
 				\inputminted{cpp}{src/yzh/Stoer-Wagner.cpp}
 				%\subsection{Cactus 仙人掌}
 				%\inputminted{cpp}{src/TreeandGraph/cactus.cpp}
