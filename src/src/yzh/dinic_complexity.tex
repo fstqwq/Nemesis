@@ -1,0 +1,10 @@
+\paragraph{复杂度证明} 假设 $\mathrm{dist} (s, t) = d$, $\mathrm{dist}$ 为残量网络上的距离.
+那么, 经过一轮 Dinic 增广后, $\mathrm{dist} (s, t) > d$.
+因此, 最多只有 $O(|V|)$ 轮, 如果一轮增广是 $O(|V||E|)$ 的,
+那么总复杂度是 $O(|V|^2|E|)$.
+
+\paragraph{单位流量网络}
+在 0-1 流量图上 dinic 有更好的性质. 
+\paragraph{复杂度} 复杂度为 $O(\min \{|V| ^ {3/2}, |E| ^ {1/2}\} |E|)$.
+\paragraph{近似最大流} $\mathrm{dist} (s, t) = d$, 残量网络上至多还存在 $|E|/d$ 的流.
+\paragraph{单位网络} 如果是每个点只有一个入/出度, 复杂度和 HK 一样.
