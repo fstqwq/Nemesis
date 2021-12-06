@@ -153,7 +153,6 @@
 	framesep=1mm,
 	framerule=0.3pt,
 	numbersep=1mm,
-	breaklines=true,
 	breaksymbolsepleft=2pt,
 	%breaksymbolleft=\raisebox{0.8ex}{ \small\reflectbox{\carriagereturn}}, %not moe!
 	%breaksymbolright=\small\carriagereturn,
@@ -265,17 +264,17 @@
 				% \inputminted{cpp}{src/DataStructure/有旋treap.cpp}
 				
 			\section{Tree \& Graph}
-				\subsection{Hopcroft-Karp $O(\sqrt{|V|} |E|)$\checkmark}
+				\subsection{Hopcroft-Karp $O(\sqrt{V} E)$\checkmark}
 				\inputminted{cpp}{src/TreeandGraph/Hopcroft.cpp}
-				\subsection{Hungarian $O(|V| |E|)$\checkmark}
+				\subsection{Hungarian $O(V E)$\checkmark}
 				\inputminted{cpp}{src/TreeandGraph/Hungarian.cpp}
-				\subsection{Shuffle 一般图最大匹配 $O(|V| |E|)$\checkmark}
+				\subsection{Shuffle 一般图最大匹配 $O(V E)$\checkmark}
 				\inputminted{cpp}{src/TreeandGraph/一般图最大匹配-shuffle.cpp}
 				\subsection{极大团计数\checkmark}
 				\inputminted{cpp}{src/TreeandGraph/CliqueCount.cpp}
 				\subsection{有根树同构 Hash\checkmark}
 				\inputminted{cpp}{src/TreeandGraph/TreeHash.cpp}
-				\subsection{KM 最大权匹配 $O(|V|^3)$}
+				\subsection{KM 最大权匹配 $O(V^3)$}
 				\inputminted{cpp}{src/TreeandGraph/KM.cpp}
 				%\subsection{Blossom 一般图带权最大匹配 $O(|V|^3)$}
 				%\inputminted{cpp}{src/TreeandGraph/Blossom.cpp}
@@ -297,6 +296,7 @@
 				\subsection{斯坦纳树}
 				\inputminted{cpp}{src/TreeandGraph/斯坦纳树.cpp}
 				\subsection{Dinic 最大流}
+				\input{src/yzh/dinic_complexity.tex}
 				\inputminted{cpp}{src/TreeandGraph/Dinic.cpp}
 				\subsection{Dijkstra 费用流\checkmark}
 				\inputminted{cpp}{src/TreeandGraph/MCMF_dij.cpp}
@@ -318,9 +318,9 @@
 				%\inputminted{cpp}{src/TreeandGraph/虚树.cpp}
 				%\subsection{动态最小生成树}
 				%\inputminted{cpp}{src/TreeandGraph/DynamicMST.cpp}
-				\subsection{Gomory-Hu 无向图最小割树 $O(|V| ^ 3 |E|)$}
+				\subsection{Gomory-Hu 无向图最小割树\,$O(V ^ 3 E)$}
 				\input{src/yzh/Gomory-Hu.tex}
-				\subsection{Stoer-Wagner 无向图最小割 $O(|V||E| + |V| ^ 2 \log |V|)$}
+				\subsection{Stoer-Wagner\,无向图最小割\,$O(VE + V ^ 2 \log V)$}
 				\inputminted{cpp}{src/yzh/Stoer-Wagner.cpp}
 				%\subsection{Cactus 仙人掌}
 				%\inputminted{cpp}{src/TreeandGraph/cactus.cpp}
