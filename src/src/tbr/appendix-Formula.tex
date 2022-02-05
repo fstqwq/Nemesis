@@ -137,8 +137,11 @@ For fixed $k$, generating functions :
 \[ \sum_{k=1}^nH_k = (n+1)H_n-n \]
 \[ \sum_{k=1}^nkH_k = \frac{n(n+1)}{2}H_n - \frac{n(n-1)}{4} \]
 \[ \sum_{k=1}^n{k \choose m}H_k = {n+1 \choose m+1}(H_{n+1} - \frac{1}{m+1}) \]
-\subsubsection{Pentagonal Number Theorem}
-\[ \prod_{n=1}^{\infty}(1-x^n) = \sum_{n=-\infty}^{\infty}{(-1)^kx^{k(3k-1)/2}} \]
+\subsubsection{五边形数定理求拆分数}
+\[ \Phi(x) = \prod_{n=1}^{\infty}(1-x^n) = \sum_{n=-\infty}^{\infty}{(-1)^kx^{k(3k-1)/2}} \]
+记$p(n)$表示$n$的拆分数,$f(n,k)$表示将$n$拆分且每种数字使用次数必须小于$k$的拆分数.则
+\[ P(x)\Phi(x)=1, F(x^k)\Phi(x)=1\]
+暴力拆开卷积,可以得到将1,-1,2,-2...带入五边形数$(-1)^kx^{k(3k-1)/2}$中,由于小于n的五边形数只有$\sqrt{n}$个,可以$O(n\sqrt{n})$计算答案:
 \[ p(n) = p(n-1)+p(n-2)-p(n-5)-p(n-7)+\cdots \]
 \[ f(n, k) = p(n)-p(n-k)-p(n-2k)+p(n-5k)+p(n-7k)-\cdots \]
 \subsubsection{Bell Numbers}
@@ -156,11 +159,11 @@ $n$个元素集合划分的方案数.
 \[\sum_{i=1}^ni^4=\frac{n(n+1)(2n+1)(3n^2+3n-1)}{30}\]
 \[\sum_{i=1}^ni^5=\frac{n^2(n+1)^2(2n^2+2n-1)}{12}\]
 \subsubsection{伍德伯里矩阵不等式}
-$$(A+UCV)^{-1}=A^{-1}-A^{-1}U(C^{-1}+VA^{-1}U)^-1VA^{-1}$$
+$$(A+UCV)^{-1}=A^{-1}-A^{-1}U(C^{-1}+VA^{-1}U)^{-1}VA^{-1}$$
 该等式可以动态维护矩阵的逆, 令$C=[1]$, $U$, $V$分别为$1\times n$和$n\times 1$的向量, 这样可以构造出$UCV$为只有某行或者某列不为0的矩阵, 一次修改复杂度为$O(n^2)$.
 \subsubsection{Sum of Squares}
 $r_k(n)$表示用$k$个平方数组成$n$的方案数. 假设: 
-\[n=2^{a_0}p_1^{2a_1}\cdots p_r^{2a_r}q_1{b_1}\cdots q_s{b_s}\]
+\[n=2^{a_0}p_1^{2a_1}\cdots p_r^{2a_r}q_1^{b_1}\cdots q_s^{b_s}\]
 其中$p_i\equiv 3 \mod 4$, $q_i\equiv 1 \mod 4$, 那么
 \[r_2(n)=\left\{\begin{aligned}
 & 0 & \text{if any }a_i\text{ is a half-integer}\\
