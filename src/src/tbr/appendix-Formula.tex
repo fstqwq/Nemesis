@@ -158,6 +158,10 @@ $n$个元素集合划分的方案数.
 \[\sum_{i=1}^ni^2=\frac{n(n+1)(2n+1)}{6},\ \ \sum_{i=1}^ni^3=(\frac{n(n+1)}{2})^2\]
 \[\sum_{i=1}^ni^4=\frac{n(n+1)(2n+1)(3n^2+3n-1)}{30}\]
 \[\sum_{i=1}^ni^5=\frac{n^2(n+1)^2(2n^2+2n-1)}{12}\]
+\subsubsection{kMAX-MIN反演}
+\[kMAX(S)=\sum_{T\subset S, T\neq \emptyset}(-1)^{|T|-k}C_{|T|-1}^{k-1}MIN(T)\]
+代入$k=1$即为MAX-MIN反演:
+\[MAX(S)=\sum_{T\subset S, T\neq \emptyset}(-1)^{|T|-1}MIN(T)\]
 \subsubsection{伍德伯里矩阵不等式}
 $$(A+UCV)^{-1}=A^{-1}-A^{-1}U(C^{-1}+VA^{-1}U)^{-1}VA^{-1}$$
 该等式可以动态维护矩阵的逆, 令$C=[1]$, $U$, $V$分别为$1\times n$和$n\times 1$的向量, 这样可以构造出$UCV$为只有某行或者某列不为0的矩阵, 一次修改复杂度为$O(n^2)$.
