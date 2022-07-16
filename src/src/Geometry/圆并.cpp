@@ -9,7 +9,7 @@ void addevent(cc a, cc b, vector<event> &evt, int &cnt) {
 	point d = b.c - a.c, p = d.rot(PI / 2),
 		q0 = a.c + d * dRatio + p * pRatio,
 		q1 = a.c + d * dRatio - p * pRatio;
-	double ang0 = atan2 ((q0 - a.c).y, (q0 - a.c).x), ang1 = atan2 ((q1 - a.c).x, (q1 - a.c).y);
+	double ang0 = atan2 ((q0 - a.c).y, (q0 - a.c).x), ang1 = atan2 ((q1 - a.c).y, (q1 - a.c).x);
 	evt.emplace_back(q1,ang1,1); evt.emplace_back(q0,ang0,-1);
 	cnt += ang1 > ang0; }
 bool issame(cc a, cc b) {
