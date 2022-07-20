@@ -1,6 +1,6 @@
 bool point_on_segment(cp a,cl b){
-	return sgn (det (a - b.s, b.t - b.s)) == 0
-		&& sgn (dot (b.s - a, b.t - a)) <= 0; }
+return sgn (det (a - b.s, b.t - b.s)) == 0//pol
+	&& sgn (dot (b.s - a, b.t - a)) <= 0;}
 bool two_side(cp a,cp b,cl c) {
 	return sgn (det (a - c.s, c.t - c.s))
 		* sgn (det (b - c.s, c.t - c.s)) < 0; }
@@ -15,6 +15,21 @@ point line_intersect(cl a, cl b) {
 	double s1 = det (a.t - a.s, b.s - a.s);
 	double s2 = det (a.t - a.s, b.t - a.s);
 	return (b.s * s2 - b.t * s1) / (s2 - s1); }
+bool point_on_ray (cp a, cl b) {
+	return sgn (det (a - b.s, b.t - b.s)) == 0
+	&& sgn (dot (a - b.s, b.t - b.s)) >= 0; }
+bool ray_in_jug(line a, line b) {
+	LL s1, s2;
+	s1 = det(a.t - a.s, b.s - a.s);
+	s2 = det(a.t - a.s, b.t - a.s);
+	if (sgn(s1) == 0 && sgn(s2) == 0) {
+		return sgn(dot(a.t - a.s, b.s - a.s)) >= 0
+	|| sgn (dot(b.t - b.s, a.s - b.s)) >= 0; }
+	if (sgn(s1 - s2) == 0 || sgn(s1) == sgn(s2 - s1)) return false;
+	swap(a, b);
+	s1 = det(a.t - a.s, b.s - a.s);
+	s2 = det(a.t - a.s, b.t - a.s);
+	return sgn(s1) != sgn(s2 - s1); }
 double point_to_line (cp a, cl b) {
 	return abs (det (b.t-b.s, a-b.s)) / dis (b.s, b.t); }
 point project_to_line (cp a, cl b) {
