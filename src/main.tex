@@ -3,7 +3,7 @@
 \usepackage{graphicx, amssymb, amsmath, textcomp, booktabs}
 \usepackage[libertine,vvarbb]{newtxmath}
 \usepackage[scr=rsfso]{mathalfa}
-%\usepackage[lining,semibold,type1]{libertine} % a bit lighter than Times--no osf in math
+% \usepackage[lining,semibold,type1]{libertine} % a bit lighter than Times--no osf in math
 \usepackage[T1]{fontenc} % best for Western European languages
 \usepackage{minted}
 \usepackage{listings, color, setspace, titlesec, fancyhdr, mdframed, multicol}
@@ -16,6 +16,7 @@
 \usepackage{nameref}
 \usepackage{verbatim}
 \usepackage{relsize}
+\usepackage{xeCJK}
 %\usepackage{rotating}
 
 \XeTeXlinebreaklocale "zh"
@@ -32,6 +33,11 @@
 }
 \makeatother
 
+%configure fonts
+\setmonofont{Consolas}[Scale=0.775]
+% \newfontfamily\substitutefont{SimSun}[Scale=0.8,BoldFont=SimHei]
+% \setTransitionsForChinese{\begingroup\substitutefont}{\endgroup}
+\setCJKmainfont{SimSun}[Scale=0.8,BoldFont=SimHei]
 
 %configure the top corners
 \pagestyle{fancy}
@@ -43,11 +49,6 @@
  
 %configure space between the two columns
 \setlength{\columnsep}{13pt}
-
-%configure fonts
-\setmonofont{Consolas}[Scale=0.775]
-\newfontfamily\substitutefont{SimSun}[Scale=0.8,BoldFont=SimHei]
-\setTransitionsForChinese{\begingroup\substitutefont}{\endgroup}
 
 %configure minted to display codes
 %\definecolor{Gray}{rgb}{0.9,0.9,0.9}
