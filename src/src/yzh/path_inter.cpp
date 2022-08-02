@@ -1,6 +1,6 @@
 bool cmp(int a,int b){return dep[a]<dep[b];}
 path merge(path u, path v){
-	static int d[4], c[2];
+	int d[4], c[2];
 	if (!u.x||!v.x) return path(0, 0);
 	d[0]=lca(u.x,v.x); d[1]=lca(u.x,v.y);
 	d[2]=lca(u.y,v.x); d[3]=lca(u.y,v.y);

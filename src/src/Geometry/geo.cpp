@@ -4,7 +4,7 @@ return sgn (det (a - b.s, b.t - b.s)) == 0//pol
 bool two_side(cp a,cp b,cl c) {
 	return sgn (det (a - c.s, c.t - c.s))
 		* sgn (det (b - c.s, c.t - c.s)) < 0; }
-bool intersect_judgment(cl a,cl b) {
+bool intersect_judge(cl a,cl b) {
 	if (point_on_segment (b.s, a)
 	|| point_on_segment (b.t, a)) return true;
 	if (point_on_segment (a.s, b)
@@ -18,14 +18,14 @@ point line_intersect(cl a, cl b) {
 bool point_on_ray (cp a, cl b) {
 	return sgn (det (a - b.s, b.t - b.s)) == 0
 	&& sgn (dot (a - b.s, b.t - b.s)) >= 0; }
-bool ray_in_jug(line a, line b) {
+bool ray_intersect_judge(line a, line b) {
 	LL s1, s2;
 	s1 = det(a.t - a.s, b.s - a.s);
 	s2 = det(a.t - a.s, b.t - a.s);
 	if (sgn(s1) == 0 && sgn(s2) == 0) {
 		return sgn(dot(a.t - a.s, b.s - a.s)) >= 0
-	|| sgn (dot(b.t - b.s, a.s - b.s)) >= 0; }
-	if (sgn(s1 - s2) == 0 || sgn(s1) == sgn(s2 - s1)) return false;
+			|| sgn(dot(b.t - b.s, a.s - b.s)) >= 0; }
+	if (!sgn(s1 - s2) || sgn(s1) == sgn(s2 - s1)) return 0;
 	swap(a, b);
 	s1 = det(a.t - a.s, b.s - a.s);
 	s2 = det(a.t - a.s, b.t - a.s);
@@ -38,8 +38,7 @@ point project_to_line (cp a, cl b) {
 double point_to_segment (cp a, cl b) {
 	if (sgn (dot (b.s - a, b.t - b.s))
 	* sgn (dot (b.t - a, b.t - b.s)) <= 0)
-		return abs (det (b.t - b.s, a - b.s))
-			/ dis (b.s, b.t);
+		return abs(det(b.t - b.s, a - b.s)) / dis(b.s, b.t);
 	return min (dis (a, b.s), dis (a, b.t)); }
 bool in_polygon (cp p, const vector <point> & po) {
 	int n = (int) po.size (); int counter = 0;

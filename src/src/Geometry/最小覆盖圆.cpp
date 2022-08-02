@@ -1,4 +1,3 @@
-// make_circle : 过参数点的最小圆
 struct circle {
 	point p; double r;
 	circle () {}
@@ -15,7 +14,7 @@ circle make_circle(cp a, cp b, cp c) {
 	p = point( det(s, point(p.y, q.y)),
 		det(point(p.x, q.x), s) ) / d;
 	return circle(a + p, p.len());
-}
+} // make_circle : 过参数点的最小圆
 circle min_circle (vector <point> p) {
 	circle ret;
 	random_shuffle (p.begin (), p.end ());
