@@ -4,6 +4,9 @@ src/*.aux
 src/*.synctex.gz
 src/*.log
 src/*.toc
+*.synctex.gz
+*.aux
+*.toc
 *.log
 *.un~
 *.cpp~

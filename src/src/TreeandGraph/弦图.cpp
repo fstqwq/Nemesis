@@ -1,4 +1,3 @@
-
 vector <int> L[N];
 int seq[N], lab[N], col[N], id[N], vis[N];
 void mcs() {

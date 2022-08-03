@@ -18,4 +18,3 @@ void clear() { // del
 	while(rec[0]) id[rec[rec[0]]] = -1, val[rec[rec[0]]] = 0, --rec[0]; }
 void fullclear() {
 	memset(id, -1, sizeof id); rec[0] = 0; } };
-

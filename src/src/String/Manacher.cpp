@@ -5,5 +5,4 @@ for(int i = 1, j = 0; i != (n << 1) - 1; ++i){
 	while (p - l[i] != -1 && q + l[i] != n
 		&& s[p - l[i]] == s[q + l[i]]) l[i]++;
 	if(q + l[i] - 1 > r) j=i;
-	a += l[i];
-}
+	a += l[i]; }

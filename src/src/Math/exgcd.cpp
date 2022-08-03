@@ -4,4 +4,3 @@ LL exgcd(LL a, LL b, LL &x, LL &y) {
 	y -= a / b * x; return t;}
 LL inv(LL x, LL m) {
 	LL a, b; exgcd(x, m, a, b); return (a % m + m) % m; }
-

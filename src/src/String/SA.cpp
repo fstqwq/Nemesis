@@ -22,4 +22,3 @@ void getsa() {
 	for (int i = 1, k = 0; i <= n; h[rk[i++]] = k) {
 		k -= !!k;
 		for(int j = sa[rk[i] - 1];s[i + k]==s[j + k];k++);}}
-
