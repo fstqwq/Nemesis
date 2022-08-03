@@ -184,9 +184,6 @@
 	%breaksymbolright=\small\carriagereturn,
 	breakbytoken=false,
 }
-%configure titles
-%\title{\LARGE{New Meta} \\[2ex] \Large{Standard Code Library} }
-%\date{\today}
 
 %%%% REMOVE CHECKMARK FOR PRINTING
 \newcommand\nothing{}
@@ -195,8 +192,7 @@
 %THE SCL BEGINS
 \begin{document}
 	\begin{titlepage}
-		\includepdf{cover-back.pdf}
-		\newpage
+		\input{cover/cover.tex}
 	\end{titlepage}
 	\begin{multicols}{2}
 		\setcounter{tocdepth}{2}

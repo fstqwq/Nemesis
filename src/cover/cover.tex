@@ -1,60 +1,40 @@
-\documentclass[a4paper]{article}
-\usepackage[BoldFont,SlantFont]{xeCJK}
-\usepackage{booktabs}
-\usepackage{graphicx}
-\usepackage{wrapfig}
-\usepackage{courier}
-
-\setCJKfamilyfont{hei}{SimHei}
-\setCJKfamilyfont{HEI}{SimHei}
-\newcommand{\hei}{\CJKfamily{hei}}
-\newcommand*{\myfont}{\CJKfamily{simsun}\selectfont}
-\newcommand*{\yourfont}{\fontfamily{ptm}\selectfont}
-\setCJKmainfont{SimSun}
-\setCJKsansfont{SimSun}
-\setCJKmonofont{NSimSun}
-
-\begin{document}
-\pagestyle{empty} 
-\begin{center}
-
-\LARGE ACM-ICPC World Finals 2018
-
-\vspace*{1cm}
-
-\textsc{\Huge Standard Code Library}
-
-\vspace*{1cm}
-
-\includegraphics[height=0.25\textwidth]{red.png}
-
-\vspace*{1cm}
-{\myfont \bfseries
-\Huge Nightfall
-}
+% 2025 ：532
+\setCJKfamilyfont{hei}{SimHei}[Scale=0.9]
+\setCJKfamilyfont{sun}{Source Han Serif SC Medium}[Scale=0.8]
+\newcommand{\hei}{\CJKfamily{hei}\selectfont}
+\newcommand{\sun}{\CJKfamily{sun}\selectfont}
 
 
+\begin{picture}(0,15)(0,15)
+    \put(10, -28.3){\includegraphics[width=180\unitlength]{cover/red.png}}
+    \put(290,0){\fontsize{17}{1}\fontspec[]{Linux Libertine O}\color{black}ICPC World Finals 2021 Dhaka}
+    \put(290,-22){\fontsize{23}{1}\fontspec[]{Linux Libertine O}\color{black}Standard Code Library}
+\end{picture}
+\vskip 110\unitlength
+
+\centerline{{\fontsize{50}{1}\fontspec{Gill Sans Medium}\color[rgb]{0.75,0,0}All-in~}{\fontsize{50}{1}{{\fontspec{Gill Sans Medium}at the River}}}}
 \vspace*{2cm}
-
-{\Large
+\begin{figure*}[h]
+    \centering
+    \includegraphics[width=220pt]{cover/poker.pdf}
+\end{figure*}
+\vspace*{1.5cm}
+\begin{center}
+{\LARGE
 \begin{tabular}{cp{1in}c}
-\rule{0pt}{16pt} \textbf{Coach} & & \textbf{教练} \\
+\rule{0pt}{16pt} \textbf{Coach} & & {\hei{教练}} \\
 \midrule
-\rule{0pt}{16pt} Yong Yu & & 俞勇 \\
-\rule{0pt}{16pt} Wenhan Huang & & 黄文瀚 \\
+\rule{0pt}{16pt} Yong Yu & & {\sun 俞勇} \\
+\rule{0pt}{16pt} Weihao Zhu & & {\sun 朱玮昊} \\
 \\
-\\
-\rule{0pt}{16pt} \textbf{Contestant} & & \textbf{队员} \\
+\rule{0pt}{16pt} \textbf{Contestant} & & {\hei{队员}} \\
 \midrule
-\rule{0pt}{16pt} Wenda Qiu & & 秋闻达 \\
-\rule{0pt}{16pt} Zhongtang Luo & & 罗中瑭 \\
-\rule{0pt}{16pt} Boning Li & & 李泊宁 \\
+\rule{0pt}{16pt} Boren Tan & & {\sun 谭博仁} \\
+\rule{0pt}{16pt} Shangfei Yang & & {\sun 杨尚霏} \\
+\rule{0pt}{16pt} Zonghan Yang & & {\sun 杨宗翰} \\
 \end{tabular}
 }
-
-\vspace*{3cm}
-
-{\large\today}
-
 \end{center}
-\end{document}
+\vspace*{1cm}
+\centerline{\large Compiled on \today}
+\newpage
