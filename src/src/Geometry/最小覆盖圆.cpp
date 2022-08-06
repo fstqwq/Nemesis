@@ -1,9 +1,9 @@
 struct circle {
-	point p; double r;
+	point c; double r;
 	circle () {}
-	circle (point pp, double rr) {p = pp, r = rr;} };
+	circle (point C, double R) {c = C, r = R;} };
 bool in_circle(cp a, const circle &b) {
-	return (b.p - a).len() <= b.r; }
+	return (b.c - a).len() <= b.r; }
 circle make_circle(point u, point v) {
 	point p = (u + v) / 2;
 	return circle(p, (u - p).len()); }
