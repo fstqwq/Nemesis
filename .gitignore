@@ -10,3 +10,4 @@ src/*.toc
 *.log
 *.un~
 *.cpp~
+src/*.out

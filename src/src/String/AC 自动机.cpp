@@ -1,12 +1,12 @@
-void build() {
-	q[he = 0] = 1, ta = 1;
-	fail[0] = 1; fill(t[0], t[0] + A, 1);
-	while (he < ta) {
-		int x = q[he++];
-		for (int i = 0; i < A; i++) {
-			int to = t[x][i], j = fail[x];
-			if (!to) t[x][i] = t[fail[x]][i];
-			else {
-				if (!t[j][i]) j = fail[j];
-				fail[to] = t[j][i];
-				q[ta++] = to; } } } }
+int ch[maxn][26], fail[maxn], q[maxn], sum[maxn], cnt = 0;
+int insert(const char *c) { int x = 0; while (*c) {
+	if (!ch[x][*c - 'a']) ch[x][*c - 'a'] = ++cnt;
+	x = ch[x][*c++ - 'a']; } return x; }
+void getfail() { int x, head = 0, tail = 0;
+	for (int c = 0; c < 26; c++) if (ch[0][c])
+			q[tail++] = ch[0][c];
+	while (head != tail) { x = q[head++];
+		for (int c = 0; c < 26; c++) { if (ch[x][c]) {
+				fail[ch[x][c]] = ch[fail[x]][c];
+				q[tail++] = ch[x][c];
+			} else ch[x][c] = ch[fail[x]][c]; } } }
