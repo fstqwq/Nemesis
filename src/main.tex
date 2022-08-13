@@ -449,11 +449,14 @@
 				\subsection{Vimrc, Bashrc}
 				\inputminted{vim}{src/Miscellany/vimrc}
 				\inputminted{sh}{src/Miscellany/bashrc}
-				\subsection{I used to roll the dice}
-				\label{randomprimes}
-				\texttt{\input{|"python src/Miscellany/randomprimes.py"}}
 				\subsection{Constant Table 常数表}
+				\label{randomprimes}
+				\begin{small}
+				\setlength{\parindent}{0em}\setlength{\parskip}{0em}\renewcommand{\baselinestretch}{.8}
+				\texttt{\input{|"python src/Miscellany/randomprimes.py"}}
+				\end{small}
 				\input{src/TipsandHints/Addon.tex}
+				
 				\newpage
 			\subsection*{Java Example}
 				\inputminted{java}{src/Miscellany/Main2.java}
