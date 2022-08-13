@@ -21,8 +21,8 @@
 		\par 把一个边双连通分量缩到LCT的一个点中, 然后在LCT上求出答案. 缩点的方法为加边时判断两点的连通性, 如果已经联通则把两点在目前LCT路径上的点都缩成一个点. 
 
 \subsubsection{差分约束}
-$x_a - x_b \leq c:$\texttt{add(b, a, c)}
-$x_a - x_b \geq c:$\texttt{add(a, b, -c)}
+$x_r - x_l \leq c:$\texttt{add(l, r, c)}
+$x_r - x_l \geq c:$\texttt{add(r, l, -c)}
 \begin{comment}
 \subsubsection{斯坦纳树}\
 		在一个无向带权图$G=(V,E)$中, 将指定的$k$个点连通的一颗树称为\textbf{斯坦纳树}, 边权总和最小的斯坦纳树称为最小斯坦纳树. 
