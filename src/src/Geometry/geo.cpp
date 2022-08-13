@@ -1,24 +1,32 @@
-bool point_on_segment(cp a,cl b){
-return sgn (det (a - b.s, b.t - b.s)) == 0//pol
+struct point {
+	point rot(double t) const { // 逆时针
+	return {x*cos(t) - y*sin(t), x*sin(t) + y*cos(t)};}
+	point rot90() const { return {-y, x}; } 
+	double len2() const { return x * x + y * y;}
+	double len() const { return sqrt(x * x + y * y);}
+	point unit() const {
+		double d = len(); return {x / d, y / d};}};
+bool point_on_segment(cp a,cl b){ // 点在线段上
+return sgn (det(a - b.s, b.t - b.s)) == 0 //on line
 	&& sgn (dot (b.s - a, b.t - a)) <= 0;}
 bool two_side(cp a,cp b,cl c) {
-	return sgn (det (a - c.s, c.t - c.s))
-		* sgn (det (b - c.s, c.t - c.s)) < 0; }
-bool intersect_judge(cl a,cl b) {
+	return sgn (det(a - c.s, c.t - c.s))
+		* sgn (det(b - c.s, c.t - c.s)) < 0; }
+bool intersect_judge(cl a,cl b) { // 线段判非严格交
 	if (point_on_segment (b.s, a)
 	|| point_on_segment (b.t, a)) return true;
 	if (point_on_segment (a.s, b)
 	|| point_on_segment (a.t, b)) return true;
 	return two_side (a.s, a.t, b)
 		&& two_side (b.s, b.t, a); }
-point line_intersect(cl a, cl b) {
-	double s1 = det (a.t - a.s, b.s - a.s);
-	double s2 = det (a.t - a.s, b.t - a.s);
+point line_intersect(cl a, cl b) { // 直线交点
+	double s1 = det(a.t - a.s, b.s - a.s);
+	double s2 = det(a.t - a.s, b.t - a.s);
 	return (b.s * s2 - b.t * s1) / (s2 - s1); }
-bool point_on_ray (cp a, cl b) {
-	return sgn (det (a - b.s, b.t - b.s)) == 0
+bool point_on_ray (cp a, cl b) { // 点在射线上
+	return sgn (det(a - b.s, b.t - b.s)) == 0
 	&& sgn (dot (a - b.s, b.t - b.s)) >= 0; }
-bool ray_intersect_judge(line a, line b) {
+bool ray_intersect_judge(line a, line b) { // 射线判交
 	double s1, s2; // can be LL
 	s1 = det(a.t - a.s, b.s - a.s);
 	s2 = det(a.t - a.s, b.t - a.s);
@@ -30,33 +38,33 @@ bool ray_intersect_judge(line a, line b) {
 	s1 = det(a.t - a.s, b.s - a.s);
 	s2 = det(a.t - a.s, b.t - a.s);
 	return sgn(s1) != sgn(s2 - s1); }
-double point_to_line (cp a, cl b) {
-	return abs (det (b.t-b.s, a-b.s)) / dis (b.s, b.t); }
-point project_to_line (cp a, cl b) {
+double point_to_line (cp a, cl b) { // 点到直线距离
+	return abs (det(b.t-b.s, a-b.s)) / dis (b.s, b.t); }
+point project_to_line (cp a, cl b) { // 点在直线投影
 	return b.s + (b.t - b.s)
 	* (dot (a - b.s, b.t - b.s) / (b.t - b.s).len2 ()); }
-double point_to_segment (cp a, cl b) {
+double point_to_segment (cp a, cl b) { // 点到线段距离
 	if (sgn (dot (b.s - a, b.t - b.s))
 	* sgn (dot (b.t - a, b.t - b.s)) <= 0)
 		return abs(det(b.t - b.s, a - b.s)) / dis(b.s, b.t);
 	return min (dis (a, b.s), dis (a, b.t)); }
 bool in_polygon (cp p, const vector <point> & po) {
-	int n = (int) po.size (); int counter = 0;
+	int n = (int) po.size (); int cnt = 0;
 	for (int i = 0; i < n; ++i) {
 		point a = po[i], b = po[(i + 1) % n];
 		if (point_on_segment (p, line (a, b))) return true;
-		int x = sgn (det (p - a, b - a)),
+		int x = sgn (det(p - a, b - a)),
 			y = sgn (a.y - p.y), z = sgn (b.y - p.y);
-		if (x > 0 && y <= 0 && z > 0) ++counter;
-		if (x < 0 && z <= 0 && y > 0) --counter; }
-	return counter != 0; }
+		if (x > 0 && y <= 0 && z > 0) ++cnt;
+		if (x < 0 && z <= 0 && y > 0) --cnt; }
+	return cnt != 0; }
 vector <point> line_circle_intersect (cl a, cc b) {
 	if (sgn (point_to_line (b.c, a) - b.r) > 0)
 		return vector <point> ();
 	double x = sqrt(sqr(b.r)-sqr(point_to_line (b.c, a)));
 	return vector <point>
-	({project_to_line (b.c, a) + (a.s - a.t).unit () * x,
-	project_to_line (b.c, a) - (a.s - a.t).unit () * x});}
+	({project_to_line (b.c, a) + (a.s - a.t).unit() * x,
+	project_to_line (b.c, a) - (a.s - a.t).unit() * x});}
 double circle_intersect_area (cc a, cc b) {
 	double d = dis (a.c, b.c);
 	if (sgn (d - (a.r + b.r)) >= 0) return 0;
@@ -72,7 +80,7 @@ vector <point> circle_intersect (cc a, cc b) {
 		|| sgn (dis (a.c, b.c) - a.r - b.r) > 0
 		|| sgn (dis (a.c, b.c) - abs (a.r - b.r)) < 0)
 		return {};
-	point r = (b.c - a.c).unit ();
+	point r = (b.c - a.c).unit();
 	double d = dis (a.c, b.c);
 	double x = ((sqr (a.r) - sqr (b.r)) / d + d) / 2;
 	double h = sqrt (sqr (a.r) - sqr (x));
