@@ -1,8 +1,8 @@
 mt19937 rng(123);
-#define rand() LL(rng())
+#define rand() LL(rng() & LLONG_MAX)
 const int BASE[] = {2, 7, 61};//int(7,3e9)
 //{2,325,9375,28178,450775,9780504,1795265022}LL(37)
-typedef long long LL; struct miller_rabin {
+struct miller_rabin {
 bool check (const LL &M, const LL &base) {
 	LL a = M - 1;
 	while (~a & 1) a >>= 1;
