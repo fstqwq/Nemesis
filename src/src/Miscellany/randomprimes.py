@@ -11,6 +11,7 @@ def isprime(x):
 import random
 T = 10
 Range = [1e3, 1e5, 5e5, 1e6, 2e6, 1e7, 1e9]
+print("{")
 print("\\begin{itemize}")
 print(r"\setlength{\parindent}{0em}\setlength{\parskip}{0em}\renewcommand{\baselinestretch}{.5}")
 for lim in Range:
@@ -32,3 +33,4 @@ for lim in Range:
 		print(i, end=" ")
 	print()
 print("\\end{itemize}")
+print("}")

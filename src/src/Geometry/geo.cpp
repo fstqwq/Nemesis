@@ -19,7 +19,7 @@ bool point_on_ray (cp a, cl b) {
 	return sgn (det (a - b.s, b.t - b.s)) == 0
 	&& sgn (dot (a - b.s, b.t - b.s)) >= 0; }
 bool ray_intersect_judge(line a, line b) {
-	LL s1, s2;
+	double s1, s2; // can be LL
 	s1 = det(a.t - a.s, b.s - a.s);
 	s2 = det(a.t - a.s, b.t - a.s);
 	if (sgn(s1) == 0 && sgn(s2) == 0) {
@@ -34,7 +34,7 @@ double point_to_line (cp a, cl b) {
 	return abs (det (b.t-b.s, a-b.s)) / dis (b.s, b.t); }
 point project_to_line (cp a, cl b) {
 	return b.s + (b.t - b.s)
-	* (dot (a - b.s, b.t - b.s) / (b.t - b.s).norm2 ()); }
+	* (dot (a - b.s, b.t - b.s) / (b.t - b.s).len2 ()); }
 double point_to_segment (cp a, cl b) {
 	if (sgn (dot (b.s - a, b.t - b.s))
 	* sgn (dot (b.t - a, b.t - b.s)) <= 0)
@@ -53,7 +53,7 @@ bool in_polygon (cp p, const vector <point> & po) {
 vector <point> line_circle_intersect (cl a, cc b) {
 	if (sgn (point_to_line (b.c, a) - b.r) > 0)
 		return vector <point> ();
-	double x = sqrt(sq(b.r)-sq(point_to_line (b.c, a)));
+	double x = sqrt(sqr(b.r)-sqr(point_to_line (b.c, a)));
 	return vector <point>
 	({project_to_line (b.c, a) + (a.s - a.t).unit () * x,
 	project_to_line (b.c, a) - (a.s - a.t).unit () * x});}
@@ -66,7 +66,7 @@ double circle_intersect_area (cc a, cc b) {
 	double x = (d * d + a.r * a.r - b.r * b.r) / (2 * d),
 		   t1 = acos (min (1., max (-1., x / a.r))),
 		   t2 = acos (min (1., max (-1., (d - x) / b.r)));
-	return sq(a.r)*t1 + sq(b.r)*t2 - d*a.r*sin(t1);}
+	return sqr(a.r)*t1 + sqr(b.r)*t2 - d*a.r*sin(t1);}
 vector <point> circle_intersect (cc a, cc b) {
 	if (a.c == b.c
 		|| sgn (dis (a.c, b.c) - a.r - b.r) > 0
@@ -88,7 +88,7 @@ vector <line> extangent (cc a, cc b) {
 	if (sgn(dis (a.c, b.c)-abs (a.r - b.r))<=0) return ret;
 	if (sgn (a.r - b.r) == 0) {
 		point dir = b.c - a.c;
-		dir = (dir * a.r / dir.norm ()).rot90 ();
+		dir = (dir * a.r / dir.len ()).rot90 ();
 		ret.push_back (line (a.c + dir, b.c + dir));
 		ret.push_back (line (a.c - dir, b.c - dir));
 	} else {
@@ -101,6 +101,7 @@ vector <line> extangent (cc a, cc b) {
 			ret.push_back(line (pp[1], qq[1])); } }
 	return ret; }
 vector <line> intangent (cc a, cc b) {
+	vector <line> ret;
 	point p = (b.c * a.r + a.c * b.r) / (a.r + b.r); 
 	vector pp = tangent (p, a), qq = tangent (p, b);
 	if (pp.size () == 2 && qq.size () == 2) {

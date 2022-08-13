@@ -1,1 +1,1 @@
-export CXXFLAGS='-g -Wall -Wextra -Wconversion -Wshadow -std=c++14 -fsanitize=undefined -fsanitize=address'
+export CXXFLAGS='-g -Wall -Wextra -Wconversion -Wshadow -std=c++17 -fsanitize=undefined -fsanitize=address'

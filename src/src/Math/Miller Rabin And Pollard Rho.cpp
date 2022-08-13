@@ -1,34 +1,35 @@
-// Miller Rabin : bool miller_rabin::solve (const LL &) : tests whether a certain integer is prime.
+mt19937 rng(123);
+#define rand() LL(rng())
+const int BASE[] = {2, 7, 61};//int(7,3e9)
+//{2,325,9375,28178,450775,9780504,1795265022}LL(37)
 typedef long long LL; struct miller_rabin {
-int BASE[12] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37};
-bool check (const LL &prime, const LL &base) {
-	LL number = prime - 1;
-	for (; ~number & 1; number >>= 1);
-	LL result = llfpm (base, number, prime);
-	for (; number != prime - 1 && result != 1 && result != prime - 1; number <<= 1)
-		result = mul_mod (result, result, prime);
-	return result == prime - 1 || (number & 1) == 1; }
-bool solve (const LL &number) { // is prime
-	if (number < 2) return false;
-	if (number < 4) return true;
-	if (~number & 1) return false;
-	for (int i = 0; i < 12 && BASE[i] < number; ++i)
-		if (!check (number, BASE[i])) return false;
+bool check (const LL &M, const LL &base) {
+	LL a = M - 1;
+	while (~a & 1) a >>= 1;
+	LL w = power (base, a, M); // power should use mul
+	for (; a != M - 1 && w != 1 && w != M - 1; a <<= 1)
+		w = mul (w, w, M);
+	return w == M - 1 || (a & 1) == 1; }
+bool solve (const LL &a) {//$O((3 \text{ or } 7) \cdot \log n \cdot \mathrm{mul})$
+	if (a < 4) return a > 1;
+	if (~a & 1) return false;
+	for (int i = 0; i < sizeof(BASE)/4 && BASE[i] < a; ++i)
+		if (!check (a, BASE[i])) return false;
 	return true; } };
-miller_rabin is_prime; const LL threshold = 13E9;
-LL factorize (LL number, LL seed) {
-	LL x = rand() % (number - 1) + 1, y = x;
+miller_rabin is_prime;
+LL get_factor (LL a, LL seed) {//$O(n ^ {1/4} \cdot \log n \cdot \mathrm{mul})$
+	LL x = rand () % (a - 1) + 1, y = x;
 	for (int head = 1, tail = 2; ; ) {
-		x = mul_mod (x, x, number); x = (x + seed) % number;
-		if (x == y) return number;
-		LL answer = gcd (abs (x - y), number);
-		if (answer > 1 && answer < number) return answer;
+		x = mul (x, x, a); x = (x + seed) % a;
+		if (x == y) return a;
+		LL ans = gcd (abs (x - y), a);
+		if (ans > 1 && ans < a) return ans;
 		if (++head == tail) { y = x; tail <<= 1; } } }
-void search (LL number, vector<LL> &divisor) {
-	if (number <= 1) return;
-	if (is_prime.solve (number)) divisor.push_back (number);
+void factor (LL a, vector<LL> &d) {
+	if (a <= 1) return;
+	if (is_prime.solve (a)) d.push_back (a);
 	else {
-		LL factor = number;
-		for (; factor >= number; factor = factorize (number, rand () % (number - 1) + 1));
-		search (number / factor, divisor);
-		search (factor, divisor); } }
+		LL f = a;
+		for (; f >= a; f = get_factor (a, rand() % (a - 1) + 1));
+		factor (a / f, d);
+		factor (f, d); } }
