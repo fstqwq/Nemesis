@@ -197,7 +197,7 @@
 		\input{cover/cover.tex}
 	\end{titlepage}
 	\begin{multicols}{2}
-		\setcounter{tocdepth}{2}
+		\setcounter{tocdepth}{3}
 		\begingroup
 		\let\cleardoublepage\relax
 		\let\clearpage\relax
@@ -247,17 +247,10 @@
 				\subsection{圆上整点\checkmark}
 					\inputminted{cpp}{src/Geometry/圆上整点.cpp}
 				\subsection{三相之力\checkmark}
-<<<<<<< HEAD
 				\inputminted{cpp}{src/Geometry/三角形.cpp}
-				\subsection{几何相关公式}
-				\input{src/Geometry/Formula(Saga).tex}
-				\newpage
-=======
-					\inputminted{cpp}{src/Geometry/三角形.cpp}
 				\subsection{相关公式}
 					\input{src/Geometry/Formula(Saga).tex}
 					\newpage
->>>>>>> 78cf49a882743abea73e19eb4cfd8c652b798a70
 				\subsection{三维几何基础操作\checkmark}
 					\inputminted{cpp}{src/Geometry/三维几何.cpp}
 				\subsection{三维凸包\checkmark}
@@ -327,15 +320,6 @@
 					%\inputminted{cpp}{src/TreeandGraph/cactus.cpp}
 					\input{src/tbr/网络流总结.tex}
 				\subsection{图论结论}
-<<<<<<< HEAD
-				\input{src/tbr/最小乘积问题.tex}
-				\input{src/tbr/最小环问题.tex}
-				\input{src/tbr/度序列的可图性.tex}
-				\input{src/tbr/切比雪夫距离与曼哈顿距离互化.tex}
-				%\subsection{图论知识 - Nightfall}
-				\input{src/TreeandGraph/图论知识.tex}
-				\newpage
-=======
 					\input{src/tbr/最小乘积问题.tex}
 					\input{src/tbr/最小环问题.tex}
 					\input{src/tbr/度序列的可图性.tex}
@@ -355,7 +339,6 @@
 					\inputminted{cpp}{src/DataStructure/可持久化平衡树.cpp}
 				\subsection{有旋 Treap}
 					\inputminted{cpp}{src/DataStructure/有旋treap.cpp}
->>>>>>> 78cf49a882743abea73e19eb4cfd8c652b798a70
 			
 			\section{String}
 				\subsection{最小表示法}
@@ -363,13 +346,8 @@
 				\subsection{Manacher}
 					\inputminted{cpp}{src/String/Manacher.cpp}
 				\subsection{Multiple Hash}
-<<<<<<< HEAD
 				%{\tt \small Primes available at Page \pageref{randomprimes}.}
 				\inputminted{cpp}{src/String/hash.cpp}	
-=======
-					{\tt \small Primes available at Page \pageref{randomprimes}.}
-					\inputminted{cpp}{src/String/hash.cpp}	
->>>>>>> 78cf49a882743abea73e19eb4cfd8c652b798a70
 				\subsection{KMP exKMP}
 					\inputminted{cpp}{src/String/KMP.cpp}
 				\subsection{AC 自动机}
@@ -436,13 +414,8 @@
 				\subsection{K 进制 FWT}
 					\inputminted{cpp}{src/tbr/fwt.cpp}
 				% \input{src/Math/多项式牛顿法.tex}
-<<<<<<< HEAD
 				\inputminted{cpp}{src/Math/Polynomial.cpp}
 				% \input{src/Math/单位根反演.tex}
-=======
-					\inputminted{cpp}{src/Math/Polynomial.cpp}
-					\input{src/Math/单位根反演.tex}
->>>>>>> 78cf49a882743abea73e19eb4cfd8c652b798a70
 				%\input{src/Math/多点求值与快速插值.tex}
 				%\subsection{多项式插值}
 				%\input{cpp}{src/Math/插值.tex}
@@ -503,7 +476,6 @@
 				\input{src/TipsandHints/Addon.tex}
 		\begin{comment}		
 				\newpage
-<<<<<<< HEAD
 			\subsection*{Java Example}
 				\inputminted{java}{src/Miscellany/Main2.java}
 			\subsection*{Python Example}
@@ -515,18 +487,6 @@
 			\subsection*{天动万象}
 				\inputminted{cpp}{src/yzh/ByteCampA3.cpp}
 		\end{comment}
-=======
-				\subsection*{Java Example}
-					\inputminted{java}{src/Miscellany/Main2.java}
-				\subsection*{Python Example}
-					\inputminted{python}{src/Miscellany/test.py}
-				% \subsection*{Blossom}
-				% 	\inputminted{python}{src/TreeandGraph/Blossom.cpp}
-				\subsection*{Chu-liu}
-					\inputminted{cpp}{src/TreeandGraph/最小树形图.cpp}
-				\subsection*{天动万象}
-					\inputminted{cpp}{src/yzh/ByteCampA3.cpp}
->>>>>>> 78cf49a882743abea73e19eb4cfd8c652b798a70
 			%\end{comment}
 		\end{spacing}
 		\endgroup
