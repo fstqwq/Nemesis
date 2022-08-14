@@ -1,24 +1,35 @@
-void Sort(int in[], int out[], int p[], int n, int m) {
-	static int P[N];
-	for (int i = 1; i <= m; i++) P[i] = 0;
-	for (int i = 1; i <= n; i++) P[in[i]]++;
-	for (int i = 2; i <= m; i++) P[i] += P[i - 1];
-	for (int i = n; i; i--) out[P[in[p[i]]]--] = p[i]; }
-int n; char s[N]; int sa[N], rk[N], h[N];
-void getsa() {
-	static int t1[N], t2[N], *x = t1, *y = t2; //clear n + 1
-	int m = 127;
-	for (int i = 1; i <= n; i++) x[i] = s[i], y[i] = i;
-	Sort(x, sa, y, n, m);
-	for (int j = 1, i, k = 0; k < n; m = k, j <<= 1) {
-		for (i = n - j + 1, k = 0; i <= n; i++) y[++k] = i;
-		for (i = 1; i <= n; i++)
-			if (sa[i] > j) y[++k] = sa[i] - j;
-		Sort(x, sa, y, n, m);
-		for(swap(x, y), i = 2, x[sa[1]] = k = 1; i <= n; i++){
-			x[sa[i]] = (y[sa[i - 1]] == y[sa[i]] &&
-			y[sa[i - 1] + j] == y[sa[i] + j]) ? k : ++k; } }
-	for (int i = 1; i <= n; i++) rk[sa[i]] = i;
-	for (int i = 1, k = 0; i <= n; h[rk[i++]] = k) {
-		k -= !!k;
-		for(int j = sa[rk[i] - 1];s[i + k]==s[j + k];k++);}}
+// height[i] = lcp(sa[i], sa[i - 1])
+void get_sa(char *s, int n, int *sa,
+		int *rnk, int *height) { // 1-based
+	static int buc[maxn], id[maxn], p[maxn], t[maxn * 2];
+	int m = 300;
+	for (int i = 1; i <= n; i++) buc[rnk[i] = s[i]]++;
+	for (int i = 1; i <= m; i++) buc[i] += buc[i - 1];
+	for (int i = n; i; i--) sa[buc[rnk[i]]--] = i;
+	memset(buc, 0, sizeof(int) * (m + 1));
+	for (int k = 1, cnt; cnt != n; k *= 2, m = cnt) {
+		cnt = 0;
+		for (int i = n; i > n - k; i--) id[++cnt] = i;
+		for (int i = 1; i <= n; i++)
+			if (sa[i] > k) id[++cnt] = sa[i] - k;
+		for (int i = 1; i <= n; i++) buc[p[i]=rnk[id[i]]]++;
+		for (int i = 1; i <= m; i++) buc[i] += buc[i - 1];
+		for (int i = n; i; i--) sa[buc[p[i]]--] = id[i];
+		memset(buc, 0, sizeof(int) * (m + 1));
+		memcpy(t, rnk, sizeof(int) * (max(n, m) + 1));
+		cnt = 0; for (int i = 1; i <= n; i++) {
+			if (t[sa[i]] != t[sa[i - 1]] ||
+				t[sa[i] + k] != t[sa[i - 1] + k]) cnt++;
+			rnk[sa[i]] = cnt; } }
+	for (int i = 1; i <= n; i++) sa[rnk[i]] = i;
+	for (int i = 1, k = 0; i <= n; i++) { if (k) k--;
+		while (s[i + k] == s[sa[rnk[i] - 1] + k]) k++;
+		height[rnk[i]] = k; } }
+char s[maxn]; int sa[maxn], rnk[maxn], height[maxn];
+int main() { cin >> (s + 1); int n = strlen(s + 1);
+	get_sa(s, n, sa, rnk, height);
+	for (int i = 1; i <= n; i++)
+		cout << sa[i] << (i < n ? ' ' : '\n');
+	for (int i = 2; i <= n; i++)
+		cout << height[i] << (i < n ? ' ' : '\n');
+	return 0; }
