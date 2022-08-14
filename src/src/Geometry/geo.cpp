@@ -1,13 +1,13 @@
 struct point {
 	point rot(double t) const { // 逆时针
-	return {x*cos(t) - y*sin(t), x*sin(t) + y*cos(t)};}
+		return {x*cos(t) - y*sin(t), x*sin(t) + y*cos(t)};}
 	point rot90() const { return {-y, x}; } 
 	double len2() const { return x * x + y * y;}
 	double len() const { return sqrt(x * x + y * y);}
 	point unit() const {
 		double d = len(); return {x / d, y / d};}};
 bool point_on_segment(cp a,cl b){ // 点在线段上
-return sgn (det(a - b.s, b.t - b.s)) == 0 //on line
+	return sgn (det(a - b.s, b.t - b.s)) == 0 // 在直线上
 	&& sgn (dot (b.s - a, b.t - a)) <= 0;}
 bool two_side(cp a,cp b,cl c) {
 	return sgn (det(a - c.s, c.t - c.s))

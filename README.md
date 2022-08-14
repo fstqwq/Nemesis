@@ -26,15 +26,19 @@ Update your TeX to TeX Live 2022 or higher.
 
 ysf:
     * 字符串
+      * SAM
     * 数据结构
+      * LCT
     * 网络流建图
     * NTT 多项式
+    * 重写 segbeats 的 hint
 tbr:
     * 阿波罗尼茨圆
     * 图论
     * 博弈
+    * 高维切比雪夫和曼哈顿
 yzh:
-    * 常数表 (d, p, 斯特林数，卡特兰数)
+    * 常数表 (~d, omega,~ p, 斯特林数，卡特兰数)
     * 几何代码
 
 ## Scan result (8/6)

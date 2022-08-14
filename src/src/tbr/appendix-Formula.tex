@@ -1,6 +1,6 @@
 \def \bangle{ \atopwithdelims \langle \rangle}
 \providecommand{\myfloor}[1]{ \lfloor #1 \rfloor }
-\begin{small}
+\begin{footnotesize}
 \subsubsection{Mobius Inversion}
 \[F(n)=\sum_{d|n}f(d)\Rightarrow f(n)=\sum_{d|n}\mu(d)F(\frac{n}{d})\]
 \[F(n)=\sum_{n|d}f(d)\Rightarrow f(n)=\sum_{n|d}\mu(\frac{d}{n})F(d)\]
@@ -102,6 +102,8 @@ $J_k(n)$ is the number of $k$-tuples of positive integers all less than or equal
 \end{aligned}
 \right.
 \]
+\end{footnotesize}
+\begin{small}
 \subsubsection{Lucas Numbers}
 \[ L_0=2,L_1=1,L_n=L_{n-1}+L_{n-2}=(\frac{1+\sqrt{5}}{2})^n+\frac{1-\sqrt{5}}{2})^n \]
 \[ L(x)=\frac{2-x}{1-x-x^2} \]
@@ -158,6 +160,11 @@ $n$个元素集合划分的方案数.
 \[\sum_{i=1}^ni^2=\frac{n(n+1)(2n+1)}{6},\ \ \sum_{i=1}^ni^3=(\frac{n(n+1)}{2})^2\]
 \[\sum_{i=1}^ni^4=\frac{n(n+1)(2n+1)(3n^2+3n-1)}{30}\]
 \[\sum_{i=1}^ni^5=\frac{n^2(n+1)^2(2n^2+2n-1)}{12}\]
+\subsubsection{单位根反演}
+求$\sum_{i=0}^{\lfloor \frac{n}{k} \rfloor} {C_n^{ik}}$.\\
+引理:$\frac{1}{k} \sum_{i=0}^{k-1} \omega_{k}^{in} = [k \mid n]$.\\
+反演:$Ans = \sum_{i=0}^n{C_n^i [k \mid i]} \\= \sum_{i=0}^n{C_n^i(\frac{1}{k}\sum_{j=0}^{k-1}{\omega_k^{ij}})} \\= \frac{1}{k} {\sum_{i=0}^{n}C_n^i \sum_{j=0}^{k-1} \omega_k^{ij}} \\= \frac{1}{k} {\sum_{j=0}^{k-1}(\sum_{i=0}^n C_n^i(\omega_k^j)^i)} \\= \frac{1}{k} \sum_{j=0}^{k-1} (1+\omega_k^j)^n$.\\
+另,如果要求的是$[n \% k = t]$,其实就是$[k \mid (n-t)]$.同理推式子即可.
 \subsubsection{kMAX-MIN反演}
 \[kMAX(S)=\sum_{T\subset S, T\neq \emptyset}(-1)^{|T|-k}C_{|T|-1}^{k-1}MIN(T)\]
 代入$k=1$即为MAX-MIN反演:
@@ -220,7 +227,7 @@ $h_\lambda(i,j)$表示该格子右边和上边的格子数量加1.
 从 $(1,1)$ 出发走到 $(n,m)$,只能向右或者向上走,不能越过 $y=x$ 这条线(即保证 $x\geq y$ ),合法方案数是 $C_{n+m-2}^{n-1} - C_{n+m-2}^n$.
 
 \subsubsection{邻接矩阵行列式的意义}
-在无向图中取若干个环,一种取法权值就是边权的乘积,对行列式的贡献是$(-1)^{even}$,其中$even$是偶环的个数.
+在无向图中取若干个环,一种取法权值就是边权的乘积,对行列式的贡献是$(-1)^{\mathrm{even}}$,其中$\mathrm{even}$是偶环的个数.
 
 \subsubsection{Others (某些近似数值公式在这里)}
 \[ S_j = \sum_{k=1}^nx_k^j \]
