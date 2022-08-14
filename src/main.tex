@@ -197,7 +197,7 @@
 		\input{cover/cover.tex}
 	\end{titlepage}
 	\begin{multicols}{2}
-		\setcounter{tocdepth}{3}
+		\setcounter{tocdepth}{2}
 		\begingroup
 		\let\cleardoublepage\relax
 		\let\clearpage\relax
@@ -207,17 +207,17 @@
 			
 			\section{Geometry}
 				\subsection{凸包\checkmark}
-				\inputminted{cpp}{src/Geometry/凸包.cpp}
+					\inputminted{cpp}{src/Geometry/凸包.cpp}
 				\subsection{闵可夫斯基和\checkmark}
-				\inputminted{cpp}{src/Geometry/闵可夫斯基和.cpp}
+					\inputminted{cpp}{src/Geometry/闵可夫斯基和.cpp}
 				\subsection{最小覆盖圆}
-				\inputminted{cpp}{src/Geometry/最小覆盖圆.cpp}
+					\inputminted{cpp}{src/Geometry/最小覆盖圆.cpp}
 				\subsection{二维几何基础操作\checkmark}
-				\inputminted{cpp}{src/Geometry/geo.cpp}
+					\inputminted{cpp}{src/Geometry/geo.cpp}
 				\subsection{直线半平面交\checkmark}
-				\inputminted{cpp}{src/Geometry/半平面交.cpp}
+					\inputminted{cpp}{src/Geometry/半平面交.cpp}
 				\subsection{凸包快速询问\checkmark}
-				\inputminted{cpp}{src/Geometry/logconvexhull.cpp}
+					\inputminted{cpp}{src/Geometry/logconvexhull.cpp}
 %				\subsection{直线与凸包交点}
 %				\inputminted{cpp}{src/Geometry/直线与凸包交点.cpp}
 %				\subsection{点到凸包切线}
@@ -225,85 +225,73 @@
 %				\subsection{Delaunay 三角剖分}
 %				\inputminted{cpp}{src/Geometry/DelaunayTriangulation.cpp}
 				\subsection{圆并}
-				\inputminted{cpp}{src/Geometry/圆并.cpp}
+					\inputminted{cpp}{src/Geometry/圆并.cpp}
 				\subsection{多边形与圆交}
-				\inputminted{cpp}{src/Geometry/多边形和圆的交.cpp}
+					\inputminted{cpp}{src/Geometry/多边形和圆的交.cpp}
 				\subsection{阿波罗尼茨圆}
-				\inputminted{cpp}{src/Geometry/阿波罗尼茨圆.tex}
+					\inputminted{cpp}{src/Geometry/阿波罗尼茨圆.tex}
 				\subsection{圆幂~圆反演~根轴}
-				\input{src/Geometry/圆幂.tex}
+					\input{src/Geometry/圆幂.tex}
 				\subsection{球面基础}
-				\input{src/Geometry/球面.tex}
+					\input{src/Geometry/球面.tex}
 				\subsection{经纬度球面距离\checkmark}
-				\inputminted{cpp}{src/Geometry/经纬度求球面最短距离.cpp}
+					\inputminted{cpp}{src/Geometry/经纬度求球面最短距离.cpp}
 %				\subsection{最近点对}
 %				\inputminted{cpp}{src/Geometry/最近点对.cpp}
 %				\subsection{长方体表面两点最短距离}
 %				\inputminted{cpp}{src/Geometry/长方体表面两点最短距离.cpp}
 				\subsection{圆上整点\checkmark}
-				\inputminted{cpp}{src/Geometry/圆上整点.cpp}
+					\inputminted{cpp}{src/Geometry/圆上整点.cpp}
 				\subsection{三相之力\checkmark}
-				\inputminted{cpp}{src/Geometry/三角形.cpp}
+					\inputminted{cpp}{src/Geometry/三角形.cpp}
 				\subsection{相关公式}
-				\input{src/Geometry/Formula(Saga).tex}
-				\newpage
+					\input{src/Geometry/Formula(Saga).tex}
+					\newpage
 				\subsection{三维几何基础操作\checkmark}
-				\inputminted{cpp}{src/Geometry/三维几何.cpp}
+					\inputminted{cpp}{src/Geometry/三维几何.cpp}
 				\subsection{三维凸包\checkmark}
-				\inputminted{cpp}{src/Geometry/三维凸包.cpp}
+					\inputminted{cpp}{src/Geometry/三维凸包.cpp}
 				\subsection{最小覆盖球}
-				\inputminted{cpp}{src/Geometry/最小覆盖球.cpp}
-				\newpage
-				
-			%\begin{comment}
-			
-			%\section{Data Structure}
-			%	\subsection{KD 树}
-			%	\inputminted{cpp}{src/DataStructure/KD tree.cpp}
-			%	\subsection{LCT 动态树}
-			%	\inputminted{cpp}{src/DataStructure/LCT.cpp}
-				%\subsection{可持久化平衡树}
-				%\inputminted{cpp}{src/DataStructure/可持久化平衡树.cpp}
-				% \subsection{有旋 Treap}
-				% \inputminted{cpp}{src/DataStructure/有旋treap.cpp}
+					\inputminted{cpp}{src/Geometry/最小覆盖球.cpp}
+					
 				
 			\section{Tree \& Graph}
 				\subsection{Hopcroft-Karp $O(\sqrt{V} E)$\checkmark}
-				\inputminted{cpp}{src/TreeandGraph/Hopcroft.cpp}
-				\subsection{Hungarian $O(V E)$\checkmark}
-				\inputminted{cpp}{src/TreeandGraph/Hungarian.cpp}
+					\inputminted{cpp}{src/TreeandGraph/Hopcroft.cpp}
+				% \subsection{Hungarian $O(V E)$\checkmark}
+				% \inputminted{cpp}{src/TreeandGraph/Hungarian.cpp}
 				\subsection{Shuffle 一般图最大匹配 $O(V E)$\checkmark}
-				\inputminted{cpp}{src/TreeandGraph/一般图最大匹配-shuffle.cpp}
+					\inputminted{cpp}{src/TreeandGraph/一般图最大匹配-shuffle.cpp}
 				\subsection{极大团计数\checkmark}
-				\inputminted{cpp}{src/TreeandGraph/CliqueCount.cpp}
+					\inputminted{cpp}{src/TreeandGraph/CliqueCount.cpp}
 				\subsection{有根树同构 Hash\checkmark}
-				\inputminted{cpp}{src/TreeandGraph/TreeHash.cpp}
+					\inputminted{cpp}{src/TreeandGraph/TreeHash.cpp}
 				\subsection{KM 最大权匹配 $O(V^3)$}
-				\inputminted{cpp}{src/TreeandGraph/KM.cpp}
+					\inputminted{cpp}{src/TreeandGraph/KM.cpp}
 				%\subsection{Blossom 一般图带权最大匹配 $O(|V|^3)$}
 				%\inputminted{cpp}{src/TreeandGraph/Blossom.cpp}
 				\subsection{Tarjan 点双，边双}
-				\inputminted{cpp}{src/TreeandGraph/Tarjan.cpp}
-				\subsection{2-SAT\checkmark}
-				\inputminted{cpp}{src/TreeandGraph/2-sat.cpp}
+					\inputminted{cpp}{src/TreeandGraph/Tarjan.cpp}
+				\subsection{2-SAT，强连通分量}
+					\inputminted{cpp}{src/TreeandGraph/2-sat.cpp}
 				\subsection{Dominator Tree 支配树\checkmark}
-				\inputminted{cpp}{src/TreeandGraph/支配树.cpp}
+					\inputminted{cpp}{src/TreeandGraph/支配树.cpp}
 				%\subsection{最大团}
 				%\inputminted{cpp}{src/TreeandGraph/MaximumClique.cpp}
 				\subsection{Minimum Mean Cycle 最小平均值环 $O(n^2)$}
-				\inputminted{cpp}{src/TreeandGraph/MeanCycle.cpp}
+					\inputminted{cpp}{src/TreeandGraph/MeanCycle.cpp}
 				\subsection{弦图\checkmark}
-				\input{src/yzh/chordal-graph.tex}
-				\inputminted{cpp}{src/TreeandGraph/弦图.cpp}
+					\input{src/yzh/chordal-graph.tex}
+					\inputminted{cpp}{src/TreeandGraph/弦图.cpp}
 				\subsection{欧拉回路\checkmark}
-				\inputminted{cpp}{src/TreeandGraph/欧拉回路.cpp}
+					\inputminted{cpp}{src/TreeandGraph/欧拉回路.cpp}
 				\subsection{斯坦纳树}
-				\inputminted{cpp}{src/TreeandGraph/斯坦纳树.cpp}
+					\inputminted{cpp}{src/TreeandGraph/斯坦纳树.cpp}
 				\subsection{Dinic 最大流}
-				\input{src/yzh/dinic_complexity.tex}
-				\inputminted{cpp}{src/TreeandGraph/Dinic.cpp}
+					\input{src/yzh/dinic_complexity.tex}
+					\inputminted{cpp}{src/TreeandGraph/Dinic.cpp}
 				\subsection{Dijkstra 费用流\checkmark}
-				\inputminted{cpp}{src/TreeandGraph/MCMF_dij.cpp}
+					\inputminted{cpp}{src/TreeandGraph/MCMF_dij.cpp}
 				%\subsection{K短路}
 				%\inputminted{cpp}{src/TreeandGraph/K短路.cpp}
 				%\subsection{动态 MST}
@@ -316,104 +304,129 @@
 				%\inputminted{cpp}{src/TreeandGraph/最小乘积生成树.cpp}
 				%\subsection{树同构}
 				%\inputminted{cpp}{src/TreeandGraph/树同构.cpp}
-				\subsection{点分治}
-				\inputminted{cpp}{src/TreeandGraph/点分治.cpp}
 				%\subsection{虚树}
 				%\inputminted{cpp}{src/TreeandGraph/虚树.cpp}
 				%\subsection{动态最小生成树}
 				%\inputminted{cpp}{src/TreeandGraph/DynamicMST.cpp}
 				\subsection{Gomory-Hu 无向图最小割树\,$O(V ^ 3 E)$}
-				\input{src/yzh/Gomory-Hu.tex}
+					\input{src/yzh/Gomory-Hu.tex}
 				\subsection{Stoer-Wagner\,无向图最小割\,$O(VE + V ^ 2 \log V)$}
-				\inputminted{cpp}{src/yzh/Stoer-Wagner.cpp}
+					\inputminted{cpp}{src/yzh/Stoer-Wagner.cpp}
 				%\subsection{Cactus 仙人掌}
-				%\inputminted{cpp}{src/TreeandGraph/cactus.cpp}
-				\input{src/tbr/网络流总结.tex}
+					%\inputminted{cpp}{src/TreeandGraph/cactus.cpp}
+					\input{src/tbr/网络流总结.tex}
 				\subsection{图论结论}
-				\input{src/tbr/最小乘积问题.tex}
-				\input{src/tbr/最小环问题.tex}
-				\input{src/tbr/度序列的可图性.tex}
-				\input{src/tbr/切比雪夫距离与曼哈顿距离互化.tex}
-				%\subsection{图论知识 - Nightfall}
-				\input{src/TreeandGraph/图论知识.tex}
+					\input{src/tbr/最小乘积问题.tex}
+					\input{src/tbr/最小环问题.tex}
+					\input{src/tbr/度序列的可图性.tex}
+					\input{src/tbr/切比雪夫距离与曼哈顿距离互化.tex}
+					%\subsection{图论知识 - Nightfall}
+					\input{src/TreeandGraph/图论知识.tex}
+
+			\newpage
+			\section{Data Structure}
+				\subsection{点分治}
+					\inputminted{cpp}{src/DataStructure/点分治.cpp}
+				\subsection{KD 树}
+					\inputminted{cpp}{src/DataStructure/KD tree.cpp}
+				\subsection{LCT 动态树}
+					\inputminted{cpp}{src/DataStructure/LCT.cpp}
+				\subsection{可持久化平衡树}
+					\inputminted{cpp}{src/DataStructure/可持久化平衡树.cpp}
+				\subsection{有旋 Treap}
+					\inputminted{cpp}{src/DataStructure/有旋treap.cpp}
 			
 			\section{String}
 				\subsection{最小表示法}
-				\inputminted{cpp}{src/String/最小表示法.cpp}
+					\inputminted{cpp}{src/String/最小表示法.cpp}
 				\subsection{Manacher}
-				\inputminted{cpp}{src/String/Manacher.cpp}
+					\inputminted{cpp}{src/String/Manacher.cpp}
 				\subsection{Multiple Hash}
-				{\tt \small Primes available at Page \pageref{randomprimes}.}
-				\inputminted{cpp}{src/String/hash.cpp}	
+					{\tt \small Primes available at Page \pageref{randomprimes}.}
+					\inputminted{cpp}{src/String/hash.cpp}	
 				\subsection{KMP exKMP}
-				\inputminted{cpp}{src/String/KMP.cpp}
+					\inputminted{cpp}{src/String/KMP.cpp}
 				\subsection{AC 自动机}
-				\inputminted{cpp}{src/String/AC 自动机.cpp}
+					\inputminted{cpp}{src/String/AC 自动机.cpp}
 				\subsection{Lydon Word Decomposition}
-				\inputminted{cpp}{src/String/Lyndon Word.cpp}
-				\subsection{后缀数组\checkmark}
-				\inputminted{cpp}{src/String/SA.cpp}
-				%\subsection{后缀自动机}
-				%\inputminted{cpp}{src/String/SAM.cpp}
-				%\subsection{Suffix Balanced Tree 后缀平衡树}
-				%\inputminted{cpp}{src/String/后缀平衡树.cpp}
+					\inputminted{cpp}{src/String/Lyndon Word.cpp}
+				\subsection{后缀数组}
+					\inputminted{cpp}{src/String/SA.cpp}
+				\subsection{后缀自动机}
+					\inputminted{cpp}{src/String/SAM.cpp}
+				\subsection{SAMSA \& 后缀树}
+					\inputminted{cpp}{src/String/SAMSA.cpp}
+				\subsection{Suffix Balanced Tree 后缀平衡树}
+					\inputminted{cpp}{src/String/后缀平衡树.cpp}
 				%\subsection{Total LCS 子串对目标求 LCS}
 				%\inputminted{cpp}{src/String/Total LCS.cpp}
-				%\subsection{Palindrome Automation 回文自动机}
-				%\inputminted{cpp}{src/String/PAM.cpp}
+				\subsection{回文树}
+					\inputminted{cpp}{src/String/PAM.cpp}
 				\subsection{String Conclusions}
-				\input{src/tbr/string-Conclusions.tex}
+					\input{src/tbr/string-Conclusions.tex}
 			
 			\section{Math 数学}
 				\subsection{Long Long $O(1)$ 乘\checkmark}
-				\inputminted{cpp}{src/Miscellany/LLFPM.cpp}
+					\inputminted{cpp}{src/Miscellany/LLFPM.cpp}
 				\subsection{exgcd}
-				\inputminted{cpp}{src/Math/exgcd.cpp}
+					\inputminted{cpp}{src/Math/exgcd.cpp}
 				\subsection{CRT 中国剩余定理}
-				\inputminted{cpp}{src/Math/CRT_lbn.cpp}
+					\inputminted{cpp}{src/Math/CRT_lbn.cpp}
 				\subsection{Miller Rabin, Pollard Rho}
-				\inputminted{cpp}{src/Math/Miller Rabin And Pollard Rho.cpp}
+					\inputminted{cpp}{src/Math/Miller Rabin And Pollard Rho.cpp}
 				\subsection{扩展卢卡斯}
-				\inputminted{cpp}{src/Math/扩展卢卡斯.cpp}
+					\inputminted{cpp}{src/Math/扩展卢卡斯.cpp}
 				\subsection{阶乘取模}
-				\inputminted{cpp}{src/Math/Factorial Mod.cpp}
+					\inputminted{cpp}{src/Math/Factorial Mod.cpp}
 				\subsection{类欧几里得 直线下格点统计\checkmark}
-				\inputminted{cpp}{src/Math/直线下格点统计.cpp}
+					\inputminted{cpp}{src/Math/直线下格点统计.cpp}
 				\subsection{平方剩余}
-				\inputminted{cpp}{src/Math/平方剩余.cpp}
+					\inputminted{cpp}{src/Math/平方剩余.cpp}
 				% \subsection{BSGS 离散对数}
 				% \inputminted{cpp}{src/Math/BSGS.cpp}
 				\subsection{线性同余不等式}
-				\inputminted{cpp}{src/Math/线性同余不等式.cpp}
-				% \subsection{杜教筛}
-				% \inputminted{cpp}{src/Math/杜教筛.cpp}
+					\inputminted{cpp}{src/Math/线性同余不等式.cpp}
+				\subsection{杜教筛}
+					\input{src/Math/杜教筛.tex}
 				% \subsection{min25 筛}
 				% \inputminted{cpp}{src/Math/TEES.cpp}
 				\subsection{原根}
 				% \inputminted{cpp}{src/Math/原根.cpp
-				\input{src/tbr/阶和原根.tex}
-				\subsection{FFT NTT FWT 多项式操作}
-				\inputminted{cpp}{src/Math/FFT NTT FWT.cpp}
+					\input{src/tbr/阶和原根.tex}
+				\subsection{FFT}
+					\inputminted{cpp}{src/Math/FFT.cpp}
+				\subsection{NTT}
+					\inputminted{cpp}{src/Math/NTT.cpp}
+				\subsection{多项式运算}
+					\inputminted{cpp}{src/Math/多项式运算.cpp}
+					\subsubsection{多点求值}
+						\inputminted{cpp}{src/Math/多点求值.cpp}
+					\subsubsection{快速插值}	
+						\input{src/Math/快速插值.tex}
+				\subsection{FWT}
+					\inputminted{cpp}{src/Math/FWT.cpp}
+				% \subsection{FFT NTT FWT 多项式操作}
+				% 	\inputminted{cpp}{src/Math/FFT NTT FWT.cpp}
 				\subsection{K 进制 FWT}
-				\inputminted{cpp}{src/tbr/fwt.cpp}
+					\inputminted{cpp}{src/tbr/fwt.cpp}
 				% \input{src/Math/多项式牛顿法.tex}
-				\inputminted{cpp}{src/Math/Polynomial.cpp}
-				\input{src/Math/单位根反演.tex}
+					\inputminted{cpp}{src/Math/Polynomial.cpp}
+					\input{src/Math/单位根反演.tex}
 				%\input{src/Math/多点求值与快速插值.tex}
 				%\subsection{多项式插值}
 				%\input{cpp}{src/Math/插值.tex}
 				\subsection{Simplex 单纯形\checkmark}
-				\inputminted{cpp}{src/Math/Simplex.cpp}
+					\inputminted{cpp}{src/Math/Simplex.cpp}
 				\subsection{线性递推}
-				\inputminted{cpp}{src/Math/线性递推.cpp}
+					\inputminted{cpp}{src/Math/线性递推.cpp}
 				\subsection{Berlekamp-Massey 最小多项式}
-				\inputminted{cpp}{src/Math/Berlekamp-Massey.cpp}
+					\inputminted{cpp}{src/Math/Berlekamp-Massey.cpp}
 				\subsection{Pell 方程}
-				\inputminted{cpp}{src/Math/Pell方程.cpp}
+					\inputminted{cpp}{src/Math/Pell方程.cpp}
 				\subsection{解一元三次方程}
-				\inputminted{cpp}{src/Math/解一元三次方程.cpp}
+					\inputminted{cpp}{src/Math/解一元三次方程.cpp}
 				\subsection{自适应 Simpson}
-				\inputminted{cpp}{src/Math/Simpson.cpp}
+					\inputminted{cpp}{src/Math/Simpson.cpp}
 				%\subsection{Schreier-Sims 求排列群的阶}
 				%\inputminted{cpp}{src/Math/Schreier-Sims.cpp}
 		
@@ -421,54 +434,54 @@
 			\section{Appendix}
 				\begin{spacing}{0.5}
 				\subsection{Formulas 公式表}
-				\input{src/tbr/appendix-Formula.tex}
+					\input{src/tbr/appendix-Formula.tex}
 				\subsection{Calculus Table 导数表}
-				\input{src/TipsandHints/CalculusTable.tex}
+					\input{src/TipsandHints/CalculusTable.tex}
 				\subsection{Integration Table 积分表}
-				\input{src/TipsandHints/IntegrationTable_NewMeta.tex}
+					\input{src/TipsandHints/IntegrationTable_NewMeta.tex}
 				\subsection{Java Template}
-				\inputminted{java}{src/Miscellany/Main.java}
+					\inputminted{java}{src/Miscellany/Main.java}
 				\subsection{Python Hint}
-				\inputminted{python}{src/Miscellany/py.py}
+					\inputminted{python}{src/Miscellany/py.py}
 				\end{spacing}
 
 			\section{Miscellany}
 				\subsection{Zeller 日期公式\checkmark}
-				\inputminted{cpp}{src/Miscellany/日期公式.cpp}
+					\inputminted{cpp}{src/Miscellany/日期公式.cpp}
 				\subsection{DP 优化}
 				\subsubsection{四边形不等式\checkmark}
-				\inputminted{cpp}{src/Miscellany/2D1D.cpp}
-				\input{src/tbr/树形背包优化.tex}
+					\inputminted{cpp}{src/Miscellany/2D1D.cpp}
+					\input{src/tbr/树形背包优化.tex}
 				%\subsection{Dancing Links 精确覆盖搜索}
 				%\inputminted{cpp}{src/Miscellany/DLX.cpp}
 				\subsection{Hash Table}
-				\inputminted{cpp}{src/DataStructure/hashmap.cpp}
+					\inputminted{cpp}{src/DataStructure/hashmap.cpp}
 				\subsection{基数排序}
-				\inputminted{cpp}{src/Miscellany/RadixSort.cpp}
+					\inputminted{cpp}{src/Miscellany/RadixSort.cpp}
 				\subsection{O3 与读入优化}
-				\inputminted{cpp}{src/Miscellany/hack.cpp}
+					\inputminted{cpp}{src/Miscellany/hack.cpp}
 				\subsection{Vimrc, Bashrc}
-				\inputminted{vim}{src/Miscellany/vimrc}
-				\inputminted{sh}{src/Miscellany/bashrc}
+					\inputminted{vim}{src/Miscellany/vimrc}
+					\inputminted{sh}{src/Miscellany/bashrc}
 				\subsection{Constant Table 常数表}
 				\label{randomprimes}
 				\begin{small}
-				\setlength{\parindent}{0em}\setlength{\parskip}{0em}\renewcommand{\baselinestretch}{.8}
-				\texttt{\input{|"python src/Miscellany/randomprimes.py"}}
+					\setlength{\parindent}{0em}\setlength{\parskip}{0em}\renewcommand{\baselinestretch}{.8}
+					\texttt{\input{|"python src/Miscellany/randomprimes.py"}}
 				\end{small}
 				\input{src/TipsandHints/Addon.tex}
 				
 				\newpage
-			\subsection*{Java Example}
-				\inputminted{java}{src/Miscellany/Main2.java}
-			\subsection*{Python Example}
-				\inputminted{python}{src/Miscellany/test.py}
-			\subsection*{Blossom}
-				\inputminted{python}{src/TreeandGraph/Blossom.cpp}
-			\subsection*{Chu-liu}
-				\inputminted{cpp}{src/TreeandGraph/最小树形图.cpp}
-			\subsection*{天动万象}
-				\inputminted{cpp}{src/yzh/ByteCampA3.cpp}
+				\subsection*{Java Example}
+					\inputminted{java}{src/Miscellany/Main2.java}
+				\subsection*{Python Example}
+					\inputminted{python}{src/Miscellany/test.py}
+				% \subsection*{Blossom}
+				% 	\inputminted{python}{src/TreeandGraph/Blossom.cpp}
+				\subsection*{Chu-liu}
+					\inputminted{cpp}{src/TreeandGraph/最小树形图.cpp}
+				\subsection*{天动万象}
+					\inputminted{cpp}{src/yzh/ByteCampA3.cpp}
 			%\end{comment}
 		\end{spacing}
 		\endgroup

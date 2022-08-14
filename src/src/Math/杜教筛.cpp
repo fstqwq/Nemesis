@@ -1,10 +1,15 @@
-LL P(LL n){// 求欧拉函数前缀和 
-	if(n<M)return phi[n];//M=n^(2/3),phi[n] 为预处理前缀和 
-	LL x=1ll*n*(n+1)/2,i=2,la;
-	for(;i<=n;i=la+1)la=n/(n/i),x-=P(n/i)*(la-i+1);
-	return x;}
-LL U(LL n){// 求莫比乌斯函数前缀和 
-	if(n<M)return u[n];// 预处理的前缀和 
-	LL x=1,i=2,la;
-	for(;i<=n;i=la+1)la=n/(n/i),x-=U(n/i)*(la-i+1);
-	return x;}
+const int maxn = 5000005, table_size = 5000000,
+	p = 1000000007, inv_2 = (p + 1) / 2;
+bool notp[maxn];
+int prime[maxn / 20], phi[maxn], tbl[100005];
+long long N;
+memset(tbl, -1, sizeof(tbl));
+int S_phi(long long n) {
+	if (n <= table_size) return phi[n];
+	else if (~tbl[N / n]) return tbl[N / n];
+	int ans = 0;
+	for (long long i = 2, last; i <= n; i = last + 1) {
+		last = n / (n / i); // 如果n是int，下面要强转
+		ans = (ans + (last - i + 1) % p * S_phi(n / i)) % p; }
+	ans = (n % p * ((n + 1) % p) % p * inv_2 - ans + p) % p;
+	return tbl[N / n] = ans; } // 上一行也要强转

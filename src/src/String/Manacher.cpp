@@ -1,8 +1,11 @@
-// 这段代码仅仅处理奇回文,使用时请往字符串中间加入 # 来使用
-for(int i = 1, j = 0; i != (n << 1) - 1; ++i){
-	int p=i>>1, q = i - p, r = ((j + 1) >> 1) + l[j] - 1;
-	l[i] = r < q ? 0 : min(r - q + 1, l[(j << 1) - i]);
-	while (p - l[i] != -1 && q + l[i] != n
-		&& s[p - l[i]] == s[q + l[i]]) l[i]++;
-	if(q + l[i] - 1 > r) j=i;
-	a += l[i]; }
+// n为串长, 回文半径输出到p数组中，数组要开串长的两倍
+void manacher(const char *t, int n) {
+	static char s[maxn * 2];
+	for (int i = n; i; i--) s[i * 2] = t[i];
+	for (int i = 0; i <= n; i++) s[i * 2 + 1] = '#';
+	s[0] = '$'; s[(n + 1) * 2] = '\0'; n = n * 2 + 1;
+	int mx = 0, j = 0;
+	for (int i = 1; i <= n; i++) {
+		p[i] = (mx > i ? min(p[j * 2 - i], mx - i) : 1);
+		while (s[i - p[i]] == s[i + p[i]]) p[i]++;
+		if (i + p[i] > mx) { mx = i + p[i]; j = i; } } }
