@@ -147,6 +147,8 @@ $J_k(n)$ is the number of $k$-tuples of positive integers all less than or equal
 \[c_{0}=1,c_n=\sum_{i=0}^{n-1}c_ic_{n-1-i}=c_{n-1}\frac{4n-2}{n+1}=\frac{\binom{2n}{n}}{n+1}=\binom{2n}{n}-\binom{2n}{n-1}\]
 \[ c(x)=\frac{1-\sqrt{1-4x}}{2x}\]
 Usage: $n$对括号序列; $n$个点满二叉树; $n\times n$的方格左下到右上不过对角线方案数; 凸$n+2$边形三角形分割数; $n$个数的出栈方案数; $2n$个顶点连接, 线段两两不交的方案数.
+\subsubsection{类卡特兰数}
+从 $(1,1)$ 出发走到 $(n,m)$,只能向右或者向上走,不能越过 $y=x$ 这条线(即保证 $x\geq y$ ),合法方案数是 $C_{n+m-2}^{n-1} - C_{n+m-2}^n$.
 \subsubsection{Stirling Numbers}
 第一类：$n$个元素集合分作$k$个非空环方案数.
 \begin{multicols*}{2}
@@ -257,6 +259,9 @@ For fixed $k$, generating functions :
 \[ H_n = \sum_{k=1}^n \frac{1}{k}, \sum_{k=1}^nH_k = (n+1)H_n-n \]
 \[ \sum_{k=1}^nkH_k = \frac{n(n+1)}{2}H_n - \frac{n(n-1)}{4} \]
 \[ \sum_{k=1}^n{k \choose m}H_k = {n+1 \choose m+1}(H_{n+1} - \frac{1}{m+1}) \]
+\subsubsection{错排数 0, 1, 2, 9, 44, 265, 1854, 14833\dots}
+\[D_1=0,D_2=1,D_n=n!(\frac{1}{0!}-\frac{1}{1!}+\frac{1}{2!}-\frac{1}{3!}+...+\frac{(-1)^n}{n!})\]
+\[D_n=(n-1)(D_{n-1}+D_{n-2})\]
 \subsubsection{五边形数定理求拆分数}
 \[ \Phi(x) = \prod_{n=1}^{\infty}(1-x^n) = \sum_{n=-\infty}^{\infty}{(-1)^kx^{k(3k-1)/2}} \]
 记$p(n)$表示$n$的拆分数,$f(n,k)$表示将$n$拆分且每种数字使用次数必须小于$k$的拆分数.则
@@ -330,9 +335,6 @@ $h_\lambda(i,j)$表示该格子右边和上边的格子数量加1.
 
 \input{src/tbr/最大最小定理求纳什均衡点.tex}
 
-\subsubsection{错排公式}
-\[D_1=0,D_2=1,D_n=n!(\frac{1}{0!}-\frac{1}{1!}+\frac{1}{2!}-\frac{1}{3!}+...+\frac{(-1)^n}{n!})\]
-\[D_n=(n-1)(D_{n-1}+D_{n-2})\]
 \subsubsection{概率相关}
 对于随机变量$X$, 期望用$E(X)$表示, 方差用$D(X)$表示, 则$D(X)=E(X-E(X))^2=E(X^2)-(E(X))^2,D(X+Y)=D(X)+D(Y)D(aX)=a^2D(X)$
 \[E[x]=\sum_{i=1}^{\infty}P(X\geq i)\]
@@ -340,9 +342,6 @@ $h_\lambda(i,j)$表示该格子右边和上边的格子数量加1.
 \[f(x)=\frac{f(x_0)}{0!}+\frac{f'(x_0)}{1!}(x-x_0)+\frac{f''(x_0)}{2!}(x-x_0)^2+\cdots\]
 \[\frac{1}{(1-x)^n}=1+\binom{n}{1}x+\binom{n+1}{2}x^2+\binom{n+2}{3}x^3+\cdots \]
 \[e^x=1+x+\frac{x^2}{2!}+\cdots+\frac{x^i}{i!}\]
-
-\subsubsection{类卡特兰数}
-从 $(1,1)$ 出发走到 $(n,m)$,只能向右或者向上走,不能越过 $y=x$ 这条线(即保证 $x\geq y$ ),合法方案数是 $C_{n+m-2}^{n-1} - C_{n+m-2}^n$.
 
 \subsubsection{邻接矩阵行列式的意义}
 在无向图中取若干个环,一种取法权值就是边权的乘积,对行列式的贡献是$(-1)^{\mathrm{even}}$,其中$\mathrm{even}$是偶环的个数.
