@@ -1,0 +1,28 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kt}{int} \PYG{n}{d}\PYG{p}{[}\PYG{n}{N}\PYG{p}{];}\PYG{k+kt}{bool} \PYG{n}{v}\PYG{p}{[}\PYG{n}{N}\PYG{p}{],}\PYG{n}{g}\PYG{p}{[}\PYG{n}{N}\PYG{p}{];}
+\PYG{k+kt}{int} \PYG{n+nf}{get}\PYG{p}{(}\PYG{k+kt}{int}\PYG{o}{\PYGZam{}}\PYG{n}{s}\PYG{p}{,}\PYG{k+kt}{int}\PYG{o}{\PYGZam{}}\PYG{n}{t}\PYG{p}{)\PYGZob{}}
+	\PYG{n}{CL}\PYG{p}{(}\PYG{n}{d}\PYG{p}{);}\PYG{n}{CL}\PYG{p}{(}\PYG{n}{v}\PYG{p}{);}\PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{,}\PYG{n}{j}\PYG{p}{,}\PYG{n}{k}\PYG{p}{,}\PYG{n}{an}\PYG{p}{,}\PYG{n}{mx}\PYG{p}{;}
+	\PYG{n}{fr}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{n}\PYG{p}{)\PYGZob{}}  \PYG{n}{k}\PYG{o}{=}\PYG{n}{mx}\PYG{o}{=\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+		\PYG{n}{fr}\PYG{p}{(}\PYG{n}{j}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{n}\PYG{p}{)}\PYG{k}{if}\PYG{p}{(}\PYG{o}{!}\PYG{n}{g}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]}\PYG{o}{\PYGZam{}\PYGZam{}!}\PYG{n}{v}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]}\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{n}{d}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]}\PYG{o}{\PYGZgt{}}\PYG{n}{mx}\PYG{p}{)}\PYG{n}{k}\PYG{o}{=}\PYG{n}{j}\PYG{p}{,}\PYG{n}{mx}\PYG{o}{=}\PYG{n}{d}\PYG{p}{[}\PYG{n}{j}\PYG{p}{];}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{k}\PYG{o}{==\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{k}{return} \PYG{n}{an}\PYG{p}{;}
+		\PYG{n}{s}\PYG{o}{=}\PYG{n}{t}\PYG{p}{;}\PYG{n}{t}\PYG{o}{=}\PYG{n}{k}\PYG{p}{;}\PYG{n}{an}\PYG{o}{=}\PYG{n}{mx}\PYG{p}{;}\PYG{n}{v}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;}
+		\PYG{n}{fr}\PYG{p}{(}\PYG{n}{j}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{n}\PYG{p}{)}\PYG{k}{if}\PYG{p}{(}\PYG{o}{!}\PYG{n}{g}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]}\PYG{o}{\PYGZam{}\PYGZam{}!}\PYG{n}{v}\PYG{p}{[}\PYG{n}{j}\PYG{p}{])}\PYG{n}{d}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]}\PYG{o}{+=}\PYG{n}{w}\PYG{p}{[}\PYG{n}{k}\PYG{p}{][}\PYG{n}{j}\PYG{p}{];}
+	\PYG{p}{\PYGZcb{}}\PYG{k}{return} \PYG{n}{an}\PYG{p}{;\PYGZcb{}}
+\PYG{k+kt}{int} \PYG{n+nf}{mincut}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{,}\PYG{k+kt}{int} \PYG{n}{w}\PYG{p}{[}\PYG{n}{N}\PYG{p}{][}\PYG{n}{N}\PYG{p}{])\PYGZob{}}
+\PYG{c+c1}{//n 为点数, w[i][j] 为 i 到 j 的流量, 返回无向图所有点对最小割之和 }
+	\PYG{k+kt}{int} \PYG{n}{ans}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{i}\PYG{p}{,}\PYG{n}{j}\PYG{p}{,}\PYG{n}{s}\PYG{p}{,}\PYG{n}{t}\PYG{p}{,}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{,}\PYG{n}{z}\PYG{p}{;}
+	\PYG{n}{fr}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)\PYGZob{}}
+		\PYG{n}{ans}\PYG{o}{=}\PYG{n}{min}\PYG{p}{(}\PYG{n}{ans}\PYG{p}{,}\PYG{n}{get}\PYG{p}{(}\PYG{n}{s}\PYG{p}{,}\PYG{n}{t}\PYG{p}{));}
+		\PYG{n}{g}\PYG{p}{[}\PYG{n}{t}\PYG{p}{]}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{k}{if}\PYG{p}{(}\PYG{o}{!}\PYG{n}{ans}\PYG{p}{)}\PYG{k}{break}\PYG{p}{;}
+		\PYG{n}{fr}\PYG{p}{(}\PYG{n}{j}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{n}\PYG{p}{)}\PYG{k}{if}\PYG{p}{(}\PYG{o}{!}\PYG{n}{g}\PYG{p}{[}\PYG{n}{j}\PYG{p}{])}\PYG{n}{w}\PYG{p}{[}\PYG{n}{s}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]}\PYG{o}{=}\PYG{p}{(}\PYG{n}{w}\PYG{p}{[}\PYG{n}{j}\PYG{p}{][}\PYG{n}{s}\PYG{p}{]}\PYG{o}{+=}\PYG{n}{w}\PYG{p}{[}\PYG{n}{j}\PYG{p}{][}\PYG{n}{t}\PYG{p}{]);}
+	\PYG{p}{\PYGZcb{}}\PYG{k}{return} \PYG{n}{ans}\PYG{p}{;\PYGZcb{}}
+\PYG{c+c1}{// 无向图最小割树}
+\PYG{k+kt}{void} \PYG{n+nf}{fz}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{l}\PYG{p}{,}\PYG{k+kt}{int} \PYG{n}{r}\PYG{p}{)\PYGZob{}}\PYG{c+c1}{// 左闭右闭, 分治建图 }
+	\PYG{k}{if}\PYG{p}{(}\PYG{n}{l}\PYG{o}{==}\PYG{n}{r}\PYG{p}{)}\PYG{k}{return}\PYG{p}{;}\PYG{n}{S}\PYG{o}{=}\PYG{n}{a}\PYG{p}{[}\PYG{n}{l}\PYG{p}{];}\PYG{n}{T}\PYG{o}{=}\PYG{n}{a}\PYG{p}{[}\PYG{n}{r}\PYG{p}{];}
+	\PYG{n}{reset}\PYG{p}{();}\PYG{c+c1}{// 将所有边权复原 }
+	\PYG{n}{flow}\PYG{p}{(}\PYG{n}{S}\PYG{p}{,}\PYG{n}{T}\PYG{p}{);}\PYG{c+c1}{// 做网络流 }
+	\PYG{n}{dfs}\PYG{p}{(}\PYG{n}{S}\PYG{p}{);}\PYG{c+c1}{// 找割集, v[x]=1 属于 S 集, 否则属于 T 集 }
+	\PYG{n}{ADD}\PYG{p}{(}\PYG{n}{S}\PYG{p}{,}\PYG{n}{T}\PYG{p}{,}\PYG{n}{fl}\PYG{p}{);}\PYG{c+c1}{// 在最小割树中建边 }
+	\PYG{n}{L}\PYG{o}{=}\PYG{n}{l}\PYG{p}{,}\PYG{n}{R}\PYG{o}{=}\PYG{n}{r}\PYG{p}{;}\PYG{n}{fr}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,}\PYG{n}{l}\PYG{p}{,}\PYG{n}{r}\PYG{p}{)} \PYG{k}{if}\PYG{p}{(}\PYG{n}{v}\PYG{p}{[}\PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]])}\PYG{n}{q}\PYG{p}{[}\PYG{n}{L}\PYG{o}{++}\PYG{p}{]}\PYG{o}{=}\PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];} \PYG{k}{else} \PYG{n}{q}\PYG{p}{[}\PYG{n}{R}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{]}\PYG{o}{=}\PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+	\PYG{n}{fr}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,}\PYG{n}{l}\PYG{p}{,}\PYG{n}{r}\PYG{p}{)}\PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{=}\PYG{n}{q}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}\PYG{n}{fz}\PYG{p}{(}\PYG{n}{l}\PYG{p}{,}\PYG{n}{L}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{);}\PYG{n}{fz}\PYG{p}{(}\PYG{n}{R}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{r}\PYG{p}{);\PYGZcb{}}
+\end{Verbatim}

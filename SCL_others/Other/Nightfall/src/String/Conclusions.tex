@@ -1,0 +1,16 @@
+\subsubsection{双回文串}
+\noindent
+如果$s=x_1x_2=y_1y_2=z_1z_2, |x_1|<|y_1|<|z_1|, x_2, y_1, y_2, z_1$是回文串, 则$x_1$和$z_2$也是回文串. 
+
+\subsubsection{Border 的结构}
+\noindent
+字符串$s$的所有不小于$|s|/2$的border长度组成一个等差数列.\\
+字符串$s$的所有 border 按长度排序后可分成$O(\log{|s|})$段, 每段是一个等差数列. 回文串的回文后缀同时也是它的border. 
+
+\subsubsection{子串最小后缀}
+\noindent
+设$s[p..n]$是$s[i..n]$, $(l \leq i \leq r)$中最小者, 则minsuf(l, r)等于$s[p..r]$的最短非空 border. minsuf(l, r) = min\{$s[p..r]$, minsuf(r − $2^k$ + 1, r)\}, $(2^k < r − l + 1 \leq 2^{k+1})$. 
+
+\subsubsection{子串最大后缀}
+\noindent
+从左往右扫, 用set维护后缀的字典序递减的单调队列, 并在对应时刻添加"小于事件"点以便在之后修改队列; 查询直接在set里lower\_bound.

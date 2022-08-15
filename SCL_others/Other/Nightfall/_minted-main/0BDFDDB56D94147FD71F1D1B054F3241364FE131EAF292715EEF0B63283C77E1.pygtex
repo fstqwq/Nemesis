@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{err}{硬币问题}\PYG{o}{:} \PYG{err}{易知两两相切的圆半径为} \PYG{n}{r1}\PYG{p}{,} \PYG{n}{r2}\PYG{p}{,} \PYG{n}{r3}\PYG{p}{,} \PYG{err}{求与他们都相切的圆的半径} \PYG{n}{r4}
+\PYG{err}{分母取负号}\PYG{p}{,} \PYG{err}{答案再取绝对值}\PYG{p}{,} \PYG{err}{为外切圆半径}
+\PYG{err}{分母取正号为内切圆半径}
+\PYG{c+c1}{// $ r^{\pm}_4 = \frac{r_1 r_2 r_3}{r_1 r_2 + r_1 r_3 + r_2 r_3 \pm 2\sqrt{r_1r_2r_3(r_1 + r_2 + r_3)}} $}
+\end{Verbatim}

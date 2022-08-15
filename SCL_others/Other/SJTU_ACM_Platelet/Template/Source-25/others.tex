@@ -1,0 +1,38 @@
+\section{bashrc\ vimrc\ \small(gy)}
+    \myminted{bash}{Others/.bashrc}
+    \hline
+    \myminted{vim}{Others/.vimrc}
+\section{STL释放内存\ \small(Durandal)}
+    \myminted{cpp}{Others/stl_clear.cpp}
+\section{开栈\ \small(Durandal)}
+    \myminted{cpp}{Others/rsp.cpp}
+\section{O3\ \small(gy)}
+    \myminted{cpp}{Others/o3.cpp}
+%\section{读入优化\ \small(ct)}
+%    \myminted{cpp}{Others/input_optimize.cpp}
+\section{模拟退火\ \small(ct)}
+    \myminted{cpp}{Others/simulated_annealing.cpp}
+\section{Simpson积分\ \small(gy)}
+    \myminted{cpp}{Others/simpson.cpp}
+\section{Zeller\ Congruence\ \small(gy)}
+    $ 0 \to \text{Sunday} , \dots , 6 \to \text{Saturday} $
+    \myminted{cpp}{Others/zeller_congruence.cpp}
+\section{博弈论模型\ \small(gy)}
+    \subsection*{Wythoff's game}
+        给定两堆石子，每次可以从任意一堆中取至少一个石子，或从两堆中取相同的至少一个石子，取走最后石子的胜
+        \\先手胜当且仅当石子数满足：
+        \\$\lfloor (b - a) \times \phi \rfloor=a, (a \leq b, \phi = \frac{\sqrt{5} + 1}{2})$
+        \\先手胜对应的石子数构成两个序列：
+        \\$a_n = \lfloor n \times \phi \rfloor$, $b_n = \lfloor n \times \phi ^ 2 \rfloor$
+    \subsection*{Fibonacci nim}
+        给定一堆石子，第一次可以取至少一个、少于石子总数数量的石子，之后每次可以取至少一个、不超过上次取石子数量两倍的石子，取走最后石子的胜
+        \\先手胜当且仅当石子数为斐波那契数
+    \subsection*{anti-SG}
+        决策集合为空的游戏者胜
+        \\先手胜当且仅当满足以下任一条件
+        \begin{itemize}[nosep,wide=0pt]
+            \item 所有单一游戏的$ SG $值都$ < 2 $且游戏的$ SG $值为$ 0 $
+            \item 至少有一个单一游戏的$ SG $值$ \geq 2 $且游戏的$ SG $值不为$ 0 $
+        \end{itemize}
+\section{积分表\ \small(integral-table.com)}
+    \input{Others/integral-table.tex}

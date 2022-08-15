@@ -1,0 +1,27 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k}{const} \PYG{n}{LL} \PYG{n}{is\PYGZus{}query} \PYG{o}{=} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{1LL} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{62}\PYG{p}{);}
+\PYG{k}{struct} \PYG{n}{Line} \PYG{p}{\PYGZob{}} \PYG{n}{LL} \PYG{n}{k}\PYG{p}{,} \PYG{n}{b}\PYG{p}{;} \PYG{c+c1}{// kx + b}
+\PYG{k}{mutable} \PYG{n}{function}\PYG{o}{\PYGZlt{}}\PYG{k}{const} \PYG{n}{Line}\PYG{o}{*}\PYG{p}{()}\PYG{o}{\PYGZgt{}} \PYG{n}{succ}\PYG{p}{;}
+\PYG{k+kt}{bool} \PYG{k}{operator} \PYG{o}{\PYGZlt{}} \PYG{p}{(}\PYG{k}{const} \PYG{n}{Line} \PYG{o}{\PYGZam{}}\PYG{n}{rhs}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{rhs}\PYG{p}{.}\PYG{n}{b} \PYG{o}{!=} \PYG{n}{is\PYGZus{}query}\PYG{p}{)} \PYG{k}{return} \PYG{n}{k} \PYG{o}{\PYGZlt{}} \PYG{n}{rhs}\PYG{p}{.}\PYG{n}{k}\PYG{p}{;}
+	\PYG{k}{const} \PYG{n}{Line}\PYG{o}{*} \PYG{n}{s} \PYG{o}{=} \PYG{n}{succ}\PYG{p}{();}
+	\PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{s}\PYG{p}{)} \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{LL} \PYG{n}{x} \PYG{o}{=} \PYG{n}{rhs}\PYG{p}{.}\PYG{n}{k}\PYG{p}{;}
+	\PYG{c+c1}{// 根据范围和有无 \PYGZus{}\PYGZus{}int128 调整 是否使用 1.0L* 下同}
+	\PYG{k}{return} \PYG{l+m+mf}{1.0}\PYG{n}{L} \PYG{o}{*} \PYG{n}{b} \PYG{o}{\PYGZhy{}} \PYG{n}{s}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{b} \PYG{o}{\PYGZlt{}} \PYG{l+m+mf}{1.0}\PYG{n}{L} \PYG{o}{*} \PYG{p}{(}\PYG{n}{s}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{k} \PYG{o}{\PYGZhy{}} \PYG{n}{k}\PYG{p}{)} \PYG{o}{*} \PYG{n}{x}\PYG{p}{;} \PYG{p}{\PYGZcb{}} \PYG{p}{\PYGZcb{};}
+\PYG{k}{struct} \PYG{n+nl}{HullDynamic} \PYG{p}{:} \PYG{k}{public} \PYG{n}{multiset}\PYG{o}{\PYGZlt{}}\PYG{n}{Line}\PYG{o}{\PYGZgt{}} \PYG{p}{\PYGZob{}}
+\PYG{k+kt}{bool} \PYG{n}{bad}\PYG{p}{(}\PYG{n}{iterator} \PYG{n}{y}\PYG{p}{)} \PYG{p}{\PYGZob{}}    \PYG{c+c1}{// upper hull for maximum}
+	\PYG{k}{auto} \PYG{n}{z} \PYG{o}{=} \PYG{n}{next}\PYG{p}{(}\PYG{n}{y}\PYG{p}{);} \PYG{k}{if} \PYG{p}{(}\PYG{n}{y} \PYG{o}{==} \PYG{n}{begin}\PYG{p}{())} \PYG{p}{\PYGZob{}}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{z} \PYG{o}{==} \PYG{n}{end}\PYG{p}{())} \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+		\PYG{k}{return} \PYG{n}{y}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{k} \PYG{o}{==} \PYG{n}{z}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{k} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{y}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{b} \PYG{o}{\PYGZlt{}=} \PYG{n}{z}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{b}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+	\PYG{k}{auto} \PYG{n}{x} \PYG{o}{=} \PYG{n}{prev}\PYG{p}{(}\PYG{n}{y}\PYG{p}{);}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{z} \PYG{o}{==} \PYG{n}{end}\PYG{p}{())} \PYG{k}{return} \PYG{n}{y}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{k} \PYG{o}{==} \PYG{n}{x}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{k} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{y}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{b} \PYG{o}{\PYGZlt{}=} \PYG{n}{x}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{b}\PYG{p}{;}
+	\PYG{k}{return} \PYG{l+m+mf}{1.0}\PYG{n}{L} \PYG{o}{*} \PYG{p}{(}\PYG{n}{x}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{b} \PYG{o}{\PYGZhy{}} \PYG{n}{y}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{b}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{z}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{k} \PYG{o}{\PYGZhy{}} \PYG{n}{y}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{k}\PYG{p}{)} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mf}{1.0}\PYG{n}{L} \PYG{o}{*} \PYG{p}{(}\PYG{n}{y}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{b} \PYG{o}{\PYGZhy{}} \PYG{n}{z}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{b}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{y}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{k} \PYG{o}{\PYGZhy{}} \PYG{n}{x}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{k}\PYG{p}{);} \PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{void} \PYG{n}{insert\PYGZus{}line}\PYG{p}{(}\PYG{n}{LL} \PYG{n}{k}\PYG{p}{,} \PYG{n}{LL} \PYG{n}{b}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{k}{auto} \PYG{n}{y} \PYG{o}{=} \PYG{n}{insert}\PYG{p}{(\PYGZob{}}\PYG{n}{k}\PYG{p}{,} \PYG{n}{b}\PYG{p}{\PYGZcb{});}
+	\PYG{n}{y}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{succ} \PYG{o}{=} \PYG{p}{[}\PYG{o}{=}\PYG{p}{]\PYGZob{}}\PYG{k}{return} \PYG{n}{next}\PYG{p}{(}\PYG{n}{y}\PYG{p}{)} \PYG{o}{==} \PYG{n}{end}\PYG{p}{()} \PYG{o}{?} \PYG{l+m+mi}{0} \PYG{o}{:} \PYG{o}{\PYGZam{}*}\PYG{n}{next}\PYG{p}{(}\PYG{n}{y}\PYG{p}{);\PYGZcb{};}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{bad}\PYG{p}{(}\PYG{n}{y}\PYG{p}{))} \PYG{p}{\PYGZob{}} \PYG{n}{erase}\PYG{p}{(}\PYG{n}{y}\PYG{p}{);} \PYG{k}{return}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+	\PYG{k}{while} \PYG{p}{(}\PYG{n}{next}\PYG{p}{(}\PYG{n}{y}\PYG{p}{)} \PYG{o}{!=} \PYG{n}{end}\PYG{p}{()} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{bad}\PYG{p}{(}\PYG{n}{next}\PYG{p}{(}\PYG{n}{y}\PYG{p}{)))} \PYG{n}{erase}\PYG{p}{(}\PYG{n}{next}\PYG{p}{(}\PYG{n}{y}\PYG{p}{));}
+	\PYG{k}{while} \PYG{p}{(}\PYG{n}{y} \PYG{o}{!=} \PYG{n}{begin}\PYG{p}{()} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{bad}\PYG{p}{(}\PYG{n}{prev}\PYG{p}{(}\PYG{n}{y}\PYG{p}{)))} \PYG{n}{erase}\PYG{p}{(}\PYG{n}{prev}\PYG{p}{(}\PYG{n}{y}\PYG{p}{));} \PYG{p}{\PYGZcb{}}
+\PYG{n}{LL} \PYG{n}{eval}\PYG{p}{(}\PYG{n}{LL} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{n}{Line} \PYG{n}{u} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{n}{x}\PYG{p}{,} \PYG{n}{is\PYGZus{}query}\PYG{p}{\PYGZcb{};}
+	\PYG{k}{auto} \PYG{n}{l} \PYG{o}{=} \PYG{o}{*}\PYG{n}{lower\PYGZus{}bound}\PYG{p}{(}\PYG{n}{u}\PYG{p}{);} \PYG{k}{return} \PYG{n}{l}\PYG{p}{.}\PYG{n}{k} \PYG{o}{*} \PYG{n}{x} \PYG{o}{+} \PYG{n}{l}\PYG{p}{.}\PYG{n}{b}\PYG{p}{;} \PYG{p}{\PYGZcb{}\PYGZcb{};}
+\end{Verbatim}

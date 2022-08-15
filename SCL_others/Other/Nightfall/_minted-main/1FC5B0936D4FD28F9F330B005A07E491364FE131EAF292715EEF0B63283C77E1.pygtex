@@ -1,0 +1,47 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{// Complexity: O(n\PYGZca{}2) Requirement: const MOD, inverse(int)}
+\PYG{c+c1}{// Input: the first elements of the sequence}
+\PYG{c+c1}{// Output: the recursive equation of the given sequence}
+\PYG{c+c1}{// Example In: \PYGZob{}1, 1, 2, 3\PYGZcb{}}
+\PYG{c+c1}{// Example Out: \PYGZob{}1, 1000000006, 1000000006\PYGZcb{} (MOD = 1e9+7)}
+\PYG{k}{struct} \PYG{n}{Poly} \PYG{p}{\PYGZob{}} \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{a}\PYG{p}{;} \PYG{n}{Poly}\PYG{p}{()} \PYG{p}{\PYGZob{}} \PYG{n}{a}\PYG{p}{.}\PYG{n}{clear}\PYG{p}{();} \PYG{p}{\PYGZcb{}}
+	\PYG{n}{Poly}\PYG{p}{(}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZam{}}\PYG{n}{a}\PYG{p}{)}\PYG{o}{:} \PYG{n}{a}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)} \PYG{p}{\PYGZob{}\PYGZcb{}}
+	\PYG{k+kt}{int} \PYG{n}{length}\PYG{p}{()} \PYG{k}{const} \PYG{p}{\PYGZob{}} \PYG{k}{return} \PYG{n}{a}\PYG{p}{.}\PYG{n}{size}\PYG{p}{();} \PYG{p}{\PYGZcb{}}
+	\PYG{n}{Poly} \PYG{n}{move}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{d}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{na}\PYG{p}{(}\PYG{n}{d}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);}
+		\PYG{n}{na}\PYG{p}{.}\PYG{n}{insert}\PYG{p}{(}\PYG{n}{na}\PYG{p}{.}\PYG{n}{end}\PYG{p}{(),} \PYG{n}{a}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{(),} \PYG{n}{a}\PYG{p}{.}\PYG{n}{end}\PYG{p}{());}
+		\PYG{k}{return} \PYG{n+nf}{Poly}\PYG{p}{(}\PYG{n}{na}\PYG{p}{);} \PYG{p}{\PYGZcb{}}
+	\PYG{k+kt}{int} \PYG{n}{calc}\PYG{p}{(}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZam{}}\PYG{n}{d}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{pos}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{k+kt}{int} \PYG{n}{ret} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+		\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{a}\PYG{p}{.}\PYG{n}{size}\PYG{p}{();} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+			\PYG{k}{if} \PYG{p}{((}\PYG{n}{ret}\PYG{o}{+=}\PYG{p}{(}\PYG{n}{LL}\PYG{p}{)}\PYG{n}{d}\PYG{p}{[}\PYG{n}{pos} \PYG{o}{\PYGZhy{}} \PYG{n}{i}\PYG{p}{]}\PYG{o}{*}\PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{\PYGZpc{}}\PYG{n}{MOD}\PYG{p}{)} \PYG{o}{\PYGZgt{}=} \PYG{n}{MOD}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+				\PYG{n}{ret} \PYG{o}{\PYGZhy{}=} \PYG{n}{MOD}\PYG{p}{;} \PYG{p}{\PYGZcb{}\PYGZcb{}}
+		\PYG{k}{return} \PYG{n}{ret}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+	\PYG{n}{Poly} \PYG{k}{operator} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{k}{const} \PYG{n}{Poly} \PYG{o}{\PYGZam{}}\PYG{n}{b}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{na}\PYG{p}{(}\PYG{n}{max}\PYG{p}{(}\PYG{k}{this}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{length}\PYG{p}{(),} \PYG{n}{b}\PYG{p}{.}\PYG{n}{length}\PYG{p}{()));}
+		\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{na}\PYG{p}{.}\PYG{n}{size}\PYG{p}{();} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+			\PYG{k+kt}{int} \PYG{n}{aa} \PYG{o}{=} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{k}{this}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{length}\PYG{p}{()} \PYG{o}{?} \PYG{k}{this}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{:} \PYG{l+m+mi}{0}\PYG{p}{,}
+				\PYG{n}{bb} \PYG{o}{=} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{b}\PYG{p}{.}\PYG{n}{length}\PYG{p}{()} \PYG{o}{?} \PYG{n}{b}\PYG{p}{.}\PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{:} \PYG{l+m+mi}{0}\PYG{p}{;}
+			\PYG{n}{na}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{p}{(}\PYG{n}{aa} \PYG{o}{+} \PYG{n}{MOD} \PYG{o}{\PYGZhy{}} \PYG{n}{bb}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{MOD}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+		\PYG{k}{return} \PYG{n}{Poly}\PYG{p}{(}\PYG{n}{na}\PYG{p}{);} \PYG{p}{\PYGZcb{}} \PYG{p}{\PYGZcb{};}
+\PYG{n}{Poly} \PYG{k}{operator} \PYG{o}{*} \PYG{p}{(}\PYG{k}{const} \PYG{k+kt}{int} \PYG{o}{\PYGZam{}}\PYG{n}{c}\PYG{p}{,} \PYG{k}{const} \PYG{n}{Poly} \PYG{o}{\PYGZam{}}\PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{na}\PYG{p}{(}\PYG{n}{p}\PYG{p}{.}\PYG{n}{length}\PYG{p}{());}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{na}\PYG{p}{.}\PYG{n}{size}\PYG{p}{();} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{n}{na}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{p}{(}\PYG{n}{LL}\PYG{p}{)}\PYG{n}{c} \PYG{o}{*} \PYG{n}{p}\PYG{p}{.}\PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZpc{}} \PYG{n}{MOD}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+	\PYG{k}{return} \PYG{n}{na}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{solve}\PYG{p}{(}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{a}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{n} \PYG{o}{=} \PYG{n}{a}\PYG{p}{.}\PYG{n}{size}\PYG{p}{();} \PYG{n}{Poly} \PYG{n}{s}\PYG{p}{,} \PYG{n}{b}\PYG{p}{;}
+	\PYG{n}{s}\PYG{p}{.}\PYG{n}{a}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{),} \PYG{n}{b}\PYG{p}{.}\PYG{n}{a}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{j} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{ld} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{k+kt}{int} \PYG{n}{d} \PYG{o}{=} \PYG{n}{s}\PYG{p}{.}\PYG{n}{calc}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{i}\PYG{p}{);} \PYG{k}{if} \PYG{p}{(}\PYG{n}{d}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+			\PYG{k}{if} \PYG{p}{((}\PYG{n}{s}\PYG{p}{.}\PYG{n}{length}\PYG{p}{()} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{*} \PYG{l+m+mi}{2} \PYG{o}{\PYGZlt{}=} \PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+				\PYG{n}{Poly} \PYG{n}{ob} \PYG{o}{=} \PYG{n}{b}\PYG{p}{;} \PYG{n}{b} \PYG{o}{=} \PYG{n}{s}\PYG{p}{;}
+				\PYG{n}{s}\PYG{o}{=}\PYG{n}{s}\PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{n}{LL}\PYG{p}{)}\PYG{n}{d}\PYG{o}{*}\PYG{n}{inverse}\PYG{p}{(}\PYG{n}{ld}\PYG{p}{)}\PYG{o}{\PYGZpc{}}\PYG{n}{MOD}\PYG{o}{*}\PYG{n}{ob}\PYG{p}{.}\PYG{n}{move}\PYG{p}{(}\PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{n}{j}\PYG{p}{);}
+				\PYG{n}{j} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;} \PYG{n}{ld} \PYG{o}{=} \PYG{n}{d}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+				\PYG{n}{s}\PYG{o}{=}\PYG{n}{s}\PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{n}{LL}\PYG{p}{)}\PYG{n}{d}\PYG{o}{*}\PYG{n}{inverse}\PYG{p}{(}\PYG{n}{ld}\PYG{p}{)}\PYG{o}{\PYGZpc{}}\PYG{n}{MOD}\PYG{o}{*}\PYG{n}{b}\PYG{p}{.}\PYG{n}{move}\PYG{p}{(}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{n}{j}\PYG{p}{);\PYGZcb{}\PYGZcb{}\PYGZcb{}}
+	\PYG{c+c1}{//Caution: s.a might be shorter than expected}
+	\PYG{k}{return} \PYG{n}{s}\PYG{p}{.}\PYG{n}{a}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+\PYG{c+cm}{/* 求行列式 \PYGZhy{}\PYGZgt{} 求特征多项式 : det(A)=(\PYGZhy{}1)\PYGZca{}nPA(0)}
+\PYG{c+cm}{ 求矩阵或向量列最小多项式 : 随机投影成数列}
+\PYG{c+cm}{ 如果最小多项式里面有 x 的因子, 那么行列式为 0, 否则}
+\PYG{c+cm}{ 随机乘上对角阵 D, det(A)=det(AD)/det(D)*/}
+\end{Verbatim}
