@@ -37,8 +37,4 @@ friend Hash operator + (const int &a, const Hash &b) {
 	Hash ret; ret.len = b.len + 1;
 	for (int h = 0; h < HA; h++) 
 		ret.v[h] = ((LL)a * pw[h][b.len] + b.v[h]) % QQ[h];
-	return ret; }
-int to_int() {
-	unsigned ret = 114;
-	for (int h = 0; h < HA; h++) ret = ret * 997 + v[h];
-	return ret & 0x7fffffff; }	};
+	return ret; } };
