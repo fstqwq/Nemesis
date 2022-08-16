@@ -1,10 +1,5 @@
-\subsubsection{牛顿插值}
-
-$$ \begin{aligned} f(n)=\sum_{i=0}^{k}{n\choose i}r_i \end{aligned} $$
-$$ \begin{aligned} r_i=\sum_{j=0}^i(-1)^{i-j}{i\choose j}f(j) \end{aligned} $$
-
-实现时可以用$k$次差分替代右边的式子。
-
-\subsubsection{拉格朗日插值}
-
+\paragraph{牛顿插值} 
+实现时可以用$k$次差分替代右边的式子.
+$$ f(n)=\sum_{i=0}^{k}{n\choose i}r_i,\quad r_i=\sum_{j=0}^i(-1)^{i-j}{i\choose j}f(j).$$
+\paragraph{拉格朗日插值}
 $$\begin{aligned}f(x) = \sum_i f(x_i)\prod_{j\ne i}\frac{x-x_j}{x_i-x_j}\end{aligned}$$
