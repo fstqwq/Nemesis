@@ -21,7 +21,7 @@ void getdis(int o, int k) {
 		int x = q[head++]; sz[x] = 1; rt[x][k] = o;
 		for (auto [y, w] : G[x]) if (!vis[y] && y != pr[x]) {
 			pr[y]=x; d[y][k] = d[x][k] + w; q[tail++]=y; } }
-	for (int i = tail - 1; i; i--)sz[pr[q[i]]] += sz[q[i]]; }
+	for (int i = tail - 1; i; i--)sz[pr[q[i]]] += sz[q[i]];}
 void build(int o, int k, int s, int fa) {
 	int x = getcenter(o, s);
 	vis[x] = true; depth[x] = k; pr[x] = fa;
@@ -31,7 +31,7 @@ void build(int o, int k, int s, int fa) {
 		build(y, k + 1, sz[y], x); }
 void modify(int x) {
 	int t = col[x] ? -1 : 1; cnt_all[x] += t;
-	for (int u = pr[x], k = depth[x] - 1; u; u = pr[u], k--){
+	for (int u = pr[x], k = depth[x] - 1; u; u = pr[u],k--){
 		sum_all[u] += t * d[x][k]; cnt_all[u] += t;
 		sum[rt[x][k]][k] += t*d[x][k]; cnt[rt[x][k]][k] += t;
 	} col[x] ^= true; }

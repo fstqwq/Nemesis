@@ -1,9 +1,9 @@
 \def \bangle{ \atopwithdelims \langle \rangle}
-\providecommand{\myfloor}[1]{ \lfloor #1 \rfloor }
+\providecommand{\myfloor}[1]{ \left\lfloor #1 \right\rfloor }
 \begin{small}
 \subsubsection{Mobius Inversion}
-\[F(n)=\sum_{d|n}f(d)\Rightarrow f(n)=\sum_{d|n}\mu(d)F(\frac{n}{d})\]
-\[F(n)=\sum_{n|d}f(d)\Rightarrow f(n)=\sum_{n|d}\mu(\frac{d}{n})F(d)\]
+\[F(n)=\sum_{d|n}f(d)\Rightarrow f(n)=\sum_{d|n}\mu(d)F\left(\frac{n}{d}\right)\]
+\[F(n)=\sum_{n|d}f(d)\Rightarrow f(n)=\sum_{n|d}\mu\left(\frac{d}{n}\right)F(d)\]
 \[[x = 1] = \sum_{d|x}\mu(d),\ \ x = \sum_{d|x}\mu(d)\]
 
 \subsubsection{Gcd Inversion}
@@ -15,7 +15,7 @@
  & =\sum_{d=1}^nd^2\sum_{t=1}^{\myfloor{\frac{n}{d}}}\mu(t){\myfloor{\frac{n}{dt}}}^2\\
 \end{aligned}
 \end{equation*}
-The formula can be calculated in $O(nlogn)$ complexity. Moreover, let $l=dt$, then
+The formula can be calculated in $O(n \log n)$ complexity. Moreover, let $l=dt$, then
 \begin{equation*}
 \sum_{d=1}^nd^2\sum_{t=1}^{\myfloor{\frac{n}{d}}}\mu(t){\myfloor{\frac{n}{dt}}}^2=\sum_{l=1}^n{\myfloor{\frac{n}{l}}}^2\sum_{d|l}d^2\mu(\frac{l}{d})\\
 \end{equation*}
