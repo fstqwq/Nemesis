@@ -1,9 +1,9 @@
-void kmp(const char *s, int *fail, int n) { // 1-based
-	int j = fail[0] = 0;
-	for (int i = 1; i <= n; i++) {
-		while (j && s[i] != s[j]) j = fail[j - 1];
-		fail[i] = (j += s[i] == s[j]); } }
-
+void kmp(const int *s, int n) {
+	fail[0] = fail[1] = 0;
+	for (int i = 1; i < n; i++) { int j = fail[i];
+		while (j && s[i + 1] != s[j + 1]) j = fail[j];
+		if (s[i + 1] == s[j + 1]) fail[i + 1] = j + 1;
+		else fail[i + 1] = 0; } }
 void exkmp(const char *s, int *a, int n) { // 0-based
 	int l = 0, r = 0; a[0] = n;
 	for (int i = 1; i <= n; i++) {

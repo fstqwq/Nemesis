@@ -19,8 +19,7 @@ void FFT_init(int n) { fft_n = n;
 	for (int i = 0; i < n; i++)
 		omega[i] = Complex(cos(2*pi/n*i), sin(2*pi/n*i));
 	omega_inv[0] = omega[0];
-	for (int i = 1; i < n; i++) omega_inv[i] = omega[n - i];
-}
+	for (int i = 1; i < n; i++) omega_inv[i] = omega[n - i];}
 void FFT(Complex *a, int n, int tp) {
 	for (int i = 1, j = 0; i < n - 1; i++) {
 		int k = n;

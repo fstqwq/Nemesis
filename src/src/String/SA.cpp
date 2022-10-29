@@ -7,7 +7,7 @@ void get_sa(char *s, int n, int *sa,
 	for (int i = 1; i <= m; i++) buc[i] += buc[i - 1];
 	for (int i = n; i; i--) sa[buc[rnk[i]]--] = i;
 	memset(buc, 0, sizeof(int) * (m + 1));
-	for (int k = 1, cnt; cnt != n; k *= 2, m = cnt) {
+	for (int k = 1, cnt = 0; cnt != n; k *= 2, m = cnt) {
 		cnt = 0;
 		for (int i = n; i > n - k; i--) id[++cnt] = i;
 		for (int i = 1; i <= n; i++)
