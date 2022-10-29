@@ -9,8 +9,7 @@ void NTT(int *c, int n, int tp) {
 	static unsigned long long a[maxn];
 	for (int i = 0; i < n; i++) a[i] = c[i];
 	for (int i = 1, j = 0; i < n - 1; i++) {
-		int k = n;
-		do j ^= (k >>= 1); while (j < k);
+		int k = n; do j ^= (k >>= 1); while (j < k);
 		if (i < j) swap(a[i], a[j]); }
 	for (int k = 1, d = 0; k < n; k *= 2, d++) {
 		if (d == 16) for (int i = 0; i < n; i++) a[i] %= p;

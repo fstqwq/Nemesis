@@ -1,30 +1,28 @@
-struct Dominator_Tree{
-//n为点数,s为起点,e[]中记录每条边 
-int n,s,cnt;int dfn[N],id[N],pa[N], semi[N],idom[N],p[N],mn[N];
-vector<int>e[N],dom[N],be[N];
-void dfs(int x){//先得到DFS树 
-	dfn[x]=++cnt;id[cnt]=x;
-	for(auto i:e[x]){
-		if(!dfn[i])dfs(i),pa[dfn[i]]=dfn[x];
-		be[dfn[i]].push_back(dfn[x]);
-	}}
-int get(int x){//带权并查集 
-	if(p[x]!=p[p[x]]){
-		if(semi[mn[x]]>semi[get(p[x])]) mn[x]=get(p[x]);
-		p[x]=p[p[x]];
-	}return mn[x];
-}void LT(){//求出semi和idom得到支配树 
-	for(int i=cnt;i>1;i--){
-		for(auto j:be[i]) semi[i]=min(semi[i],semi[get(j)]);
-		dom[semi[i]].push_back(i); int x=p[i]=pa[i];
-		for(auto j:dom[x]) idom[j]=(semi[get(j)]<x?get(j):x);
-		dom[x].clear();
-	}for(int i=2;i<=cnt;i++){
-		if(idom[i]!=semi[i])idom[i]=idom[idom[i]];
-		dom[id[idom[i]]].push_back(id[i]);
-	}
-}void build(){//建立支配树 
-	for(int i=1;i<=n;i++) dfn[i]=0,dom[i].clear(),
-		be[i].clear(),p[i]=mn[i]=semi[i]=i; 
-	cnt=0;dfs(s);LT();
-} }G;
+vector<int> G[maxn], R[maxn], son[maxn];
+int ufs[maxn]; // R是反图, son存的是sdom树上的儿子
+int idom[maxn], sdom[maxn], anc[maxn];
+// anc: sdom的dfn最小的祖先
+int p[maxn], dfn[maxn], id[maxn], tim;
+int findufs(int x) { if (ufs[x] == x) return x;
+	int t = ufs[x]; ufs[x] = findufs(ufs[x]);
+	if (dfn[sdom[anc[x]]] > dfn[sdom[anc[t]]])
+		anc[x] = anc[t];
+	return ufs[x]; }
+void dfs(int x) {
+	dfn[x] = ++tim; id[tim] = x; sdom[x] = x;
+	for (int y : G[x]) if (!dfn[y]) {
+		p[y] = x; dfs(y); } }
+void get_dominator(int n) {
+	for (int i = 1; i <= n; i++) ufs[i] = anc[i] = i;
+	dfs(1);
+	for (int i = n; i > 1; i--) { int x = id[i];
+		for (int y : R[x]) if (dfn[y]) { findufs(y);
+			if (dfn[sdom[x]] > dfn[sdom[anc[y]]])
+				sdom[x] = sdom[anc[y]]; }
+		son[sdom[x]].push_back(x); ufs[x] = p[x];
+		for (int u : son[p[x]]) { findufs(u);
+			idom[u] = (sdom[u] == sdom[anc[u]] ? p[x] : anc[u]); }
+		son[p[x]].clear(); }
+	for (int i = 2; i <= n; i++) { int x = id[i];
+		if (idom[x] != sdom[x]) idom[x] = idom[idom[x]];
+		son[idom[x]].push_back(x); } }

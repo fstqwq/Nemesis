@@ -1,34 +1,144 @@
-int v[N],to[N],F[N],R[N],nb[22],ans[N];
-struct P{int x,y,z,id;}e[22][N],p[N],q[N];
-bool cmp(P a,P b){return a.z<b.z;}
-int gf(int x){return F[x]==x?x:F[x]=gf(F[x]);}
-void cdq(int d,int l,int r,int z){
-	int i,o,u,w=0,m=nb[d],mid=l+r>>1;
-	if(l==r)v[q[l].x]=q[l].y;
-	fr(i,1,m)e[d][i].z=v[e[d][i].id],p[i]=e[d][i], to[p[i].id]=i,F[p[i].x]=p[i].x,F[p[i].y]=p[i].y;
-	if(l==r){
-		sort(p+1,p+m+1,cmp);fr(i,1,m){
-			o=gf(p[i].x);u=gf(p[i].y);
-			if(o!=u)F[o]=u,z+=p[i].z;
-		}ans[l]=z;return;
-	}fr(i,l,r)p[to[q[i].x]].z=-inf;
-	sort(p+1,p+m+1,cmp);fr(i,1,m){
-		o=gf(p[i].x);u=gf(p[i].y);
-		if(o!=u)F[o]=u,R[++w]=i;
-	}fr(i,1,m)F[p[i].x]=p[i].x,F[p[i].y]=p[i].y;
-	fr(i,1,w)if(p[R[i]].z!=-inf)
-		z+=p[R[i]].z,F[gf(p[R[i]].x)]=gf(p[R[i]].y);
-	nb[d+1]=0;fr(i,1,m){
-		p[i].x=gf(p[i].x);p[i].y=gf(p[i].y);
-		if(p[i].z==-inf)p[i].z=inf,e[d+1][++nb[d+1]]=p[i];
+struct edge { int u, v, w, id; } edges[maxm];
+void undo(int x) { sz[ufs[x]] -= sz[x]; ufs[x] = x; }
+int vis[maxm], now;
+void reduction(int l, int r, vector<edge> &vec) {
+	now++;
+	for (int i = l; i <= r; i++) // a是操作，3是询问
+		if (a[i].op != 3)vis[a[i].id] = now;
+	vector<edge> ret; ret.reserve(vec.size());
+
+	int tmp = top;
+
+	for (auto &e : vec)
+		if (vis[e.id] < now) {
+			int u = findufs(e.u), v = findufs(e.v);
+			if (u != v) { link(e.u, e.v, true);
+				ret.push_back(e); } }
+		else ret.push_back(e);
+	for (int i = top; i > tmp; i--) undo(stk[i]);
+	top = tmp; vec = move(ret); }
+
+void contraction(int l, int r, vector<edge> &vec) {
+	now++;
+
+	int tmp = top;
+
+	for (int i = l; i <= r; i++)
+		if (a[i].op != 3 && vis[a[i].id] < now) {
+			vis[a[i].id] = now;
+
+			int u = findufs(a[i].u), v = findufs(a[i].v);
+			if (u != v)
+				link(u, v, true);
+		}
+
+	vector<edge> must, ret;
+	must.reserve(vec.size());
+	ret.reserve(vec.size());
+	
+	for (auto &e : vec)
+		if (vis[e.id] < now) {
+			int u = findufs(e.u), v = findufs(e.v);
+			if (u != v) {
+				link(u, v, true);
+				must.push_back(e);
+				// cerr << "must, u = " << e.u << ", v = " << e.v << endl;
+			}
+			else
+				ret.push_back(e);
+		}
+		else
+			ret.push_back(e);
+
+	for (int i = top; i > tmp; i--)
+		undo(stk[i]);
+	top = tmp;
+	
+	vec = move(ret);
+
+	for (auto &e : must) {
+		int u = findufs(e.u), v = findufs(e.v);
+		assert(u != v);
+		link(u, v, true);
+		join(null + e.u, null + e.v, e.w);
 	}
-	sort(p+1,p+m+1,cmp);fr(i,1,m){
-		o=gf(p[i].x);u=gf(p[i].y);
-		if(o!=u)if(F[o]=u,p[i].z!=inf)
-			e[d+1][++nb[d+1]]=p[i];
-	}cdq(d+1,l,mid,z);cdq(d+1,mid+1,r,z);
-}int main(){rd(n,m,Q); // 点数 边数 询问数 
-	fr(i,1,m)rd(e[0][i].x,e[0][i].y,e[0][i].z), e[0][i].id=i,v[i]=e[0][i].z;// 读入边和权值
-	fr(i,1,Q)scanf("%d%d",&q[i].x,&q[i].y); // 将第 x 条边修改为 y, 然后询问最小生成树
-	nb[0]=m;cdq(0,1,Q,0);fr(i,1,Q)printf("%lld\n",ans[i]);// 输出答案
+}
+
+int ans[maxm], global_m;
+
+int fuck_cnt = 0;
+
+void solve(int l, int r, vector<edge> vec) {
+	assert(is_sorted(vec.begin(), vec.end(), [](auto &a, auto &b) {
+		return a.w < b.w;
+	}));
+
+	assert(all_of(vec.begin(), vec.end(), [&r](auto &e) {
+		return e.id <= global_m + r;
+	}));
+
+	if (none_of(a + l, a + r + 1, [](auto &o) {
+		return o.op == 3;
+	}))
+		return;
+
+	if (l == r) {
+		int tmp = top;
+		for (auto &e : vec) {
+			int u = findufs(e.u), v = findufs(e.v);
+			if (u != v) {
+				link(u, v, true);
+				join(null + e.u, null + e.v, e.w);
+			}
+		}
+
+		int u = a[l].u, v = a[l].v;
+		if (findufs(u) != findufs(v))
+			ans[a[l].id] = -1;
+		else
+			ans[a[l].id] = query(null + a[l].u, null + a[l].v);
+		for (int i = top; i > tmp; i--) {
+			undo(stk[i]);
+		}
+		top = tmp;
+
+		return;
+	}
+
+	int tmp = top;
+
+	reduction(l, r, vec);
+
+	contraction(l, r, vec);
+
+	int mid = (l + r) / 2;
+
+	vector<edge> ret;
+	ret.reserve(vec.size());
+
+	for (auto &e : vec)
+		if (e.id <= global_m + mid)
+			ret.push_back(e);
+
+	solve(l, mid, move(ret));
+
+	ret.clear();
+	ret.reserve(vec.size());
+
+	now++;
+	for (int i = l; i <= mid; i++)
+		if (a[i].op == 2)
+			vis[a[i].id] = now;
+
+	for (auto &e : vec)
+		if (vis[e.id] < now)
+			ret.push_back(e);
+	
+	vec.clear();
+	vec.shrink_to_fit();
+	solve(mid + 1, r, move(ret));
+
+	for (int i = top; i > tmp; i--)
+		undo(stk[i]);
+	top = tmp;
 }

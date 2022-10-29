@@ -4,8 +4,7 @@ def IO_and_Exceptions():
 			for line in fin:
 				a = list(map(int, line.split()))
 				print(a, end = "\n")
-	except:
-		exit()
+	except: exit()
 	assert False, '17 cards can\'t kill me'
 def Random():
 	import random as rand

@@ -1,4 +1,3 @@
-
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 \setlength\tabcolsep{1pt}
 \renewcommand{\arraystretch}{1.6}
@@ -11,28 +10,21 @@
     \[F(n)=\sum_{d|n}f(d)\Rightarrow f(n)=\sum_{d|n}\mu(d)F\left(\frac{n}{d}\right)\]
     \[F(n)=\sum_{n|d}f(d)\Rightarrow f(n)=\sum_{n|d}\mu\left(\frac{d}{n}\right)F(d)\]
     \[[x = 1] = \sum_{d|x}\mu(d),\ \ x = \sum_{d|x}\mu(d)\]
+    
+\subsubsection{降幂公式}
+
+$$ a^k \equiv a ^ {k \bmod \varphi(p) + \varphi(p)},\; k \ge \varphi(p) $$
+
+\subsubsection{其他常用公式}
+	$$\sum_{i = 1} ^ n \left[(i, n) = 1\right] i = n \frac {\varphi(n) + e(n)} 2$$
+	$$\sum_{i = 1} ^ n \sum_{j = 1} ^ i \left[(i, j) = d\right] = S_\varphi \left( \left\lfloor \frac n d \right\rfloor \right)$$
+	$$\sum_{i = 1} ^ n \sum_{j = 1} ^ m \left[(i, j) = d\right] = \sum_{d | k} \mu\left( \frac k d \right) \left\lfloor \frac n k \right\rfloor \left\lfloor \frac m k \right\rfloor$$
+	$$ \sum_{i = 1} ^ n f(i) \sum_{j = 1} ^ {\left\lfloor \frac n i \right\rfloor} g(j) = \sum_{i = 1} ^ n g(i) \sum_{j = 1} ^ {\left\lfloor \frac n i \right\rfloor} f(j) $$
 \end{minipage}
 \begin{minipage}[t]{0.42\linewidth}
 \subsubsection{单位根反演}
 \input{src/Math/单位根反演.tex}
 \end{minipage}
-
-\subsubsection{Gcd Inversion}
-\begin{equation*}
-\begin{aligned}
-\sum_{a=1}^n\sum_{b=1}^ngcd^2(a,b) & =\sum_{d=1}^nd^2\sum_{i=1}^{\myfloor{\frac{n}{d}}}\sum_{j=1}^{\myfloor{\frac{n}{d}}}[gcd(i,j)=1]\\
- & =\sum_{d=1}^nd^2\sum_{i=1}^{\myfloor{\frac{n}{d}}}\sum_{j=1}^{\myfloor{\frac{n}{d}}}\sum_{t|gcd(i,j)}\mu(t)\\
- & =\sum_{d=1}^nd^2\sum_{t=1}^{\myfloor{\frac{n}{d}}}\mu(t)\sum_{i=1}^{\myfloor{\frac{n}{d}}}[t|i]\sum_{j=1}^{\myfloor{\frac{n}{d}}}[t|j]\\
- & =\sum_{d=1}^nd^2\sum_{t=1}^{\myfloor{\frac{n}{d}}}\mu(t){\myfloor{\frac{n}{dt}}}^2\\
-\end{aligned}
-\end{equation*}
-The formula can be calculated in $O(n \log n)$ complexity. Moreover, let $l=dt$, then
-\begin{equation*}
-\sum_{d=1}^nd^2\sum_{t=1}^{\myfloor{\frac{n}{d}}}\mu(t){\myfloor{\frac{n}{dt}}}^2=\sum_{l=1}^n{\myfloor{\frac{n}{l}}}^2\sum_{d|l}d^2\mu(\frac{l}{d})\\
-\end{equation*}
-Let $f(l)=\sum_{d|l}d^2\mu(\frac{l}{d})$. It can be proven that $f(l)$ is multiplicative. Besides, $f(p^k)=p^{2k}-p^{2k-2}$.
-Therefore, with linear sieve the formula can be solved in $O(n)$ complexity.
-
 
 \subsubsection{Arithmetic Function}
 \[(p-1)!\equiv-1(mod\ p)\]
@@ -54,9 +46,9 @@ $J_k(n)$ is the number of $k$-tuples of positive integers all less than or equal
 \[ \sum_{i=1}^{n} \sum_{j=1}^{n} [gcd(i,j)=1]ij =  \sum_{i=1}^{n} i^2\varphi(i) \]
 \[ \sum_{\delta|n}\delta^sJ_r(\delta)J_s(\frac{n}{\delta}) = J_{r+s}(n) \]
 \begin{align*}
-\sum_{\delta|n}\varphi(\delta)d(\frac{n}{\delta}) = \sigma(n),&\ \sum_{\delta|n}\left| \mu(\delta) \right| = 2^{\omega(n)} \\
+\sum_{\delta|n}\varphi(\delta)d\left(\frac{n}{\delta}\right) = \sigma(n),&\ \sum_{\delta|n}\left| \mu(\delta) \right| = 2^{\omega(n)} \\
 \sum_{\delta|n}2^{\omega(\delta)} = d(n^2),&\ \sum_{\delta|n}d(\delta^2) = d^2(n) \\
-\sum_{\delta|n}d(\frac{n}{\delta})2^{\omega(\delta)} = d^2(n),&\ \sum_{\delta|n}\frac{\mu(\delta)}{\delta} = \frac{\varphi(n)}{n} \\
+\sum_{\delta|n}d\left(\frac{n}{\delta}\right)2^{\omega(\delta)} = d^2(n),&\ \sum_{\delta|n}\frac{\mu(\delta)}{\delta} = \frac{\varphi(n)}{n} \\
 \sum_{\delta|n}\frac{\mu(\delta)}{\varphi(\delta)} = d(n),&\ \sum_{\delta|n}\frac{\mu^2(\delta)}{\varphi(\delta)} = \frac{n}{\varphi(n)} \\
 \end{align*}
 \[ n|\varphi(a^n-1) \]
@@ -72,7 +64,7 @@ $J_k(n)$ is the number of $k$-tuples of positive integers all less than or equal
 \left\{
 \begin{aligned}
 &S(n) = \sum_{k=1}^n(f \ast g)(k) \\
-&\sum_{k=1}^nS(\lfloor {n \over k} \rfloor) = \sum_{i=1}^nf(i)\sum_{j=1}^{\lfloor{n \over i}\rfloor}(g \ast 1)(j)
+&\sum_{k=1}^nS(\lfloor \frac n k \rfloor) = \sum_{i=1}^nf(i)\sum_{j=1}^{\lfloor \frac n i \rfloor}(g \ast 1)(j)
 \end{aligned}
 \right.
 \]
@@ -80,7 +72,7 @@ $J_k(n)$ is the number of $k$-tuples of positive integers all less than or equal
 \left\{
 \begin{aligned}
 &S(n) = \sum_{k=1}^n(f \cdot g)(k), g \text{ completely multiplicative} \\
-&\sum_{k=1}^nS(\lfloor {n \over k} \rfloor)g(k) = \sum_{k=1}^n(f \ast 1)(k)g(k)
+&\sum_{k=1}^nS\left(\left\lfloor \frac n k \right\rfloor\right)g(k) = \sum_{k=1}^n(f \ast 1)(k)g(k)
 \end{aligned}
 \right.
 \]
@@ -123,10 +115,9 @@ $J_k(n)$ is the number of $k$-tuples of positive integers all less than or equal
 \end{multicols*}
 \[ {n \choose k} = (-1)^k{k-n-1 \choose k},\ \ \sum_{k \leq n}{r+k \choose k} = {r+n+1 \choose n} \]
 \[ {{n_1+\cdots+n_p}\choose m}=\sum_{k_1+\cdots+k_p=m}{n_1\choose k_1}\cdots{n_p\choose k_p}\]
-\subsubsection{Fibonacci Numbers}
+\subsubsection{Fibonacci Numbers, Lucas Numbers}
 \[ F(z) = \frac{z}{1-z-z^2} \]
-\[ f_n = \frac{{\phi}^n-{\hat{\phi}}^n}{\sqrt{5}}, \phi = \frac{1+\sqrt{5}}{2},
-\hat{\phi} = \frac{1-\sqrt{5}}{2} \]
+\[ \hat{\phi} = \frac{1-\sqrt{5}}{2} \]
 \[ \sum_{k=1}^nf_k = f_{n+2}-1,\ \ \sum_{k=1}^nf^2_k = f_nf_{n+1} \]
 \[ \sum_{k=0}^nf_kf_{n-k} = \frac{1}{5}(n-1)f_n+\frac{2}{5}nf_{n-1} \]
 \[ \frac{f_{2n}}{f_n} = f_{n-1} + f_{n+1}\]
@@ -146,16 +137,25 @@ $J_k(n)$ is the number of $k$-tuples of positive integers all less than or equal
 \right.
 \]
 \end{footnotesize}
+
+\inputminted{python}{src/tbr/fib.py}
+
 \begin{small}
-\subsubsection{Lucas Numbers 2, 1, 3, 4, 7, 11, 18, 29, 47, 76\dots}
 \[ L_0=2,L_1=1,L_n=L_{n-1}+L_{n-2}=(\frac{1+\sqrt{5}}{2})^n+(\frac{1-\sqrt{5}}{2})^n \]
 \[ L(x)=\frac{2-x}{1-x-x^2} \]
 除了$n=0,4,8,16$,$L_n$是素数,则$n$是素数.
+
+$$\phi = \frac {1 + \sqrt 5} 2, \; \hat\phi = \frac {1 - \sqrt 5} 2$$
+
+$$F_n = \frac {\phi^n - {\hat\phi} ^ n} {\sqrt 5}, \; L_n = \phi ^ n + {\hat\phi} ^ n$$
+
+$$\frac {L_n + F_n \sqrt 5} 2 = \left( \frac {1 + \sqrt 5} 2 \right) ^ n$$
+
 \subsubsection{Catalan Numbers 1, 1, 2, 5, 14, 42, 132, 429, 1430\dots}
 \[c_{0}=1,c_n=\sum_{i=0}^{n-1}c_ic_{n-1-i}=c_{n-1}\frac{4n-2}{n+1}=\frac{\binom{2n}{n}}{n+1}=\binom{2n}{n}-\binom{2n}{n-1}\]
 \[ c(x)=\frac{1-\sqrt{1-4x}}{2x}\]
 Usage: $n$对括号序列; $n$个点满二叉树; $n\times n$的方格左下到右上不过对角线方案数; 凸$n+2$边形三角形分割数; $n$个数的出栈方案数; $2n$个顶点连接, 线段两两不交的方案数.
-\subsubsection*{类卡特兰数}
+\paragraph*{类卡特兰数}
 从 $(1,1)$ 出发走到 $(n,m)$,只能向右或者向上走,不能越过 $y=x$ 这条线(即保证 $x\geq y$ ),合法方案数是 $C_{n+m-2}^{n} - C_{n+m-2}^{n-1}$.
 \subsubsection{Motzkin Numbers 1, 1, 2, 4, 9, 21, 51, 127, 323, 835\dots}
 圆上$n$点间画不相交弦的方案数. 选$n$个数$k_1,k_2,...,k_n\in\{-1,0,1\}$, 保证$\sum_i^ak_i(1\leq a\leq n)$非负且所有数总和为$0$的方案数. \[M_{n+1}=M_n+\sum_i^{n-1}M_iM_{n-1-i}=\frac{(2n+3)M_n+3nM_{n-1}}{n+3}\]
@@ -170,12 +170,12 @@ $n$个元素集合划分的方案数.
 \[ B_{p^m+n} \equiv mB_n+B_{n+1} \pmod{p} \]
 \[B(x)=\sum_{n=0}^{\infty}\frac{B_n}{n!}x^n=\mathrm{e}^{\mathrm{e}^x-1}\]
 \subsubsection{Stirling Numbers}
-第一类: $n$个元素集合分作$k$个\textbf{非空环}方案数.
+\paragraph*{第一类} $n$个元素集合分作$k$个\textbf{非空轮换}方案数.
 \begin{multicols*}{2}
-\(\displaystyle{n+1 \brack k} = n{n \brack k} + {n \brack k-1}\) 
-\begin{verbatim}S[i][i] = 1
-S[i][j]=
-(i-1)*S[i-1][j] + S[i-1][j-1]\end{verbatim}
+$$\begin{aligned}
+{n+1 \brack k} =& n{n \brack k} + {n \brack k-1} \\
+s(n,k) &=(-1)^{n-k}{n \brack k}
+\end{aligned}$$
 \begin{tabular}{|P{0.39cm}|P{0.39cm}|P{0.45cm}|P{0.57cm}|P{0.57cm}|P{0.45cm}|P{0.39cm}|P{0.39cm}|}
     \hline
     n\textbackslash k & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
@@ -198,18 +198,26 @@ S[i][j]=
     \hline
 \end{tabular}
 
-\begin{align*}
-    s(n,k) &=(-1)^{n-k}{n \brack k} \\
+$$\begin{aligned}
     {n+1 \brack 2} &= n!H_n \text{ (see \ref{section:Harmonic})} \\
     x^{\underline{n}} &= \sum_k{ {n \brack k}(-1)^{n-k}x^k } \\
     x^{\overline{n}} &= \sum_k{ {n \brack k}x^k }
-\end{align*}
+\end{aligned}$$
+
+For fixed $k$, EGF:
+
+$$\begin{aligned}
+    \sum_{n = 0} ^ \infty {n \brack k} \frac {x ^ n} {n!} &= \frac {x ^ k} {k!} \left( \frac {\ln (1 - x)} x \right) ^ k
+\end{aligned}$$
 \end{multicols*}
-第二类: 把$n$个元素集合分作$k$个\textbf{非空子集}方案数.
+
+\paragraph*{第二类} 把$n$个元素集合分作$k$个\textbf{非空子集}方案数.
+
 \begin{multicols*}{2}
-\(\displaystyle{n+1 \brace k} = k{n \brace k} + {n \brace k-1} \)
-\begin{verbatim}S[i][i] = 1
-S[i][j]=j*S[i-1][j]+S[i-1][j-1]\end{verbatim}
+$$\begin{aligned}
+{n+1 \brace k} &= k{n \brace k} + {n \brace k-1} \\
+m!{n \brace m} &= \sum_k{m \choose k}k^n(-1)^{m-k}
+\end{aligned}$$
 \begin{tabular}{|P{0.39cm}|P{0.39cm}|P{0.39cm}|P{0.39cm}|P{0.45cm}|P{0.45cm}|P{0.45cm}|P{0.39cm}|}
     \hline
     n\textbackslash k & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
@@ -232,13 +240,15 @@ S[i][j]=j*S[i-1][j]+S[i-1][j-1]\end{verbatim}
     \hline
 \end{tabular}
 \columnbreak
-\begin{align*}
+$$\begin{aligned}
     x^n &= \sum_k{ {n \brace k}x^{\underline{k}} } \\
     &= \sum_k{ {n \brace k}(-1)^{n-k}x^{\overline{k}} } 
-\end{align*}
-\[ m!{n \brace m} = \sum_k{m \choose k}k^n(-1)^{m-k} \]
-For fixed $k$, generating functions :
-\[\sum_{n=0}^{\infty}{n \brace k}x^{n-k}=\prod_{r=1}^{k}\frac{1}{1-rx}\]
+\end{aligned}$$
+For fixed $k$, EGF and OGF:
+$$\begin{aligned}
+\sum_{n = 0} ^ \infty {n \brace k} \frac {x ^ n} {n!} &= \frac {x ^ k} {k!} \left( \frac {e ^ x - 1} x \right) ^ k \\
+\sum_{n = 0} ^ \infty {n \brace k} x ^ n &= x ^ k \prod_{i = 1} ^ k (1 - i x) ^ {-1}
+\end{aligned}$$
 \end{multicols*}
 \subsubsection{Eulerian Numbers}
 \begin{multicols*}{2}
@@ -280,14 +290,25 @@ For fixed $k$, generating functions :
 \[ p(n) = p(n-1)+p(n-2)-p(n-5)-p(n-7)+\cdots \]
 \[ f(n, k) = p(n)-p(n-k)-p(n-2k)+p(n-5k)+p(n-7k)-\cdots \]
 \subsubsection{Bernoulli Numbers 1, 1/2, 1/6, 0, -1/30, 0, 1/42 \dots}
-\[ B_n = 1 - \sum_{k=0}^{n-1}{n \choose k}\frac{B_k}{n-k+1} \]
-\[ G(x) = \sum_{k=0}^{\infty}\frac{B_k}{k!}x^k
-= \frac{1}{\sum_{k=0}^{\infty}\frac{x^k}{(k+1)!}} \]
-\[ \sum_{k=1}^nk^m = \frac{1}{m+1}\sum_{k=0}^m{m+1 \choose k}B_kn^{m-k+1} \]
+
+$$\begin{aligned}B(x)=\sum_{i\ge 0}\frac{B_i x^i}{i!}=\frac x{e^x-1}\end{aligned}$$
+
+$$ \begin{aligned}B_n=[n=0]-\sum_{i=0}^{n-1}{n\choose i}\frac{B_i}{n-k+1}, \sum_{i=0}^n{n+1\choose i}B_i=0\end{aligned} $$
+
+$$ \begin{aligned}S_n(m)=\sum_{i=0}^{m-1}i^n=\sum_{i=0}^n{n\choose i}B_{n-i}\frac{m^{i+1}}{i+1}\end{aligned} $$
+
+$ B_0 = 1,\; B_1 = -\frac 1 2,\; B_4 = -\frac 1 {30},\; B_6 = \frac 1 {42},\; B_8 = -\frac 1{30},\; \dots$.
+
+(除了$B_1 = -\frac 1 2$以外, 伯努利数的奇数项都是$0$.)
+
+自然数幂次和关于次数的EGF:
+$$ \begin{aligned} F(x)=&\sum_{k=0}^\infty \frac{\sum_{i=0}^n i^k}{k!}x^k\\ =&\sum_{i=0}^n e^{ix} =&\frac{e^{(n+1)x-1}}{e^x-1} \end{aligned} $$
+
 \subsubsection{Sum of Powers}
-\[\sum_{i=1}^ni^2=\frac{n(n+1)(2n+1)}{6},\ \ \sum_{i=1}^ni^3=(\frac{n(n+1)}{2})^2\]
+\[\sum_{i=1}^ni^2=\frac{n(n+1)(2n+1)}{6},\ \ \sum_{i=1}^ni^3=\left(\frac{n(n+1)}{2}\right)^2\]
 \[\sum_{i=1}^ni^4=\frac{n(n+1)(2n+1)(3n^2+3n-1)}{30}\]
 \[\sum_{i=1}^ni^5=\frac{n^2(n+1)^2(2n^2+2n-1)}{12}\]
+
 \subsubsection{kMAX-MIN反演}
 \[k \mathrm{MAX}(S)=\sum_{T\subset S, T\neq \emptyset}(-1)^{|T|-k}C_{|T|-1}^{k-1}\mathrm{MIN}(T)\]
 代入$k=1$即为MAX-MIN反演:
@@ -316,7 +337,7 @@ If $U$, $V$, $W$, $u$, $v$, $w$ are lengths of edges of the tetrahedron (first t
 \[d_\lambda=\frac{n!}{\prod h_\lambda(i,j)}\]
 $h_\lambda(i,j)$表示该格子右边和上边的格子数量加1. 
 
-\subsubsection{常见游戏}
+\subsubsection{常见博弈游戏}
 \begin{multicols}{2}
 %\paragraph{减法游戏}$n$根火柴每次可以拿$a_i$根, 最后一个拿的人获胜. 
 %\paragraph{Ferguson游戏}两个盒子, 一个有$m$个糖另一个有$n$个糖, 每次走步将一个盒子清空而把另一个盒子的一些糖拿到被清空的盒子中, 使得两个盒子各至少有一颗糖. 到终态(1,1)的人获胜. 
@@ -332,12 +353,10 @@ $h_\lambda(i,j)$表示该格子右边和上边的格子数量加1.
 \input{src/tbr/最大最小定理求纳什均衡点.tex}
 
 \subsubsection{概率相关}
-对于随机变量$X$, 期望用$E(X)$表示, 方差用$D(X)$表示, 则$D(X)=E(X-E(X))^2=E(X^2)-(E(X))^2,D(X+Y)=D(X)+D(Y)D(aX)=a^2D(X)$
+$D(X)=E(X-E(X))^2=E(X^2)-(E(X))^2,D(X+Y)=D(X)+D(Y)D(aX)=a^2D(X)$
 \[E[x]=\sum_{i=1}^{\infty}P(X\geq i)\]
-\subsubsection{常用泰勒展开}
-\[f(x)=\frac{f(x_0)}{0!}+\frac{f'(x_0)}{1!}(x-x_0)+\frac{f''(x_0)}{2!}(x-x_0)^2+\cdots\]
-\[\frac{1}{(1-x)^n}=1+\binom{n}{1}x+\binom{n+1}{2}x^2+\binom{n+2}{3}x^3+\cdots \]
-\[e^x=1+x+\frac{x^2}{2!}+\cdots+\frac{x^i}{i!}\]
+$m$ 个数的方差：
+$$\begin{aligned}s^2=&\frac{\sum_{i=1}^m x_i^2}m-\overline x^2\end{aligned}$$
 
 \subsubsection{邻接矩阵行列式的意义}
 在无向图中取若干个环,一种取法权值就是边权的乘积,对行列式的贡献是$(-1)^{\mathrm{even}}$,其中$\mathrm{even}$是偶环的个数.
@@ -348,7 +367,7 @@ $h_\lambda(i,j)$表示该格子右边和上边的格子数量加1.
 \[ h_n = \frac{1}{n}\sum_{k=1}^n(-1)^{k+1}S_kh_{n-k} \]
 \[ H_n = \frac{1}{n}\sum_{k=1}^nS_kH_{n-k} \]
 \[ \sum_{k=0}^nkc^k = \frac{nc^{n+2}-(n+1)c^{n+1}+c}{(c-1)^2} \]
-\[ \sum_{i=1}^n\frac 1n\approx\ln(n + \frac12) + \frac{1}{24(n+0.5)^2}+\Gamma,(\Gamma\approx0.5772156649015328606065)\]
+\[ \sum_{i=1}^n\frac 1n\approx\ln\left(n + \frac 1 2\right) + \frac{1}{24(n+0.5)^2}+\Gamma,(\Gamma\approx0.5772156649015328606065)\]
 \[ n! = \sqrt{2\pi n}(\frac{n}{e})^n(1+\frac{1}{12n}+\frac{1}{288n^2}+O(\frac{1}{n^3})) \]
 \[ \begin{aligned}
  &\max{\{x_a-x_b, y_a-y_b, z_a-z_b\}} - \min{\{x_a-x_b, y_a-y_b, z_a-z_b\}} \\

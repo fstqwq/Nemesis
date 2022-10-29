@@ -1,7 +1,7 @@
 vector<pair<int, int> > G[maxn];
 int sz[maxn], son[maxn], q[maxn];
 int pr[maxn], depth[maxn], rt[maxn][19], d[maxn][19];
-int cnt_all[maxn],sum_all[maxn], cnt[maxn][19],sum[maxn][19];
+int cnt_all[maxn],sum_all[maxn],cnt[maxn][],sum[maxn][];
 bool vis[maxn], col[maxn];
 int getcenter(int o, int s) {
 	int head = 0, tail = 0; q[tail++] = o;
