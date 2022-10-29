@@ -95,7 +95,7 @@ $x_r - x_l \geq c:$\texttt{add(r, l, -c)}
 \subsubsection{竞赛图 Landau's Theorem}
     $n$个点竞赛图点按出度按升序排序, 前$i$个点的出度之和不小于$\frac{i(i-1)}{2}$, 度数总和等于$\frac{n(n-1)}{2}$. 否则可以用优先队列构造出方案.
 
-\subsubsection{Ramsey Theorem $R(3,3)=6, R(4,4)=18$}
+\subsubsection{Ramsey Theorem R(3,3)=6, R(4,4)=18}
     $6$个人中存在$3$人相互认识或者相互不认识.
 
 \subsubsection{树的计数 Prufer序列}
@@ -119,17 +119,17 @@ $x_r - x_l \geq c:$\texttt{add(r, l, -c)}
         \[ \mathrm{ec}(G) = t_w(G)\prod_{v \in{V}}(\mathrm{deg}(v) - 1)! \]
         其中$\mathrm{deg}$为入度(欧拉图中等于出度), $t_w(G)$为以$w$为根的外向树的个数. 相关计算参考生成树计数.\\
         欧拉连通图中任意两点外向树个数相同: $\mathrm{t_v}(G) = \mathrm{t_w}(G)$.
-%\subsubsection{Tutte Matrix}
-%    Tutte matrix $A$ of a graph $G=(V,E)$ : 
-%    \[A_{ij}=\left\{
-%        \begin{aligned}
-%            & x_{ij} & \text{if}(i,j)\in E \text{and}i<j
-%            & -x_{ij} & \text{if}(i,j)\in E \text{and}i>j
-%            & 0 & \text{otherwise}
-%        \end{aligned}
-%        \right.\]
-%    where $x_{ij}$ are indeterminates. The determinant of this skew-symmetric matrix is then a polynomial (in the variables $x_{ij}$, $i<j$ ): this coincides with the square of the pfaffian of the matrix $A$ and is non-zero (as a polynomial) if and only if a perfect matching exists.
-%\begin{comment}
+\subsubsection{Tutte Matrix}
+    Tutte matrix $A$ of a graph $G=(V,E)$ : 
+    \[A_{ij}=\left\{
+        \begin{aligned}
+            & x_{ij} & \text{if} \, (i,j)\in E \, \text{and}\, i<j \\
+            & -x_{ij} & \text{if}\, (i,j)\in E \, \text{and}\, i>j \\
+            & 0 & \text{otherwise}
+        \end{aligned}
+        \right.\]
+    where $x_{ij}$ are indeterminates. The determinant of this skew-symmetric matrix is then a polynomial (in the variables $x_{ij}$, $i<j$ ): this coincides with the square of the pfaffian of the matrix $A$ and is non-zero (as a polynomial) if and only if a perfect matching exists.
+
     \subsubsection{Edmonds Matrix}
         Edmonds matrix $A$ of a balanced ($|U|=|V|$) bipartite graph $G=(U,V,E)$ : 
         \[A_{ij}=\left\{
@@ -141,12 +141,11 @@ $x_r - x_l \geq c:$\texttt{add(r, l, -c)}
         where the $x_{ij}$ are indeterminates. $G$有完美匹配当且仅当关于$x_{ij}$的多项式$det(A_{ij})$不恒为$0$.
         完美匹配的个数等于多项式中单项式的个数.
 %\end{comment}
-\subsubsection{Count Acyclic Orientations}
+\subsubsection{有向图无环定向, 色多项式}
     \noindent
-    The chromatic polynomial is a function $P_G(q)$ that counts the number of $q$-colorings of $G$.\\
-    Triangle $K_3$ : $t(t-1)(t-2)$\\
-    Complete graph $K_n$ : $t(t-1)(t-2)\cdots (t-(n-1))$\\
-    Tree with $n$ vertices : $t(t-1)^{n-1}$\\
-    Cycle $C_n$ : $(t-1)^{n}+(-1)^{n}(t-1)$\\
-    The number of acyclic orientations of an $n$-vertex graph $G$ is $(−1)^nP_G(−1)$, where $P_G(q)$ is the chromatic polynomial of the graph
-    $G$.
+    图的色多项式 $P_G(q)$ 对图 $G$ 的 $q$-染色计数.\\
+    Triangle $K_3$ : $x(x-1)(x-2)$\\
+    Complete graph $K_n$ : $x(x-1)(x-2)\cdots (x-(n-1))$\\
+    Tree with $n$ vertices : $x(x-1)^{n-1}$\\
+    Cycle $C_n$ : $(x-1)^{n}+(-1)^{n}(x-1)$\\
+    \# acyclic orientations of an $n$-vertex graph $G$ is $(-1)^nP_G(-1)$.

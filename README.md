@@ -44,9 +44,8 @@ yzh:
     * 常数表 (~d, omega,~ p, 斯特林数，卡特兰数)
     * 几何代码
 
-## Scan result (8/6)
-```
-210510 16:40 OK           DataStructure/KD tree.cpp
+## Scan result (8/17)
+```210510 16:40 OK           DataStructure/KD tree.cpp
 210510 16:40 Not included DataStructure/动态斜率优化.cpp
 210510 16:40 OK           DataStructure/可持久化平衡树.cpp
 210510 16:40 Commented    Geometry/DelaunayTriangulation.cpp
@@ -62,13 +61,12 @@ yzh:
 210510 16:40 Commented    Math/FFT NTT FWT.cpp
 210510 16:40 OK           Math/Factorial Mod.cpp
 210510 16:40 OK           Math/Pell方程.cpp
-210510 16:40 OK           Math/Polynomial.cpp
+210510 16:40 Commented    Math/Polynomial.cpp
 210510 16:40 Commented    Math/Schreier-Sims.cpp
 210510 16:40 OK           Math/Simpson.cpp
 210510 16:40 Commented    Math/TEES.cpp
-210510 16:40 Commented    Math/单位根反演.tex
 210510 16:40 Commented    Math/原根.cpp
-210510 16:40 Commented    Math/多点求值与快速插值.tex
+210510 16:40 Not included Math/多点求值与快速插值.tex
 210510 16:40 OK           Math/平方剩余.cpp
 210510 16:40 OK           Math/扩展卢卡斯.cpp
 210510 16:40 OK           Math/直线下格点统计.cpp
@@ -136,7 +134,6 @@ yzh:
 211023 22:25 Commented    Geometry/点到凸包切线.cpp
 211023 22:25 OK           Miscellany/Main2.java
 211025 21:44 OK           Miscellany/2D1D.cpp
-211026 02:52 OK           tbr/度序列的可图性.tex
 211026 21:10 OK           TreeandGraph/2-sat.cpp
 211026 21:10 OK           tbr/fwt.cpp
 211026 21:10 OK           tbr/最小乘积问题.tex
@@ -149,7 +146,6 @@ yzh:
 211108 04:06 Commented    TreeandGraph/Hungarian.cpp
 211108 04:06 OK           TreeandGraph/Tarjan.cpp
 211108 04:06 OK           TreeandGraph/一般图最大匹配-shuffle.cpp
-211108 04:06 Not included tbr/最大最小定理求纳什均衡点.tex
 211108 04:06 OK           tbr/阶和原根.tex
 211108 04:06 OK           yzh/Gomory-Hu.tex
 211108 04:06 OK           yzh/chordal-graph.tex
@@ -179,21 +175,16 @@ yzh:
 220813 15:54 OK           String/AC 自动机.cpp
 220813 15:54 OK           String/SAM.cpp
 220813 15:59 OK           Math/Miller Rabin And Pollard Rho.cpp
-220813 17:20 OK           TreeandGraph/图论知识.tex
 220813 17:20 OK           tbr/树形背包优化.tex
-220813 17:21 Commented    Math/插值.tex
 220813 17:21 OK           String/PAM.cpp
-220814 04:29 OK           Miscellany/randomprimes.py
 220814 11:56 Not included DataStructure/完全动态MST.cpp
 220814 11:56 OK           DataStructure/有旋treap.cpp
-220814 11:56 OK           DataStructure/点分治.cpp
 220814 11:56 OK           Math/FFT.cpp
 220814 11:56 OK           Math/FWT.cpp
 220814 11:56 OK           Math/NTT.cpp
 220814 11:56 OK           Math/多点求值.cpp
 220814 11:56 OK           Math/多项式运算.cpp
 220814 11:56 Not included Math/快速插值.cpp
-220814 11:56 OK           Math/快速插值.tex
 220814 11:56 Not included Math/杜教筛.cpp
 220814 11:56 OK           Math/杜教筛.tex
 220814 11:56 OK           String/KMP.cpp
@@ -201,15 +192,26 @@ yzh:
 220814 11:56 OK           String/SA.cpp
 220814 11:56 OK           String/SAMSA.cpp
 220814 11:56 OK           String/最小表示法.cpp
-220814 16:58 OK           Geometry/Formula(Saga).tex
 220814 16:58 OK           Geometry/geo.cpp
 220814 16:58 OK           Geometry/三角形.cpp
 220814 16:58 OK           String/hash.cpp
-220814 16:58 OK           TipsandHints/Addon.tex
 220814 16:58 OK           TipsandHints/CalculusTable.tex
-220814 16:58 OK           tbr/appendix-Formula.tex
 220814 16:58 OK           tbr/string-Conclusions.tex
 220814 16:58 OK           tbr/切比雪夫距离与曼哈顿距离互化.tex
 220814 17:07 OK           TipsandHints/IntegrationTable_NewMeta.tex
 220814 17:07 OK           tbr/网络流总结.tex
+220815 23:07 OK           Miscellany/randomprimes.py
+220816 01:03 OK           Geometry/Formula(Saga).tex
+220816 01:03 OK           TipsandHints/Addon.tex
+220816 01:03 OK           tbr/度序列的可图性.tex
+220816 01:03 Not included tbr/最大最小定理求纳什均衡点.tex
+220816 14:22 OK           DataStructure/点分治.cpp
+220816 14:22 OK           DataStructure/非递归线段树求和.cpp
+220816 14:22 OK           DataStructure/非递归线段树求最大值.cpp
+220816 14:22 OK           Math/快速线性递推.cpp
+220816 17:00 Not included Math/单位根反演.tex
+220816 17:00 OK           Math/快速插值.tex
+220816 17:00 OK           Math/插值.tex
+220816 17:00 OK           TreeandGraph/图论知识.tex
+220816 17:00 OK           tbr/appendix-Formula.tex
 ```
