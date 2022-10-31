@@ -20,16 +20,15 @@ R.insert(y, x);
 R[x];
 R.erase(x, 1);
 \end{minted}
+    \item 测试 \texttt{\_\_int128, \_\_float128, sizeof (long double)}
     \item 测试代码长度限制；测试 output limit；测试 stderr limit。
     \item 测试内存限制：MLE 还是报 RE？栈溢出呢？
     \item 测试浮点数性能：FFT 能跑多快？测试内存性能：线段树、树状数组、素数筛能跑多快？测试 CPU 性能：阶乘、快速幂能跑多快？记得开 O2。
     \item 测试 clar：如果问不同类型的愚蠢的问题，得到的回复是否不一样？
     \item 测试 clock() 是否能够正常工作；测试本地性能与提交性能。
-    \item 测试本地是否有 fsan, gdb。
-        \begin{minted}{text}
-address, undefined, return, shift,
-integer-divide-by-zero, bounds-strict,
-float-cast-overflow, builtin
+    \item 测试本地是否有 fsan, gdb。\begin{minted}{text}
+address, undefined, return, shift, integer-divide-by-zero,
+bounds-strict, float-cast-overflow, builtin
 \end{minted}
     \item 测试 Python, Java 本地环境与提交环境。Python 快吗？$A\times B$ 能跑多快？输入输出呢？
     \item 测试 \texttt{time} 命令是否能显示内存占用。
