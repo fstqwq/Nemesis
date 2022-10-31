@@ -11,8 +11,8 @@ def isprime(x):
 	return True
 
 import random,datetime,time
-T = 7
-Range = [1e3, 1e5, 5e5, 1e6, 2e6, 5e6, 1e7, 2e7, 1e9]
+
+Range = [1e3, 1e5, 3e5, 5e5, 1e6, 2e6, 5e6, 1e7, 2e7, 1e9]
 print("{\\textbf{Random primes} generated at ", time.asctime( time.localtime(time.time()) ), "\\\\")
 for lim in Range:
 	print(("\\textbf{%0.0e} " % lim).replace("+0", ""), end="")

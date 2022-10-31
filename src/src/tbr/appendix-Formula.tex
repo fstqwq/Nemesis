@@ -286,7 +286,10 @@ $$\begin{aligned}
 \[ H_n = \sum_{k=1}^n \frac{1}{k}, \sum_{k=1}^nH_k = (n+1)H_n-n \]
 \[ \sum_{k=1}^nkH_k = \frac{n(n+1)}{2}H_n - \frac{n(n-1)}{4} \]
 \[ \sum_{k=1}^n{k \choose m}H_k = {n+1 \choose m+1}(H_{n+1} - \frac{1}{m+1}) \]
-\input{src/tbr/Carmicheal Function.tex}
+
+\subsubsection{卡迈克尔函数}
+卡迈克尔函数表示模$m$剩余系下最大的阶, 即 $\lambda(m)=\max_{a\bot m} \delta_m(a)$. 容易看出, 若$\lambda(m)=\varphi(m)$, 则$m$存在原根. 该函数可由下述方法计算: 分解质因数$m=p_1^{\alpha_1}p_2^{\alpha_2}...p_t^{\alpha_t}$. 则$\lambda(m)=\operatorname{lcm}(\lambda(p_1^{\alpha_1}),p_2^{\alpha_2},\ ..., p_t^{\alpha_t})$. 其中对奇质数$p$, $\lambda(p^\alpha)=(p-1)p^{\alpha-1}$. 对2的幂, $\lambda(2^k)=2^{k-2}, s.t. k\ge 3$. $\lambda(4)=\lambda(2)=2$.
+
 \subsubsection{五边形数定理求拆分数}
 \[ \Phi(x) = \prod_{n=1}^{\infty}(1-x^n) = \sum_{n=-\infty}^{\infty}{(-1)^kx^{k(3k-1)/2}} \]
 记$p(n)$表示$n$的拆分数,$f(n,k)$表示将$n$拆分且每种数字使用次数必须小于$k$的拆分数.则
