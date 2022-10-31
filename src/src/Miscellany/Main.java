@@ -2,6 +2,15 @@ import java.io.*; import java.util.*; import java.math.*;
 public class Main {
 static class solver { public void run(Scanner cin, PrintStream out) {} }
 public static void main(String[] args) {
+// Decimals
+BigDecimal ans, S, C;
+MathContext fuckJava = new MathContext(100, RoundingMode.HALF_EVEN); 
+BigDecimal minx = BigDecimal.TEN.pow(18);
+C = BigDecimal.ZERO;
+C.compareTo(S);
+S.divide(BigDecimal.valueOf(2), fuckJava);
+ans.divide(S.multiply(S), fuckJava).multiply(new BigDecimal(2));
+System.out.println(new DecimalFormat("0.0000000000000").format(ans));
 // Fast Reader & Big Numbers
 InputReader in = new InputReader(System.in);
 PrintWriter out = new PrintWriter(System.out);
