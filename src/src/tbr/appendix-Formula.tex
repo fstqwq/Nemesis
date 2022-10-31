@@ -151,6 +151,11 @@ $$F_n = \frac {\phi^n - {\hat\phi} ^ n} {\sqrt 5}, \; L_n = \phi ^ n + {\hat\phi
 
 $$\frac {L_n + F_n \sqrt 5} 2 = \left( \frac {1 + \sqrt 5} 2 \right) ^ n$$
 
+\subsubsection{Sum of Powers}
+\[\sum_{i=1}^ni^2=\frac{n(n+1)(2n+1)}{6},\ \ \sum_{i=1}^ni^3=\left(\frac{n(n+1)}{2}\right)^2\]
+\[\sum_{i=1}^ni^4=\frac{n(n+1)(2n+1)(3n^2+3n-1)}{30}\]
+\[\sum_{i=1}^ni^5=\frac{n^2(n+1)^2(2n^2+2n-1)}{12}\]
+
 \subsubsection{Catalan Numbers 1, 1, 2, 5, 14, 42, 132, 429, 1430\dots}
 \[c_{0}=1,c_n=\sum_{i=0}^{n-1}c_ic_{n-1-i}=c_{n-1}\frac{4n-2}{n+1}=\frac{\binom{2n}{n}}{n+1}=\binom{2n}{n}-\binom{2n}{n-1}\]
 \[ c(x)=\frac{1-\sqrt{1-4x}}{2x}\]
@@ -303,11 +308,6 @@ $ B_0 = 1,\; B_1 = -\frac 1 2,\; B_4 = -\frac 1 {30},\; B_6 = \frac 1 {42},\; B_
 
 自然数幂次和关于次数的EGF:
 $$ \begin{aligned} F(x)=&\sum_{k=0}^\infty \frac{\sum_{i=0}^n i^k}{k!}x^k\\ =&\sum_{i=0}^n e^{ix} =&\frac{e^{(n+1)x-1}}{e^x-1} \end{aligned} $$
-
-\subsubsection{Sum of Powers}
-\[\sum_{i=1}^ni^2=\frac{n(n+1)(2n+1)}{6},\ \ \sum_{i=1}^ni^3=\left(\frac{n(n+1)}{2}\right)^2\]
-\[\sum_{i=1}^ni^4=\frac{n(n+1)(2n+1)(3n^2+3n-1)}{30}\]
-\[\sum_{i=1}^ni^5=\frac{n^2(n+1)^2(2n^2+2n-1)}{12}\]
 
 \subsubsection{kMAX-MIN反演}
 \[k \mathrm{MAX}(S)=\sum_{T\subset S, T\neq \emptyset}(-1)^{|T|-k}C_{|T|-1}^{k-1}\mathrm{MIN}(T)\]
