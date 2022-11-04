@@ -29,7 +29,7 @@ vector <point> half_plane_intersect (vector <line> h) {
 	while (rear - fore > 1 && !turn_left (ret[rear], line_intersect (ret[fore], ret[fore + 1])))
 		++fore;
 	if (rear - fore < 2) return vector <point>();
-	vector <point> ans; ans.resize (rear - fore);
+	vector <point> ans; ans.resize (rear - fore + 1);
 	for (int i = 0; i < (int) ans.size(); ++i)
 		ans[i] = line_intersect (ret[fore + i],
 				ret[fore + (i + 1) % ans.size()]);
