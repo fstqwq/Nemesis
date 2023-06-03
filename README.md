@@ -16,33 +16,40 @@ Add Python Scripts where Pygments installed to your system path (e.g. `AppData\R
 Add `-shell-escape` to your TeX arguments.
 
 ### Fonts
+
 Main font: [思源宋体 Source Han Serif SC](https://github.com/adobe-fonts/source-han-serif/tree/release/)
+
 Cover font: [Gill Sans](tools/Gill-Sans-Font-Family.zip)
 
 ### Poker card
 
 Requrires pst-poker. Update your TeX to TeX Live 2022 or higher.
 
-## TODO:
+## TODO (old):
 
 ysf:
-    * 字符串
-      * SAM
-    * 数据结构
-      * LCT
-    * 网络流建图
-    * NTT 多项式
-    * 重写 segbeats 的 hint
-    * 计数，斯特林数
+
+* 字符串
+  * SAM
+* 数据结构
+  * LCT
+* 网络流建图
+* NTT 多项式
+* 重写 segbeats 的 hint
+* 计数，斯特林数
+
 tbr:
-    * 阿波罗尼茨圆
-    * 图论
-    * 博弈
-    * 高维切比雪夫和曼哈顿
-    * 拟阵交
+
+* 阿波罗尼茨圆
+* 图论
+* 博弈
+* 高维切比雪夫和曼哈顿
+* 拟阵交
+
 yzh:
-    * 常数表 (~d, omega,~ p, 斯特林数，卡特兰数)
-    * 几何代码
+
+* 常数表 (~d, omega,~ p, 斯特林数，卡特兰数)
+* 几何代码
 
 ## Scan result (8/17)
 ```210510 16:40 OK           DataStructure/KD tree.cpp
