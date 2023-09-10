@@ -1,6 +1,6 @@
 bool bfs() {
   for (int i = S; i <= T; i++) cur[i] = head[i];
-  for (int i = S; i <= T; i++) dep[i] = INF_int; // CHECK S-T
+  for (int i = S; i <= T; i++) dep[i] = INF_int; // S-T?
   dep[S] = 0; queue<int> q; q.push(S);
   while (!q.empty()) {
     int x = q.front(); q.pop();
@@ -21,14 +21,14 @@ int dfs(int x, int lim) {
       flow += f; lim -= f;
       if (lim == 0) break;
   } } return flow; }
-typedef pair <LL, int> pii;
+typedef pair <LL, int> pii; // NOTE: unusual!
 pii solve() { // return {cost, flow}
   LL res = 0; int flow = 0;
   for (int i = 0; i <= T; ++i) h[i] = 0;
   int first = true;
   while (true) {
     priority_queue<pii, vector<pii>, greater<pii>> q;
-    for (int i = S; i <= T; i++) dis[i] = INF_LL; // CHECK S-T
+    for (int i = S; i <= T; i++) dis[i] = INF_LL; // S-T?
     dis[S] = 0;
     if (first) {
       // TODO: SSSP, may Bellman-Ford or DP
@@ -48,4 +48,4 @@ pii solve() { // return {cost, flow}
     int fl = 0; while (bfs()) fl += dfs(S, INF_int);
     res += fl * h[T]; flow += fl;
   }
-return make_pair(res, flow); }
+  return make_pair(res, flow); }
