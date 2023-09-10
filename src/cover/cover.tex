@@ -5,40 +5,48 @@
 \newcommand{\hei}{\CJKfamily{hei}\selectfont}
 \newcommand{\sun}{\CJKfamily{sun}\selectfont}
 
-\vspace*{0.5cm}
+\begin{figure*}[h]
+    \centering
+    \includegraphics[width=250pt]{cover/sjtubannerred.pdf}
+\end{figure*}
 
+\vspace*{0.5cm}
+\begin{comment}
 % 2025 ：532
 \begin{picture}(400,60)(0,0)
     \put(10, 0){\includegraphics[width=200\unitlength]{cover/sjtubannerred.pdf}}
-    \put(295,32){\fontsize{20.3}{1}\fontspec[]{Linux Libertine O}\color{black}ICPC World Finals Dhaka}
-    \put(295, 6){\fontsize{23}{1}\fontspec[]{Linux Libertine O}\color{black}Standard Code Library}
+%    \put(295,32){\fontsize{20.3}{1}\fontspec[]{Linux Libertine O}\color{black}ICPC World Finals Dhaka}
+%    \put(295, 6){\fontsize{23}{1}\fontspec[]{Linux Libertine O}\color{black}Standard Code Library}
 \end{picture}
+\end{comment}
 
 \vspace*{2.5cm}
 
-\centerline{{\fontsize{50}{1}\fontspec{Gill Sans Medium}\color[rgb]{0.75,0,0}All-in~}{\fontsize{50}{1}{{\fontspec{Gill Sans Medium}at the River}}}}
+\centerline{{\fontsize{96}{1}{{\fontspec{Prince Valiant}Nemesis}}}}
 \vspace*{2.5cm}
-\begin{figure*}[h]
-    \centering
-    \includegraphics[width=150pt]{cover/poker.pdf}
-\end{figure*}
+% \begin{figure*}[h]
+%     \centering
+%     %\includegraphics[width=150pt]{cover/poker.pdf}
+% \end{figure*}
 \vspace*{2cm}
 \begin{center}
 {\LARGE
 \begin{tabular}{cp{1in}c}
-\rule{0pt}{16pt} \textbf{Coach} & & {\hei{教练}} \\
+\rule{0pt}{16pt} \fontspec{Prince Valiant} \textbf{Coach} & & {\hei{教练}} \\
 \midrule
 \rule{0pt}{16pt} Yong Yu & & {\sun 俞勇} \\
-\rule{0pt}{16pt} Weihao Zhu & & {\sun 朱玮昊} \\
+\rule{0pt}{16pt} Siyu Sun & & {\sun 孙司宇} \\
 \\
-\rule{0pt}{16pt} \textbf{Contestant} & & {\hei{队员}} \\
+\rule{0pt}{16pt} \fontspec{Prince Valiant} \textbf{Contestant} & & {\hei{队员}} \\
 \midrule
-\rule{0pt}{16pt} Boren Tan & & {\sun 谭博仁} \\
-\rule{0pt}{16pt} Shangfei Yang & & {\sun 杨尚霏} \\
 \rule{0pt}{16pt} Zonghan Yang & & {\sun 杨宗翰} \\
+\rule{0pt}{16pt} Mingchi Zhang & & {\sun 张明驰} \\
+\rule{0pt}{16pt} Jianjun Zhang & & {\sun 张建军} \\
 \end{tabular}
 }
 \end{center}
 \vspace*{1cm}
-\centerline{\large Compiled on \today}
+\centerline{\large \fontspec{Prince Valiant} Compiled on: \today}
+\vspace*{.5cm}
+\centerline{\large \fontspec{Prince Valiant} Last Commit Hash: \input{|"python cover/info.py"}}
 \newpage
