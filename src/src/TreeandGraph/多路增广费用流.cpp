@@ -43,7 +43,7 @@ pii solve() { // return {cost, flow}
             dis[e[o].v] = w; q.push(pii(w, e[o].v));
     } } } }
     if (dis[T] >= INF_LL) break;
-    // 所有点必须可达，可以加 T-0->i: min(dis[i], dis[T]) 
+    // 所有点必须可达，可以加 (i,T,0): min(dis[i], dis[T]) 
     for (int i = 0; i <= T; ++i) h[i] += dis[i];
     int fl = 0; while (bfs()) fl += dfs(S, INF_int);
     res += fl * h[T]; flow += fl;
