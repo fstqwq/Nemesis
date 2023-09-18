@@ -18,19 +18,19 @@ vector <point> half_plane_intersect (vector <line> h) {
 	int fore = 0, rear = -1;
 	vector <line> ret;
 	for (int i = 0; i < (int) h.size(); ++i) {
-		while (fore < rear && !turn_left (h[i], line_intersect (ret[rear - 1], ret[rear]))) {
+		while (fore < rear && !turn_left (h[i], line_inter (ret[rear - 1], ret[rear]))) {
 			--rear; ret.pop_back(); }
-		while (fore < rear && !turn_left (h[i], line_intersect (ret[fore], ret[fore + 1])))
+		while (fore < rear && !turn_left (h[i], line_inter (ret[fore], ret[fore + 1])))
 			++fore;
 		++rear;
 		ret.push_back (h[i]); }
-	while (rear - fore > 1 && !turn_left (ret[fore], line_intersect (ret[rear - 1], ret[rear]))) {
+	while (rear - fore > 1 && !turn_left (ret[fore], line_inter (ret[rear - 1], ret[rear]))) {
 		--rear; ret.pop_back(); }
-	while (rear - fore > 1 && !turn_left (ret[rear], line_intersect (ret[fore], ret[fore + 1])))
+	while (rear - fore > 1 && !turn_left (ret[rear], line_inter (ret[fore], ret[fore + 1])))
 		++fore;
 	if (rear - fore < 2) return vector <point>();
 	vector <point> ans; ans.resize (rear - fore + 1);
 	for (int i = 0; i < (int) ans.size(); ++i)
-		ans[i] = line_intersect (ret[fore + i],
+		ans[i] = line_inter (ret[fore + i],
 				ret[fore + (i + 1) % ans.size()]);
 	return ans; }
