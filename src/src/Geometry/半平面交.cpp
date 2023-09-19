@@ -1,7 +1,7 @@
 bool turn_left (const line &l, const point &p) {
 	return turn_left (l.s, l.t, p); }
-vector <point> half_plane_intersect (vector <line> h) {
-	typedef pair <double, line> polar;
+vector <point> hpi (vector <line> h) {
+	typedef pair <LD, line> polar;
 	vector <polar> g; // use atan2, caution precision
 	for (auto &i : h) {
 		point v = i.t - i.s;
