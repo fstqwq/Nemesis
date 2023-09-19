@@ -31,24 +31,25 @@ void EBCC() {// clear dfn low bri bcc_id vis
 int is_cut[N], DFN[N], low[N], cnt;
 int stk[N], dep; // clear dfn low is_cut cnt, let pcnt=n
 void tarjan(int x, int fa) {
-    int child = 0;
-    DFN[x] = low[x] = ++cnt; stk[++dep] = x;
-    #define head org
-    for (int i = head[x], d; i; i = h[i].next) {
-        d = h[i].node;
-        if (!DFN[d]) { ++child; tarjan(d, x);
-            low[x] = std::min(low[x], low[d]);
-            if (low[d] >= DFN[x]) {
-                is_cut[x] = true;
-                ++pcnt; // square node index
-                int j = 0, sz = 1;
-                do {
-                    j = stk[dep--];
-                    addedge(pcnt, j, tr);
-                    ++sz;
-                } while (j != d);
-                addedge(pcnt, x, tr);
-        }   } else if (DFN[d] < low[x]) {
-            low[x] = DFN[d]; } }
-    #undef head
-    if (!fa && child == 1) is_cut[x] = false;}
+	int child = 0;
+	DFN[x] = low[x] = ++cnt; stk[++dep] = x;
+	#define head org
+	for (int i = head[x], d; i; i = h[i].next) {
+		d = h[i].node;
+		if (!DFN[d]) {
+			++child; tarjan(d, x);
+			low[x] = min(low[x], low[d]);
+			if (low[d] >= DFN[x]) {
+				is_cut[x] = true;
+				++pcnt; // square node index
+				int j = 0, sz = 1;
+				do {
+					j = stk[dep--];
+					addedge(pcnt, j, tr);
+					++sz;
+				} while (j != d);
+				addedge(pcnt, x, tr);
+			}
+		} else if (DFN[d] < low[x]) low[x] = DFN[d]; }
+	#undef head
+	if (!fa && child == 1) is_cut[x] = false; }
