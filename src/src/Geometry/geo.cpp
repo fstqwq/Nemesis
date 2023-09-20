@@ -66,9 +66,10 @@ bool ray_inter_judge(line a, line b) { // 射线判交
 	s2 = det(a.t - a.s, b.t - a.s);
 	return sgn(s1) != sgn(s2 - s1); }
 vector <point> line_circle_inter (cl a, cc b) {
-	if (sgn (point_to_line (b.c, a) - b.r) > 0)
+	LD d = point_to_line (b.c, a);
+	if (sgn (d - b.r) > 0)
 		return {};
-	LD x = sqrt(sqr(b.r)-sqr(point_to_line (b.c, a)));
+	LD x = sqrt(sqr(b.r)-sqr(d)));
 	return {
 		proj_to_line (b.c, a) + (a.s - a.t).unit() * x,
 		proj_to_line (b.c, a) - (a.s - a.t).unit() * x};}
