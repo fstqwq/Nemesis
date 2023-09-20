@@ -1,10 +1,10 @@
 LD angle (cp u, cp v) {
 	return 2 * asin(dis(u.unit(), v.unit()) / 2); }
 LD area(cp s, cp t, LD r) { // 2 * area
-	LD theta = angle(s, t); cp Z{0, 0};
-	LD dis = point_to_segment(Z, {s, t});
+	LD theta = angle(s, t);
+	LD dis = point_to_segment({0, 0}, {s, t});
 	if (dis >= r) return theta * r * r;
-	auto [u, v] = line_circle_inter({s, t}, {Z, r});
+	auto [u, v] = line_circle_inter({s, t}, {{0, 0}, r});
 	point lo = sgn(det(s, u)) >= 0 ? u : s;
 	point hi = sgn(det(v, t)) >= 0 ? v : t;
 	return det(lo, hi) + (theta - angle(lo, hi)) * r * r; }
