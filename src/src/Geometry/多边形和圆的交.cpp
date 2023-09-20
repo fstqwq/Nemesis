@@ -14,7 +14,8 @@ LD area(cp a, cp b, LD r) { // 2 * area
 		return det(u, v) + rr * (angle(a, u) + angle(v, b));
 	if (sa > 0)
 		return det(u, b) + angle(a, u) * rr;
-	return det(a, v) + angle(v, b) * rr; }
+	else
+		return det(a, v) + angle(v, b) * rr; }
 LD solve(vector<point> &p, cc c) {
 	LD ret = 0;
 	for (int i = 0; i < (int) p.size (); ++i) {
