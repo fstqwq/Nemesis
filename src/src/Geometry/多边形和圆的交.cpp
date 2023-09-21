@@ -14,6 +14,6 @@ LD solve(vector<point> &p, cc c) {
 		auto u = p[i] - c.c;
 		auto v = p[(i + 1) % p.size()] - c.c;
 		int s = sgn(det(u, v));
-		if (s > 0)      ret += area (u, v, c.r);
+		if      (s > 0) ret += area (u, v, c.r);
 		else if (s < 0) ret -= area (v, u, c.r);
 	} return abs (ret) / 2; } //ret在p逆时针时为正
