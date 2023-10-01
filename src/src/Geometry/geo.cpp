@@ -69,7 +69,7 @@ pair <point, point> line_circle_inter (cl a, cc c) {
 	LD d = point_to_line (c.c, a);
 	// 需要的话返回 vector <point>
 	/* if (sgn (d - R) >= 0) return {}; */
-	LD x = sqrt (sqr(c.r) - sqr(d));
+	LD x = sqrt (sqr(c.r) - sqr(d)); // sqrt(max(0., ...))
 	return {
 		proj_to_line (c.c, a) + (a.s - a.t).unit() * x,
 		proj_to_line (c.c, a) - (a.s - a.t).unit() * x
