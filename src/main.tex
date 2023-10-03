@@ -222,6 +222,8 @@
 %				\inputminted{cpp}{src/Geometry/点到凸包切线.cpp}
 				% \subsection{Delaunay 三角剖分}
 				% \inputminted{cpp}{src/Geometry/DelaunayTriangulation.cpp}
+				\subsection{最远点对 / 凸包直径}
+				\inputminted{cpp}{src/Geometry/far_pair.cpp}
 				\subsection{闵可夫斯基和}
 				\inputminted{cpp}{src/Geometry/闵可夫斯基和.cpp}
 				\subsection{最小覆盖圆}
@@ -238,8 +240,6 @@
 					\input{src/Geometry/球面.tex}
 				\subsection{经纬度球面距离}
 					\inputminted{cpp}{src/Geometry/经纬度求球面最短距离.cpp}
-				\subsection{最远点对 / 凸包直径}
-				\inputminted{cpp}{src/Geometry/far_pair.cpp}
 %				\subsection{最近点对}
 %				\inputminted{cpp}{src/Geometry/最近点对.cpp}
 				\subsection{长方体表面两点最短距离}
@@ -259,7 +259,6 @@
 				\subsection{高斯消元最小范数解}
 				\inputminted{cpp}{src/Geometry/minnorm_gauss.cpp}
 					
-			\newpage
 			\section{Tree \& Graph}
 			\subsection{极大团计数}
 				\inputminted{cpp}{src/TreeandGraph/CliqueCount.cpp}
@@ -269,10 +268,10 @@
 				% \inputminted{cpp}{src/TreeandGraph/Hungarian.cpp}
 				\subsection{Shuffle 一般图最大匹配 $O(V E)$}
 					\inputminted{cpp}{src/TreeandGraph/一般图最大匹配-shuffle.cpp}
-				\subsection{有根树同构 Hash}
-					\inputminted{cpp}{src/TreeandGraph/TreeHash.cpp}
 				\subsection{KM 最大权匹配 $O(V^3)$}
 					\inputminted{cpp}{src/TreeandGraph/KM.cpp}
+				\subsection{有根树同构 Hash}
+					\inputminted{cpp}{src/TreeandGraph/TreeHash.cpp}
 				\subsection{欧拉回路}
 				\inputminted{cpp}{src/TreeandGraph/欧拉回路.cpp}
 				%\subsection{Blossom 一般图带权最大匹配 $O(|V|^3)$}
@@ -285,13 +284,6 @@
 					\inputminted{cpp}{src/TreeandGraph/支配树.cpp}
 				%\subsection{最大团}
 				%\inputminted{cpp}{src/TreeandGraph/MaximumClique.cpp}
-				\subsection{弦图}
-					\input{src/yzh/chordal-graph.tex}
-					\inputminted{cpp}{src/TreeandGraph/弦图.cpp}
-				\subsection{Minimum Mean Cycle 最小平均值环 $O(n^2)$}
-					\inputminted{cpp}{src/TreeandGraph/MeanCycle.cpp}
-				\subsection{斯坦纳树}
-					\inputminted{cpp}{src/TreeandGraph/斯坦纳树.cpp}
 				\subsection{Dinic 最大流}
 					\input{src/yzh/dinic_complexity.tex}
 					\inputminted{cpp}{src/TreeandGraph/Dinic.cpp}
@@ -313,13 +305,20 @@
 				%\inputminted{cpp}{src/TreeandGraph/虚树.cpp}
 				%\subsection{动态最小生成树}
 				%\inputminted{cpp}{src/TreeandGraph/DynamicMST.cpp}
+				\input{src/tbr/网络流总结.tex}
 				\subsection{Gomory-Hu 无向图最小割树\,$O(V ^ 3 E)$}
 					\input{src/yzh/Gomory-Hu.tex}
 				\subsection{Stoer-Wagner\,无向图最小割\,$O(VE + V ^ 2 \log V)$}
 					\inputminted{cpp}{src/yzh/Stoer-Wagner.cpp}
+				\subsection{弦图}
+					\input{src/yzh/chordal-graph.tex}
+					\inputminted{cpp}{src/TreeandGraph/弦图.cpp}
+				\subsection{Minimum Mean Cycle 最小平均值环 $O(n^2)$}
+					\inputminted{cpp}{src/TreeandGraph/MeanCycle.cpp}
+				\subsection{斯坦纳树}
+					\inputminted{cpp}{src/TreeandGraph/斯坦纳树.cpp}
 				%\subsection{Cactus 仙人掌}
 					%\inputminted{cpp}{src/TreeandGraph/cactus.cpp}
-					\input{src/tbr/网络流总结.tex}
 				\subsection{图论结论}
 					\input{src/tbr/最小乘积问题.tex}
 					\input{src/tbr/最小环问题.tex}
