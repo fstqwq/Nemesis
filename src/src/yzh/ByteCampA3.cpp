@@ -2,20 +2,15 @@ typedef double D;
 #define cp const p3 & 
 struct p3 {
 	D x, y, z;
-	void read() {
-		int xx, yy, zz;
-		scanf("%d%d%d", &xx, &yy, &zz);
-		x = xx, y = yy, z = zz;
-	}
+	void read() { ... }
 	p3 () {x = y = z = 0;}
 	p3 (D xx, D yy, D zz) {x = xx; y = yy; z = zz;}
-	p3 operator + (cp a) const {return {x + a.x, y + a.y, z + a.z};}
-	p3 operator - (cp a) const {return {x - a.x, y - a.y, z - a.z};}
-	p3 operator * (const D &a) const {return {x * a, y * a, z * a};}
-	p3 operator / (const D &a) const {return {x / a, y / a, z / a};}
-	D &operator [] (const int a) { return a == 0 ? x : (a == 1 ? y : z); }
-	const D &operator [] (const int a) const { return a == 0 ? x : (a == 1 ? y : z); }
-	D len2() const { return x * x + y * y + z * z; }
+	p3 operator + (cp a) {return {x + a.x, y + a.y, z + a.z};}
+	p3 operator - (cp a) {return {x - a.x, y - a.y, z - a.z};}
+	p3 operator * (D a) {return {x * a, y * a, z * a};}
+	p3 operator / (D a) {return {x / a, y / a, z / a};}
+	D &operator [] (int a) {return a == 0 ? x : (a == 1 ? y : z);}
+	D len2() { return x * x + y * y + z * z; }
 	void normalize() {
 		D l = sqrt(len2()); 
 		x /= l; y /= l; z /= l; }
@@ -31,22 +26,19 @@ void calc(p3 n, D cosw) {
 		A[i][i] = (y * y + z * z) * cosw + x * x;
 		A[i][j] = x * y * (1 - cosw) + z * sinw;
 		A[i][k] = x * z * (1 - cosw) - y * sinw;
-	}
-}
+	} }
 p3 turn(p3 x) {
 	p3 y;
 	for (int i = 0; i < 3; i++)
 		for (int j = 0; j < 3; j++)
 			y[i] += x[j] * A[j][i];
-	return y;
-}
+	return y; }
 p3 cross(cp a, cp b) { return p3(a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y * b.x); }
 D dot(cp a, cp b) {
 	D ret = 0;
 	for (int i = 0; i < 3; i++) 
 		ret += a[i] * b[i];
-	return ret;
-}
+	return ret; }
 const int N = 5e4 + 5;
 const D eps = 1e-5;
 int sgn(D x) { return (x > eps ? 1 : (x < -eps ? -1 : 0)); }
@@ -82,8 +74,7 @@ vector <p3> convex_hull (vector <p3> a) {
 		ret.push_back(a[i]); ++cnt;
 	}
 	ret.pop_back();
-	return ret;
-}
+	return ret; }
 int n, m;
 p3 ap[N], bp[N];
 int main() {
@@ -94,15 +85,10 @@ int main() {
 	for (int i = 1; i <= m; i++) bp[i].read();
 	bp[0].read();
 	p3 from = ap[0] - bp[0], to = {0, 0, 1};
-	if (from.len2() < eps) {
-		puts("NO");
-		return 0;
-	}
+	if (from.len2() < eps) return puts("NO"), 0;
 	from.normalize();
 	p3 c = cross(from, to);
-	if (abs(c.len2()) < eps) {
-		// ok
-	}
+	if (abs(c.len2()) < eps) ;
 	else {
 		D cosw = dot(from, to);
 		calc(c, cosw);
@@ -135,10 +121,7 @@ int main() {
 	p3 p; // 0
 	for (int i = 0; i < (int)mnk.size(); i++) {
 		p3 u = mnk[i], v = mnk[(i + 1) % int(mnk.size())];
-		if (det(p - u, v - u) > eps) {
-			puts("NO");
-			return 0;
-		}
+		if (det(p - u, v - u) > eps)
+			return puts("NO"), 0;
 	}
-	puts("YES");
-}
+	puts("YES"); }
