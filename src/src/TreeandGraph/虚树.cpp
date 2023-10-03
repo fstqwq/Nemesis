@@ -1,7 +1,23 @@
-rd(m);v[1]=a[1]=1,t=++m; //选定m个关键点, 1号点直接加入虚树 
-fr(i,2,m)rd(x),v[a[i]]=V[a[i]]=1; //v[]表示是选的点或LCA后的点, V[]表示选的点 
-for(sort(a+1,a+m+1,cmp),i=1;i<m;i++) //新加必要关键点
-	if(!v[x=lca(a[i],a[i+1])])v[a[++t]=x]=1;
-for(m=t,sort(a+1,a+m+1,cmp),ed=0,q[t=1]=1,i=2; i<=m; ins(q[t],a[i]),q[++t]=a[i++])
-	for(;st[a[i]]<st[q[t]]||en[a[i]]>en[q[t]];t--); //再排一遍序, 单调栈建虚数 
-fr(i,1,m)v[a[i]]=V[a[i]]=fir[a[i]]=0; //求解答案后还原 
+int one = 0, top = 0;
+for (auto i : q) one |= i == 1;
+if (!one) q.push_back(1);
+sort(q.begin(), q.end(), [](auto u, auto v) {
+	return dfn[u] < dfn[v]; });
+for (auto x : q) {
+	used.push_back(x);
+	if (top == 0) stk[++top] = x;
+	else {
+		int lca = LCA(stk[top], x);
+		used.push_back(lca);
+		while (top > 1 && dep[lca] < dep[stk[top - 1]]) {
+			h[stk[top - 1]].push_back(stk[top]);
+			--top; }
+		if (dep[lca] < dep[stk[top]])
+			h[lca].push_back(stk[top--]);
+		if (stk[top] != lca)
+			stk[++top] = lca;
+		stk[++top] = x; } }
+while (--top) // assert (top)
+	h[stk[top]].push_back(stk[top + 1]);
+LL ans = solve(1, 0);
+for (auto i : used) h[i].clear();

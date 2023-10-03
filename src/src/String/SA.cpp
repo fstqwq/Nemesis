@@ -1,7 +1,7 @@
 // height[i] = lcp(sa[i], sa[i - 1])
 void get_sa(char *s, int n, int *sa,
 		int *rnk, int *height) { // 1-based
-	static int buc[maxn], id[maxn], p[maxn], t[maxn * 2];
+	static int buc[N], id[N], p[N], t[N * 2];
 	int m = 300;
 	for (int i = 1; i <= n; i++) buc[rnk[i] = s[i]]++;
 	for (int i = 1; i <= m; i++) buc[i] += buc[i - 1];
@@ -25,11 +25,6 @@ void get_sa(char *s, int n, int *sa,
 	for (int i = 1, k = 0; i <= n; i++) { if (k) k--;
 		while (s[i + k] == s[sa[rnk[i] - 1] + k]) k++;
 		height[rnk[i]] = k; } }
-char s[maxn]; int sa[maxn], rnk[maxn], height[maxn];
+char s[N]; int sa[N], rnk[N], height[N];
 int main() { cin >> (s + 1); int n = strlen(s + 1);
-	get_sa(s, n, sa, rnk, height);
-	for (int i = 1; i <= n; i++)
-		cout << sa[i] << (i < n ? ' ' : '\n');
-	for (int i = 2; i <= n; i++)
-		cout << height[i] << (i < n ? ' ' : '\n');
-	return 0; }
+	get_sa(s, n, sa, rnk, height); }

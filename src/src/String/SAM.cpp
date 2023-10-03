@@ -9,8 +9,9 @@ void extend(int c) { // 结点数要开成串长的两倍
 			par[nq] = par[q]; par[np] = par[q] = nq;
 			while (p && go[p][c] == q) { go[p][c] = nq;
 				p = par[p]; } } } last = np; }
-int c[maxn], q[maxn]; int main() { last = sam_cnt = 1;
+int c[maxn], q[maxn]; 
+void init() { last = sam_cnt = 1; }
+void solve() {
 	for (int i = 1; i <= sam_cnt; i++) c[val[i] + 1]++;
 	for (int i = 1; i <= n; i++) c[i] += c[i - 1];
-	for (int i = 1; i <= sam_cnt; i++) q[++c[val[i]]] = i;
-	return 0; }
+	for (int i = 1; i <= sam_cnt; i++) q[++c[val[i]]] = i;}
