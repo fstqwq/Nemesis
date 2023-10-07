@@ -3,8 +3,7 @@ point incenter (cp a, cp b, cp c) {
 	return ( a*dis(b, c) + b*dis(c, a) + c*dis(a, b) ) / p;}
 point circumcenter (cp a, cp b, cp c) {
 	point p = b - a, q = c - a, s (dot(p,p)/2, dot(q,q)/2);
-	double d = det(p, q);
-	return a + point (det(s, point (p.y, q.y)), det(point (p.x, q.x), s)) / d; }
+	double d = det(p, q); return a + point(det(s, {p.y, q.y}), det({p.x, q.x}, s)) / d; }
 point orthocenter (cp a, cp b, cp c) {
 	return a + b + c - circumcenter (a, b, c) * 2.0; }
 point fermat_point (cp a, cp b, cp c) {
@@ -19,7 +18,6 @@ point fermat_point (cp a, cp b, cp c) {
 	else if (sgn (cosb + 0.5) < 0) mid = b;
 	else if (sgn (cosc + 0.5) < 0) mid = c;
 	else if (sgn (det(b - a, c - a)) < 0)
-		mid = line_intersect (line (a, b + (c - b).rot (sq3)), line (b, c + (a - c).rot (sq3)));
-	else
-		mid = line_intersect (line (a, c + (b - c).rot (sq3)), line (c, b + (a - b).rot (sq3)));
+	     mid = line_inter ({a, b + (c - b).rot (sq3)}, {b, c + (a - c).rot (sq3)});
+	else mid = line_inter ({a, c + (b - c).rot (sq3)}, {c, b + (a - b).rot (sq3)});
 	return mid; } // minimize(|A-x|+|B-x|+|C-x|)
