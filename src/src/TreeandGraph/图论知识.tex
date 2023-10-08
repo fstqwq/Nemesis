@@ -101,9 +101,9 @@ $x_r - x_l \geq c:$\texttt{add(r, l, -c)}
     \par 相关结论: $n$个点完全图, 每个点度数依次为$d_1$,$d_2$,...,$d_n$, 这样生成树的棵树为: ${\frac{(n-2)!}{(d_1-1)!(d_2-1)!...(d_n-1)!}}$.\\
     左边有$n_1$个点, 右边有$n_2$个点的完全二分图的生成树棵树为$n_1^{n_2-1}\times n_2^{n_1-1}$. \\
     $m$个连通块, 每个连通块有$c_i$个点, 把他们全部连通的生成树方案数: $(\sum c_i)^{m-2}\prod c_i$
-\subsubsection{有根树的计数}\noindent
-    首先, 令$S_{n,j}=\sum_{1\leq j\leq n/j}$; 于是$n+1$个结点的有根树的总数为$ a_{n+1}=\frac{\sum_{j=1}^nja_jS_{n-j}}{n}$. 注: $a_1=1,a_2=1,a_3=2,a_4=4,a_5=9,a_6=20,a_9=286,a_{11}=1842$. 
-\subsubsection{无根树的计数}\noindent
+\subsubsection{有根树计数 1,1,2,4,9,20,48,115,286,719,1842,4766}\noindent
+无标号 $a_{n+1} = 1/n  \sum_{k=1}^{n} ( \sum_{d|k} d \cdot a(d) ) \cdot a(n-k+1)$ 
+\subsubsection{无根树计数}\noindent
     $n$是奇数时, 有$a_n-\sum_{i}^{n/2}a_ia_{n-i}$种不同的无根树. \\
     $n$时偶数时, 有$a_n-\sum_{i}^{n/2}a_ia_{n-i}+\frac{1}{2}a_{n/2}(a_{n/2}+1)$种不同的无根树. 
 \subsubsection{生成树计数 Kirchhoff's Matrix-Tree Thoerem}
