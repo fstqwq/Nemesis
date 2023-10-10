@@ -89,8 +89,7 @@ struct Convex {
  		int m = (l + r) / 2;
  		int sm = sgn(det(v - u, at(m) - u));
  		if (sm == sl) l = m;
- 		else r = m;
- 	}
+ 		else r = m; }
  	return l % n; }
  bool get_inter(cp u, cp v, int &i0, int &i1) {
  	int p0 = get_tan(u - v), p1 = get_tan(v - u);

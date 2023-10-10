@@ -1,6 +1,6 @@
 int sgn(cp a){return a.y > 0||(a.y == 0 && a.x > 0)?1:-1;}
 bool turn_left(cl l, cp p){return turn_left(l.s, l.t, p);}
-vector <point> hpi(vector <line> h) {
+vector <point> hpi(vector <line> h) { // 半平面交
   sort(h.begin(), h.end(), [](cl a, cl b) {
     int dir = sgn(a.t - a.s) - sgn(b.t -  b.s);
     if (dir) return dir < 0;
