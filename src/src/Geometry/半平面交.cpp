@@ -1,36 +1,27 @@
-bool turn_left (const line &l, const point &p) {
-	return turn_left (l.s, l.t, p); }
-vector <point> hpi (vector <line> h) {
-	typedef pair <LD, line> polar;
-	vector <polar> g; // use atan2, caution precision
-	for (auto &i : h) {
-		point v = i.t - i.s;
-		g.push_back({atan2 (v.y, v.x), i}); }
-	sort (g.begin(), g.end(), [] (const polar &a, const polar &b) {
-		if (!sgn (a.first - b.first))
-			return sgn (det (a.second.t - a.second.s, b.second.t - a.second.s)) < 0;
-		else return sgn (a.first - b.first) < 0; });
-	h.resize (unique (g.begin(), g.end(),
-	[] (const polar &a, const polar &b)
-	{ return ! sgn (a.first - b.first); }) - g.begin());
-	for (int i = 0; i < (int) h.size(); ++i)
-		h[i] = g[i].second;
-	int fore = 0, rear = -1;
-	vector <line> ret;
-	for (int i = 0; i < (int) h.size(); ++i) {
-		while (fore < rear && !turn_left (h[i], line_inter (ret[rear - 1], ret[rear]))) {
-			--rear; ret.pop_back(); }
-		while (fore < rear && !turn_left (h[i], line_inter (ret[fore], ret[fore + 1])))
-			++fore;
-		++rear;
-		ret.push_back (h[i]); }
-	while (rear - fore > 1 && !turn_left (ret[fore], line_inter (ret[rear - 1], ret[rear]))) {
-		--rear; ret.pop_back(); }
-	while (rear - fore > 1 && !turn_left (ret[rear], line_inter (ret[fore], ret[fore + 1])))
-		++fore;
-	if (rear - fore < 2) return vector <point>();
-	vector <point> ans; ans.resize (rear - fore + 1);
-	for (int i = 0; i < (int) ans.size(); ++i)
-		ans[i] = line_inter (ret[fore + i],
-				ret[fore + (i + 1) % ans.size()]);
-	return ans; }
+int sgn(cp a){return a.y > 0||(a.y == 0 && a.x > 0)?1:-1;}
+bool turn_left(cl l, cp p){return turn_left(l.s, l.t, p);}
+vector <point> hpi(vector <line> h) {
+  sort(h.begin(), h.end(), [](cl a, cl b) {
+    int dir = sgn(a.t - a.s) - sgn(b.t -  b.s);
+    if (dir) return dir < 0;
+    dir = sgn(det(a.t - a.s, b.t - b.s));
+    if (dir) return dir > 0;
+    return sgn(det(a.t - a.s, b.t - a.s)) < 0; });
+  h.resize(unique(h.begin(), h.end(), [](cl a, cl b) {
+    return !sgn(det(a.t - a.s, b.t - b.s));})-h.begin());
+  vector <line> q; int l = 0, r = -1;
+  for(auto &i : h) {
+   while(l<r && !turn_left(i, line_inter(q[r - 1], q[r])))
+     --r, q.pop_back();
+   while(l<r && !turn_left(i, line_inter(q[l], q[l + 1])))
+     ++l;
+   ++r; q.push_back(i); }
+  while(r-l>1&& !turn_left(q[l],line_inter(q[r - 1],q[r])))
+    --r, q.pop_back();
+  while(r-l>1&& !turn_left(q[r],line_inter(q[l],q[l + 1])))
+    ++l;
+  if(r - l < 2) return {};
+  vector <point> ret(r - l + 1);
+  for(int i = l; i <= r; i++) 
+    ret[i - l] = line_inter(q[i], q[i == r ? l : i + 1]);
+  return ret; }

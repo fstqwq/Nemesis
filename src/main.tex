@@ -212,7 +212,8 @@
 				%\subsection{凸包}
 					\inputminted{cpp}{src/Geometry/凸包.cpp}
 					\inputminted{cpp}{src/Geometry/geo.cpp}
-				% \subsection{直线半平面交}
+					\inputminted{cpp}{src/Geometry/circle.cpp}
+				\subsection{直线半平面交}
 					\inputminted{cpp}{src/Geometry/半平面交.cpp}
 				\subsection{凸包快速询问}
 					\inputminted{cpp}{src/Geometry/logconvexhull.cpp}
@@ -228,8 +229,8 @@
 				\inputminted{cpp}{src/Geometry/AirportConstruction.cpp}
 				\subsection{闵可夫斯基和}
 				\inputminted{cpp}{src/Geometry/闵可夫斯基和.cpp}
-				\subsection{最小覆盖圆}
-				\inputminted{cpp}{src/Geometry/最小覆盖圆.cpp}
+%				\subsection{最小覆盖圆}
+%				\inputminted{cpp}{src/Geometry/最小覆盖圆.cpp}
 				\subsection{圆并}
 					\inputminted{cpp}{src/Geometry/圆并.cpp}
 				\subsection{多边形与圆交}
@@ -385,9 +386,10 @@
 			\section{Math 数学}
 				\subsection{Long Long $O(1)$ 乘}
 					\inputminted{cpp}{src/Miscellany/LLFPM.cpp}
-				\subsection{exgcd}
+				\subsection{exgcd, 逆元}
 					\input{src/Math/exgcd.tex}
 					\inputminted{cpp}{src/Math/exgcd.cpp}
+					递推逆元: $\operatorname{inv}(i) \equiv (P - P / i) \cdot \operatorname{inv}(P \bmod i)$
 				\subsection{CRT 中国剩余定理}
 					\inputminted{cpp}{src/Math/CRT_lbn.cpp}
 				\subsection{Miller Rabin, Pollard Rho}
@@ -411,6 +413,7 @@
 				\subsection{原根}
 				% \inputminted{cpp}{src/Math/原根.cpp
 					\input{src/tbr/阶和原根.tex}
+				\newpage
 				\subsection{FFT}
 					\inputminted{cpp}{src/Math/FFT.cpp}
 				\subsection{NTT}
