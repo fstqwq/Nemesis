@@ -1,3 +1,20 @@
+bool in_polygon (cp u, cp v) {
+	// assert : u, v in polygon, respectively
+	for (int i = 0; i < n; i++) {
+		int j = (i + 1) % n, k = (i + 2) % n;
+		cp ii = p[i], jj = p[j], kk = p[k];
+		if (inter_judge_strict({u, v}, {ii, jj})) return 0;
+		if (point_on_segment (jj, {u, v})) {
+			bool good = true, left = turn_left(ii, jj, kk);
+			for (auto x : {u, v})
+				if (left)
+					good &=    turn_left(ii, jj, x)
+					        && turn_left(jj, kk, x);
+				else
+					good &= !(   turn_left_strict(jj, x, kk)
+					          && turn_left_strict(jj, ii, x));
+			if (!good) return 0;
+		} } return 1; }
 LD get_far (int uid, int vid) {
 	// u -> v in polygon, check the ray u -> polygon
 	cp u = p[uid], v = p[vid];
@@ -18,23 +35,6 @@ LD get_far (int uid, int vid) {
 				          && turn_left_strict(jj, kk, x));
 			if (!good) far = min(far, dis(u, jj));
 		} } return far; }
-bool in_polygon (cp u, cp v) {
-	// assert : u, v in polygon, respectively
-	for (int i = 0; i < n; i++) {
-		int j = (i + 1) % n, k = (i + 2) % n;
-		cp ii = p[i], jj = p[j], kk = p[k];
-		if (inter_judge_strict({u, v}, {ii, jj})) return 0;
-		if (point_on_segment (jj, {u, v})) {
-			bool good = true, left = turn_left(ii, jj, kk);
-			for (auto x : {u, v})
-				if (left)
-					good &=    turn_left(ii, jj, x)
-					        && turn_left(jj, kk, x);
-				else
-					good &= !(   turn_left_strict(jj, x, kk)
-					          && turn_left_strict(jj, ii, x));
-			if (!good) return 0;
-		} } return 1; }
 void work() {
     for (int i = 0; i < n; i++)
 		for (int j = 0; j < n; j++) if (i != j) {
