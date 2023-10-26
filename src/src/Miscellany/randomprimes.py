@@ -12,12 +12,12 @@ def isprime(x):
 
 import random,datetime,time
 
-Range = [1e3, 3e4, 1e5, 5e5, 1e6, 2e6, 1e7, 2e7, 1e9]
+Range = [500, 1e3, 3e4, 1e5, 2e5, 5e5, 1e6, 2e6, 5e6, 1e7, 2e7, 1e9]
 print("{\\textbf{Random primes} generated at ", time.asctime( time.localtime(time.time()) ), "\\\\")
 for lim in Range:
 	print(("\\textbf{%0.0e} " % lim).replace("+0", ""), end="")
-	lower = int(lim * 0.94)
-	upper = int(lim * 1.07)
+	lower = int(lim * 0.93) - 100
+	upper = int(lim * 1.07) + 100
 	cur = set ()
 	dead = 0
 	s = ""
