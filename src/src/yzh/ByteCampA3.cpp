@@ -2,18 +2,18 @@ typedef double D;
 #define cp const p3 & 
 struct p3 {
 	D x, y, z;
-	void read() { ... }
+	void read(){... }
 	p3 () {x = y = z = 0;}
 	p3 (D xx, D yy, D zz) {x = xx; y = yy; z = zz;}
-	p3 operator + (cp a) {return {x + a.x, y + a.y, z + a.z};}
-	p3 operator - (cp a) {return {x - a.x, y - a.y, z - a.z};}
-	p3 operator * (D a) {return {x * a, y * a, z * a};}
-	p3 operator / (D a) {return {x / a, y / a, z / a};}
-	D &operator [] (int a) {return a == 0 ? x : (a == 1 ? y : z);}
-	D len2() { return x * x + y * y + z * z; }
+	p3 operator + (cp a){return {x + a.x, y + a.y, z + a.z};}
+	p3 operator - (cp a){return {x - a.x, y - a.y, z - a.z};}
+	p3 operator * (D a){return {x * a, y * a, z * a};}
+	p3 operator / (D a){return {x / a, y / a, z / a};}
+	D &operator [] (int a){return a == 0 ? x : (a == 1 ? y : z);}
+	D len2(){return x * x + y * y + z * z;}
 	void normalize() {
 		D l = sqrt(len2()); 
-		x /= l; y /= l; z /= l; }
+		x /= l; y /= l; z /= l;}
 };
 const D pi = acos(-1);
 D A[3][3];
@@ -32,24 +32,24 @@ p3 turn(p3 x) {
 	for (int i = 0; i < 3; i++)
 		for (int j = 0; j < 3; j++)
 			y[i] += x[j] * A[j][i];
-	return y; }
-p3 cross(cp a, cp b) { return p3(a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y * b.x); }
+	return y;}
+p3 cross(cp a, cp b){return p3(a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y * b.x);}
 D dot(cp a, cp b) {
 	D ret = 0;
 	for (int i = 0; i < 3; i++) 
 		ret += a[i] * b[i];
-	return ret; }
+	return ret;}
 const int N = 5e4 + 5;
 const D eps = 1e-5;
-int sgn(D x) { return (x > eps ? 1 : (x < -eps ? -1 : 0)); }
-D det(cp a, cp b) { return a.x * b.y - b.x * a.y; }
+int sgn(D x){return (x > eps ? 1 : (x < -eps ? -1 : 0));}
+D det(cp a, cp b){return a.x * b.y - b.x * a.y;}
 p3 base;
 bool cmp(cp a, cp b) {
 	int d = sgn(det(a - base, b - base)); 
 	if (d) return d > 0;
 	else return (a - base).len2() < (b - base).len2();
 }
-bool turn_left(cp a, cp b, cp c) { return sgn(det(b - a, c - a)) >= 0; }
+bool turn_left(cp a, cp b, cp c){return sgn(det(b - a, c - a)) >= 0;}
 vector <p3> convex_hull (vector <p3> a) {
 	int n = (int) a.size(), cnt = 0;
 	base = a[0];
@@ -74,7 +74,7 @@ vector <p3> convex_hull (vector <p3> a) {
 		ret.push_back(a[i]); ++cnt;
 	}
 	ret.pop_back();
-	return ret; }
+	return ret;}
 int n, m;
 p3 ap[N], bp[N];
 int main() {
@@ -96,8 +96,8 @@ int main() {
 			ap[i] = turn(ap[i]);
 			ap[i].z = 0;
 		}
-		for (int i = 1; i <= m; i++) bp[i] = turn(bp[i]), bp[i].z = 0;
-	}
+		for (int i = 1; i <= m; i++)
+			bp[i] = turn(bp[i]), bp[i].z = 0; }
 	vector <p3> a[2];	
 	for (int i = 1; i <= n; i++) a[0].push_back(ap[i]);
 	for (int i = 1; i <= m; i++) a[1].push_back(p3()-bp[i]);
@@ -105,23 +105,20 @@ int main() {
 	a[1] = convex_hull (a[1]);
 
 	vector <p3> mnk;
-	{
-		a[0].push_back(a[0].front()); a[1].push_back(a[1].front());
-		int i[2] = {0, 0};
-		int len[2] = {(int)a[0].size() - 1, (int)a[1].size() - 1};
-		mnk.push_back(a[0][0] + a[1][0]);
-		do { 
-			int d = sgn(det(a[1][i[1] + 1] - a[1][i[1]],
-						a[0][i[0] + 1] - a[0][i[0]])) >= 0;
-			mnk.push_back(a[d][i[d] + 1] - a[d][i[d]] + mnk.back());
-			i[d] = (i[d] + 1) % len[d];
-		} while(i[0] || i[1]);
-	}
+	a[0].push_back(a[0].front()); a[1].push_back(a[1].front());
+	int i[2] = {0, 0};
+	int len[2] = {a[0].size() - 1, a[1].size() - 1};
+	mnk.push_back(a[0][0] + a[1][0]);
+	do{
+		int d = sgn(det(a[1][i[1] + 1] - a[1][i[1]],
+					a[0][i[0] + 1] - a[0][i[0]])) >= 0;
+		mnk.push_back(a[d][i[d]+1]-a[d][i[d]]+mnk.back());
+		i[d] = (i[d] + 1) % len[d];
+	} while(i[0] || i[1]);
 	//mnk = convex_hull(mnk);
 	p3 p; // 0
-	for (int i = 0; i < (int)mnk.size(); i++) {
+	for (int i = 0; i < mnk.size(); i++) {
 		p3 u = mnk[i], v = mnk[(i + 1) % int(mnk.size())];
 		if (det(p - u, v - u) > eps)
-			return puts("NO"), 0;
-	}
-	puts("YES"); }
+			return puts("NO"), 0;}
+	puts("YES");}

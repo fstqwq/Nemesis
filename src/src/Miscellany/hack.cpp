@@ -8,5 +8,6 @@ int getc() {
 		ptr = buf, top = buf + fread(buf, 1, SZ, stdin);
 		if (top == buf) return -1; }
 	return *ptr++; }
-bitset._Find_first();bitset._Find_next(idx);
+idx=b._Find_first();idx!=b.size();idx=b._Find_next(idx);
 struct HashFunc{size_t operator()(const KEY &key)const{}};
+__builtin_uaddll_overflow() // binary big int
