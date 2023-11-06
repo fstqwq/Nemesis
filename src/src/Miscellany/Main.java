@@ -10,7 +10,7 @@ C = BigDecimal.ZERO;
 C.compareTo(S);
 S.divide(BigDecimal.valueOf(2), fuckJava);
 ans.divide(S.multiply(S), fuckJava).multiply(new BigDecimal(2));
-System.out.println(new DecimalFormat("0.0000000000000").format(ans));
+System.out.println(new DecimalFormat("0.000000000").format(ans));
 // Fast Reader & Big Numbers
 InputReader in = new InputReader(System.in);
 PrintWriter out = new PrintWriter(System.out);

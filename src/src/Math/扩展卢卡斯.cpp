@@ -17,7 +17,8 @@ U fac(int k,LL n){// 求 n! mod pk^tk, 返回值 U{ 不包含 pk 的值 ,pk 出�
 	fr(i,1,l)a[i]=get(i,n,m);
 	return CRT();
 }LL exLucas(LL n,LL m,int M){
-	int jj=M,i; // 求 C(n,m)mod M,M=prod(pi^ki), 时间 O(pi^kilg^2n) 
-	for(i=2;i*i<=jj;i++)if(jj%i==0) for(p[++l]=i,P[l]=1;jj%i==0;P[l]*=p[l])jj/=i;
+	int jj=M,i //求 C(n,m)mod M,M=prod(pi^ki), O(pi^kilg^2n)
+	for(i=2;i*i<=jj;i++)if(jj%i==0)
+		for(p[++l]=i,P[l]=1;jj%i==0;P[l]*=p[l])jj/=i;
 	if(jj>1)l++,p[l]=P[l]=jj;
 	return C(n,m);}

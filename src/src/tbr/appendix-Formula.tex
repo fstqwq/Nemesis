@@ -10,7 +10,8 @@
     \[F(n)=\sum_{d|n}f(d)\Rightarrow f(n)=\sum_{d|n}\mu(d)F\left(\frac{n}{d}\right)\]
     \[F(n)=\sum_{n|d}f(d)\Rightarrow f(n)=\sum_{n|d}\mu\left(\frac{d}{n}\right)F(d)\]
     \[[x = 1] = \sum_{d|x}\mu(d),\ \ x = \sum_{d|x}\mu(d)\]
-    
+\subsection{杜教筛}
+    \input{src/Math/杜教筛.tex}
 \subsubsection{降幂公式}
 
 $$ a^k \equiv a ^ {k \bmod \varphi(p) + \varphi(p)},\; k \ge \varphi(p) $$
@@ -116,6 +117,7 @@ $J_k(n)$ is the number of $k$-tuples of positive integers all less than or equal
 \[ {n \choose k} = (-1)^k{k-n-1 \choose k},\ \ \sum_{k \leq n}{r+k \choose k} = {r+n+1 \choose n} \]
 \[ {{n_1+\cdots+n_p}\choose m}=\sum_{k_1+\cdots+k_p=m}{n_1\choose k_1}\cdots{n_p\choose k_p}\]
 \subsubsection{Fibonacci Numbers, Lucas Numbers}
+\begin{multicols*}{2}
 \[ F(z) = \frac{z}{1-z-z^2} \]
 \[ \hat{\phi} = \frac{1-\sqrt{5}}{2} \]
 \[ \sum_{k=1}^nf_k = f_{n+2}-1,\ \ \sum_{k=1}^nf^2_k = f_nf_{n+1} \]
@@ -127,6 +129,10 @@ $J_k(n)$ is the number of $k$-tuples of positive integers all less than or equal
 \[ f_{n+k} = f_nf_{k+1} + f_{n-1}f_k \]
 \[ f_{2n+1} = f^2_n+f^2_{n+1} \]
 \[ (-1)^kf_{n-k} = f_{n}f_{k-1} - f_{n-1}f_{k} \]
+\begin{small}
+\inputminted{python3}{src/tbr/fib.py}
+\end{small}
+\end{multicols*}
 \[ \text{Modulo }f_n, f_{mn+r} \equiv \left\{
 \begin{aligned}
 &f_r,& m \bmod 4 = 0; \\
@@ -136,19 +142,11 @@ $J_k(n)$ is the number of $k$-tuples of positive integers all less than or equal
 \end{aligned}
 \right.
 \]
-\end{footnotesize}
-
-\inputminted{python}{src/tbr/fib.py}
-
-\begin{small}
 \[ L_0=2,L_1=1,L_n=L_{n-1}+L_{n-2}=(\frac{1+\sqrt{5}}{2})^n+(\frac{1-\sqrt{5}}{2})^n \]
 \[ L(x)=\frac{2-x}{1-x-x^2} \]
-除了$n=0,4,8,16$,$L_n$是素数,则$n$是素数.
-
+除了$n=0,4,8,16$, $L_n$是素数, 则$n$是素数.
 $$\phi = \frac {1 + \sqrt 5} 2, \; \hat\phi = \frac {1 - \sqrt 5} 2$$
-
 $$F_n = \frac {\phi^n - {\hat\phi} ^ n} {\sqrt 5}, \; L_n = \phi ^ n + {\hat\phi} ^ n$$
-
 $$\frac {L_n + F_n \sqrt 5} 2 = \left( \frac {1 + \sqrt 5} 2 \right) ^ n$$
 
 \subsubsection{Sum of Powers}
@@ -281,22 +279,36 @@ $$\begin{aligned}
         \[ x^n = \sum_k{ {n \bangle k}{x+k \choose n} } \]
         \[ {n \bangle m} = \sum_{k=0}^m{n+1 \choose k}(m+1-k)^n(-1)^k \]
 \end{multicols*}
-\subsubsection{Harmonic Numbers, 1, 3/2, 11/6, 25/12, 137/60 \dots}
+\begin{multicols*}{2}
+\subsubsection{Harmonic Numbers, 1, 3/2, 11/6, 25/12, 137/60\dots}
 \label{section:Harmonic}
 \[ H_n = \sum_{k=1}^n \frac{1}{k}, \sum_{k=1}^nH_k = (n+1)H_n-n \]
 \[ \sum_{k=1}^nkH_k = \frac{n(n+1)}{2}H_n - \frac{n(n-1)}{4} \]
 \[ \sum_{k=1}^n{k \choose m}H_k = {n+1 \choose m+1}(H_{n+1} - \frac{1}{m+1}) \]
 
 \subsubsection{卡迈克尔函数}
-卡迈克尔函数表示模$m$剩余系下最大的阶, 即 $\lambda(m)=\max_{a\bot m} \delta_m(a)$. 容易看出, 若$\lambda(m)=\varphi(m)$, 则$m$存在原根. 该函数可由下述方法计算: 分解质因数$m=p_1^{\alpha_1}p_2^{\alpha_2}...p_t^{\alpha_t}$. 则$\lambda(m)=\operatorname{lcm}(\lambda(p_1^{\alpha_1}),p_2^{\alpha_2},\ ..., p_t^{\alpha_t})$. 其中对奇质数$p$, $\lambda(p^\alpha)=(p-1)p^{\alpha-1}$. 对2的幂, $\lambda(2^k)=2^{k-2}, s.t. k\ge 3$. $\lambda(4)=\lambda(2)=2$.
+卡迈克尔函数表示模$m$剩余系下最大的阶, 即 $\lambda(m)=\max_{a\bot m} \delta_m(a)$.
 
-\subsubsection{五边形数定理求拆分数}
-\[ \Phi(x) = \prod_{n=1}^{\infty}(1-x^n) = \sum_{n=-\infty}^{\infty}{(-1)^kx^{k(3k-1)/2}} \]
-记$p(n)$表示$n$的拆分数,$f(n,k)$表示将$n$拆分且每种数字使用次数必须小于$k$的拆分数.则
-\[ P(x)\Phi(x)=1, F(x^k)\Phi(x)=1\]
-暴力拆开卷积,可以得到将1,-1,2,-2...带入五边形数$(-1)^kx^{k(3k-1)/2}$中,由于小于n的五边形数只有$\sqrt{n}$个,可以$O(n\sqrt{n})$计算答案:
-\[ p(n) = p(n-1)+p(n-2)-p(n-5)-p(n-7)+\cdots \]
-\[ f(n, k) = p(n)-p(n-k)-p(n-2k)+p(n-5k)+p(n-7k)-\cdots \]
+容易看出, 若$\lambda(m)=\varphi(m)$, 则$m$存在原根.
+
+该函数可由下述方法计算: 分解质因数$m=p_1^{\alpha_1}p_2^{\alpha_2}...p_t^{\alpha_t}$. 则$\lambda(m)=\operatorname{lcm}(\lambda(p_1^{\alpha_1}),p_2^{\alpha_2},\ ..., p_t^{\alpha_t})$. 其中对奇质数$p$, $\lambda(p^\alpha)=(p-1)p^{\alpha-1}$. 对2的幂, $\lambda(2^k)=2^{k-2}, s.t. k\ge 3$. $\lambda(4)=\lambda(2)=2$.
+
+\end{multicols*}
+
+\subsubsection{求拆分数}
+\begin{multicols*}{2}
+\inputminted{python3}{src/yzh/partition.py}
+$ \Phi(x) = \prod_{n=1}^{\infty}(1-x^n) \\=\sum_{n=-\infty}^{\infty}{(-1)^kx^{k(3k-1)/2}} $
+
+\newcolumn
+    记$p(n)$表示$n$的拆分数,$f(n,k)$表示将$n$拆分且每种数字使用次数必须小于等于$k$的拆分数.则
+    \[ P(x)\Phi(x)=1, F(x^k)\Phi(x)=1\]
+    暴力拆开卷积,可以得到将1,-1,2,-2...带入五边形数$(-1)^kx^{k(3k-1)/2}$中,
+    由于小于n的五边形数只有$\sqrt{n}$个,可以$O(n\sqrt{n})$计算答案: \\
+    $p(n) = p(n-1)+p(n-2)-p(n-5)-p(n-7)+\cdots$, \\
+    $f(n, k) = p(n)-p(n-k)-p(n-2k)+p(n-5k)+p(n-7k)-\cdots $
+\end{multicols*}
+
 \subsubsection{Bernoulli Numbers 1, 1/2, 1/6, 0, -1/30, 0, 1/42 \dots}
 
 $$\begin{aligned}B(x)=\sum_{i\ge 0}\frac{B_i x^i}{i!}=\frac x{e^x-1}\end{aligned}$$
@@ -381,4 +393,4 @@ $$\begin{aligned}s^2=&\frac{\sum_{i=1}^m x_i^2}m-\overline x^2\end{aligned}$$
 $n\bmod 2=1:$
 \[ a^n+b^n=(a+b)(a^{n-1}-a^{n-2}b+a^{n-3}b^2-...-ab^{n-2}+b^{n-1})\]
 划分问题: $n$个$k-1$维向量最多把$k$维空间分为$\sum_{i=0}^{k}C_n^i$份.
-\end{small}
+\end{footnotesize}

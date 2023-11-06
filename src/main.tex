@@ -19,6 +19,7 @@
 \usepackage[colorlinks, linkcolor = black]{hyperref}
 \usepackage[table]{xcolor}
 \usepackage{tabularx}
+\usepackage{enumitem}
 % configure fonts
 % if not using CJK
 % \newfontfamily\substitutefont{SimSun}[Scale=0.8,BoldFont=SimHei]
@@ -113,7 +114,7 @@
 	autogobble,
 	baselinestretch=0.8,
 	tabsize=3,
-	fontsize=\normalsize,
+	fontsize=\small,
 	%bgcolor=Gray,
 	frame=single,
 	framesep=1mm,
@@ -134,7 +135,7 @@
 	autogobble,
 	baselinestretch=0.8,
 	tabsize=3,
-	fontsize=\normalsize,
+	fontsize=\small,
 	%bgcolor=Gray,
 	frame=single,
 	framesep=1mm,
@@ -366,12 +367,12 @@
 					\inputminted{cpp}{src/String/AC 自动机.cpp}
 				\subsection{Lydon Word Decomposition}
 					\inputminted{cpp}{src/String/Lyndon Word.cpp}
-				\subsection{后缀数组}
-					\inputminted{cpp}{src/String/SA.cpp}
 				\subsection{后缀自动机}
 					\inputminted{cpp}{src/String/SAM.cpp}
 				\subsection{SAMSA \& 后缀树}
 					\inputminted{cpp}{src/String/SAMSA.cpp}
+				\subsection{后缀数组}
+					\inputminted{cpp}{src/String/SA.cpp}
 				\subsection{Suffix Balanced Tree 后缀平衡树}
 					\inputminted{cpp}{src/String/后缀平衡树.cpp}
 				%\subsection{Total LCS 子串对目标求 LCS}
@@ -409,8 +410,6 @@
 				% \inputminted{cpp}{src/Math/BSGS.cpp}
 				\subsection{线性同余不等式}
 					\inputminted{cpp}{src/Math/线性同余不等式.cpp}
-				\subsection{杜教筛}
-					\input{src/Math/杜教筛.tex}
 				% \subsection{min25 筛}
 				% \inputminted{cpp}{src/Math/TEES.cpp}
 				\subsection{原根}
@@ -451,6 +450,7 @@
 				%\input{cpp}{src/Math/插值.tex}
 				\subsection{Simplex 单纯形}
 					\inputminted{cpp}{src/Math/Simplex.cpp}
+				\newpage
 				\subsection{Pell 方程}
 					\inputminted{cpp}{src/Math/Pell方程.cpp}
 				\subsection{解一元三次方程}
@@ -484,6 +484,8 @@
 					\input{src/tbr/树形背包优化.tex}
 				%\subsection{Dancing Links 精确覆盖搜索}
 				%\inputminted{cpp}{src/Miscellany/DLX.cpp}
+				\subsubsection{$O(n \cdot \max a_i)$ Subset Sum}
+					\inputminted{cpp}{src/yzh/Subset Sum.cpp}
 				\subsection{Hash Table}
 					\inputminted{cpp}{src/DataStructure/hashmap.cpp}
 				\subsection{基数排序}
@@ -491,7 +493,7 @@
 				\subsection{Hacks: O3, 读入优化, Bitset, builtin}
 					\inputminted{cpp}{src/Miscellany/hack.cpp}
 				\subsection{试机赛与纪律文件}
-				\begin{spacing}{0.5}
+				\begin{spacing}{0.3}
 					\input{src/TipsandHints/discipline.tex}
 				\end{spacing}
 				\subsection{Constant Table 常数表}
@@ -517,25 +519,22 @@
 		
 		\newpage
 			\subsection*{Delaunay 三角剖分}
-			\inputminted{cpp}{src/Geometry/DelaunayTriangulation.cpp}
-			\subsection*{$O(n \cdot \max a_i)$ Subset Sum}
-			\inputminted{cpp}{src/yzh/Subset Sum.cpp}
+			\inputminted[fontsize=\small]{cpp}{src/Geometry/DelaunayTriangulation.cpp}
 			\subsection*{动态凸包}
-			\inputminted{cpp}{src/Geometry/dynamic_convex_hull.cpp}
+			\inputminted[fontsize=\small]{cpp}{src/Geometry/dynamic_convex_hull.cpp}
 		% \begin{comment}		
 			% \subsection*{Java Example}
 				% \inputminted{java}{src/Miscellany/Main2.java}
 			% \subsection*{Python Example}
 			% 	\inputminted{python}{src/Miscellany/test.py}
 			\subsection*{Blossom}
-				\inputminted{python}{src/TreeandGraph/Blossom.cpp}
+				\inputminted[fontsize=\small]{cpp}{src/TreeandGraph/Blossom.cpp}
 			\subsection*{Chu-liu}
-				\inputminted{cpp}{src/TreeandGraph/最小树形图.cpp}
+				\inputminted[fontsize=\small]{cpp}{src/TreeandGraph/最小树形图.cpp}
 			\subsection*{天动万象}
-				\inputminted{cpp}{src/yzh/ByteCampA3.cpp}
+				\inputminted[fontsize=\small]{cpp}{src/yzh/ByteCampA3.cpp}
 			\subsection*{神谕}
 				\inputminted{cpp}{src/zjj/zjj.cpp}
-				\newcolumn
 				\input{src/zjj/sam.tex}
 		%\end{comment}
 		\end{spacing}

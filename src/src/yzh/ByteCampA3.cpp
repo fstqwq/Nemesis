@@ -44,21 +44,13 @@ const D eps = 1e-5;
 int sgn(D x){return (x > eps ? 1 : (x < -eps ? -1 : 0));}
 D det(cp a, cp b){return a.x * b.y - b.x * a.y;}
 p3 base;
-bool cmp(cp a, cp b) {
-	int d = sgn(det(a - base, b - base)); 
-	if (d) return d > 0;
-	else return (a - base).len2() < (b - base).len2();
-}
 bool turn_left(cp a, cp b, cp c){return sgn(det(b - a, c - a)) >= 0;}
 vector <p3> convex_hull (vector <p3> a) {
 	int n = (int) a.size(), cnt = 0;
 	base = a[0];
-	for (int i = 1; i < n; i++) {
-		int s = sgn(a[i].x - base.x);
-		if (s == -1 || (s == 0 && a[i].y < base.y))
-			base = a[i];
-	}
-	sort(a.begin(), a.end(), cmp);
+	sort(a.begin(), a.end(), [](auto u, auto v) {
+		return make_pair(u.x, v.x) < make_pair(u.y, v.y);
+	});
 	vector <p3> ret;
 	for (int i = 0; i < n; i++) {
 		while (cnt > 1 && turn_left(ret[cnt - 2], a[i], ret[cnt - 1])) {

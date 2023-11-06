@@ -1,38 +1,42 @@
 % !TEX root = ../main.tex
-
-\begin{itemize}
+\begin{small}
+\begin{itemize}[leftmargin=1mm]
     \setlength{\itemsep}{0pt}
-    \setlength{\parskip}{1pt}
-    \item 检查所需身份证件：护照、学生证、胸牌以及现场所需通行证。
-    \item 确认什么东西能带进场，什么不能。特别注意：智能手表、金属（钥匙）等等。
-    \item 测试鼠标、键盘、显示器和座椅。如果有问题，立刻联系工作人员。
-    \item 确认比赛前能动什么，不能动什么，能存储什么配置文件。
-    \item 测试本地栈大小：如果 \texttt{ulimit -a} 是 unlimited，那么在 bashrc 里加上 \texttt{ulimit -s 65536; ulimit -m 1048576}，否则死递归会死机。
-    \item 测试比赛提交方式。如果有 \texttt{submit} 命令，确认如何使用。讨论是否应该不用以避免 \texttt{submit > a.cpp}。
-    \item 如果可以的话，设置定期备份文件。
-    \item 测试 OJ 栈大小。如果不合常理，发 clar 问一下。
-    \item 测试提交编译器版本。如 C++17 \texttt{auto \lbrack x, y\rbrack : a}; C++14 \texttt{\lbrack \rbrack (auto x, auto y)}; C++11 \texttt{auto}; \texttt{bits/stdc++.h}; \texttt{pb\_ds}。
+    \setlength{\parskip}{0.5pt}
+    \item 检查身份证件: 护照、学生证、胸牌以及现场所需通行证。
+    \item 确认什么东西能带进场。特别注意: 智能手表、金属（钥匙）等等。
+    \item 测试鼠标、键盘、显示器和座椅。如果有问题, 立刻联系工作人员。
+    \item 确认比赛前能动什么, 不能动什么, 能存储什么配置文件。
+    \item 测试本地栈大小: 如果 \texttt{ulimit -a} 是 unlimited, 那么在 bashrc 里加上 \texttt{ulimit -s 65536; ulimit -m 1048576}, 否则死递归会死机。
+    \item 测试比赛提交方式。如果有 \texttt{submit} 命令, 确认如何使用。讨论是否应该不用以避免 \texttt{submit > a.cpp}。
+    \item 如果可以的话, 设置定期备份文件。
+    \item 测试 OJ 栈大小。如果不合常理, 发 clar 问一下。
+    \item 测试编译器版本。C++20 不能用 \texttt{cin >> (s + 1)}; C++17 \texttt{auto \lbrack x, y\rbrack : a}; C++14 \texttt{\lbrack \rbrack (auto x, auto y)}; C++11 \texttt{auto}; \texttt{bits/stdc++.h}; \texttt{pb\_ds}。
 \begin{minted}{C++}
 #include <ext/rope>
 using namespace __gnu_cxx;
-rope <int> R;
-R.insert(y, x);
-R[x];
-R.erase(x, 1);
+rope <int> R; R.insert(y, x); R[x]; R.erase(x, 1);
+#include <ext/pb_ds/assoc_container.hpp> 
+#include <ext/pb_ds/tree_policy.hpp> 
+using namespace __gnu_pbds;
+tree <int, null_type, less<int>, rb_tree_tag,
+tree_order_statistics_node_update> s;
+s.insert(1); s.find_by_order(0); s.order_of_key(5);
 \end{minted}
     \item 测试 \texttt{\_\_int128, \_\_float128, sizeof (long double)}
-    \item 测试代码长度限制；测试 output limit；测试 stderr limit。
-    \item 测试内存限制：MLE 还是报 RE？栈溢出呢？
-    \item 测试浮点数性能：FFT 能跑多快？测试内存性能：线段树、树状数组、素数筛能跑多快？测试 CPU 性能：阶乘、快速幂能跑多快？记得开 O2。
-    \item 测试 clar：如果问不同类型的愚蠢的问题，得到的回复是否不一样？
-    \item 测试 clock() 是否能够正常工作；测试本地性能与提交性能。
+    \item 测试代码长度限制; 测试 output limit; 测试 stderr limit。
+    \item 测试内存限制: MLE 还是报 RE? 栈溢出呢? 
+    \item 测试浮点数性能: FFT 能跑多快? 测试内存性能: 线段树、树状数组、素数筛能跑多快? 测试 CPU 性能: 阶乘、快速幂能跑多快? 记得开 O2。
+    \item 测试 clar: 如果问不同类型的愚蠢的问题, 得到的回复是否不一样? 
+    \item 测试 clock() 是否能够正常工作; 测试本地性能与提交性能。
     \item 测试本地是否有 fsan, gdb。\begin{minted}{text}
 address, undefined, return, shift, integer-divide-by-zero,
 bounds-strict, float-cast-overflow, builtin
 \end{minted}
-    \item 测试 Python, Java 本地环境与提交环境。Python 快吗？$A\times B$ 能跑多快？输入输出呢？
+    \item 测试 Python, Java 本地环境与提交环境。Python 快吗? $A\times B$ 能跑多快? 输入输出呢? 
     \item 测试 \texttt{time} 命令是否能显示内存占用。
 \begin{minted}{bash}
 /usr/bin/time -v ./a.out
 \end{minted}
 \end{itemize}
+\end{small}
