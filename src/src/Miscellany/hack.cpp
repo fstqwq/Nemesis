@@ -10,4 +10,4 @@ int getc() {
 	return *ptr++; }
 idx=b._Find_first();idx!=b.size();idx=b._Find_next(idx);
 struct HashFunc{size_t operator()(const KEY &key)const{}};
-__builtin_uaddll_overflow() // binary big int
+__builtin_uaddll_overflow(a, b, &c) // binary big int
