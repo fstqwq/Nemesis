@@ -9,15 +9,15 @@ point line_inter(cl a, cl b) { // 直线交点
 	LD s1 = det(a.t - a.s, b.s - a.s);
 	LD s2 = det(a.t - a.s, b.t - a.s);
 	return (b.s * s2 - b.t * s1) / (s2 - s1); }
-vector <point> cut (const vector<point> &c, line p) {
-	vector <point> ret; // 线切凸包，可直接实现半平面交
+vector <point> cut (const vector<point> &c, line l) {
+	vector <point> ret; // 线切凸包，turn left 必须 <=
 	int n = (int) c.size();
 	if (!n) return ret;
 	for (int i = 0; i < n; ++i) {
 		int j = (i + 1) % n;
-		if (turn_left (p.s, p.t, c[i])) ret.push_back (c[i]);
-		if (two_side (c[i], c[j], p))
-			ret.push_back (line_inter (p, {c[i], c[j]})); }
+		if (turn_left (l.s, l.t, c[i])) ret.push_back(c[i]);
+		if (two_side (c[i], c[j], l))
+			ret.push_back(line_inter(l, {c[i], c[j]})); }
 	return ret; }
 bool point_on_segment(cp a,cl b){ // 点在线段上
 	return sgn (det(a - b.s, b.t - b.s)) == 0 // 在直线上
@@ -36,9 +36,9 @@ LD point_to_line (cp a, cl b) { // 点到直线距离
 	return abs(det(b.t-b.s, a-b.s)) / dis(b.s, b.t); }
 LD point_to_segment (cp a, cl b) { // 点到线段距离
 	if (sgn (dot (b.s - a, b.t - b.s))
-	* sgn (dot (b.t - a, b.t - b.s)) <= 0)
-		return point_to_line(a, b);
-	return min (dis (a, b.s), dis (a, b.t)); }
+	* sgn (dot (b.t - a, b.t - b.s)) >= 0)
+		return min (dis (a, b.s), dis (a, b.t));
+	return point_to_line(a, b); }
 bool in_polygon (cp p, const vector <point> & po) {
 	int n = (int) po.size (); int cnt = 0;
 	for (int i = 0; i < n; ++i) {

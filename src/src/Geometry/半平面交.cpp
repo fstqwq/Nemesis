@@ -1,26 +1,23 @@
 int sgn(cp a){return a.y > 0||(a.y == 0 && a.x > 0)?1:-1;}
 bool turn_left(cl l, cp p){return turn_left(l.s, l.t, p);}
+bool is_para(cl a, cl b){return!sgn(det(a.t-a.s,b.t-b.s));}
+bool cmp(cl a, cl b) {
+  int sign = sgn(a.t - a.s) - sgn(b.t - b.s);
+  int dir = sgn(det(a.t - a.s, b.t - b.s));
+  if (!dir && !sign) return sgn(det(a.t-a.s, b.t-a.s)) < 0;
+  else return sign ? sign > 0 : dir > 0; }
 vector <point> hpi(vector <line> h) { // 半平面交
-  sort(h.begin(), h.end(), [](cl a, cl b) {
-    int dir = sgn(a.t - a.s) - sgn(b.t -  b.s);
-    if (dir) return dir > 0; // sign of direction
-    dir = sgn(det(a.t - a.s, b.t - b.s));
-    if (dir) return dir > 0; // direction
-    dir = sgn(det(a.t - a.s, b.t - a.s));
-    return dir < 0; // line position
-    // start position: sgn(dot(a.t - a.s, b.s - a.s)) > 0
-  });
-  h.resize(unique(h.begin(), h.end(), [](cl a, cl b) {
-    return !sgn(det(a.t - a.s, b.t - b.s));})-h.begin());
-  vector <line> q; int l = 0, r = -1;
+  sort(h.begin(), h.end(), cmp);
+  h.resize(unique(h.begin(), h.end(), is_para)-h.begin());
+  vector <line> q(h.size()); int l = 0, r = -1;
   for(auto &i : h) {
    while(l<r && !turn_left(i, line_inter(q[r - 1], q[r])))
-     --r, q.pop_back();
+     --r;
    while(l<r && !turn_left(i, line_inter(q[l], q[l + 1])))
      ++l;
-   ++r; q.push_back(i); }
+   q[++r] = i; }
   while(r-l>1&& !turn_left(q[l],line_inter(q[r - 1],q[r])))
-    --r, q.pop_back();
+    --r;
   while(r-l>1&& !turn_left(q[r],line_inter(q[l],q[l + 1])))
     ++l;
   if(r - l < 2) return {};

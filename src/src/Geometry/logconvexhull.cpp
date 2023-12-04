@@ -53,14 +53,18 @@ struct Convex {
  	}
  	upd_tan(p, r % n, i0, i1); }
  bool get_tan(cp p, int &i0, int &i1) {
- 	// if (contain(p)) return 0;
+ 	if (contain(p)) return 0; // 严格凸包无解
  	i0 = i1 = 0;
  	int id = int(lower_bound(lower.begin(), lower.end(), p) - lower.begin());
+ 	if (id < lz && lower[id] == p) //顶点上返回相邻边
+		i0 = (id + n - 1) % n, i1 = (id + 1) % n;
  	search(0, id, p, i0, i1);
  	search(id, lz, p, i0, i1);
  	id = int(lower_bound(upper.begin(), upper.end(), p, greater<point>()) - upper.begin());
- 	search(lz - 1, lz - 1 + id, p, i0, i1);
- 	search(lz - 1 + id, lz - 1 + uz, p, i0, i1);
+ 	if (id < uz && upper[id] == p) //顶点上返回相邻边
+		i0 = (lz - 2 + id) % n, i1 = (lz + id) % n;
+	search(lz - 1, lz - 1 + id, p, i0, i1);
+	search(lz - 1 + id, lz - 1 + uz, p, i0, i1);
  	return 1; }
  // 求凸包外一点到凸包的最短距离, 如凸包内返回 0; 结果产生浮点
  LD search(int l, int r, cp p) {
