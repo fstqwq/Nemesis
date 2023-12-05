@@ -1,5 +1,5 @@
 bool in_polygon (cp u, cp v) {
-	// assert : u, v in polygon, respectively
+	// u, v in polygon; p contain those u, v on border
 	for (int i = 0; i < n; i++) {
 		int j = (i + 1) % n, k = (i + 2) % n;
 		cp ii = p[i], jj = p[j], kk = p[k];

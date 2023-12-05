@@ -53,7 +53,7 @@ struct Convex {
  	}
  	upd_tan(p, r % n, i0, i1); }
  bool get_tan(cp p, int &i0, int &i1) {
- 	if (contain(p)) return 0; // 严格凸包无解
+ 	if (contain(p)) return 0; // 严格在凸包内无解
  	i0 = i1 = 0;
  	int id = int(lower_bound(lower.begin(), lower.end(), p) - lower.begin());
  	if (id < lz && lower[id] == p) //顶点上返回相邻边
