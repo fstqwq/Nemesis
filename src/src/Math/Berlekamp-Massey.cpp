@@ -1,13 +1,11 @@
 vector<int> berlekamp_massey(const vector<int> &a) {
 	vector<int> v, last; // v is the answer, 0-based
 	int k = -1, delta = 0;
-	for (int i = 0; i < (int)a.size(); i++) {
-		int tmp = 0;
+	for (int i = 0; i < (int)a.size(); i++) { int tmp = 0;
 		for (int j = 0; j < (int)v.size(); j++)
 			tmp = (tmp + (long long)a[i - j - 1] * v[j]) % p;
 		if (a[i] == tmp) continue;
-		if (k < 0) {
-			k = i; delta = (a[i] - tmp + p) % p;
+		if (k < 0) { k = i; delta = (a[i] - tmp + p) % p;
 			v = vector<int>(i + 1); continue; }
 		vector<int> u = v;
 		int val = (long long)(a[i] - tmp + p) *
