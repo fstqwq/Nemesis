@@ -368,6 +368,7 @@
 				\subsection{exKMP (zjj)}
 					\inputminted{cpp}{src/zjj/exkmp.cpp}
 				\subsection{AC 自动机}
+					注意代码是以 0 为根的，如果要 1-base 的话要改一下没有儿子时的逻辑。
 					\inputminted{cpp}{src/String/AC 自动机.cpp}
 				\subsection{Lydon Word Decomposition}
 					\inputminted{cpp}{src/String/Lyndon Word.cpp}
@@ -423,11 +424,16 @@
 					\inputminted{cpp}{src/Math/FFT.cpp}
 				\subsection{NTT}
 					\inputminted{cpp}{src/Math/NTT.cpp}
-				\subsection{MTT}
+				\subsection{MTT 任意模数卷积}
 					\inputminted{cpp}{src/Math/MTT.cpp}
 				\subsection{多项式运算}
-					\inputminted{cpp}{src/Math/多项式运算.cpp}
+					\subsubsection{多项式求逆\ 开根\ ln exp}
+						\inputminted{cpp}{src/Math/多项式运算.cpp}
+					\subsubsection{多项式除法\ 取模}
+						需要抄求逆。
+						\inputminted{cpp}{src/Math/多项式取模.cpp}
 					\subsubsection{多点求值}
+						需要抄取模。
 						\inputminted{cpp}{src/Math/多点求值.cpp}
 					\subsubsection{插值}
 						\input{src/Math/插值.tex}
@@ -437,6 +443,7 @@
 					\subsubsection*{$O(k^2 \log n)$}
 						\inputminted{cpp}{src/Math/线性递推.cpp}
 					\subsubsection*{$O(k \log k \log n)$}
+						需要抄前面的多项式取模。预处理 $O(k \log k \log n)$，固定 $n$ 和系数只改变初始值的话，询问一次 $O(k)$。
 						\inputminted{cpp}{src/Math/快速线性递推.cpp}
 				\subsection{Berlekamp-Massey 最小多项式}
 					\input{src/Math/Berlekamp-Massey.tex}
