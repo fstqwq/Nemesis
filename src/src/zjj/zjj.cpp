@@ -212,3 +212,72 @@ int main(){
 	run.erase(unique(run.begin(),run.end()),run.end());
 	printf("%d\n",run.size());
 	for(auto [l,r,p]:run)printf("%d %d %d\n",l,r,p);}
+// Lyndon， 22 ECF D. Minimum Suffix
+bool work(){
+	scanf("%d",&n);
+	for(int i=1;i<=n;i++)scanf("%d",&a[i]);
+	vector<vector<int> > ff;ff.resize(n+1);
+	top=0;
+	for(int i=1;i<=n;i++){
+		if(a[i]==i)sta[++top]=i;
+		else{//mer
+			while(top && sta[top]!=a[i])top--;
+			ff[a[i]].push_back(i);
+			if(!top)return 0;
+		}
+	}
+	sta[top+1]=n+1;
+	for(int i=top;i>=1;i--){
+		if(i==top){
+			int x=sta[i],now=x;b[x]=1;
+			for(auto y:ff[x]){
+				int T=now-x+1;
+				for(int j=now+1;j<=y;j++){
+					b[j]=b[j-T];
+					if(j!=y && a[j]!=a[j-T]+T)return 0;
+				}
+				b[now=y]++;
+			}
+		}
+		else{
+			int x=sta[i],now=x,limit=x;
+			b[x]=b[sta[i+1]];prepos[x]=x;
+			bool bk=0;
+			for(auto y:ff[x]){
+				int T=now-x+1;
+				for(int j=now+1;j<y;j++){
+					b[j]=b[j-T];prepos[j]=prepos[j-T];
+					int pos=j-x+sta[i+1];
+					if(pos>=sta[i+2] || b[j]>b[pos]){
+						bk=1;break;
+					} else if(b[j]<b[pos]){
+						b[limit]++;bk=1;
+						break;
+					}
+				}
+				if(bk)break;
+				int pos=y-x+sta[i+1];prepos[y]=y;
+				if(pos>=sta[i+2]){bk=1;break;}
+				b[now=y]=max(b[y-T]+1,b[pos]);
+				if(b[now]>b[pos]){bk=1;break;}
+				limit=y;
+			}
+			if(!bk){
+				limit=sta[i+1]-1;bk=1;
+				if(sta[i+2]-sta[i+1]>sta[i+1]-sta[i])
+					b[limit]++;
+			}
+			x=sta[i],now=x;
+			for(auto y:ff[x]){
+				int T=now-x+1;
+				for(int j=now+1;j<y;j++){
+					b[j]=b[j-T];
+					if(a[j]!=a[j-T]+T)return 0;
+				}
+				now=y;
+				if(now>limit)b[now]=b[now-T]+1;
+			}
+		}
+	}
+	for(int i=1;i<=n;i++)printf("%d ",b[i]);
+	return 1; }

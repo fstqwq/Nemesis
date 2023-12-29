@@ -13,8 +13,6 @@ void fwt(int* a, int k, int type) {
             a[x] = int(a[x] + 1ll * tmp[y] * omega[(k + type) * t * y % k] % MOD);
         }
       }
-  if (type == -1) {
+  if (type == -1)
     for (int i = 0, invn = inv(n); i < n; i++)
-      a[i] = int(1ll * a[i] * invn % MOD);
-  }
-}
+      a[i] = int(1ll * a[i] * invn % MOD); }
