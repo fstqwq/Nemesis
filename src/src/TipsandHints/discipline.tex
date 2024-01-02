@@ -38,4 +38,26 @@ bounds-strict, float-cast-overflow, builtin
 /usr/bin/time -v ./a.out
 \end{minted}
 \end{itemize}
+提交前检查: 
+\begin{itemize}[leftmargin=1mm]
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0.5pt}
+\item 保存, 编译, 测过样例
+\item 数据范围: 输入小数, 模数, long long, 时间空间限制
+\item 数组大小: 0/1-based, 初始化调用
+\item sum 多组输入: 应只用了输入内容 (memset TL, 错下标 WA), 需要撤销的是否正确撤销了
+\item 输入输出格式 (\%Lf, \%llu)
+\item 多组没读入完就 break
+\item 需要 assert 的话第一次就加上
+\item 关闭流同步, 关流同步混用
+\item 边界情况 (n=0, 1, max), int/LL 溢出, 取模没有取到正值, INF/-1 大小
+\item 复制过的代码对应位置正确修改
+\item 分类讨论: if 嵌套, break 位置
+\item 图: 边标号初始是否为 1, 单双向边, 反向边边权
+\item FFT, NTT: 溢出, 精度
+\item n 维数点问题: 确认每个维度的方向
+\item 开 optimize("Ofast") target("avx2")
+\item 检查板子正确性, 适用条件
+\item 根号问题: 根号两侧复杂度是否都对
+\end{itemize}
 \end{small}

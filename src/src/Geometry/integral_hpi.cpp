@@ -11,9 +11,9 @@ LD dist (cl l, cp x = {0, 0}) { return l(x) / l.len(); }
 bool is_para(cl x, cl y) { return !sgn(det(x, y)); } 
 LD det(cl a, cl b, cl c) {
 	return det(a,b)*c.z + det(b,c)*a.z + det(c,a)*b.z;}
-int check(cl a, cl b, cl c) { // sgn of left(a, inter(b, c))
+int check(cl a, cl b, cl c) { // sgn left(a, inter(b, c))
 	return sgn(det(b, c, a)) * sgn(det(b, c)); }
-bool turn_left(cl a, cl b, cl c) {return check(a, b, c) > 0;}
+bool turn_left(cl a, cl b, cl c){return check(a, b, c) >0;}
 bool cmp (cl a, cl b) {
 	if (is_para(a, b) && dot(a, b) > 0) return dist(a) < dist(b);
 	return sgn(a) == sgn(b) ? sgn(det(a, b)) > 0 : sgn(b); }
