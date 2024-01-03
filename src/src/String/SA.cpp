@@ -1,5 +1,4 @@
-// 如果有多测，清空的长度要设成 max(n, m) + 1
-// height[i] = lcp(sa[i], sa[i - 1])
+// 清空 max(n, m) + 1, height[i] = lcp(sa[i], sa[i - 1])
 void get_sa(char *s, int n, int *sa,
 		int *rnk, int *height) { // 1-based
 	static int buc[N], id[N], p[N], t[N * 2];

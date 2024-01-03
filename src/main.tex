@@ -9,7 +9,7 @@
 \usepackage{listings, color, setspace, titlesec, fancyhdr, mdframed, multicol}
 \usepackage{ucharclasses}
 \usepackage{xunicode, xltxtra}
-\usepackage[inner=1.35cm, outer=0.9cm, top=1.7cm, bottom=0.0cm]{geometry}
+\usepackage[inner=1.25cm, outer=0.8cm, top=1.7cm, bottom=0.0cm]{geometry}
 \usepackage{pdfpages}
 \usepackage{tocloft}
 \usepackage{nameref}
@@ -273,12 +273,12 @@
 				% \inputminted{cpp}{src/TreeandGraph/Hungarian.cpp}
 				\subsection{Shuffle 一般图最大匹配 $O(V E)$}
 					\inputminted{cpp}{src/TreeandGraph/一般图最大匹配-shuffle.cpp}
-				\subsection{KM 最大权匹配 $O(V^3)$}
-					\inputminted{cpp}{src/TreeandGraph/KM.cpp}
 				\subsection{极大团计数}
 					\inputminted{cpp}{src/TreeandGraph/CliqueCount.cpp}
 				\subsection{有根树同构 Hash}
 					\inputminted{cpp}{src/TreeandGraph/TreeHash.cpp}
+					\subsection{KM 最大权匹配 $O(V^3)$}
+					\inputminted{cpp}{src/TreeandGraph/KM.cpp}
 				\subsection{欧拉回路}
 				\inputminted{cpp}{src/TreeandGraph/欧拉回路.cpp}
 				%\subsection{Blossom 一般图带权最大匹配 $O(|V|^3)$}
@@ -360,9 +360,6 @@
 					\inputminted{cpp}{src/String/最小表示法.cpp}
 				\subsection{Manacher}
 					\inputminted{cpp}{src/String/Manacher.cpp}
-				\subsection{Multiple Hash}
-				%{\tt \small Primes available at Page \pageref{randomprimes}.}
-				\inputminted{cpp}{src/String/hash.cpp}	
 				\subsection{KMP, exKMP}
 					\inputminted{cpp}{src/String/KMP.cpp}
 				\subsection{exKMP (zjj)}
@@ -388,6 +385,9 @@
 					\inputminted{cpp}{src/String/PAM.cpp}
 				\subsection{双端插入回文树 (zjj)}
 				\inputminted{cpp}{src/String/PAM_bidirectional.cpp}
+				\subsection{字符串 Hash 类}
+				%{\tt \small Primes available at Page \pageref{randomprimes}.}
+				\inputminted{cpp}{src/String/hash.cpp}	
 				\subsection{String Conclusions}
 					\input{src/tbr/string-Conclusions.tex}
 			\section{Math 数学}
@@ -480,8 +480,8 @@
 					\input{src/TipsandHints/CalculusTable.tex}
 				\subsection{Integration Table 积分表}
 					\input{src/TipsandHints/IntegrationTable_NewMeta.tex}
-				\subsection{Java Template}
-					\inputminted{java}{src/Miscellany/Main.java}
+			%	\subsection{Java Template}
+			%		\inputminted{java}{src/Miscellany/Main.java}
 				\subsection{Python Hint}
 					\inputminted{python}{src/Miscellany/py.py}
 				\end{spacing}
@@ -499,6 +499,8 @@
 				%\inputminted{cpp}{src/Miscellany/DLX.cpp}
 				\subsubsection{$O(n \cdot \max a_i)$ Subset Sum}
 					\inputminted{cpp}{src/yzh/Subset Sum.cpp}
+
+				\newpage
 				\subsection{Hash Table}
 					\inputminted{cpp}{src/DataStructure/hashmap.cpp}
 				\subsection{基数排序}
@@ -546,6 +548,8 @@
 				\inputminted[fontsize=\small]{cpp}{src/TreeandGraph/最小树形图.cpp}
 			\subsection*{天动万象}
 				\inputminted[fontsize=\small]{cpp}{src/yzh/ByteCampA3.cpp}
+			\subsection*{Clique Counting}
+			\inputminted[fontsize=\small]{cpp}{src/yzh/clique.cpp}
 			\subsection*{神谕}
 				\inputminted{cpp}{src/zjj/zjj.cpp}
 				\input{src/zjj/sam.tex}

@@ -16,8 +16,8 @@ int check(cl a, cl b, cl c) { // sgn left(a, inter(b, c))
 bool turn_left(cl a, cl b, cl c){return check(a, b, c) >0;}
 bool cmp (cl a, cl b) {
 	if (is_para(a, b) && dot(a, b) > 0) return dist(a) < dist(b);
-	return sgn(a) == sgn(b) ? sgn(det(a, b)) > 0 : sgn(b); }
-// 用以上函数替换 HPI 函数，需要 sgn(cp)
+	return half(a) == half(b) ? sgn(det(a, b)) > 0 : half(b); }
+// 用以上函数替换 HPI 函数，需要 half(point)
 line perp(cl l) { return {l.y, -l.x, 0}; } // 垂直
 line para(cl l, cp o) { // 过一点平行
     return {l.x, l.y, l.z - l(o)}; }

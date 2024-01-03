@@ -1,40 +1,34 @@
-const int HA = 2;
-const int PP[] = {318255569, 66604919, 19260817},
-	 	  QQ[] = {1010451419, 1011111133, 1033111117};
-int pw[HA][N];
+const int H = 2;
+const int P[] = {318255569, 66604919, 19260817},
+          Q[] = {1010451419, 1011111133, 1033111117};
+int pw[H][N];
 struct hashInit { hashInit () {
-	for (int h = 0; h < HA; h++) {
-		pw[h][0] = 1;
-		for (int i = 1; i < N; i++)
-			pw[h][i] = (LL)pw[h][i - 1] * PP[h] % QQ[h];
-	} } } __init_hash;
+  for (int h = 0; h < H; h++) {
+    pw[h][0] = 1;
+    for (int i = 1; i < N; i++)
+      pw[h][i] = (LL)pw[h][i - 1] * P[h] % Q[h];
+  } } } __init_hash;
 struct Hash {
-int v[HA], len;
+int v[H], len;
 Hash () {memset(v, 0, sizeof v); len = 0;}
-Hash (int x) { for (int h = 0; h < HA; h++) v[h] = x; len = 1; }
-friend Hash operator + (const Hash &a, const int &b) {
-	Hash ret; ret.len = a.len + 1;
-	for (int h = 0; h < HA; h++) 
-		ret.v[h] = ((LL)a.v[h] * PP[h] + b) % QQ[h];
-	return ret; }
-friend Hash operator - (const Hash &a, const Hash &b) {
-	Hash ret; ret.len = a.len - b.len;
-	for (int h = 0; h < HA; h++) {
-		ret.v[h] = (a.v[h] - (LL)pw[h][ret.len] * b.v[h]) % QQ[h];
-		if (ret.v[h] < 0) ret.v[h] += QQ[h];
-	} return ret; }
-friend bool operator == (const Hash &a, const Hash &b) {
-	for (int h = 0; h < HA; h++) 
-		if (a.v[h] != b.v[h]) return false;
-	return a.len == b.len; }
-// below : not that frequently used
-friend Hash operator + (const Hash &a, const Hash &b) {
-	Hash ret; ret.len = a.len + b.len;
-	for (int h = 0; h < HA; h++) 
-		ret.v[h] = ((LL)a.v[h] * pw[h][b.len] + b.v[h]) % QQ[h];
-	return ret; }
-friend Hash operator + (const int &a, const Hash &b) {
-	Hash ret; ret.len = b.len + 1;
-	for (int h = 0; h < HA; h++) 
-		ret.v[h] = ((LL)a * pw[h][b.len] + b.v[h]) % QQ[h];
-	return ret; } };
+Hash (int x) {len = 1;for (int h = 0; h < H; h++) v[h] = x;}
+};Hash operator + (const Hash &a, const int &b) {
+  Hash ret; ret.len = a.len + 1;
+  for (int h = 0; h < H; h++) 
+    ret.v[h] = ((LL)a.v[h] * P[h] + b) % Q[h];
+  return ret; }
+Hash operator - (const Hash &a, const Hash &b) {
+  Hash ret; ret.len = a.len - b.len;
+  for (int h = 0; h < H; h++) {
+    ret.v[h] = (a.v[h] - (LL)pw[h][ret.len]*b.v[h]) % Q[h];
+    if (ret.v[h] < 0) ret.v[h] += Q[h];
+  } return ret; }
+bool operator == (const Hash &a, const Hash &b) {
+  for (int h = 0; h < H; h++) 
+    if (a.v[h] != b.v[h]) return false;
+  return a.len == b.len; }
+Hash operator + (const Hash &a, const Hash &b) {
+  Hash ret; ret.len = a.len + b.len;
+  for (int h = 0; h < H; h++) 
+    ret.v[h] = ((LL)a.v[h] * pw[h][b.len] + b.v[h]) % Q[h];
+  return ret; }

@@ -1,25 +1,34 @@
+from functools import cmp_to_key
+from itertools import *
+import random
+import sys
 def IO_and_Exceptions():
 	try:
-		with open("a.in", mode="r") as fin:
-			for line in fin:
-				a = list(map(int, line.split()))
-				print(a, end = "\n")
-	except: exit()
-	assert False, '17 cards can\'t kill me'
-def Random():
-	import random as rand
-	rand.normalvariate(0.5, 0.1)
+		input()
+	except:
+		exit()
+	for line in sys.stdin:
+		print(line)
+	assert False, 'message'
+def RandomAndList():
+	random.normalvariate(0.5, 0.1)
 	l = [str(i) for i in range(9)]
 	sorted(l), min(l), max(l), len(l)
-	rand.shuffle(l)
+	random.shuffle(l)
 	l.sort(key=lambda x:x ^ 1,reverse=True)
-	import functools as ft
-	l.sort(key=ft.cmp_to_key(lambda x, y:(y^1)-(x^1)))
+	l.sort(key=cmp_to_key(lambda x, y:(y^1)-(x^1)))
+	for i in product('ABCD', repeat=2):
+		pass # AA AB AC AD BA BB BC BD CA CB CC CD DA DB DC DD
+	for i in permutations('ABCD', repeat=2):
+		pass # AB AC AD BA BC BD CA CB CD DA DB DC
+	for i in combinations('ABCD', repeat=2):
+		pass # AB AC AD BC BD CD
+	for i in combinations_with_replacement('ABCD', repeat=2):
+		pass # AA AB AC AD BB BC BD CC CD DD
 def FractionOperation():
 	from fractions import Fraction 
-	a = Fraction(0.233).limit_denominator()
-	a == Fraction("0.233") #True
 	a.numerator, a.denominator, str(a)
+	a = Fraction(0.233).limit_denominator(1000)
 def DecimalOperation():
 	import decimal
 	from decimal import Decimal, getcontext
@@ -29,8 +38,7 @@ def DecimalOperation():
 	getcontext().traps[decimal.FloatOperation] = True
 	Decimal((0, (1, 4, 1, 4), -3)) # 1.414
 	a = Decimal(1<<31) / Decimal(100000)
-	print(round(a, 5)) # total digits
-	print(a.quantize(Decimal("0.00000")))
+	print(f"{a:.9f}")
 	# 21474.83648
 	print(a.sqrt(), a.ln(), a.log10(), a.exp(), a ** 2)
 def Complex():
