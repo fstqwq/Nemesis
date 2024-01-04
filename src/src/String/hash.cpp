@@ -1,5 +1,5 @@
 const int H = 2;
-const int P[] = {318255569, 66604919, 19260817},
+const int P[] = {318255569, 19873577, 18611951},
           Q[] = {1010451419, 1011111133, 1033111117};
 int pw[H][N];
 struct hashInit { hashInit () {
