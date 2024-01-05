@@ -34,7 +34,7 @@ point proj_to_line (cp a, cl b) { // 点在直线投影
 	return b.s + st * (dot(a - b.s, st) / dot(st, st));}
 LD point_to_line (cp a, cl b) { // 点到直线距离
 	return abs(det(b.t-b.s, a-b.s)) / dis(b.s, b.t); }
-LD point_to_segment (cp a, cl b) { // 点到线段距离
+LD point_to_segment (cp a, cl b) { // 点到线段距离，注意退化
 	if (sgn (dot (b.s - a, b.t - b.s))
 	* sgn (dot (b.t - a, b.t - b.s)) >= 0)
 		return min (dis (a, b.s), dis (a, b.t));
