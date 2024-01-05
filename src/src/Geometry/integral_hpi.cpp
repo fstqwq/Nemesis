@@ -7,7 +7,7 @@ struct line : point {
 point line_inter (cl u, cl v) {
 return point(det({u.z, u.y}, {v.z, v.y}),
              det({u.x, u.z}, {v.x, v.z}) ) / -det(u, v); }
-LD dist (cl l, cp x = {0, 0}) { return l(x) / l.len(); }
+LD dis (cl l, cp x = {0, 0}) { return l(x) / l.len(); }
 bool is_para(cl x, cl y) { return !sgn(det(x, y)); } 
 LD det(cl a, cl b, cl c) {
 	return det(a,b)*c.z + det(b,c)*a.z + det(c,a)*b.z;}
@@ -15,8 +15,8 @@ int check(cl a, cl b, cl c) { // sgn left(a, inter(b, c))
 	return sgn(det(b, c, a)) * sgn(det(b, c)); }
 bool turn_left(cl a, cl b, cl c){return check(a, b, c) >0;}
 bool cmp (cl a, cl b) {
-	if (is_para(a, b) && dot(a, b) > 0) return dist(a) < dist(b);
-	return half(a) == half(b) ? sgn(det(a, b)) > 0 : half(b); }
+if (is_para(a, b) && dot(a, b) > 0) return dis(a) < dis(b);
+return half(a) == half(b) ? sgn(det(a,b))>0 : half(b)>0;}
 // 用以上函数替换 HPI 函数，需要 half(point)
 line perp(cl l) { return {l.y, -l.x, 0}; } // 垂直
 line para(cl l, cp o) { // 过一点平行

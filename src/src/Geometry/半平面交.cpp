@@ -11,18 +11,17 @@ vector <point> hpi(vector <line> h) { // 半平面交
   sort(h.begin(), h.end(), cmp);
   vector <line> q(h.size()); int l = 0, r = -1;
   for(auto &i : h) {
-   while(l<r && !turn_left(i, q[r - 1], q[r]))
-     --r;
-   while(l<r && !turn_left(i, q[l], q[l + 1]))
-     ++l;
+   while (l < r && !turn_left(i, q[r - 1], q[r])) --r;
+   while (l < r && !turn_left(i, q[l], q[l + 1])) ++l;
    if (l <= r && is_para(i, q[r])) continue;
    q[++r] = i; }
-  while(r-l>1&& !turn_left(q[l], q[r - 1], q[r]))
-    --r;
-  while(r-l>1&& !turn_left(q[r], q[l], q[l + 1]))
-    ++l;
+  while (r - l > 1 && !turn_left(q[l], q[r - 1], q[r])) --r;
+  while (r - l > 1 && !turn_left(q[r], q[l], q[l + 1])) ++l;
   if(r - l < 2) return {};
   vector <point> ret(r - l + 1);
   for(int i = l; i <= r; i++) 
     ret[i - l] = line_inter(q[i], q[i == r ? l : i + 1]);
   return ret; }
+// 空集会在队列里留下一个开区域；开区域会被判定为空集。
+// 为了保证正确性，一定要加足够大的框，尽可能避免零面积区域。
+// 实在需要零面积区域边缘，需要仔细考虑 turn_left 的实现。
