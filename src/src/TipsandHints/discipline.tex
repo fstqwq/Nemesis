@@ -43,22 +43,28 @@ bounds-strict, float-cast-overflow, builtin
     \setlength{\itemsep}{0pt}
     \setlength{\parskip}{0.5pt}
 \item 保存, 编译, 测过样例
-\item 数据范围: 输入小数, 模数, long long, 时间空间限制
-\item 初始化调用, 数组大小: 0/1-based, 边界情况 (0, 1, n+1)
-\item int/LL 溢出, 取模没有取到正值, INF/-1 大小
-\item 离散化与二分: lower\_bound upper\_bound +-1
-\item sum 多组输入: 应只用了输入内容 (memset TL, 错下标 WA), 是否正确撤销
-\item 输入输出格式 (\%Lf, \%llu)
+\item 数据范围: N/M, 输入小数, 模数, LL; 时间空间限制
+\item 调用初始化函数, 清空时数组大小 (0, 1, n/m?, n+1)
+\item 输入输出格式 (\texttt{\%Lf, \%llu}), 取模取到正值
 \item 多组没读入完就 break
-\item 需要 assert 的话第一次就加上
 \item 关闭流同步, 注意不要关流同步混用
+\item 需要 \texttt{assert} 的话第一次就加上
+\item 开 \texttt{optimize("Ofast") target("avx2")}
+\end{itemize}
+提交后检查:
+\begin{itemize}[leftmargin=1mm]
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0.5pt}
+\item sum 多组输入: 应只用了输入内容 (memset TL, 错下标 WA), 是否正确撤销
+\item int/LL 溢出, INF/-1 大小，浮点数 eps 和 = 0
+\item 类似 \texttt{pair <LL, int> x = pair <int, int>();} 不会报警告 
+\item 离散化与二分: \texttt{lower\_bound upper\_bound +-1}
+\item 自定义排序：排序方向，比较函数为小于，考虑坏点: 如叉积 (0, 0)
+\item 样例是否为对称/回文的？考虑构造不对称的情况；考虑构造样例没有覆盖的情况
 \item 复制过的代码对应位置正确修改
+\item 变量重名，变量复用后忘记改回去
 \item 分类讨论: if 嵌套, break 位置
 \item 图: 边标号初始是否为 1, 单双向边, 反向边边权
-\item FFT, NTT: 溢出, 精度
-\item n 维数点问题: 确认每个维度的方向
-\item 开 optimize("Ofast") target("avx2")
-\item 检查板子正确性, 适用条件
-\item 根号问题: 根号两侧复杂度是否都对
+\item 根号: 考虑根号两侧是否复杂度都对
 \end{itemize}
 \end{small}

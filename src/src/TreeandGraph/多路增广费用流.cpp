@@ -1,51 +1,46 @@
 bool bfs() {
   for (int i = S; i <= T; i++) cur[i] = head[i];
-  for (int i = S; i <= T; i++) dep[i] = INF_int; // S-T?
-  dep[S] = 0; queue<int> q; q.push(S);
+  for (int i = S; i <= T; i++) dep[i] = 0; // S-T is all?
+  dep[S] = 1; queue<int> q; q.push(S);
   while (!q.empty()) {
     int x = q.front(); q.pop();
     for (int i = head[x]; i; i = e[i].nxt) {
-      int d = e[i].v;
-      if (e[i].f > 0 && h[d] == h[x] + e[i].w
-      && dep[d] > dep[x] + 1) {
-        dep[d] = dep[x] + 1, q.push(d);
-  } } } return dep[T] < INF_int; }
-int dfs(int x, int lim) {
-  if (x == T || !lim) return lim;
-  int f = 0, flow = 0;
+      auto [nxt, v, w, f] = e[i];
+      if (f && h[v] == h[x] + w && !dep[v]) {
+        dep[v] = dep[x] + 1, q.push(v);
+  } } } return !!dep[T]; }
+int dfs(int x, int flow) {
+  if (x == T) return flow;
+  int used = 0, ret;
   for (int &i = cur[x]; i; i = e[i].nxt) {
-    int d = e[i].v;
-    if ((dep[d] == dep[x] + 1) && h[e[i].v] == e[i].w + h[x] 
-    && (f = dfs(d, min(lim, e[i].f)))) {
-      e[i].f -= f; e[i ^ 1].f += f;
-      flow += f; lim -= f;
-      if (lim == 0) break;
-  } } return flow; }
+    auto [nxt, v, w, f] = e[o];
+    if (dep[v] == dep[x] + 1 && h[v] == h[x] + w && f
+    && (ret = dfs(d, min(flow - used, f))) ) {
+      e[i].f -= ret; e[i ^ 1].f += f; used += ret;
+      if (flow == used) break;
+  } } return used; }
 typedef pair <LL, int> pii; // NOTE: unusual!
 pii solve() { // return {cost, flow}
-  LL res = 0; int flow = 0;
-  for (int i = 0; i <= T; ++i) h[i] = 0;
-  int first = true;
-  while (true) {
+  LL value = 0; int flow = 0;
+  for (int i = S; i <= T; i++) h[i] = 0; // S-T?
+  for (bool first = true; ; ) {
     priority_queue<pii, vector<pii>, greater<pii>> q;
     for (int i = S; i <= T; i++) dis[i] = INF_LL; // S-T?
     dis[S] = 0;
     if (first) {
-      // TODO: SSSP, may Bellman-Ford or DP
+      // TODO: SSSP, Bellman-Ford or DP on DAG
       first = false;
-    } else { q.push(pii(0, S));
+    } else { q.push({0, S});
       while (!q.empty()) {
-        pii now = q.top(); q.pop(); int x = now.second;
-        if (dis[x] < now.first) continue;
+        auto [d, x] = q.top(); q.pop();
+        if (dis[x] != d) continue;
         for (int o = head[x]; o; o = e[o].nxt) {
-          LL w = dis[x] + e[o].w + h[x] - h[e[o].v];
+          LL w = d + e[o].w + h[x] - h[e[o].v];
           if (e[o].f > 0 && dis[e[o].v] > w) {
-            dis[e[o].v] = w; q.push(pii(w, e[o].v));
-    } } } }
+            dis[e[o].v] = w; q.push({w, e[o].v});
+    } } } } // 所有点必须可达, 否则加 min(dis[i], dis[T]) 
     if (dis[T] >= INF_LL) break;
-    // 所有点必须可达，可以加 (i,T,0): min(dis[i], dis[T]) 
-    for (int i = 0; i <= T; ++i) h[i] += dis[i];
-    int fl = 0; while (bfs()) fl += dfs(S, INF_int);
-    res += fl * h[T]; flow += fl;
-  }
-  return make_pair(res, flow); }
+    for (int i = S; i <= T; i++) h[i] += dis[i]; // S-T?
+    int f = 0; while (bfs()) f += dfs(S, INF_int);
+    value += f * h[T]; flow += f;
+  } return {value, flow}; }
