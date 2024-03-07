@@ -1,45 +1,43 @@
 struct KM {
 int n, nl, nr;
-LL a[N][N];
-LL hl[N], hr[N], slk[N];
-int fl[N], fr[N], vl[N], vr[N], pre[N], q[N], ql, qr;
+T g[N][N], lx[N], ly[N], slack[N];
+int mx[N], my[N], visx[N], visy[N], pre[N], q[N], ql, qr;
 int check(int i) {
-	if (vl[i] = 1, fl[i] != -1)
-		return vr[q[qr++] = fl[i]] = 1;
-	while (i != -1) swap(i, fr[fl[i] = pre[i]]);
-	return 0; }
+	visy[i] = 1;
+	if (~my[i]) {
+		q[qr++] = my[i], visx[my[i]] = 1;
+		return 0; }
+	while (~i) my[i] = pre[i], swap(i, mx[pre[i]]);
+	return 1; }
 void bfs(int s) {
-	fill(slk, slk + n, INF);
-	fill(vl, vl + n, 0); fill(vr, vr + n, 0);
-	q[ql = 0] = s; vr[s] = qr = 1;
-	for (LL d;;) {
-		for (; ql < qr; ++ql)
-		for (int i = 0, j = q[ql]; i < n; ++i)
-		if (d=hl[i]+hr[j]-a[i][j], !vl[i] && slk[i] >= d) {
-			if (pre[i] = j, d) slk[i] = d;
-			else if (!check(i)) return; }
-		d = INF;
-		for (int i = 0; i < n; ++i)
-		if (!vl[i] && d > slk[i]) d = slk[i];
-		for (int i = 0; i < n; ++i) {
-			if (vl[i]) hl[i] += d; else slk[i] -= d;
-			if (vr[i]) hr[i] -= d; }
-		for (int i = 0; i < n; ++i)
-			if (!vl[i] && !slk[i] && !check(i)) return; } }
+	ql = 0, qr = 1;
+	q[ql] = s, visx[s] = 1;
+	for (T d; ; ) {
+		while (ql < qr)
+		for (int v = 0, u = q[ql++]; v < n; v++)
+		if (!visy[v] && slack[v] >= (d=lx[u]+ly[v]-g[u][v])) {
+			pre[v] = u;
+			if (d) slack[v] = d; else if (check(v)) return;
+		} d = INF;
+		for (int i = 0; i < n; i++)
+			if (!visy[i]) d = min(d, slack[i]);
+		for (int i = 0; i < n; i++) {
+			if (visy[i]) ly[i] += d; else slack[i] -= d;
+			if (visx[i]) lx[i] -= d; }
+		for (int i = 0; i < n; i++)
+			if (!visy[i] && !slack[i] && check(i)) return;
+	} }
 void solve() {
-	n = max(nl, nr);
-	fill(pre, pre + n, -1); fill(hr, hr + n, 0);
-	fill(fl, fl + n, -1); fill(fr, fr + n, -1);
-	for (int i = 0; i < n; ++i)
-		hl[i] = *max_element(a[i], a[i] + n);
-	for (int i = 0; i < n; ++i)
+	n = max(nl, nr); // always compute a full matching
+	fill(pre, pre + n, -1); 
+	fill(mx, mx + n, -1); fill(my, my + n, -1);
+	fill(ly, ly + n, 0);
+	for (int i = 0; i < n; i++)
+		lx[i] = *max_element(g[i], g[i] + n);
+	for (int i = 0; i < n; i++) {
+		fill(slack, slack + n, INF);
+		fill(visx, visx + n, 0); fill(visy, visy + n, 0);
 		bfs(i); }
-LL calc() {
-	LL ans = 0;
-	for (int i = 0; i < nl; ++i)
-		if (~fl[i]) ans += a[i][fl[i]];
-	return ans; }
-void output() {
-	for (int i = 0; i < nl; ++i)
-	printf("%d ", (~fl[i] && a[i][fl[i]] ? fl[i] + 1 : 0));
+	for (int i = 0; i < n; i++)
+		if (g[i][mx[i]] == 0) mx[i] = -1;
 } } km;
