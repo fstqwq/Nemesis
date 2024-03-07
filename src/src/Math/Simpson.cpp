@@ -7,7 +7,7 @@ LD area (LD (*f) (LD), LD l, LD r) {
 LD solve (LD (*f) (LD), LD l, LD r, LD eps, LD a) {
 	LD m = l + (r - l) / 2;
 	LD left = area (f, l, m), right = area (f, m, r);
-	if (abs (left + right - a) <= 15 * eps)
+	if (abs (left + right - a) <= 15 * eps) // TLE: || eps < EPS ** 2
 		return left + right + (left + right - a) / 15.0;
 	return solve (f, l, m, eps / 2, left) + solve (f, m, r, eps / 2, right);
 }
