@@ -269,7 +269,7 @@
 					
 			\section{Tree \& Graph}
 				\subsection{Hopcroft-Karp $O(\sqrt{V} E)$}
-					\inputminted{cpp}{src/TreeandGraph/Hopcroft.cpp}
+					\inputminted{cpp}{src/TreeandGraph/hk_skip2004.cpp}
 				% \subsection{Hungarian $O(V E)$}
 				% \inputminted{cpp}{src/TreeandGraph/Hungarian.cpp}
 				\subsection{Shuffle 一般图最大匹配 $O(V E)$}
@@ -277,8 +277,10 @@
 				\subsection{极大团计数}
 					\inputminted{cpp}{src/TreeandGraph/CliqueCount.cpp}
 				\subsection{有根树同构 Hash}
-					\inputminted{cpp}{src/TreeandGraph/TreeHash.cpp}
-					\subsection{KM 最大权匹配 $O(V^3)$}
+					可重集合 Hash, 一个子树要换一种 Hash 做打包.
+					通常 sort rolling hash, 然后 xorshift 打包.
+					如果使用 xor hash, 注意相同子树贡献不应该抵消.
+				\subsection{KM 最大权匹配 $O(V^3)$}
 					\inputminted{cpp}{src/TreeandGraph/KM.cpp}
 				\subsection{欧拉回路}
 				\inputminted{cpp}{src/TreeandGraph/欧拉回路.cpp}

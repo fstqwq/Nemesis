@@ -1,4 +1,3 @@
-mt19937 rng(233);
 int n, m, mat[N], vis[N]; vector<int> E[N];
 bool dfs(int tim, int x) {
 	shuffle(E[x].begin(), E[x].end(), rng);
@@ -9,7 +8,7 @@ bool dfs(int tim, int x) {
 		if (!z || dfs(tim, z)) return true;
 		mat[x] = 0, mat[y] = z, mat[z] = y; }
 	return false; }
-int main() {
+int main() { // 一般图存在坏例子可以卡掉，暗含二分图性质跑一次即可
 	for (int T = 0; T < 10; ++T) {
 		fill(vis + 1, vis + n + 1, 0);
 		for (int i = 1; i <= n; ++i) 
