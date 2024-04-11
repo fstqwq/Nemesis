@@ -1,5 +1,5 @@
 int C; circle c[MAXN]; LD area[MAXN];
-struct event {
+struct event { // 如果需要边界而非面积，那么仔细考虑事件顺序
  point p; LD ang; int delta;
  bool operator <(const event &a){return ang < a.ang;}};
 void addevent(cc a, cc b, vector<event> &e, int &cnt) {

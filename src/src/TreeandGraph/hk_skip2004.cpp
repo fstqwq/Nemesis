@@ -22,7 +22,7 @@ void match (int nl, int nr) {
 					q.push(y = mr[y]), p[y] = x, a[y] = a[x];
 			} } // while (!q.empty())
 		if (!ok) break; } }
-... min_edge_cover(int nl, int nr) {
+array<vector<int>, 2> min_edge_cover(int nl, int nr) {
  match(nl, nr); vector <int> l, r;
  for (int i = 1; i <= nl; i++) if (!a[i]) l.push_back(i);
  for (int i = 1; i <= nr; i++) if (a[mr[i]]) r.push_back(i);
