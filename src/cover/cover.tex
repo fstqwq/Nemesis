@@ -2,46 +2,39 @@
 
 \setCJKfamilyfont{hei}{SimHei}[Scale=0.9]
 \setCJKfamilyfont{sun}{Source Han Serif SC Medium}[Scale=0.8]
-\setCJKfamilyfont{pixel}{Fusion Pixel 12px Proportional zh_hans}[Scale=0.8]
+\setCJKfamilyfont{pixel}{Fusion Pixel 12px Proportional zh_hans}
 \newcommand{\hei}{\CJKfamily{hei}\selectfont}
 \newcommand{\sun}{\CJKfamily{sun}\selectfont}
 \newcommand{\pixel}{\fontspec{Fusion Pixel 12px Proportional zh_hans}\CJKfamily{pixel}\selectfont}
 \vspace*{1cm}
-\begin{figure*}[h]
-    \centering
-    \includegraphics[width=200pt]{cover/sjtubannerred.pdf}
-\end{figure*}
 
-\vspace*{1cm}
-\begin{comment}
 % 2025 ：532
 \begin{picture}(400,60)(0,0)
-    \put(10, 0){\includegraphics[width=200\unitlength]{cover/sjtubannerred.pdf}}
-%    \put(295,32){\fontsize{20.3}{1}\fontspec[]{Linux Libertine O}\color{black}ICPC World Finals Dhaka}
-%    \put(295, 6){\fontsize{23}{1}\fontspec[]{Linux Libertine O}\color{black}Standard Code Library}
+    \put(40, 0){\includegraphics[width=200\unitlength]{cover/sjtubannerred.pdf}}
+    \put(280,32){\fontsize{21.6}{1}\fontspec[]{Fusion Pixel 12px Proportional zh_hans}\color{black}ICPC World Finals 2024}
+    \put(280, 6){\fontsize{23}{1}\fontspec[]{Fusion Pixel 12px Proportional zh_hans}\color{black}Standard Code Library}
 \end{picture}
-\end{comment}
 
-\vspace*{0.5cm}
+\vspace*{1.25cm}
 
 \centerline{{\fontsize{72}{1}{\fontspec{Fusion Pixel 12px Proportional zh_hans}{Nemesis}}}}
-\vspace*{1cm}
+\vspace*{0.5cm}
  \begin{figure*}[h]
      \centering
-     \includegraphics[width=150pt]{cover/jokerzjj.png}
+     \includegraphics[width=55mm]{cover/jokerzjj.png}
  \end{figure*}
-% \vspace*{1cm}
+\vspace*{0.5cm}
 \begin{center}
 {\LARGE
 \begin{tabular}{lp{0.5in}r}
-\rule{0pt}{16pt} \textbf{Coach} & & {\hei{教练}} \\
+\rule{0pt}{16pt} {\pixel \LARGE Coach} & & {\pixel{教练}} \\
 \midrule
 \rule{0pt}{16pt} Yong Yu & & {\sun 俞勇} \\
 \rule{0pt}{16pt} Siyu Sun & & {\sun 孙司宇} \\
 \rule{0pt}{16pt} Boren Tan & & {\sun 谭博仁} \\
 \rule{0pt}{16pt} Shangfei Yang & & {\sun 杨尚霏} \\
 \\
-\rule{0pt}{16pt} \textbf{Contestant} & & {\hei{队员}} \\
+\rule{0pt}{16pt} {\pixel \LARGE Contestant} & & {\pixel{队员}} \\
 \midrule
 \rule{0pt}{16pt} Zonghan Yang & & {\sun 杨宗翰} \\
 \rule{0pt}{16pt} Mingchi Zhang & & {\sun 张明驰} \\
@@ -50,5 +43,5 @@
 }
 \end{center}
 \vspace*{1cm}
-\centerline{\large Last Commit: \input{|"python cover/info.py"}}
+\centerline{\pixel Last Commit: \input{|"python cover/info.py"}}
 \newpage

@@ -11,4 +11,4 @@ line = lines[-1].split()
 commit = line[1]
 stamp = line[4]
 
-print(f"{datetime.datetime.fromtimestamp(int(stamp)).strftime('%h %d, %Y')} \\texttt{{({commit[:6]}: {' '.join(line[7:])})}}")
+print(f"{datetime.datetime.fromtimestamp(int(stamp)).strftime('%h %d, %Y')} {{({commit[:6]}: {' '.join(line[7:])})}}")
