@@ -21,5 +21,6 @@ Main font: [思源宋体 Source Han Serif SC](https://github.com/adobe-fonts/sou
 
 Cover font: [Fusion Pixel 12px Proportional zh_hans](https://github.com/TakWolf/fusion-pixel-font)
 
+* Linux User: It should be noted that there could be issues with `otf`s on Linux, and it seems `ttf` works better.
 
-* It should be noted that there could be issues with `otf`s on Linux, and it seems `ttf` works better.
+* Windows User: `Install for all users` is required for installing fonts.

@@ -1,8 +1,7 @@
 //fast = O3 + ffast-math + fallow-store-data-races
 #pragma GCC optimize("Ofast")
-#pragma GCC target("sse,sse2,sse3,popcnt,abm,mmx,avx,tune=native")
-const int SZ = 1 << 16;
-int getc() {
+#pragma GCC target("sse2,abm,fma,mmx,avx2,tune=native")
+const int SZ = 1 << 16; int getc() {
 	static char buf[SZ], *ptr = buf, *top = buf;
 	if (ptr == top) {
 		ptr = buf, top = buf + fread(buf, 1, SZ, stdin);

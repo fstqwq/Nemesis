@@ -7,10 +7,10 @@
     \item 确认什么东西能带进场。特别注意: 智能手表、金属（钥匙）等等。
     \item 测试鼠标、键盘、显示器和座椅。如果有问题, 立刻联系工作人员。
     \item 确认比赛前能动什么, 不能动什么, 能存储什么配置文件。
-    \item 测试比赛提交方式。如果有 \texttt{submit} 命令, 确认如何使用。讨论是否应该不用以避免 \texttt{submit > a.cpp}。
+    \item 测试比赛提交方式。如果有 \texttt{submit} 命令, 确认如何使用。
     \item 如果可以的话, 设置定期备份文件。
     \item 测试 OJ 栈大小。如果不合常理, 发 clar 问一下。
-    \item 测试编译器版本。C++20 不能用 \texttt{cin >> (s + 1)}; C++17 \texttt{auto \lbrack x, y\rbrack : a}; C++14 \texttt{\lbrack \rbrack (auto x, auto y)}; C++11 \texttt{auto}; \texttt{bits/stdc++.h}; \texttt{pb\_ds}。
+    \item 测试编译器版本。C++20 \texttt{cin >> (s + 1)}; C++17 \texttt{auto \lbrack x, y\rbrack : a}; C++14 \texttt{\lbrack \rbrack (auto x, auto y)}; C++11 \texttt{auto}; \texttt{bits/stdc++.h}; \texttt{pb\_ds}。
 \begin{minted}{C++}
 #include <ext/rope>
 using namespace __gnu_cxx;
@@ -32,7 +32,7 @@ s.insert(1); s.find_by_order(0); s.order_of_key(5);
 address, undefined, return, shift, integer-divide-by-zero,
 bounds-strict, float-cast-overflow, builtin
 \end{minted}
-    \item 测试 Python, Java 本地环境与提交环境。Python 快吗? $A\times B$ 能跑多快? 输入输出呢? 
+    \item 测试 Python, Java 本地环境与提交环境。Python 快吗? $A\times B$ 能跑多快? 输入输出呢? 测试 Python 输出大整数时是否会 RE。
     \item 测试 \texttt{time} 命令是否能显示内存占用。
 \begin{minted}{bash}
 /usr/bin/time -v ./a.out
