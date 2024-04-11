@@ -2,9 +2,10 @@
 
 \setCJKfamilyfont{hei}{SimHei}[Scale=0.9]
 \setCJKfamilyfont{sun}{Source Han Serif SC Medium}[Scale=0.8]
+\setCJKfamilyfont{pixel}{Fusion Pixel 12px Proportional zh_hans}[Scale=0.8]
 \newcommand{\hei}{\CJKfamily{hei}\selectfont}
 \newcommand{\sun}{\CJKfamily{sun}\selectfont}
-
+\newcommand{\pixel}{\fontspec{Fusion Pixel 12px Proportional zh_hans}\CJKfamily{pixel}\selectfont}
 \vspace*{1cm}
 \begin{figure*}[h]
     \centering
@@ -23,13 +24,13 @@
 
 \vspace*{0.5cm}
 
-\centerline{{\fontsize{72}{1}{\fontspec{Consolas}{Nemesis}}}}
+\centerline{{\fontsize{72}{1}{\fontspec{Fusion Pixel 12px Proportional zh_hans}{Nemesis}}}}
 \vspace*{1cm}
  \begin{figure*}[h]
      \centering
-     \includegraphics[width=150pt]{cover/zjj.png}
+     \includegraphics[width=150pt]{cover/jokerzjj.png}
  \end{figure*}
-\vspace*{1cm}
+% \vspace*{1cm}
 \begin{center}
 {\LARGE
 \begin{tabular}{lp{0.5in}r}
@@ -49,7 +50,5 @@
 }
 \end{center}
 \vspace*{1cm}
-\centerline{\large Compiled on \today}
-\vspace*{.5cm}
 \centerline{\large Last Commit: \input{|"python cover/info.py"}}
 \newpage
