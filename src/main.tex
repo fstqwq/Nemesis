@@ -286,8 +286,9 @@
 				\inputminted{cpp}{src/TreeandGraph/欧拉回路.cpp}
 				%\subsection{Blossom 一般图带权最大匹配 $O(|V|^3)$}
 				%\inputminted{cpp}{src/TreeandGraph/Blossom.cpp}
-				\subsection{2-SAT, 强连通分量}
+				\subsection{2-SAT, 强连通分量 / Bitset Kosaraju}
 					\inputminted{cpp}{src/TreeandGraph/2-sat.cpp}
+					\inputminted{cpp}{src/TreeandGraph/kosaraju.cpp}
 				\subsection{Tarjan 点双，边双}
 					\inputminted{cpp}{src/TreeandGraph/Tarjan.cpp}
 				\subsection{Dominator Tree 支配树}
@@ -389,7 +390,7 @@
 				\subsection{双端插入回文树 (zjj)}
 				\inputminted{cpp}{src/String/PAM_bidirectional.cpp}
 				\subsection{字符串 Hash 类}
-				%{\tt \small Primes available at Page \pageref{randomprimes}.}
+				\texttt{\input{|"python src/Miscellany/randomprimes.py 1e12 1e13 2e13 1e17 1e18"}}
 				\inputminted{cpp}{src/String/hash.cpp}	
 				\subsection{String Conclusions}
 					\input{src/tbr/string-Conclusions.tex}
@@ -523,7 +524,7 @@
 				\label{randomprimes}
 				\begin{small}
 					\setlength{\parindent}{0em}\setlength{\parskip}{0em}\renewcommand{\baselinestretch}{.8}
-					\texttt{\input{|"python src/Miscellany/randomprimes.py"}}
+					\texttt{\input{|"python src/Miscellany/randomprimes.py 500 1e3 3e4 1e5 1e6 5e6 1e7 2e7 1e9 2e9"}}
 					\texttt{\textbf{NTT} 976224257 r=3 (20)
 					985661441 r=3 (22)
 					998244353 r=3 (23)\\

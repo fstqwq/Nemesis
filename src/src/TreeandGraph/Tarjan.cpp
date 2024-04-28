@@ -1,8 +1,7 @@
 /** 边双 **/
 int n, m, head[N], nxt[M << 1], to[M << 1], ed;
 int dfn[N], low[N], bcc_id[N], bcc_cnt, stp;
-bool bri[M << 1], vis[N];
-vector<int> bcc[N];
+bool bri[M << 1], vis[N]; vector<int> bcc[N];
 void tar(int now, int last) {
 	dfn[now] = low[now] = ++stp;
 	for (int i = head[now], d; i; i = h[i].next) {
@@ -10,15 +9,14 @@ void tar(int now, int last) {
 		if (!dfn[d]) {
 			tar(d, i);
 			low[now] = min(low[now], low[d]);
-			if (low[d] > dfn[now])
-				bri[i] = bri[i ^ 1] = 1; }
-		else if (dfn[d] < dfn[now] && ((i ^ 1) != last))
+			if (low[d] > dfn[now]) bri[i] = bri[i ^ 1] = 1;
+		} else if (dfn[d] < dfn[now] && ((i ^ 1) != last))
 			low[now] = min(low[now], dfn[d]); } }
 void DFS(int now) {
 	vis[now] = 1;
 	bcc_id[now] = bcc_cnt;
 	bcc[bcc_cnt].push_back(now);
-	for (int i = head[now], d; i; i = h[i].node) {
+	for (int i = head[now], d; i; i = h[i].next) {
 		d = h[i].node;
 		if (bri[i]) continue;
 		if (!vis[d]) DFS(d); } }
@@ -48,8 +46,7 @@ void tarjan(int x, int fa) {
 					addedge(pcnt, j, tr);
 					++sz;
 				} while (j != d);
-				addedge(pcnt, x, tr);
-			}
+				addedge(pcnt, x, tr); }
 		} else if (DFN[d] < low[x]) low[x] = DFN[d]; }
 	#undef head
 	if (!fa && child == 1) is_cut[x] = false; }

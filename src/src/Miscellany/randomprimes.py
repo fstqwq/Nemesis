@@ -1,3 +1,5 @@
+import sys
+
 BASE = [2,325,9375,28178,450775,9780504,1795265022]
 
 def check(M, base):
@@ -23,7 +25,12 @@ def isprime(a):
 
 import random,datetime,time
 
-Range = [500, 1e3, 3e4, 1e5, 1e6, 5e6, 1e7, 2e7, 1e9, 2e9, 1e13, 0.9e18, 1e18]
+if len(sys.argv) < 2:
+    print("Usage: python script.py <n> [seed]")
+    sys.exit(1)
+
+Range = map(float, sys.argv[1:])
+# [500, 1e3, 3e4, 1e5, 1e6, 5e6, 1e7, 2e7, 1e9, 2e9, 1e13, 0.9e18, 1e18]
 print("{\\textbf{Random primes} generated at ", time.asctime( time.localtime(time.time()) ), "\\\\")
 for lim in Range:
 	print(("\\textbf{%0.0e} " % lim).replace("+0", "").replace("+", ""), end="")
