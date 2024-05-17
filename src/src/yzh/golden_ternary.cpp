@@ -1,4 +1,4 @@
-constexpr R = (sqrt(5) - 1) / 2;
+constexpr LD R = (sqrt(5) - 1) / 2;
 auto split = [](LD l, LD r) { return l + (r - l) * R; };
 LD solve(LD a, LD c, auto f) {
 	LD b = split(a, b), bv = f(b);

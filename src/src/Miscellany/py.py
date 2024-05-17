@@ -1,22 +1,13 @@
-from functools import cmp_to_key
-from itertools import *
-import random
-import sys
-def IO_and_Exceptions():
-	try:
-		input()
-	except:
-		exit()
-	for line in sys.stdin:
-		print(line)
-	assert False, 'message'
 def RandomAndList():
+	import random
 	random.normalvariate(0.5, 0.1)
 	l = [str(i) for i in range(9)]
 	sorted(l), min(l), max(l), len(l)
 	random.shuffle(l)
 	l.sort(key=lambda x:x ^ 1,reverse=True)
+	from functools import cmp_to_key
 	l.sort(key=cmp_to_key(lambda x, y:(y^1)-(x^1)))
+	from itertools import *
 	for i in product('ABCD', repeat=2):
 		pass # AA AB AC AD BA BB BC BD CA CB CC CD DA DB DC DD
 	for i in permutations('ABCD', repeat=2):
@@ -30,24 +21,20 @@ def FractionOperation():
 	a.numerator, a.denominator, str(a)
 	a = Fraction(0.233).limit_denominator(1000)
 def DecimalOperation():
-	import decimal
-	from decimal import Decimal, getcontext
+	from decimal import Decimal, getcontext, FloatOperation
 	getcontext().prec = 100
 	getcontext().rounding = getattr(decimal, 'ROUND_HALF_EVEN')
 	# default; other: FLOOR, CELILING, DOWN, ...
-	getcontext().traps[decimal.FloatOperation] = True
+	getcontext().traps[FloatOperation] = True
 	Decimal((0, (1, 4, 1, 4), -3)) # 1.414
 	a = Decimal(1<<31) / Decimal(100000)
-	print(f"{a:.9f}")
-	# 21474.83648
+	print(f"{a:.9f}") # 21474.83648
 	print(a.sqrt(), a.ln(), a.log10(), a.exp(), a ** 2)
 def Complex():
 	a = 1-2j
 	print(a.real, a.imag, a.conjugate())
 def FastIO():
-	import atexit
-	import io
-	import sys
+	import sys, atexit, io
 	_INPUT_LINES = sys.stdin.read().splitlines()
 	input = iter(_INPUT_LINES).__next__
 	_OUTPUT_BUFFER = io.StringIO()

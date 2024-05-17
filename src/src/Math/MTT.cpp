@@ -36,7 +36,7 @@ vector<int> multiply(const vector<int>& u,
 	int base2 = base * base % mod;
 	vector<int> ans(n + m - 1);
 	for (int i = 0; i < n + m - 1; i++)
-		ans[i] = ((ll)(c[0][i].real() + 0.5) +
-			(ll)(c[1][i].real() + 0.5) % mod * base +
-			(ll)(c[2][i].real() + 0.5) % mod * base2) % mod;
+		ans[i] = ((LL)(c[0][i].real() + 0.5) +
+			(LL)(c[1][i].real() + 0.5) % mod * base +
+			(LL)(c[2][i].real() + 0.5) % mod * base2) % mod;
 	return ans; }

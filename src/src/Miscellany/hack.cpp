@@ -10,3 +10,6 @@ const int SZ = 1 << 16; int getc() {
 idx=b._Find_first();idx!=b.size();idx=b._Find_next(idx);
 struct HashFunc{size_t operator()(const KEY &key)const{}};
 __builtin_uaddll_overflow(a, b, &c) // binary big int
+void GospersHack(int k, int n) {
+	for (int s = (1 << k) - 1, c, r; s < (1 << n);
+	c = s & -s, r = s + c, s = (((r ^ s) >> 2) / c) | r); }

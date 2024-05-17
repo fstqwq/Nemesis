@@ -4,7 +4,7 @@ poly poly_auto_mul(poly a, poly b) { // 自动判断长度的乘法
 	a.resize(ntt_n); b.resize(ntt_n);
 	ntt(a.data(), ntt_n, 1); ntt(b.data(), ntt_n, 1);
 	for (int i = 0; i < ntt_n; i++)
-		a[i] = (ll)a[i] * b[i] % p;
+		a[i] = (LL)a[i] * b[i] % p;
 	ntt(a.data(), ntt_n, -1); a.resize(res_len); return a; }
 // 多项式除法，a 和 b 长度可以任意
 // 商的长度是 n - m + 1，余数的长度是 m - 1

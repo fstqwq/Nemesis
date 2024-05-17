@@ -12,13 +12,13 @@ poly poly_calc(const poly& u, const poly& v, // 长度要相同
 	ntt(c, n * 2, -1); return poly(c, c + n * 2); }
 poly poly_mul(const poly& u, const poly& v) { // 乘法
 	return poly_calc(u, v, [](int a, int b)
-		{ return (ll)a * b % p; }); } // 返回长度是两倍
+		{ return (LL)a * b % p; }); } // 返回长度是两倍
 poly poly_inv(const poly& a) { // 求逆，返回长度不变
 	poly c{qpow(a[0], p - 2)}; // 常数项一般都是 1
 	for (int k = 2; k <= (int)a.size(); k *= 2) {
 		c.resize(k); poly b(a.begin(), a.begin() + k);
 		c = poly_calc(b, c, [](int bi, int ci) {
-			return ((2 - (ll)bi * ci) % p + p) * ci % p; });
+			return ((2 - (LL)bi * ci) % p + p) * ci % p; });
 		memset(c.data() + k, 0, sizeof(int) * k); }
 	c.resize(a.size()); return c; }
 poly poly_sqrt(const poly& a) { // 开根，返回长度不变
@@ -27,14 +27,14 @@ poly poly_sqrt(const poly& a) { // 开根，返回长度不变
 		c.resize(k); poly b(a.begin(), a.begin() + k);
 		b = poly_mul(b, poly_inv(c));
 		for (int i = 0; i < k; i++) // inv_2 是 2 的逆元
-			c[i] = (ll)(c[i] + b[i]) * inv_2 % p; }
+			c[i] = (LL)(c[i] + b[i]) * inv_2 % p; }
 	c.resize(a.size()); return c; }
 poly poly_derivative(const poly& a) { poly c(a.size());
 	for (int i = 1; i < (int)a.size(); i++) // 求导
-		c[i - 1] = (ll)a[i] * i % p; return c; }
+		c[i - 1] = (LL)a[i] * i % p; return c; }
 poly poly_integrate(const poly& a) { poly c(a.size());
 	for (int i = 1; i < (int)a.size(); i++) // 不定积分
-		c[i] = (ll)a[i - 1] * inv[i] % p; return c; }
+		c[i] = (LL)a[i - 1] * inv[i] % p; return c; }
 poly poly_ln(const poly& a) { // ln,常数项非0,返回长度不变
 	auto c = poly_mul(poly_derivative(a), poly_inv(a));
 	c.resize(a.size()); return poly_integrate(c); }
