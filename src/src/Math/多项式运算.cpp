@@ -40,7 +40,7 @@ poly poly_ln(const poly& a) { // ln,常数项非0,返回长度不变
 	c.resize(a.size()); return poly_integrate(c); }
 // exp，常数项必须是 0，返回长度不变
 // 常数很大并且总代码很长, 一般可以改用分治 FFT
-// 依据: 设 $G(x) = \exp F(x)$, 则 $g_i = \sum_{k=1}^{i-1} f_{i-k} * k * g_k$
+// 依据: 设 $G(x) = \exp F(x)$, 则 $g_i = \frac{1}{i} \sum_{k=1}^{i-1} g_{i-k} \, k \, f_k$
 poly poly_exp(const poly& a) { poly c{1};
 	for (int k = 2; k <= (int)a.size(); k *= 2) {
 		c.resize(k); auto b = poly_ln(c);
