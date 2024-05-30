@@ -447,9 +447,11 @@
 				\subsection{线性递推}
 					\subsubsection*{$O(k^2 \log n)$}
 						\inputminted{cpp}{src/Math/线性递推.cpp}
-					\subsubsection*{$O(k \log k \log n)$}
-						需要抄前面的多项式取模。预处理 $O(k \log k \log n)$，固定 $n$ 和系数只改变初始值的话，询问一次 $O(k)$。
-						\inputminted{cpp}{src/Math/快速线性递推.cpp}
+					\subsubsection*{$O(k \log k \log n)$ - Bostan-Mori}
+						\inputminted{cpp}{src/Math/快速线性递推-bostan-mori.cpp}
+					\subsubsection*{$O(k \log k \log n)$ - 多项式取模}
+						需要抄前面的多项式取模。预处理 $O(k \log k \log n)$，固定 $n$ 和系数只改变初始值的话，询问一次 $O(k)$。注意只询问一次的话不如 Bostan-Mori 快。
+						\inputminted{cpp}{src/Math/快速线性递推-多项式取模.cpp}
 				\subsection{Berlekamp-Massey 最小多项式}
 					\input{src/Math/Berlekamp-Massey.tex}
 				\subsection{FWT}
