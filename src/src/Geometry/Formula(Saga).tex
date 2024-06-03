@@ -2,10 +2,12 @@
 \begin{spacing}{0.5}
 \begin{multicols*}{2}
 	\subsubsection{Heron's Formula}
-	\begin{eqnarray*}
-		&& S=\sqrt{p(p-a)(p-b)(p-c)} \\
-		&& p=\frac{a+b+c}{2}
-	\end{eqnarray*}
+	$p=\frac{a+b+c}{2}$, $a \geq b \geq c$, 
+
+	$S=\sqrt{p(p-a)(p-b)(p-c)}$,
+
+	$S=\frac{1}{2}\sqrt{a^2 c^2 - \left( \frac{a^2 + c^2 - b^2}{2} \right)^2}$.
+
 \subsubsection{四面体内接球球心}
 假设$s_i$是第$i$个顶点相对面的面积，则有
 \[\left\{
@@ -95,10 +97,10 @@ $
 	\end{bmatrix}
 	$
 \[
-R = \begin{smallmatrix}
+R = \left(\begin{smallmatrix}
 	\cos \theta +u_x^2 \left(1-\cos \theta\right) \quad
 	u_x u_y \left(1-\cos \theta\right) - u_z \sin \theta \quad u_x u_z \left(1-\cos \theta\right) + u_y \sin \theta \\ u_y u_x \left(1-\cos \theta\right) + u_z \sin \theta \quad \cos \theta + u_y^2\left(1-\cos \theta\right) \quad u_y u_z \left(1-\cos \theta\right) - u_x \sin \theta \\ u_z u_x \left(1-\cos \theta\right) - u_y \sin \theta \quad u_z u_y \left(1-\cos \theta\right) + u_x \sin \theta \quad \cos \theta + u_z^2\left(1-\cos \theta\right) 
-\end{smallmatrix}.
+\end{smallmatrix}\right).
 \]
 
 \subsubsection{立体角公式}
