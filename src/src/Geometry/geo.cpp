@@ -18,7 +18,7 @@ vector <point> cut (const vector<point> &c, line l) {
 		if (two_side (c[i], c[j], l))
 			ret.push_back(line_inter(l, {c[i], c[j]})); }
 	return ret; }
-bool pos(cp a,cl b){ // 点在线段上
+bool pos (cp a,cl b){ // 点在线段上
 	return turn(b.s, b.t, a) == 0 // 在直线上
 	&& sgn (dot (b.s - a, b.t - a)) <= 0;}
 bool inter_judge(cl a,cl b) { // 线段判非严格交

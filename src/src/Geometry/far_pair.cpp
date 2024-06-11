@@ -8,5 +8,5 @@ LD diameter(vector <point> p) { // 最远点对
 			int l = (k + 1) % n;
 			if (sgn(det(p[j]-p[i], p[l]-p[k])) > 0) k = l;
 			else break; }
-		ret = max(ret, dis2(p[i], p[k])); 
-		ret = max(ret, dis2(p[j], p[k])); } return ret; }
+		ret = max(ret, dis(p[i], p[k])); 
+		ret = max(ret, dis(p[j], p[k])); } return ret; }

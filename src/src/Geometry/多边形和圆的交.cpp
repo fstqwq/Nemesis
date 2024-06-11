@@ -2,7 +2,7 @@ LD angle (cp u, cp v) {
 	return 2 * asin(dis(u.unit(), v.unit()) / 2); }
 LD area(cp s, cp t, LD r) { // 2 * area
 	LD theta = angle(s, t);
-	LD dis = point_to_segment({0, 0}, {s, t});
+	LD dis = p2s ({0, 0}, {s, t});
 	if (sgn(dis - r) >= 0) return theta * r * r;
 	auto [u, v] = line_circle_inter({s, t}, {{0, 0}, r});
 	point lo = sgn(det(s, u)) >= 0 ? u : s;

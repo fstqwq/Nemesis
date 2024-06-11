@@ -3,17 +3,17 @@ bool in_circle(cp a, const circle &b) {
 	return (b.c - a).len() <= b.r; }
 circle make_circle(point u, point v) {
 	point p = (u + v) / 2;
-	return circle(p, (u - p).len()); }
+	return {p, (u - p).len()}; }
 circle make_circle(cp a, cp b, cp c) {
 	point p = b - a, q = c - a,
 		s(dot(p, p) / 2, dot(q, q) / 2);
 	LD d = det(p, q);
 	p = point( det(s, point(p.y, q.y)),
 		det(point(p.x, q.x), s) ) / d;
-	return circle(a + p, p.len());
+	return {a + p, p.len()};
 } // make_circle : 过参数点的最小圆
 pair <point, point> line_circle_inter (cl a, cc c) {
-	LD d = point_to_line (c.c, a);
+	LD d = p2l (c.c, a);
 	// 需要的话返回 vector <point>
 	/* if (sgn (d - R) >= 0) return {}; */
 	LD x = sqrt (sqr(c.r) - sqr(d)); // sqrt(max(0., ...))
@@ -70,12 +70,12 @@ vector <line> intangent(cc a, cc b) {
 		ret.push_back({u[1], v[1]}); } return ret; }
 circle min_circle (vector <point> p) { // 最小覆盖圆
  circle ret({0, 0}, 0);
- random_shuffle (p.begin (), p.end ());
+ shuffle (p.begin (), p.end (), rng);
  for (int i = 0; i < (int) p.size (); ++i)
   if (!in_circle(p[i], ret)) {
    ret = circle (p[i], 0);
    for (int j = 0; j < i; ++j) if (!in_circle(p[j], ret)) {
-    ret = make_circle (p[j], p[i]);
+    ret = make_circle (p[i], p[j]);
     for (int k = 0; k < j; ++k) if (!in_circle(p[k], ret))
-     ret = make_circle(p[i],p[j],p[k]);
+     ret = make_circle (p[i], p[j], p[k]);
   } } return ret; }

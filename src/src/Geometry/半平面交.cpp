@@ -5,7 +5,7 @@ bool is_para(cl a, cl b){return!sgn(det(a.t-a.s,b.t-b.s));}
 bool cmp(cl a, cl b) {
   int sign = half(a.t - a.s) - half(b.t - b.s);
   int dir = sgn(det(a.t - a.s, b.t - b.s));
-  if (!dir && !sign) return sgn(det(a.t-a.s, b.t-a.s)) < 0;
+  if (!dir && !sign) return turn(a.s, a.t, b.t) < 0;
   else return sign ? sign > 0 : dir > 0; }
 vector <point> hpi(vector <line> h) { // 半平面交
   sort(h.begin(), h.end(), cmp);
