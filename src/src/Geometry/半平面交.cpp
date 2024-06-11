@@ -1,6 +1,6 @@
 int half(cp a){return a.y > 0||(a.y == 0 && a.x > 0)?1:0;}
 bool turn_left(cl a, cl b, cl c) {
-  return turn_left(a.s, a.t, line_inter(b, c)); }
+  return turn(a.s, a.t, line_inter(b, c)) > 0; }
 bool is_para(cl a, cl b){return!sgn(det(a.t-a.s,b.t-b.s));}
 bool cmp(cl a, cl b) {
   int sign = half(a.t - a.s) - half(b.t - b.s);
