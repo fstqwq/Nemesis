@@ -30,7 +30,7 @@ bool get_inter(cp u, cp v, int &i, int &j) { // 求直线交点
 	int p0 = search([&](cp x, cp y){
 	 return det(v - u, x - u) < det(v - u, y - u);}),
 	p1 = search([&](cp x, cp y) {
-	 return det(v - u, x - u) < det(v - u, y - u);});
+	 return det(v - u, x - u) > det(v - u, y - u);});
 	if (turn(u, v, a[p0]) * turn(u, v, a[p1]) < 0) {
 		if (p0 > p1) swap(p0, p1);
 		i = inter (u, v, p0, p1);

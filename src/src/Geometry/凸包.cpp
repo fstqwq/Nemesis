@@ -7,13 +7,13 @@ vector <point> convex_hull (vector <point> a) {
 	vector <point> ret;
 	for (int i = 0; i < n; ++i) {
 		while (cnt > 1
-		&& turn (ret[cnt - 2], ret[cnt - 1], a[i])) <= 0
+		&& turn (ret[cnt - 2], ret[cnt - 1], a[i]) <= 0)
 			--cnt, ret.pop_back (); // 保留凸包上重点：< 0
 		++cnt, ret.push_back (a[i]); }
 	int fixed = cnt;
 	for (int i = n - 2; i >= 0; --i) {
 		while (cnt > fixed
-		&& turn (ret[cnt - 2], ret[cnt - 1], a[i])) <= 0
+		&& turn (ret[cnt - 2], ret[cnt - 1], a[i]) <= 0)
 			--cnt, ret.pop_back (); // 保留凸包上重点：< 0
 		++cnt, ret.push_back (a[i]); }
 	ret.pop_back (); return ret; // 注意凸包退化时返回值
