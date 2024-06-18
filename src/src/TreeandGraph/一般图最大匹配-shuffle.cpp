@@ -9,7 +9,6 @@ bool dfs(int tim, int x) {
 		mat[x] = 0, mat[y] = z, mat[z] = y; }
 	return false; }
 int main() { // 暗含二分图性质跑一次即可
-	for (int T = 0; T < 10; ++T) {
+	for (int _ = 0; _ < 10; _++) {
 		fill(vis + 1, vis + n + 1, 0);
-		for (int i = 1; i <= n; ++i) 
-			if (!mat[i]) dfs(i, i); } }
+		for (int i = 1; i <= n; ++i) if (!mat[i]) dfs(i, i);}}

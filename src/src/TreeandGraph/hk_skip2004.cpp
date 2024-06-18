@@ -1,6 +1,6 @@
 vector <int> E[N];
 vector <int> ml, mr, a, p;
-void match (int nl, int nr) {
+void match (int nl, int nr) { // 1-based
 	ml.assign(nl + 1, 0);
 	mr.assign(nr + 1, 0); // nr
 	while (true) {

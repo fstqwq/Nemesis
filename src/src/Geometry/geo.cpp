@@ -18,7 +18,7 @@ vector <point> cut (const vector<point> &c, line l) {
 		if (two_side (c[i], c[j], l))
 			ret.push_back(line_inter(l, {c[i], c[j]})); }
 	return ret; }
-bool pos (cp a,cl b){ // 点在线段上
+bool pos (cp a,cl b){ // point_on_segment 点在线段上
 	return turn(b.s, b.t, a) == 0 // 在直线上
 	&& sgn (dot (b.s - a, b.t - a)) <= 0;}
 bool inter_judge(cl a,cl b) { // 线段判非严格交
@@ -29,14 +29,14 @@ bool inter_judge(cl a,cl b) { // 线段判非严格交
 point proj_to_line (cp a, cl b) { // 点在直线投影
 	point st = b.t - b.s;
 	return b.s + st * (dot(a - b.s, st) / dot(st, st));}
-LD p2l (cp a, cl b) { // 点到直线距离
+LD p2l (cp a, cl b) { // point_to_line
 	return abs(det(b.t-b.s, a-b.s)) / dis(b.s, b.t); }
-LD p2s (cp a, cl b) { // 点到线段距离，注意退化
+LD p2s (cp a, cl b) { // point_to_segment 注意退化
 	if (sgn (dot (b.s - a, b.t - b.s))
 	* sgn (dot (b.t - a, b.t - b.s)) >= 0)
 		return min (dis (a, b.s), dis (a, b.t));
 	return p2l (a, b); }
-bool in_polygon (cp u, const vector <point> & p) {
+bool point_in_polygon (cp u, const vector <point> & p) {
 	int n = (int) p.size (); int cnt = 0;
 	for (int i = 0; i < n; ++i) {
 		point a = p[i], b = p[(i + 1) % n];

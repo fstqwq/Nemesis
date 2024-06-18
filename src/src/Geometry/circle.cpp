@@ -1,17 +1,13 @@
 struct circle { point c; LD r;};
 bool in_circle(cp a, const circle &b) {
-	return (b.c - a).len() <= b.r; }
+	return sgn(b.r - dis(b.c, a)) >= 0; }
 circle make_circle(point u, point v) {
 	point p = (u + v) / 2;
-	return {p, (u - p).len()}; }
-circle make_circle(cp a, cp b, cp c) {
-	point p = b - a, q = c - a,
-		s(dot(p, p) / 2, dot(q, q) / 2);
-	LD d = det(p, q);
-	p = point( det(s, point(p.y, q.y)),
-		det(point(p.x, q.x), s) ) / d;
-	return {a + p, p.len()};
-} // make_circle : 过参数点的最小圆
+	return {p, dis(u, p)}; }
+circle make_circle(cp a, cp b, cp c) { // 三点共线 inf / nan
+	point bc = c - b, ca = a - c, ab = b - a;
+	point o = (b + c - bc.rot90()*dot(ca,ab)/det(ca,ab)) / 2;
+	return {o, dis(o, a)}; }
 pair <point, point> line_circle_inter (cl a, cc c) {
 	LD d = p2l (c.c, a);
 	// 需要的话返回 vector <point>
