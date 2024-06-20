@@ -1,3 +1,14 @@
+bool point_in_polygon (cp u, const vector <point> & p) {
+	int n = (int) p.size (), cnt = 0;
+	for (int i = 0; i < n; ++i) {
+		point a = p[i], b = p[(i + 1) % n];
+		if (pos (u, {a, b})) return true;
+		int x = turn (a, u, b);
+		int y = sgn (a.y - u.y);
+		int z = sgn (b.y - u.y);
+		if (x > 0 && y <= 0 && z > 0) ++cnt;
+		if (x < 0 && z <= 0 && y > 0) --cnt; }
+	return cnt != 0; } // < 0 在逆时针多边形内; > 0 顺时针
 bool in_polygon (cp u, cp v) {
 	// u, v in polygon; p contain those u, v on border
 	for (int i = 0; i < n; i++) {

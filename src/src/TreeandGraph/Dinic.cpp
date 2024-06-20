@@ -3,18 +3,16 @@ int ecnt = 1, head[N], cur[N];
 void add(int u, int v, value f) {
 	e[++ecnt] = {v, head[u],        f}; head[u] = ecnt;
 	e[++ecnt] = {u, head[v], (value)0}; head[v] = ecnt; }
-int n, S, T, q[N], tag[N], he = 0, ta = 1;
+int n, S, T, q[N], tag[N];
 bool bfs() {
 	for (int i = S; i <= T; i++) tag[i] = 0; // S-T?
-	he = 0, ta = 1; q[0] = S;
-	tag[S] = 1; 
+	int he = 0, ta = 1; q[0] = S; tag[S] = 1; 
 	while (he < ta) {
-		int x = q[he++];
+		int x = q[he++]; // if (x == T) break;
 		for (int o = head[x]; o; o = e[o].nxt) 
 			if (e[o].f && !tag[e[o].v])
 				tag[e[o].v] = tag[x] + 1, q[ta++] = e[o].v;
-	}
-	return !!tag[T]; }
+	} return !!tag[T]; }
 value dfs(int x, value flow) {
 	if (x == T) return flow;
 	value used = 0;
@@ -25,8 +23,7 @@ value dfs(int x, value flow) {
 				e[o].f -= ret; e[o ^ 1].f += ret;
 				used += ret;
 				if (used == flow) return flow;
-			} } }
-	return used; }
+	} } } return used; }
 value dinic() {
 	value ans = 0;
 	while (bfs()) {

@@ -36,17 +36,6 @@ LD p2s (cp a, cl b) { // point_to_segment 注意退化
 	* sgn (dot (b.t - a, b.t - b.s)) >= 0)
 		return min (dis (a, b.s), dis (a, b.t));
 	return p2l (a, b); }
-bool point_in_polygon (cp u, const vector <point> & p) {
-	int n = (int) p.size (); int cnt = 0;
-	for (int i = 0; i < n; ++i) {
-		point a = p[i], b = p[(i + 1) % n];
-		if (pos (u, {a, b})) return true;
-		int x = turn (u - a, b - a);
-		int y = sgn (a.y - u.y);
-		int z = sgn (b.y - u.y);
-		if (x > 0 && y <= 0 && z > 0) ++cnt;
-		if (x < 0 && z <= 0 && y > 0) --cnt; }
-	return cnt != 0; }
 bool point_on_ray (cp a, cl b) { // 点在射线上
 	return turn (b.s, b.t, a) == 0
 	&& sgn (dot (a - b.s, b.t - b.s)) >= 0; }
