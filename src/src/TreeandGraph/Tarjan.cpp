@@ -1,37 +1,25 @@
-/** 边双 **/
-int n, m, head[N], nxt[M << 1], to[M << 1], ed;
-int dfn[N], low[N], bcc_id[N], bcc_cnt, stp;
-bool bri[M << 1], vis[N]; vector<int> bcc[N];
-void tar(int now, int last) {
-	dfn[now] = low[now] = ++stp;
-	for (int i = head[now], d; i; i = h[i].next) {
+/** 求割边 **/
+// 注意！建立边双树或者圆方树后【边表大小】是否开够
+// 求边双：无视掉 bri 后搜出每个连通块，记得多测
+int DFN[N], low[N], dfscnt; // clear DFN low bri dfscnt
+bool bri[M << 1]; // 注意此处是边数
+void tarjan(int x, int last) { // last 是边
+	DFN[x] = low[x] = ++dfscnt;
+	for (int i = head[x], d; i; i = h[i].next) {
 		d = h[i].node;
-		if (!dfn[d]) {
-			tar(d, i);
-			low[now] = min(low[now], low[d]);
-			if (low[d] > dfn[now]) bri[i] = bri[i ^ 1] = 1;
-		} else if (dfn[d] < dfn[now] && ((i ^ 1) != last))
-			low[now] = min(low[now], dfn[d]); } }
-void DFS(int now) {
-	vis[now] = 1;
-	bcc_id[now] = bcc_cnt;
-	bcc[bcc_cnt].push_back(now);
-	for (int i = head[now], d; i; i = h[i].next) {
-		d = h[i].node;
-		if (bri[i]) continue;
-		if (!vis[d]) DFS(d); } }
-void EBCC() {// clear dfn low bri bcc_id vis
-	bcc_cnt = stp = 0;
-	for (int i = 1; i <= n; ++i) if (!dfn[i]) tar(i, 0);
-	for (int i = 1; i <= n; ++i)
-		if (!vis[i]) ++bcc_cnt, DFS(i); }
+		if (!DFN[d]) {
+			tarjan(d, i);
+			low[x] = min(low[x], low[d]);
+			if (low[d] > DFN[x]) bri[i] = bri[i ^ 1] = 1;
+		} else if (DFN[d] < DFN[x] && ((i ^ 1) != last))
+			low[x] = min(low[x], DFN[d]); } }
 /** 建立圆方树+求割点 **/
-int is_cut[N], DFN[N], low[N], cnt;
-int stk[N], dep; // clear dfn low is_cut cnt, let pcnt=n
+int is_cut[N], DFN[N], low[N], dfscnt, pcnt;
+int stk[N], dep; // clear DFN low is_cut dfscnt, let pcnt=n
 void tarjan(int x, int fa) {
 	int child = 0;
-	DFN[x] = low[x] = ++cnt; stk[++dep] = x;
-	#define head org
+	DFN[x] = low[x] = ++dfscnt; stk[++dep] = x;
+	#define head org // org 是原图表头，tr 是圆方树表头
 	for (int i = head[x], d; i; i = h[i].next) {
 		d = h[i].node;
 		if (!DFN[d]) {
