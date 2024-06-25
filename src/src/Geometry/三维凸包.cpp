@@ -2,7 +2,7 @@ vector <p3> p;
 int mark[N][N], stp;
 typedef array <int, 3> Face;
 vector <Face> face;
-double volume (int a, int b, int c, int d) {
+LD volume (int a, int b, int c, int d) {
 	return mix (p[b] - p[a], p[c] - p[a], p[d] - p[a]); }
 void ins(int a, int b, int c) {face.push_back({a, b, c});}
 void add(int v) {
