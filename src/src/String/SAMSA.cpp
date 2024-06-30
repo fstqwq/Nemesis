@@ -1,8 +1,8 @@
-bool vis[maxn * 2]; char s[maxn];
-int id[maxn * 2], ch[maxn * 2][26], height[maxn], tim = 0;
+bool vis[MAXN * 2]; char s[MAXN];
+int id[MAXN * 2], ch[MAXN * 2][26], height[MAXN], stamp = 0;
 void dfs(int x) {
-	if (id[x]) { height[tim++] = val[last];
-		sa[tim] = id[x]; last = x; }
+	if (id[x]) { height[stamp++] = val[last];
+		sa[stamp] = id[x]; last = x; }
     for (int c = 0; c < 26; c++)
 		if (ch[x][c]) dfs(ch[x][c]);
 	last = par[x]; }
