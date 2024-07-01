@@ -1,4 +1,4 @@
-int min_pos(vector<int> a) {
+int min_pos(vector<int> a) { // 0-based
 	int n = a.size(), i = 0, j = 1, k = 0;
 	while (i < n && j < n && k < n) {
 		auto u = a[(i + k) % n]; auto v = a[(j + k) % n];

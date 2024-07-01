@@ -1,4 +1,4 @@
-void kmp(const int *s, int n) {
+void kmp(const int *s, int n) { // 1-based
 	fail[0] = fail[1] = 0;
 	for (int i = 1; i < n; i++) { int j = fail[i];
 		while (j && s[i + 1] != s[j + 1]) j = fail[j];

@@ -4,8 +4,8 @@ vector<cp> omega[25]; // 单位根
 // 或者求逆的长度为 m，那么 n 需要 >= 2m
 void fft_init(int n) { // n = 2^k
 	for (int k = 2, d = 0; k <= n; k *= 2, d++) {
-		omega[d].resize(k + 1);
-		for (int i = 0; i <= k; i++)
+		omega[d].resize(k + 1); 
+		for (int i = 0; i <= k; i++) // polar 是用模和辐角求复数
 			omega[d][i] = polar(1.0, 2 * PI * i / k); } }
 void fft(cp* a, int n, int t) {
 	for (int i = 1, j = 0; i < n - 1; i++) {
