@@ -27,11 +27,6 @@ bool is_perp(cl x, cl y) { return !sgn(dot(x, y)); }
 LD area(cl a, cl b, cl c) { // 0 when error
 	LD d = det(a, b, c);
 	return d * d / (det(a, b) * det(b, c) * det(c, a)); }
-LD area(const vector <line> & a) {
-	LD ret = 0; // nan when is_para(a[0], a[i])
-	for (int i = 2; i < (int) a.size(); i++)
-		ret += area(a[0], a[i - 1], a[i]);
-	return ret / 2; }
 vector <line> cut (const vector <line>& o, line l){
 	vector <line> ret; int n = (int) o.size();
 	for (int i = 0; i < n; i++) {

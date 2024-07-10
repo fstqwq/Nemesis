@@ -1,12 +1,18 @@
-// a[0..1]: 逆时针凸包.结果不是严格凸包
-for (int i = 0; i < 2; i++) a[i].push_back(a[i].front()); 
-int i[2] = {0, 0},
-  len[2] = {(int)a[0].size() - 1, (int)a[1].size() - 1};
-vector<point> mnk;
-mnk.push_back(a[0][0] + a[1][0]);
-do { // 输入不严格时（如（n <= 2）共线）会死循环，需特判 
-	int d = sgn(det(a[1][i[1] + 1] - a[1][i[1]],
-                   a[0][i[0] + 1] - a[0][i[0]])) >= 0;
-	mnk.push_back(a[d][i[d] + 1] - a[d][i[d]] + mnk.back());
-	i[d] = (i[d] + 1) % len[d];
-} while(i[0] || i[1]);
+vector <point> add (vector <point> a, vector <point> b) {
+// size > 0, rotate(begin, min, end), 无重, 小于号 (y, x)
+	if (a.size() == 1 || b.size() == 1) { 
+		vector <point> ret;
+		for (auto i : a) for (auto j : b) ret.push_back(i+j);
+		return ret; }
+	vector <point> x, y;
+	for (int i = 0; i < a.size(); i++)
+		x.push_back(a[(i + 1) % a.size()] - a[i]);
+	for (int i = 0; i < b.size(); i++)
+		y.push_back(b[(i + 1) % b.size()] - b[i]);
+	vector <point> ret (x.size() + y.size());
+	merge(x.begin(), x.end(), y.begin(), y.end(),
+		  ret.begin(), [](cp u, cp v) {
+		return half(u)-half(v) ? half(u) : det(u, v) > 0;});
+	point cur = a[0] + b[0];
+	for (auto &i : ret) swap(i, cur), cur = cur + i;
+	return ret; } // ret 可能共线，但没有重点
