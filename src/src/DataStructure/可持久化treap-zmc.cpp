@@ -5,8 +5,6 @@ struct node {
   int sz, ch[2], pri;
   int rev; LL sum; int val;
 } tr[MX];
-#define lch tr[x].ch[0]
-#define rch tr[x].ch[1]
 int newnode(int v) {
   static mt19937 rng(114514);
   int x = ++vcnt;
@@ -17,17 +15,6 @@ int newnode(int v) {
   tr[x].rev = false;
   return x; }
 void copy(int x, int y) { tr[x] = tr[y]; }
-void dorev(int &x) {
-  int y = ++vcnt;
-  copy(y, x); tr[y].rev ^= 1; x = y; }
-void pushdown(int x) {
-  if (tr[x].rev) {
-    if (lch) dorev(lch);
-    if (rch) dorev(rch);
-    swap(lch, rch); tr[x].rev = 0; } }
-void pushup(int x) {
-  tr[x].sz = tr[lch].sz + tr[rch].sz + 1;
-  tr[x].sum = tr[lch].sum + tr[rch].sum + tr[x].val; }
 int merge(int x, int y) {
   if (!x || !y) return x + y;
   int z = ++vcnt;

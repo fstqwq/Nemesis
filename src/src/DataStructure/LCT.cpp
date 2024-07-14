@@ -1,7 +1,4 @@
-// 记得初始化 mn
-// 维护虚子树：access link cut pushup
-#define lch(x) ch[x][0]
-#define rch(x) ch[x][1]
+// 记得初始化 mn; 维护虚子树：access link cut pushup
 int fa[MX], ch[MX][2], w[MX], mn[MX], mark[MX];
 int get(int x) {return x == ch[fa[x]][1];}
 int nrt(int x) {return get(x) || x == ch[fa[x]][0];}
@@ -34,21 +31,17 @@ void splay(int x) {
 	} pushup(x); }
 void access(int x) {
 	for(int y = 0 ; x ; x = fa[y = x])
-		splay(x), rch(x) = y, pushup(x);
-}
+		splay(x), rch(x) = y, pushup(x); }
 void makeroot(int x) {access(x), splay(x), rev(x);}
 void split(int x, int y) {makeroot(x), access(y), splay(y);}
 int findroot(int x) {
 	access(x), splay(x);
 	while (lch(x)) pushdown(x), x = lch(x);
-	return splay(x), x;
-}
+	return splay(x), x;	}
 void link(int x, int y) {
 	makeroot(x);
-	if (findroot(y) != x) fa[x] = y;
-}
+	if (findroot(y) != x) fa[x] = y; }
 void cut(int x, int y) {
 	makeroot(x);
 	if (findroot(y) != x || fa[y] != x || lch(y)) return;
-	rch(x) = fa[y] = 0, pushup(x);
-}
+	rch(x) = fa[y] = 0, pushup(x); }
