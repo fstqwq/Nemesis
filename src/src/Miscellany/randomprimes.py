@@ -46,8 +46,8 @@ for lim in Range:
 				x = str(lim - random.randint(1, 100000))
 			else:
 				x = str(lim + random.randint(1, 100000))
-			l = len(x) - 2 - 5
-			x = x[:2] + ("1234"* 100)[:l] + x[2+l:]
+			l = len(x) - 2 - 4
+			x = x[:2] + (random.choice(["1234", "2345", "3456", "4567", "5678"]) * 100)[:l] + x[2+l:]
 			x = int(x)
 		else:
 			x = random.randint(lower, upper)

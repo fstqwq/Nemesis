@@ -4,10 +4,6 @@ result = subprocess.run(["git", "log", "-n", "1"], stdout=subprocess.PIPE)
 
 lines = result.stdout.splitlines()
 
-
-if (lines[0].decode()).split()[0] == 'commit':
-	lines.pop(0)
-
 date_str = lines[2].decode()
 date_format = "Date:   %a %b %d %H:%M:%S %Y %z"
 stamp = datetime.datetime.strptime(date_str, date_format).timestamp()
