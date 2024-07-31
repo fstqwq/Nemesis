@@ -1,12 +1,15 @@
 int len[N], fail[N], go[N][26], last, pam_cnt; char s[N];
 int dif[N], slink[N], g[N]; // 最小回文划分相关的 dp
-void init(){ fail[0] = pam_cnt = 1; len[1] = -1; }
+void clgo(int x){memset(go[x], 0, sizeof(go[x]));}
+void init(){ fail[0] = pam_cnt = 1; len[1] = -1;
+	last = 0; clgo(0); clgo(1);}
 int getfail(int n, int p){
 	while (s[n - len[p] - 1] != s[n]) p = fail[p];
 	return p;}
 void extend(int n) {// 1 - base
 	int p = getfail(n, last), c = s[n] - 'a';
 	if (!go[p][c]) { int q = ++pam_cnt, now = p;
+		clgo(q);
 		len[q] = len[p] + 2;
 		p = getfail(n, fail[p]);
 		fail[q] = go[p][c]; last = go[now][c] = q;
