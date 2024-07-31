@@ -22,4 +22,4 @@ void solve(){
 		if(dif[x] == dif[fail[x]]) g[x] <- g[fail[x]];
 		dp[i] <- g[x]; } }
 //双端插入:前缀后缀分别写一个last和getfail,回文所以只需要维护回文后缀,当last=串长的时候两个last要等于整个串
-//去均摊:quick[x][c]表示x的最长真回文后缀能匹配上c
+//去均摊:quick[x][c]表示x的最长真回文后缀能匹配上c,初始化quick[0]全为1
