@@ -12,7 +12,7 @@ void dij(int S) {
 void solve() {
 	for (int i = 1; i < (1 << K); i++)
 		for (int j = 1; j <= n; j++) d[i][j] = INF;
-	for (int i = 0; i < K; i++) read(c[i]), d[1 << i][c[i]] = 0; 
+	for (int i = 0; i < K; i++) d[1 << i][c[i]] = 0; 
 	for (int S = 1; S < (1 << K); S++) {
 		for (int k = S; k > (S >> 1); k = (k - 1) & S) {
 			for (int i = 1; i <= n; i++) {

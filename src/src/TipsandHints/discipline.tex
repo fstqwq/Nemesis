@@ -24,7 +24,7 @@ s.insert(1); s.find_by_order(0); s.order_of_key(5);
     \item 测试代码长度限制，尝试触发 NO-OUTPUT, OUTPUT-LIMIT, RUN-ERROR。
     \item 测试 pragma 是否 CE。
     \item 测试 clar: 如果问不同类型的愚蠢的问题, 得到的回复是否不一样? 
-    \item 测试 fsan, gdb。\texttt{address, undefined}
+    \item 测试 \texttt{-fsanitize address, undefined, define \_GLIBCXX\_DEBUG}
     \item 测试 \texttt{time} 命令是否能显示内存占用。\texttt{/usr/bin/time -v ./a.out}
     \item 测试 clock() 是否能够正常工作; 测试本地性能与提交性能。
 \begin{minted}{C++}

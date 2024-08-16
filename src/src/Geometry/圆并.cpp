@@ -13,11 +13,11 @@ sqrt(max(0.,-(d2-sqr(a.r-b.r)*(d2-sqr(a.r+b.r))/sqr(2*d2));
  e.push_back({q1,ang1,1}); e.push_back({q0,ang0,-1});
  cnt += ang1 > ang0; }
 bool issame(cc a, cc b) {
- return sgn((a.c-b.c).dis()) == 0 && sgn(a.r-b.r) == 0; }
+ return sgn(dis(a.c,b.c)) == 0 && sgn(a.r-b.r) == 0; }
 bool overlap(cc a, cc b) { 
- return sgn(a.r - b.r -(a.c - b.c).dis()) >= 0; }
+ return sgn(a.r - b.r - dis(a.c, b.c)) >= 0; }
 bool intersect(cc a, cc b) { 
- return sgn((a.c - b.c).dis() - a.r - b.r) < 0; }
+ return sgn(dis(a.c, b.c) - a.r - b.r) < 0; }
 void solve() {
  fill(area, area + C + 2, 0);
  for(int i = 0; i < C; ++i) { int cnt = 1;
