@@ -2,8 +2,8 @@ struct Runs{
     int l,r,p;
 };vector<Runs> run;
 bool operator==(Runs x,Runs y){return x.l==y.l && x.r==y.r;}
-int gl(int x,int y){求 $S[1,x],S[1,y]$ 的最长公共后缀}
-int gr(int x,int y){求 $S[x,n],S[y,n]$ 的最长公共前缀}
+int gl(int x,int y); // 求 $S[1,x],S[1,y]$ 的最长公共后缀
+int gr(int x,int y); // 求 $S[x,n],S[y,n]$ 的最长公共前缀
 //上面两个可以用 二分 + Hash 或者后缀数组实现。
 bool getcmp(int x,int y){//S[x,n]<S[y,n]
 	int len=gr(x,y);
