@@ -11,7 +11,7 @@ point line_inter(cl a, cl b) { // 直线交点
 vector <point> cut (const vector<point> &c, line l) {
 	vector <point> ret; // 线切凸包
 	int n = (int) c.size(); if (!n) return ret;
-	for (int i = 0; i < n; ++i) {
+	for (int i = 0; i < n; i++) {
 		int j = (i + 1) % n;
 		if (turn (l.s, l.t, c[i]) >= 0) ret.push_back(c[i]);
 		if (two_side (c[i], c[j], l))

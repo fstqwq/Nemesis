@@ -5,12 +5,12 @@ vector <point> convex_hull (vector <point> a) {
 	a.erase(unique(a.begin(), a.end()), a.end());//必要时去重
 	int n = (int) a.size (), cnt = 0;
 	vector <point> ret;
-	for (int i = 0; i < n; ++i) {
+	for (int i = 0; i < n; i++) {
 		while (cnt > 1
 		&& turn (ret[cnt - 2], ret[cnt - 1], a[i]) <= 0)
 			--cnt, ret.pop_back (); // 保留凸包边界上的点：< 0
 		++cnt, ret.push_back (a[i]); }
-	for (int i = n - 2, fixed = cnt; i >= 0; --i) {
+	for (int i = n - 2, fixed = cnt; i >= 0; i--) {
 		while (cnt > fixed
 		&& turn (ret[cnt - 2], ret[cnt - 1], a[i]) <= 0)
 			--cnt, ret.pop_back (); // 保留凸包边界上的点：< 0

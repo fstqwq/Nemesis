@@ -53,7 +53,7 @@ for lim in Range:
 			x = random.randint(lower, upper)
 		if isprime(x) and x not in cur:
 			s += " " + str(x)
-			if len(s) > 62:
+			if len(s) > 62 - (5 if lim < 2e6 else 0):
 				break
 			cur.add(x)
 		else:

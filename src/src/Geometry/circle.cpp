@@ -11,12 +11,12 @@ circle make_circle(cp a, cp b, cp c) { // 三点共线 inf / nan
 circle min_circle (vector <point> p) { // 最小覆盖圆
  circle ret({0, 0}, 0);
  shuffle (p.begin (), p.end (), rng);
- for (int i = 0; i < (int) p.size (); ++i)
+ for (int i = 0; i < (int) p.size (); i++)
   if (!in_circle(p[i], ret)) {
    ret = circle (p[i], 0);
-   for (int j = 0; j < i; ++j) if (!in_circle(p[j], ret)) {
+   for (int j = 0; j < i; j++) if (!in_circle(p[j], ret)) {
     ret = make_circle (p[i], p[j]);
-    for (int k = 0; k < j; ++k) if (!in_circle(p[k], ret))
+    for (int k = 0; k < j; k++) if (!in_circle(p[k], ret))
      ret = make_circle (p[i], p[j], p[k]);
   } } return ret; }
 pair <point, point> line_circle_inter (cl a, circle c) {
