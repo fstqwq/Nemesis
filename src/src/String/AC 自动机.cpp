@@ -1,4 +1,4 @@
-int ch[MAXN][26], fail[MAXN], q[MAXN], sum[MAXN], cnt = 0;
+int ch[MAXN][26], fail[MAXN], q[MAXN], cnt = 0;
 int insert(const char *c) { int x = 0; while (*c) {
 	if (!ch[x][*c - 'a']) ch[x][*c - 'a'] = ++cnt;
 	x = ch[x][*c++ - 'a']; } return x; }
