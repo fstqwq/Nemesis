@@ -8,12 +8,12 @@ vector <point> convex_hull (vector <point> a) {
 	for (int i = 0; i < n; i++) {
 		while (cnt > 1
 		&& turn (ret[cnt - 2], ret[cnt - 1], a[i]) <= 0)
-			--cnt, ret.pop_back (); // 保留凸包边界上的点：< 0
+			--cnt, ret.pop_back (); // 保留边界:    <  0
 		++cnt, ret.push_back (a[i]); }
 	for (int i = n - 2, fixed = cnt; i >= 0; i--) {
 		while (cnt > fixed
 		&& turn (ret[cnt - 2], ret[cnt - 1], a[i]) <= 0)
-			--cnt, ret.pop_back (); // 保留凸包边界上的点：< 0
+			--cnt, ret.pop_back (); // 所有点共线边界会保留两次
 		++cnt, ret.push_back (a[i]); }
-	if (n > 1) ret.pop_back (); // n <= 2 是凸包吗?
+	if (n > 1) ret.pop_back (); // n <= 2 吗？
 	return ret; } // 小于号为 (y, x) 时边 [0, 2pi) 逆时针

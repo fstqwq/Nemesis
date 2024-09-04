@@ -556,9 +556,8 @@
 				\subsection*{Vimrc, Bashrc}
 				\inputminted{vim}{src/Miscellany/vimrc}
 				\inputminted{sh}{src/Miscellany/bashrc}
+				VSCode: 打开自动保存
 		% insert Miscellany/Grid_Paper.pdf
-		\newpage
-		\includegraphics[trim={0.24cm 0 0 0},clip]{src/Miscellany/Grid_Paper.pdf}
 		% \newpage
 		%	\subsection*{Delaunay 三角剖分}
 		%	\inputminted[fontsize=\small]{cpp}{src/Geometry/DelaunayTriangulation.cpp}
@@ -586,6 +585,16 @@
 		%\end{comment}
 		\end{spacing}
 		\endgroup
+	\end{multicols}
+	\newpage
+	\includegraphics{src/Miscellany/Grid_Paper.pdf}
+	
+	\begin{multicols}{2}
+		\begin{spacing}{0.6}
+		\begin{small}
+	\input{src/Math/stl_numeric.tex}
+		\end{small}
+	\end{spacing}
 	\end{multicols}
 	% \begin{center}
 	% 	\LARGE{Good Luck \&\& Have Fun!}

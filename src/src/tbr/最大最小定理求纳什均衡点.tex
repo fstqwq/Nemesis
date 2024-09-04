@@ -5,5 +5,5 @@
 己方的最小收益最大(等价于对方的最大收益最小).
 据此可以求出双方在此局面下的最优期望得分,
 分别等于己方最大的最小收益和对方最小的最大收益. 一般而言, 可以得到形如
-$$\max_{\mathbf{p}} \min_i\ \sum_{p_j\in \mathbf{p}}\ p_jw_{i,j}, \mathrm{s.t. } \ p_j\ge 0, \sum p_j=1 $$
+$$\max_{\mathbf{p}} \min_i\ \sum_{p_j\in \mathbf{p}, p_j\ge 0, \sum p_j=1}\ p_jw_{i,j} $$
 的形式. 当 $\sum p_jw_{i,j}$ 可以表示成只与 $i$ 有关的函数 $f(i)$ 时, 可以令初始时 $p_i=0$, 不断调整 $\sum p_jw_{i,j}$ 最小的那个i的概率 $p_i$, 直至无法调整或者 $\sum p_j=1$ 为止.
