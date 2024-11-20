@@ -28,3 +28,16 @@
 \subsubsection*{子串最大后缀}
 \noindent
 从左往右扫, 用set维护后缀的字典序递减的单调队列, 并在对应时刻添加"小于事件"点以便在之后修改队列; 查询直接在set里lower\_bound. 
+
+\subsubsection*{ZJJ: SAM处理手法}
+\noindent 1. 基本子串结构: CLB 搞的那玩意。\\	
+\noindent 2. 正反串 SAM 的基本联系: 一个子串出现的位置将会在两个SAM中同时得到映照。\\	
+\noindent 3. SAM 上转成数点问题。\\	
+\noindent 4. 线段树合并维护 endpos 集合。\\	
+\noindent 5. 树剖保证到根的链上只涉及 log 次修改和查询。(区间 border) \\	
+\noindent 6. LCT 保证到根的链只修改均摊 log 个不同的颜色段。(区间本质不同子串数量)
+
+\subsubsection*{ZJJ: 字符串常见错误}
+\noindent 1. 字符串算法变式记得判匹配位置超出字符串的情况，例如多组数据下的双端插入回文串，后缀数组多组。
+\noindent 2. 警惕 char 运算中 `a' 和 `\textvisiblespace{a}' 的区别。
+\noindent 3. char kmp[]

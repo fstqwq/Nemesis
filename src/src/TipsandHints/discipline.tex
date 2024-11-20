@@ -24,7 +24,7 @@ s.insert(1); s.find_by_order(0); s.order_of_key(5);
     \item 测试代码长度限制，尝试触发 NO-OUTPUT, OUTPUT-LIMIT, RUN-ERROR。
     \item 测试 pragma 是否 CE。
     \item 测试 clar: 如果问不同类型的愚蠢的问题, 得到的回复是否不一样? 
-    \item 测试 fsan, gdb。\texttt{address, undefined}
+    \item 测试 \texttt{-fsanitize address, undefined, define \_GLIBCXX\_DEBUG}
     \item 测试 \texttt{time} 命令是否能显示内存占用。\texttt{/usr/bin/time -v ./a.out}
     \item 测试 clock() 是否能够正常工作; 测试本地性能与提交性能。
 \begin{minted}{C++}
@@ -54,28 +54,25 @@ for _ in range(T):
 \begin{itemize}[leftmargin=1mm]
     \setlength{\itemsep}{0pt}
     \setlength{\parskip}{0.5pt}
-\item 保存, 编译, 测过样例，测过 n=0/1
-\item 数据范围: N/M, 输入实数, 模数, LL; 时间空间限制
-\item 调用初始化函数, 清空时数组大小 (0, 1, n/m?, n+1)
-\item 输入输出格式 (\texttt{\%Lf, \%llu}), 取模取到正值
-\item 多组没读入完就 break
-\item 关闭流同步, 注意不要关流同步混用
-\item 需要 \texttt{assert} 的话第一次就加上
-\item 开 \texttt{optimize("Ofast") target("avx2")}
+\item 保存, 编译, 测过样例，测过边界 n=0/1
+\item 数组开到 n/2n/m/n+32, LL/int128
+\item 多测清空，调用初始化, 清空时数组大小, 没读入完就 break 
+\item 取模取到正值，输入输出格式 (\texttt{\%Lf, \%llu})
+\item 时间空间限制, 关闭流同步，时间卡开 Ofast
 \end{itemize}
 提交后检查:
 \begin{itemize}[leftmargin=1mm]
 \setlength{\itemsep}{0pt}
 \setlength{\parskip}{0.5pt}
 \item sum 多组输入: 应只用了输入内容 (memset TL, 错下标 WA), 是否正确撤销
-\item int/LL 溢出, INF/-1 大小，浮点数 eps 和 = 0
+\item 输入是否保证顺序，保证是整数，保证三点共线
+\item int/LL 溢出, INF/-1 大小，浮点数 eps 和 = 0, \texttt{\_\_builtin\_popcount\textbf{ll}}
 \item 类似 \texttt{pair <LL, int> x = pair <int, int>();} 不会报警告 
 \item 离散化与二分: \texttt{lower\_bound upper\_bound +-1}, begin(), end()
 \item 自定义排序：排序方向，比较函数为小于，考虑坏点: 如叉积 (0, 0)
 \item 样例是否为对称/回文的？考虑构造不对称的情况，正序逆序
 \item 复制过的代码对应位置正确修改
-\item 检查 shadow 变量重名，变量复用后忘记改回去
-\item 分类讨论: if 嵌套, break 位置
+\item 检查变量重名，变量复用
 \item 图: 边标号初始是否为 1, 单双向边, 反向边边权
 \item 几何: 共线, sqrt(-0.0), nan / inf, 重点, 除零 det/dot, 旋转方向, 求得的是否是所求
 \end{itemize}

@@ -1,7 +1,7 @@
 // $x^2 - n * y^2 = 1$ 最小正整数根, n 为完全平方数时无解
 // $ x_{k+1} = x_0x_k + ny_0y_k $
 // $ y_{k+1} = x_0y_k + y_0x_k $
-pair<LL, LL> peLL(LL n) {
+pair<LL, LL> pell(LL n) {
 	static LL p[N], q[N], g[N], h[N], a[N];
 	p[1] = q[0] = h[1] = 1; p[0] = q[1] = g[1] = 0;
 	a[2] = (LL)(floor(sqrtl(n) + 1e-7L));

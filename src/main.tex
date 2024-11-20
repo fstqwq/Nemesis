@@ -205,15 +205,16 @@
 		\tableofcontents
 		\end{spacing}
 		\end{small}
-		%\newpage
+		\newpage
 		\begin{spacing}{0.6}
 			
 			\section{Geometry}
 				\subsection{二维几何基础操作}
 				%\subsection{凸包}
 					\inputminted{cpp}{src/Geometry/凸包.cpp}
+					\inputminted{cpp}{src/Geometry/闵可夫斯基和.cpp}
 					\inputminted{cpp}{src/Geometry/geo.cpp}
-					\inputminted{cpp}{src/Geometry/far_pair.cpp}
+				%	\inputminted{cpp}{src/Geometry/far_pair.cpp}
 				% \subsection{直线半平面交}
 					\inputminted{cpp}{src/Geometry/半平面交.cpp}
 				\subsection{整数半平面交}
@@ -222,12 +223,14 @@
 					\inputminted{cpp}{src/Geometry/convex_findmax.cpp}
 				
 
-				\subsection{闵可夫斯基和}
-					\inputminted{cpp}{src/Geometry/闵可夫斯基和.cpp}
 				
 				 \subsection{点、线段在简单多边形内}
 					\inputminted{cpp}{src/Geometry/AirportConstruction.cpp}
-				
+				\subsection{$O(n ^ 2)$ Ear Clipping 三角剖分}
+				\inputminted{cpp}{src/Geometry/Triangulation.cpp}
+				\subsection{单插入动态凸包}
+				\inputminted{cpp}{src/Geometry/dynamic_convex_hull.cpp}
+				\input
 					% \subsection{凸包快速询问}
 					% \inputminted{cpp}{src/Geometry/logconvexhull.cpp}
 %				\subsection{直线与凸包交点}
@@ -238,20 +241,23 @@
 				% \inputminted{cpp}{src/Geometry/DelaunayTriangulation.cpp}
 				
 				\subsection{圆}
-					\inputminted{cpp}{src/Geometry/circle.cpp}
+					\inputminted[highlightlines={7}]{cpp}{src/Geometry/circle.cpp}
+				\subsection{圆反演，阿波罗尼茨圆}
+				\begin{small}
+					\input{src/Geometry/阿波罗尼茨圆.tex}
+				\end{small}
+					\inputminted{cpp}{src/yzh/circle_inversion.cpp}
 				\subsection{圆并}
 					\inputminted{cpp}{src/Geometry/圆并.cpp}
 				\subsection{多边形与圆交}
 					\inputminted{cpp}{src/Geometry/多边形和圆的交.cpp}
+				
+				%\subsection{圆幂~圆反演~根轴}
+				%	\input{src/Geometry/圆幂.tex}
+				\subsection{球面基础, 经纬度球面距离}
 				\begin{small}
-				\subsection{阿波罗尼茨圆}
-					\input{src/Geometry/阿波罗尼茨圆.tex}
-				\subsection{圆幂~圆反演~根轴}
-					\input{src/Geometry/圆幂.tex}
-				\subsection{球面基础}
 					\input{src/Geometry/球面.tex}
 				\end{small}
-				\subsection{经纬度球面距离}
 					\inputminted{cpp}{src/Geometry/经纬度求球面最短距离.cpp}
 %				\subsection{最近点对}
 %				\inputminted{cpp}{src/Geometry/最近点对.cpp}
@@ -269,7 +275,7 @@
 					\inputminted{cpp}{src/Geometry/三维凸包.cpp}
 				\subsection{最小覆盖球}
 					\inputminted{cpp}{src/Geometry/最小覆盖球.cpp}
-					\newpage
+				%	\newpage
 					
 			\section{Tree \& Graph}
 				\subsection{Hopcroft-Karp $O(\sqrt{V} E)$}
@@ -330,8 +336,10 @@
 					\inputminted{cpp}{src/TreeandGraph/弦图.cpp}
 				\subsection{Minimum Mean Cycle 最小平均值环 $O(n^2)$}
 					\inputminted{cpp}{src/TreeandGraph/MeanCycle.cpp}
-				\subsection{斯坦纳树}
-					\inputminted{cpp}{src/TreeandGraph/斯坦纳树.cpp}
+				\subsection{一般图最大匹配 - Blossom}
+					\inputminted{cpp}{src/TreeandGraph/Blossom.cpp}
+				% \subsection{斯坦纳树}
+				% 	\inputminted{cpp}{src/TreeandGraph/斯坦纳树.cpp}
 				%\subsection{Cactus 仙人掌}
 					%\inputminted{cpp}{src/TreeandGraph/cactus.cpp}
 				\subsection{图论结论}
@@ -354,14 +362,14 @@
 						\inputminted{cpp}{src/DataStructure/非递归线段树求最大值.cpp}
 				\subsection{点分治}
 					\inputminted{cpp}{src/DataStructure/点分治.cpp}
-				\subsection{KD 树}
-					\inputminted{cpp}{src/DataStructure/KD tree.cpp}
+				% \subsection{KD 树}
+				% 	\inputminted{cpp}{src/DataStructure/KD tree.cpp}
 				\subsection{LCT 动态树}
 					\inputminted{cpp}{src/DataStructure/LCT.cpp}
-				% \subsection{可持久化平衡树}
-				% 	\inputminted{cpp}{src/DataStructure/可持久化平衡树.cpp}
-				\subsection{有旋 Treap}
-					\inputminted{cpp}{src/DataStructure/有旋treap.cpp}
+				\subsection{可持久化 Treap}
+					\inputminted{cpp}{src/DataStructure/可持久化treap-zmc.cpp}
+				% \subsection{有旋 Treap}
+				% 	\inputminted{cpp}{src/DataStructure/有旋treap.cpp}
 			
 			\section{String}
 				\subsection{最小表示法}
@@ -370,8 +378,8 @@
 					\inputminted{cpp}{src/String/Manacher.cpp}
 				\subsection{KMP, exKMP}
 					\inputminted{cpp}{src/String/KMP.cpp}
-				\subsection{exKMP (zjj)}
-					\inputminted{cpp}{src/zjj/exkmp.cpp}
+				% \subsection{exKMP (zjj)}
+				% 	\inputminted{cpp}{src/zjj/exkmp.cpp}
 				\subsection{AC 自动机}
 					注意代码是以 0 为根的，如果要 1-base 的话要改一下没有儿子时的逻辑。
 					\inputminted{cpp}{src/String/AC 自动机.cpp}
@@ -387,15 +395,17 @@
 					\inputminted{cpp}{src/String/后缀平衡树.cpp}
 				%\subsection{Total LCS 子串对目标求 LCS}
 				%\inputminted{cpp}{src/String/Total LCS.cpp}
-				\subsection{广义 SAM 在线 BFS (zjj)}
+				\subsection{广义在线 SAM}
 				\inputminted{cpp}{src/String/generalizedSAM.cpp}
 				\subsection{回文树}
 					0 的子树是长为偶数的串, 1 的子树是长为奇数的. 0 代表空串, 1 没有意义.
 					\inputminted{cpp}{src/String/PAM.cpp}
-				\subsection{双端插入回文树 (zjj)}
-				\inputminted{cpp}{src/String/PAM_bidirectional.cpp}
-				\subsection{字符串 Hash 类}
-				\texttt{\input{|"python src/Miscellany/randomprimes.py 1e12 1e13 2e13 1e17 1e18"}}
+				\subsection{Runs}
+					\inputminted{cpp}{src/String/Runs.cpp}
+				%\subsection{双端插入回文树 (zjj)}
+				%\inputminted{cpp}{src/String/PAM_bidirectional.cpp}
+				\subsection{字符串 Hash}
+				\texttt{\input{|"python src/Miscellany/randomprimes.py 3e2 1e6 1e12 1e13 2e13 1e15 1e17 5e17 1e18 2e18"}}
 				\inputminted{cpp}{src/String/hash.cpp}	
 				\subsection{String Conclusions}
 					\input{src/tbr/string-Conclusions.tex}
@@ -505,7 +515,7 @@
 				\subsection{有理数二分: Stern-Brocot 树, Farey 序列}
 					\inputminted{python}{src/yzh/farey.py}
 				\subsection{黄金三分}
-					\inputminted{cpp}{src/yzh/golden_ternary.cpp}
+					\inputminted[highlightlines={7}]{cpp}{src/yzh/golden_ternary.cpp}
 				\subsection{DP 优化}
 				\subsubsection{四边形不等式}
 					\inputminted{cpp}{src/Miscellany/2D1D.cpp}
@@ -530,7 +540,7 @@
 				\label{randomprimes}
 				\begin{small}
 					\setlength{\parindent}{0em}\setlength{\parskip}{0em}\renewcommand{\baselinestretch}{.8}
-					\texttt{\input{|"python src/Miscellany/randomprimes.py 500 1e3 3e4 1e5 1e6 5e6 1e7 2e7 1e9 2e9"}}
+					\texttt{\input{|"python src/Miscellany/randomprimes.py 500 1e3 3e4 1e5 3e5 1e6 2e6 5e6 1e7 2e7 1e9 2e9"}}
 					\texttt{\textbf{NTT} 976224257 r=3 (20)
 					985661441 r=3 (22)
 					998244353 r=3 (23)\\
@@ -546,8 +556,9 @@
 				\subsection*{Vimrc, Bashrc}
 				\inputminted{vim}{src/Miscellany/vimrc}
 				\inputminted{sh}{src/Miscellany/bashrc}
-		
-		\newpage
+				VSCode: 打开自动保存
+		% insert Miscellany/Grid_Paper.pdf
+		% \newpage
 		%	\subsection*{Delaunay 三角剖分}
 		%	\inputminted[fontsize=\small]{cpp}{src/Geometry/DelaunayTriangulation.cpp}
 		%	\subsection*{动态凸包}
@@ -557,26 +568,33 @@
 				% \inputminted{java}{src/Miscellany/Main2.java}
 			% \subsection*{Python Example}
 			% 	\inputminted{python}{src/Miscellany/test.py}
-			\subsection*{Blossom}
-				\inputminted[fontsize=\small]{cpp}{src/TreeandGraph/Blossom.cpp}
-			\subsection*{Chu-liu}
-				\inputminted[fontsize=\small]{cpp}{src/TreeandGraph/最小树形图.cpp}
-			\subsection*{可持久化 Treap}
-				\inputminted[fontsize=\small]{cpp}{src/DataStructure/可持久化treap-zmc.cpp}
-				%\subsection*{天动万象}
+			% \subsection*{Blossom}
+			% 	\inputminted[fontsize=\small]{cpp}{src/TreeandGraph/Blossom.cpp}
+			% \subsection*{Chu-liu}
+			% 	\inputminted[fontsize=\small]{cpp}{src/TreeandGraph/最小树形图.cpp}
+			% \subsection*{可持久化 Treap}
+			% 	\inputminted[fontsize=\small]{cpp}{src/DataStructure/可持久化treap-zmc.cpp}
+			% 	\subsection*{天动万象}
 			%	\inputminted[fontsize=\small]{cpp}{src/yzh/ByteCampA3.cpp}
-			\subsection*{Clique Counting}
-			\inputminted[fontsize=\small]{cpp}{src/yzh/clique.cpp}
-			\subsection*{神谕}
-				\inputminted{cpp}{src/zjj/zjj.cpp}
-				\input{src/zjj/sam.tex}
-			\newcolumn
-			\subsection*{圆反演}
-				\inputminted{cpp}{src/yzh/circle_inversion.cpp}
+			% \subsection*{Clique Counting}
+			% \inputminted[fontsize=\small]{cpp}{src/yzh/clique.cpp}
+			% \subsection*{神谕}
+			% 	\inputminted[fontsize=\small]{cpp}{src/zjj/zjj.cpp}
+			% 	\input{src/zjj/sam.tex}
 
 		%\end{comment}
 		\end{spacing}
 		\endgroup
+	\end{multicols}
+	\newpage
+	\includegraphics{src/Miscellany/Grid_Paper.pdf}
+	
+	\begin{multicols}{2}
+		\begin{spacing}{0.6}
+		\begin{small}
+	\input{src/Math/stl_numeric.tex}
+		\end{small}
+	\end{spacing}
 	\end{multicols}
 	% \begin{center}
 	% 	\LARGE{Good Luck \&\& Have Fun!}

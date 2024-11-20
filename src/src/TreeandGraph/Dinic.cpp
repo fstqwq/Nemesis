@@ -6,18 +6,18 @@ void add(int u, int v, value f) {
 int n, S, T, q[N], tag[N];
 bool bfs() {
 	for (int i = S; i <= T; i++) tag[i] = 0; // S-T?
-	int he = 0, ta = 1; q[0] = S; tag[S] = 1; 
+	int he = 0, ta = 1; q[0] = T; tag[T] = 1; 
 	while (he < ta) {
-		int x = q[he++]; // if (x == T) break;
+		int x = q[he++]; if (x == S) return true;
 		for (int o = head[x]; o; o = e[o].nxt) 
-			if (e[o].f && !tag[e[o].v])
+			if (e[o ^ 1].f && !tag[e[o].v])
 				tag[e[o].v] = tag[x] + 1, q[ta++] = e[o].v;
-	} return !!tag[T]; }
+	} return false; }
 value dfs(int x, value flow) {
 	if (x == T) return flow;
 	value used = 0;
 	for (int &o = cur[x]; o; o = e[o].nxt) {
-		if (e[o].f && tag[x] + 1 == tag[e[o].v]) {
+		if (e[o].f && tag[x] - 1 == tag[e[o].v]) {
 			value ret = dfs(e[o].v, min(flow - used, e[o].f));
 			if (ret) {
 				e[o].f -= ret; e[o ^ 1].f += ret;

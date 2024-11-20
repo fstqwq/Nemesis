@@ -1,9 +1,9 @@
 \begin{small}
-% \paragraph{复杂度证明思路}
-% 假设 $\mathrm{dist}$ 为残量网络上的距离.
-% Dinic 一轮增广会找到一个极大的长度为 $\mathrm{dist} (s, t)$ 的增广路集合 blocking flow, 增广后 $\mathrm{dist} (s, t)$ 将会增大.
-% 因此只有 $O(V)$ 轮;如果一轮增广是 $O(VE)$ 的,
-% 总复杂度是 $O(V^2E)$.没有当前弧优化的 Dinic 复杂度应是指数级别的.
+\paragraph{复杂度证明思路}
+假设 $\mathrm{dist}$ 为残量网络上的距离.
+Dinic 一轮增广会找到一个极大的长度为 $\mathrm{dist} (s, t)$ 的增广路集合 blocking flow, 增广后 $\mathrm{dist} (s, t)$ 将会增大.
+因此只有 $O(V)$ 轮;如果一轮增广是 $O(VE)$ 的,
+总复杂度是 $O(V^2E)$.
 
 \paragraph{单位流量网络}
 在 0-1 流量图上 Dinic 有更好的性质. 

@@ -1,4 +1,4 @@
-using poly = vector<int>;
+using poly = vector<int>; // 用到 poly 的部分补成 2 ^ k
 poly poly_calc(const poly& u, const poly& v, // 长度要相同
 	function<int(int, int)> op) { // 返回长度是两倍
 	static int a[MAXN], b[MAXN], c[MAXN];
